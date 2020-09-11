@@ -1,6 +1,6 @@
 ---
 title: Introduction to Vim
-author: "Mary Piper"
+author: "Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "Wednesday October 26, 2016"
 ---
 
