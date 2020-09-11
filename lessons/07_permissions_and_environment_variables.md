@@ -1,6 +1,6 @@
 ---
 title: "Permissions and Environment variables"
-author: "Christina Koch, Radhika Khetani"
+author: "Christina Koch, Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu"
 date: "Wednesday, September 20, 2017"
 ---
 
