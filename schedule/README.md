@@ -6,7 +6,7 @@
 |:-----------:|:----------:|:--------:|
 | 10:00 - 10:30 | Workshop introduction | Radhika |
 | 10:30 - 11:45 | Introduction to Shell | Meeta |
-| 11:45 - 11:20 | Overview of self-learning materials and homework submission | Jihe |
+| 11:45 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
 
 ### Self Learning #1
