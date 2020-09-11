@@ -1,6 +1,6 @@
 ---
 title: "The Shell"
-author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry"
+author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "August 7, 2017"
 ---
 
