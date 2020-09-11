@@ -1,6 +1,6 @@
 ---
 title: "The Shell: Searching and Redirection"
-author: "Sheldon  McKay, Bob Freeman, Mary Piper"
+author: "Sheldon  McKay, Bob Freeman, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "Wednesday, August 23, 2017"
 ---
 
