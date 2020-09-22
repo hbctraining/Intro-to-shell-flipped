@@ -1,5 +1,5 @@
 ---
-title: Introduction to Vim
+title: Working with files on the command-line"
 author: "Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "Wednesday October 26, 2016"
 ---
@@ -8,7 +8,87 @@ Approximate time: 30 min
 
 ## Learning Objectives
 
+* Examine the contents of files
+* Create a new file using the Vim text editor
 * Learn basic operations using the Vim text editor
+
+## Examining Files
+
+We now know how to move around the file system and look at the contents of directories, but how do we look at the contents of files? On your laptop, viewing a file is as simple as finding it in the file explorer window and double clicking on it to open it. As you will have noticed so far, the point and click of the mouse is not very useful when working on the command-line. Instead we will need to equip ourseleves with some helpful commands.
+
+The easiest way to examine a file is to just print out all of its contents using the command `cat`. We can test this out by printing the contents of `~/unix_lesson/other/sequences.fa` by entering the command followed by the filename, including the path when necessary:
+
+```bash
+$ cat ~/unix_lesson/other/sequences.fa
+```
+
+The `cat` command prints out the all the contents of `sequences.fa` to the screen.
+
+> `cat` stands for catenate; it has many uses and printing the contents of a files onto the terminal is one of them.
+
+**What does this file contain?**
+
+The file is fairly small, containing three sequence records.O On is  two nucleotide 
+
+`cat` is a terrific command, but when the file is really big, it can be annoying to use. In practice, when you are running your analyses on the command-line you will most likely be dealing with large files. The command, `less`, is useful for this case. Let's take a look at the list of raw_fastq files and add the `-h` modifier:
+
+```bash
+ls -lh ~/unix_lesson/raw_fastq
+```
+
+> The `ls` command has a modifier `-h` when paired with `-l`, will print sizes of files in human readable format 
+
+In the fourth column you wll see the size of each of these files, and you can see they are quite large, so we probably do not want to use the `cat` command to look at them. Instead, we can use the `less` command. 
+
+Move back to our `raw_fastq` directory and enter the following command:
+
+```bash
+less Mov10_oe_1.subset.fq
+```
+
+We will explore FASTQ files in more detail later, but notice that FASTQ files have four lines of data associated with every sequence read. Not only is there a header line and the nucleotide sequence, similar to a FASTA file, but FASTQ files also contain quality information for each nucleotide in the sequence. 
+
+The `less` command opens the file, and lets you navigate through it. The keys used to move around the file are identical to the `man` command.
+
+<span class="caption">Shortcuts for `less`</span>
+
+| key              | action                 |
+| ---------------- | ---------------------- |
+| <kbd>SPACE</kbd> | to go forward          |
+| <kbd>b</kbd>     | to go backwards        |
+| <kbd>g</kbd>     | to go to the beginning |
+| <kbd>G</kbd>     | to go to the end       |
+| <kbd>q</kbd>     | to quit                |
+
+`less` also gives you a way of searching through files. Just hit the <kbd>/</kbd> key to begin a search. Enter the name of the string of characters you would like to search for and hit enter. It will jump to the next location where that string is found. If you hit <kbd>/</kbd> then <kbd>ENTER</kbd>, `less` will just repeat the previous search. `less` searches from the current location and works its way forward. If you are at the end of the file and search for the word "cat", `less` will not find it. You need to go to the beginning of the file and search.
+
+For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>.
+
+The `man` command (program) actually uses `less` internally and therefore uses the same keys and methods, so you can search manuals using `/` as well!
+
+There's another way that we can look at files, and in this case, just
+look at part of them. This can be particularly useful if we just want
+to see the beginning or end of the file, or see how it's formatted.
+
+The commands are `head` and `tail` and they just let you look at
+the beginning and end of a file respectively.
+
+```bash
+$ head Mov10_oe_1.subset.fq
+```
+
+```bash
+$ tail Mov10_oe_1.subset.fq
+```
+
+The `-n` option to either of these commands can be used to print the first or last `n` lines of a file. To print the first/last line of the file use:
+
+```bash
+$ head -n 1 Mov10_oe_1.subset.fq
+
+$ tail -n 1 Mov10_oe_1.subset.fq
+```
+
 
 ## Writing files
 
