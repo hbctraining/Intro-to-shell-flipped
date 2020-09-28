@@ -1,7 +1,7 @@
 ---
 title: "The Shell"
 author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
-date: "August 7, 2017"
+date: "September 28, 2020"
 ---
 
 ## Learning Objectives
@@ -15,62 +15,97 @@ date: "August 7, 2017"
 
 ## Setting up
 
-We will spend most of our time learning about the basics of the shell by exploring experimental data.
+We will spend most of our time learning about the basics of the shell command-line interface (CLI) by exploring experimental data.
 
-Since we are going to be working with this data on our remote cluster, **O2**, we first need to log in. After we're logged on, we will each make our own copy of the example data folder.
+Since we are going to be working with this data on the **O2** cluster, we first need to log in.
+
+Before we do either of those things, let's take a quick look at the basic architecture of a cluster environment.
+
+<img src="../img/compute_cluster.png" width="600">
+
+In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a desginated role, either for logging in or for performing computational analysis/work. A given cluster will usually have a few login nodes and several compute nodes.
+
+The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis.
+
+We will be going into a lot more depth about the cluster architecture, storage systems and best practices on the last day of this workshop. For now, it a basic understanding is sufficient to get started with learning to interact with a computer using shell commands. Let's learn how to connect to O2.
 
 ### Logging in
 
-**With Macs**
+**With Mac OS**
 
-Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell), both locally and on remote machines. We will be using it to log into O2.
+Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell), both locally and on remote machines. We will be using it to log into O2. You can use the *Spotlight Search* at the top right hand corner of your screen to locate the Terminal.
 
-**With Windows**
+**With Windows OS**
 
-By default, there is no terminal for the bash shell available in the Windows OS, so you have to use a downloaded program, "**Git BASH**". Git BASH is part of the [Git for Windows](https://git-for-windows.github.io/) download, and is a shell (bash) emulator.
+By default, there is no built-in terminal for the bash shell available with the Windows OS. So, we will be using a downloaded program called "**Git BASH**". Git BASH which is part of the [Git for Windows](https://git-for-windows.github.io/) download is a so-called shell (bash) emulator. What this means is that it shows you a very similar interface to, and provides you the functionality of the Terminal on Mac/Linux OS.
 
-> You can also use [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log in to remote machines from Windows computers, but it is a little more involved and has different capabilities.
+> Windows users can use another program called [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) instead of a bash emulator to log in to remote machines, but it is a little more involved and has different capabilities. We encourage you to take a look at it, but we will not be covering it in this workshop.
+
+#### O2 accounts
+
+All clusters require you to have an account to be able to log in. In that way it is similar to any apps that store your data or information. 
+
+For this workshop we will be using training accounts created for us by the HMS Research Computing team, they are the folks that manage the O2 cluster. Each of us should have our own training account associated with a password. These training accounts will be available for workshop-related activities from today until the last day of the workshop.
+
+> If you are interested in getting your own account on O2, please follow the intructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
 
 #### Let's log in! 
 
-Type in the following command with your username to login:
+Everyone should have their Terminal (or Git Bash Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**.
+
+To connect to the login node on O2, we need to type in the `ssh` command at the command prompt followed by a space, and then type your username plus the address of the cluster, i.e `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
 
 ```bash
 ssh username@o2.hms.harvard.edu
 ```
 
-You will receive a prompt for your password, and you should type in your associated password; note that the cursor will *not move* as you type in your password.
+> **Tip** - The structure of using the shell command-line interface is - `command arguments`.
 
-A warning might pop up the first time you try to connect to a remote machine, type "Yes" or "Y". 
+Now press the return key (enter), you should receive a prompt for your password. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
 
-#### Copying example data folder
+If this is the first time you are connecting to the cluster, **a warning will pop up** and will ask you if you are sure you want to do this; **type `Yes` or `Y`**. 
 
-Once logged in, you should see the O2 icon, some news, and the command prompt: 
+Once logged in, you should see the O2 icon, some news, and a new command prompt: 
 
 ```bash
 [rc_training10@login01 ~]$ 
 ```
 
-The command prompt will have some characters before it, something like `[rc_training01@login01 ~]`, this is telling you what the name of the computer you are working on is.
+The command prompt on O2 will have some characters before the `$`, something like `[rc_training01@login01 ~]`, this is telling you the name of the login node you have connected to!
 
-The first command we will type on the command prompt will be to start a so-called "interactive session" on O2.
+Please note that from this point on in the workshop anything we want you to type next to the command prompt will be preceded by the `$` (see below). Please make sure you do not type out, or copy and paste, the `$` as part of your command
+
+#### Let's move from the login node to a compute node!
+
+The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis.
 
 ```bash
-$ srun --pty -p interactive -t 0-12:00 --mem 1G --reservation=HBC /bin/bash
+$ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC /bin/bash
+```
+ 
+Press enter after you copy and paste in that command. You should see a couple of messages, and in a few seconds you should get back the command prompt `$`; the string of characters before the command prompt should have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now.
+
+> **Tip** - When you run any command in shell, once the command has finished doing what it is supposed to do, it will bring you back your command prompt.
+
+Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use.
+
+> NOTE: When you run the `srun` command between the classes and after this workshop with your own account please remove the `--reservation` string.
+> 
+> `srun --pty -p interactive -t 0-2:00 --mem 1G /bin/bash`
+> 
+> The "reservation" is only active for the training accounts during class.
+
+### Copying example data folder
+
+Now that we are all set up to use O2, the first thing to do is to check if there are any files in the data folder we are currently in. To do this we will run a command called `ls` or list.
+
+```bash
+$ ls
 ```
 
-Press enter after you type in that command. You will get a couple of messages, but in a few seconds you should get back the command prompt `$`; the string of characters before the command prompt, however, have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. *We will be explaining what this means in more detail later when we talk about HPC and O2.* 
+It should show you that you have 0 files, or not show you anything at all because you don't have any data there as yet!
 
-Make sure that your command prompt is now preceded by a character string that contains the word "compute".
-
-> NOTE: When you run the `srun` command after this workshop with your own account please use the following command (without the `--reservation` option):
-> 
-> `srun --pty -p interactive -t 0-12:00 --mem 1G /bin/bash`
-> 
-> The "reservation" is only active for the training accounts, and only for the duration of this workshop.
-
-
-Copy our example data folder to your home directory using the following command:
+Let's bring in a data folder from a different location on the cluster to our designated area by using the `cp` command. Copy and paste the following command all the way from `cp` and including the period symbol at the end `.`:
 
 ```bash
 $ cp -r /n/groups/hbctraining/unix_lesson/ .
@@ -78,30 +113,43 @@ $ cp -r /n/groups/hbctraining/unix_lesson/ .
 
 >'cp' is the command for copy. This command required you to specify the location of the item you want to copy (/groups/hbctraining/unix_lesson/) and the location of the destination (.); please note the space between the 2 in the command. The "-r" is an option that modifies the copy command to do something slightly different than usual. The "." means "here", i.e. the destination location is where you currently are.
 
+Now let's see if we can see this data folder we brought in can be "listed".
+
+```bash
+ls
+```
+
+You should see the string of characters "unix_lesson" show up as the output of `ls`. This is a folder we should all have duplicates of.
+
 ## Starting with the shell
 
-We have each created our own copy of the example data folder into our home directory, **unix_lesson**. Let's go into the data folder and explore the data using the shell.
+Let's go look at what is inside the data folder and explore further. First instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using this terminology moving forward.
+
+To look inside the new unix_lesson folder, we need to use the command `cd` which stands for "change directory".
 
 ```bash
 $ cd unix_lesson
 ```
 
-> 'cd' stands for 'change directory'
-
-Let's see what is in here. Type:
+Did you notice a change in your command prompt? The "~" symbol from before should have been replaced by the string `unix_lesson`. This means that our `cd` command ran successfully and we are now *in* the new directory. Let's see what is in here by listing the contents:
 
 ```bash
 $ ls
 ```
 
-You will see:
+You should see:
 
 ```
 genomics_data  other  raw_fastq  README.txt  reference_data
 ```
-> ls stands for 'list' and it lists the contents of a directory.
+> **Tip** - `ls` stands for "list" and it lists the contents of a directory.
 
-There are five items listed. What types of files are they? We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
+
+### Arguments
+
+There are five items listed when you run `ls`, but what types of files are they, or are they directories? 
+
+We can modify the default behavior of `ls` with one or more **"arguments"** to get more information. 
 
 ```bash
 $ ls -F
@@ -109,17 +157,14 @@ $ ls -F
 genomics_data/  other/  raw_fastq/  README.txt  reference_data/
 ```
 
-Anything with a "/" after it is a directory. Things with a "*" after them are programs.  If there are no decorations after the name, it's a file.
+Anything with a "/" after its name is a directory. Things with an asterisk "*" after them are programs.  If there are no "decorations" after the name, it's a normal text file.
 
-> All commands are essentially programs that are able to perform specific, commonly-used tasks.
-
-You can also use the command:
+You can also use the argument `-l` to show the directory contents in a long-listing format that provides a lot more information:
 
 ```bash
 $ ls -l
 ```
 
-to see whether items in a directory are files or directories. `ls -l` gives a lot more information too.
 ```
 total 124
 drwxrwsr-x 2 mp298 mp298  78 Sep 30 10:47 genomics_data
@@ -129,36 +174,43 @@ drwxrwsr-x 2 mp298 mp298 228 Sep 30 10:47 raw_fastq
 drwxrwsr-x 2 mp298 mp298 238 Sep 30 10:47 reference_data
 ```
 
-Let's go into the raw_fastq directory and see what is in there.
+Each line of output represents a file or a directory. The directory lines start with `d`. If you want to combine the 2 arguments `-l` and `-F`, you can do so by saying the following:
 
 ```bash
-$ cd raw_fastq/
-
-$ ls -F
-
-Irrel_kd_1.subset.fq  Irrel_kd_3.subset.fq  Mov10_oe_2.subset.fq
-Irrel_kd_2.subset.fq  Mov10_oe_1.subset.fq  Mov10_oe_3.subset.fq
+ls -lF
 ```
 
-All six items in this directory have no trailing slashes, so they are all files, not folders or programs.
+See the modification in the output?
 
+> **Tip** - All commands are essentially programs that are able to perform specific, commonly-used tasks.
 
-#### Arguments
-
-Most commands take additional arguments that control their exact behavior. For example, `-F` and `-l` are arguments to `ls`.  The `ls` command, like many commands, take a lot of arguments. Another useful one is `-a`, which shows everything, including hidden files.  How do we know what the available arguments that go with a particular command are?
-
-Most commonly used shell commands have a manual available in the shell. You can access the
-manual using the `man` command. Try entering:
+Most commands will take additional arguments that control their exact behavior, some of them will take a file or directory name as input. How do we know what the available arguments that go with a particular command are? Most commonly used shell commands have a manual available in the shell. You can access the
+manual using the `man` command. Let's try this command with `ls`:
 
 ```bash
 $ man ls
 ```
 
-This will open the manual page for `ls`. Use the 'space' key to go forward and 'b' to go backwards. When you are done reading, just hit `q` to quit.
+This will open the manual page for `ls` and you will lose the command prompt. It will bring you to a so-called "buffer" page, a page you can navigate with your mouse or if you want to use your keyboard we have listed some basic key strokes:
+* 'spacebar' to go forward 
+* 'b' to go backward
 
-Commands that are run from the shell can get extremely complicated. To see an example, open up the manual page for the `find` command. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
+**To get out of the `man` "buffer" page and to be able to type commands again on the command prompt, press the `q` key!**
 
-> If the manual page within the terminal is hard to read and traverse, the manual exists online, use your web searching powers to get it! In addition to the arguments, you can also find good examples online; Google is your friend.
+***
+
+**Exercise**
+
+* Open up the manual page for the `find` command. Skim through some of the information. 
+    * Do you think you might be able to learn this much information about the very many command by heart? 
+    * Do you think this format of information display is useful for you?
+* Quit the `man` buffer and come back to your command prompt.
+
+> **Tip** - Shell commands can get extremely complicated. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
+>
+> **Tip** - If the manual page within the Terminal is hard to read and traverse, the manual exists online too. Use your web searching powers to get it! In addition to the arguments, you can also find good examples online; ***Google is your friend.***
+
+***
 
 
 ## The Unix directory file structure (a.k.a. where am I?)
@@ -167,11 +219,17 @@ As you've already just seen, you can move around in different directories or fol
 
 #### Moving around the file system
 
-Let's practice moving around a bit.
+Let's practice moving around a bit. Let's go into the raw_fastq directory and see what is in there.
 
-We're going to work in that `unix_lesson` directory.
+```bash
+$ cd raw_fastq/
 
-First we did something like go to the folder of our username. Then we opened `unix_lesson` then `raw_fastq`
+$ ls -l
+```
+
+All six items in this directory look like files ending in `.fq` extension. 
+
+That's all well and good, but where are we in the context of the directory that contains the `unix_lesson` directory?!
 
 Like on any computer you have used before the file structure within unix is hierarchical, like an upside down tree with root (/) as the starting point of the tree-like structure:
 
