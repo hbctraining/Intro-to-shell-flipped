@@ -99,7 +99,7 @@ $ echo $num
 
 You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
 
-> **NOTE:** Variables are not physical entities like files. Whe you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, there will be a long list reported back to you. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
+> **NOTE:** Variables are not physical entities like files. Whe you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, the output of `declare` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
 > 
 > If you use `declare`, try piping it to the `grep` command followed by the name of the variable so you trim that list to only display the variable you are interested in:
 > 
@@ -108,9 +108,7 @@ You should see the number 25 returned to you. Did you notice that when we create
 
 ### Variables as input to commands
 
-So far it is hard to see the utility of a variable, and so it might be more helpful if we demonstrated it in the context of a relevant use case.
-
-Variables can also store character values. In the example below, we define a variable called `file`. We will put a filename `Mov10_oe_1.subset.fq` as the value inside the bucket.
+So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically a filename:
 
 ```bash
 $ file=Mov10_oe_1.subset.fq
@@ -122,21 +120,46 @@ Once you press return, you should be back at the command prompt. Let's check wha
 $ echo $file
 ```
 
-This time rather thatLet's try another command using the variable that we have created. We can also count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable:
+Now let's use this variable `file` as input to one of the commands we previously learned:
 
 ```bash
 $ wc -l $file
 ```
 
-> *NOTE:* The variables we create in a session are system-wide, and independent of where you are in the filesystem. This is why we can reference it from any directory. However, it is only available for your current session. If you exit the cluster and login again at a later time, the variables you have created will no longer exist.
+**What do you see in the terminal? What you were expecting `wc -l` to return to you?**
+
+The `wc -l` command is used to count and report the number of lines in a file. Here, we provided a file but we did not get a number reported. Instead we got the error `wc: Mov10_oe_1.subset.fq: No such file or directory`. This is because the file that we listed does not exist in our current working directory. To get around this we can do one of two things.
+
+1. Provide a path to the file:
+
+```bash
+$ wc -l ~/unix_lesson/raw_fastq/$file
+```
+OR 
+
+2. Change directories to where the file lives: 
+
+```bash
+$ cd ~/unix_lesson/raw_fastq
+$ wc -l $file
+```
+
+Either one of these options should have worked and you should see the number of lines in the file reported to you!
+
+> **NOTE:** The variables we create in a session are system-wide, and independent of where you are in the filesystem. This is why we can reference it from any directory. However, it is only available for your current session. If you exit the cluster and login again at a later time, the variables you have created will no longer exist.
 
 ***
 
 **Exercise**
 
-* Reuse the `$file` variable to store a different file name, and rerun the commands we ran above (`wc -l`, `echo`)
+1. Use the `$file` variable as input to the `head` and `tail` commands, and modify the arguments to display only four lines. Provide the lines of code used and report the header lines (`@HWI`) you retrieve from each command. 
+2. Create a new variable called `meta` and assign it the value `Mov10_rnaseq_metadata.txt`. For the following questions, use the `$meta` variable but do not change directories. Provide the code you would run to:
+	1. Display the contents of the file using `cat`.
+	1. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*)
 
 ***
+
+
 
 Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once. Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `raw_fastq` directory as values. 
 
