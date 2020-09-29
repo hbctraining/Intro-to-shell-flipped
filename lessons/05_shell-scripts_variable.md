@@ -110,7 +110,7 @@ You should see the number 25 returned to you. Did you notice that when we create
 > `declare | grep num`
 > 
 
-### Variables as input to commands
+### Using variables as input to commands
 
 So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically a filename:
 
@@ -163,7 +163,7 @@ Either one of these options should have worked and you should see the number of 
 ***
 
 
-### Storing the output from a command as a variable
+### Assigning the output from a command to a variable
 
 When creating shell scripts, variables are used to store information that can be used later in the script (once or many times over). The value stored can be hard-coded in as we have done above, assigning the variable a numeric or character value. Alternatively, the value stored can be the output of another command. We will demonstrate this using a new command called `basename`.
 
@@ -216,6 +216,9 @@ Once you press return you should be back at the command prompt. Check to see wha
 $ echo $base
 ```
 
+## Advanced shell script
+
+Bring all concepts in this lesson together!
 
 
 In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
