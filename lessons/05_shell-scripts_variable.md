@@ -8,31 +8,43 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Capture previous commands into a script to re-run in one single command
-* Understanding variables and storing information
+* Capture previous commands into a shell script
+* Understanding variables and their use case
+* Extracting useful text from a filename to create a prefix
 
-
-Now that you've been introduced to a number of commands to interrogate your data, wouldn't it be great if you could do this for each set of data that comes in, without having to manually re-type the commands?
-
-Welcome to the beauty and purpose of shell scripts.
 
 ## Shell scripts
 
-Shell scripts are **text files that contain commands we want to run**. As with any file, you can give a shell script any name and usually have the extension `.sh`. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake, this is actually a small program. 
+By this point on the workshop you have been introduced to a number of commands to interrogate your data. To demonstrate the function of each we have run the commands one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the filesystem. When we are running analyses which require a series of tasks to be run and sometimes repeat these tasks on multiple files, there is a more efficent way to do this using shell scripts. 
 
+Shell scripts are **text files that contain commands we want to run**. In this lesson we will introduce you to shell scripts by providing a simple example one. We will then introduce a few related concepts which will in turn help us to create a more advanced shell script example.
 
-We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
+### A simple script
+
+We are finally ready to see what makes the shell such a powerful programming environment. To create our first script, we are going to take some of the commands we have run previously and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. For historical reasons, a bunch of commands saved in a file is referred to as shell script, but make no mistake, this is actually a small program. 
+
+As with any file in bash, you can give a shell script any name (with or without an extension). However, it is best practice and helpful to you and your collaborators to easily identify a file as a shell script if it has the extension `.sh`. 
+
+Move over to the `other` directory and create a new file using `vim`. We will call our script `listing.sh`:
+
+```bash
+$ cd ~/unix_lesson/other
+$ vim listing.sh
+```
+
+This shell script will do two things:
 
 1. Tell us our current working directory
 2. List the contents of the directory 
 
-First open a new file using `vim`:
+We already know the commands for doing both of these things, so let's add them into our script:
 
 ```bash
-$ vim listing.sh
+pwd
+ls -l 
 ```
 
-Then type in the following lines in the `listing.sh` file:
+Now, we could save and quit and this shell script would run perfectly fine. But instead, we will add some verbosity to our script by using the `echo` command. The `echo` command is used to display a line of text that is passed in as an argument. This is a built in bash command that is mostly used in shell scripts to output status text to the screen or a file. Place the following `echo` statements on the lines before each of the commands:
 
 ```bash
 echo "Your current working directory is:"
@@ -41,17 +53,23 @@ echo "These are the contents of this directory:"
 ls -l 
 ```
 
-Exit `vim` and save the file. Now let's run the new script we have created. To run a shell script you usually use the `bash` or `sh` command.
+Now we are all set! You can save the file and exit `vim`. You should now be back at the command prompt. Check and see that the new script file you created is there:
+
+```bash
+$ ls -l
+```
+
+To run the shell script you can use the `bash` or `sh` command, followed by the name of your script:
 
 ```bash
 $ sh listing.sh
 ```
 
-> Did it work like you expected?
+> **Did it work like you expected?**
 > 
-> Were the `echo` commands helpful in letting you know what came next?
+> **Were the `echo` commands helpful in letting you know what came next?**
 
-This is a very simple shell script, just to introduce you to the concept. Later in this session, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
+This is a very simple shell script, just to introduce you to the concept. In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
 
 Before we jump into more scripts, we will take a moment to cover some key concepts to help get you there.
 
