@@ -12,11 +12,11 @@ Approximate time: 30 min
 * Create a new file using the Vim text editor
 * Learn basic operations using the Vim text editor
 
-## Examining Files
+# Examining Files
 
 We now know how to move around the file system and look at the contents of directories, but how do we look at the contents of files? On your laptop, viewing a file is as simple as finding it in the file explorer window and double clicking to open it. As you will have noticed so far, the point and click of the mouse is not very useful when working on the command-line. Instead we will need to equip ourseleves with some helpful commands.
 
-### `cat` command
+## `cat` command
 
 The easiest way to examine a file is to just print out all of its contents using the command `cat`. We can test this out by printing the contents of `~/unix_lesson/other/sequences.fa`. Enter the command followed by the filename, including the path when necessary:
 
@@ -50,7 +50,7 @@ QIKDLLVSSSTDLDTTLVLVNAIYFKGMWKTAFNAEDTREMPFHVTKQESKPVQMMCMNNSFNVATLPAE
 
 ```
 
-### `less` command
+## `less` command
 
 `cat` is a terrific command, but when the file is really big, it can be annoying to use. In practice, when you are running your analyses on the command-line you will most likely be dealing with large files. In our case, we have FASTQ files. Let's take a look at the list of raw_fastq files and add the `-h` modifier to see how big the files are. 
 
@@ -87,7 +87,7 @@ Use the shortcut keys to move through your FASTQ file, we will explore these fil
 For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>. There are other more sophisticated commands to search through your file (and we will cover these later), but this shortcut search is useful for a quick scan through. You can think of it as being analagous to using the <kbd>Ctrl-F</kbd> keystroke when searching on your laptop.
 
 
-### `head` and `tail` commands
+## `head` and `tail` commands
 
 There's another way that we can look at files, and just look at part of them. In particular, if we just want to see the beginning or end of the file to see how it's formatted.
 
@@ -110,32 +110,29 @@ $ tail -n 1 Mov10_oe_1.subset.fq
 ```
 
 
-## Writing files
+# Writing files
 
-We've been able to do a lot of work with files that already exist, but what if we want to write our own files. Obviously, we're not going to type in a FASTA file, but you'll see as we go, there are a lot of reasons we'll want to write/create a file or edit an existing file.
+We've been able to do a lot of work with files that already exist, but what if we want to write and create our own files? Obviously, we're not going to type in sequence information for a FASTA file, but you'll see as we go that there are a lot of situations in which we would need to write/create a file or edit an existing file.
 
-To create or edit files we will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can
-only work with plain character data, not tables, images, or any other
-media. The types of text editors available can generally be grouped into **graphical user interface (GUI) text editors** and **command-line editors**.
+In order to create or edit files we will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can
+only work with plain character data, not tables, images, or any other media. The types of text editors available can generally be grouped into two categories: **graphical user interface (GUI) text editors** and **command-line editors**.
 
-### GUI text editors
+**GUI text editors**
 
-A GUI is an interface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking. You might be familar with GUI text editors, such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), which allow you to write and edit plain text documents. These editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. They are great tools, but since they are 'point-and-click', we cannot efficiently use them from the command line remotely on a compute cluster.
+A GUI is an interface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking. You might be familar with GUI text editors, such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), which allow you to write and edit plain text documents. These editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. They are great tools, but since they are 'point-and-click', we cannot efficiently use them from the command line.
 
-### Command-line editors
+**Command-line editors**
 
-When working remotely, we need a text editor that functions from the command line interface. Within these editors, since you cannot 'point-and-click', you must navigate the interface using the arrow keys and shortcuts. 
+When working remotely, we need a text editor that functions from the command line interface. With command-line editors you must navigate the interface using the arrow keys and shortcuts, since you do not have the option to 'point-and-click'. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters. There are also simpler editors available for use (i.e. [nano](http://www.nano-editor.org/)), but tend to have limited functionality.
 
-While there are simpler editors available for use (i.e. [nano](http://www.nano-editor.org/)), most computational scientists tend to favor editors that have greater functionality. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters.
-
-### Introduction to Vim 
+## Introduction to Vim 
 
 To write and edit files, we're going to use a text editor called 'Vim'. Vim is a very powerful text editor, and it offers extensive text editing options. However, in this introduction we are going to focus on exploring some of the more basic functions. There is a lot of functionality that we are not going to cover during this session, but encourage you to go further as you become more comfortable using it. To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled a [cheatsheet](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf).
 
 
 ### Vim Interface
 
-You can create a document by calling a text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
+You can create a document by calling a text editor (in our case `vim`) and providing the name of the document you wish to create. Change directories to the `~/unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
 
 ```bash
 $ cd ~/unix_lesson/other
@@ -160,8 +157,18 @@ Upon creation of a file, vim is automatically in command mode. Let's _change to 
 
 After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
 
-### Vim Saving and Quitting
-To **write to file (save)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
+
+> #### Review of Vim modes
+> | key              | action                 |
+> | ---------------- | ---------------------- |
+> | <button>i</button>     | insert mode - to write and edit text |
+> | <button>esc</button>     | command mode - to issue commands / shortcuts  |
+
+
+
+### Saving and Quitting
+
+To **write to file (or save the changes in the file)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
 
 ![vim-save](../img/vim_save.png)
 
@@ -169,22 +176,41 @@ After you have saved the file, the total number of lines and characters in the f
 
 ![vim-postsave](../img/vim_postsave.png)
 
-Alternatively, we can **write to file (save) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
+Alternatively, we can **write to file (save changes) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
 
 To edit your `draft.txt` document, open up the file again by calling vim and entering the file name: `vim draft.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
  
 ![vim-quit](../img/vim_quit.png)
 
-### Vim Editing
-Create the document `spider.txt` in vim. Enter the text as follows: 
+> #### Review of saving and quitting
+> | key              | action                 |
+> | ---------------- | ---------------------- |
+> | <button>:w</button>     | to write to file (save) |
+> | <button>:wq</button>     | to write to file and quit     |
+> | <button>:q!</button>     | to quit without saving |
+
+
+### Shortcuts in Vim
+
+While we cannot point and click to navigate the document, we can use the arrow keys to move around. However, navigating with arrow keys can be very slow, so Vim has shortcuts (which are completely unintuitive, but very useful as you get used to them over time). 
+
+Create the document `spider.txt` in vim. Enter the text as shown below in the screenshot: 
 
 ![image](../img/vim_spider.png)
 
-To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. **Save the document.** Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>.
+To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>.
 
 ![image](../img/vim_spider_number.png)
 
-While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so Vim has shortcuts (which are completely unituitive, but very useful as you get used to them over time). Check to see what mode you are currently in. While in command mode, try moving around the screen and familarizing yourself with some of these shortcuts:    
+| key              | action                 |
+| ---------------- | ---------------------- |
+| <button>:set number</button>     | to number lines |
+| <button>:set nonumber</button>     | to remove line numbers    |
+
+
+ **Save the document.** Check to see what mode you are currently in. **While in command mode**, try moving around the file `spider.txt` and familarizing yourself with some of these shortcuts!  
+
+**Navigating around the file**
 
 | key              | action                 |
 | ---------------- | ---------------------- |
@@ -195,8 +221,9 @@ While we cannot point and click to navigate the document, we can use the arrow k
 | <button>w</button>     | to move to next word     |
 | <button>b</button>     | to move to previous word     |
 
+Practice some of the editing shortcuts, then **quit the document without saving any changes**.
 
-In addition to shortcuts for navigation, vim also offers editing shortcuts such as:
+**Editing the file**
 
 | key              | action                 |
 | ---------------- | ---------------------- |
@@ -207,7 +234,7 @@ In addition to shortcuts for navigation, vim also offers editing shortcuts such 
 | <button>/*pattern*</button>     | to search for a pattern (*n/N* to move to next/previous match)    |
 | <button>:%s/*search*/*replace*/g</button>     | to search for a pattern and replace for all occurences     |
 
-Practice some of the editing shortcuts, then quit the document without saving any changes.
+
 
 *** 
 
@@ -224,52 +251,11 @@ practice what we just learned in a brief challenge.
 6. Undo your previous deletion.
 7. Redo your previous deletion.
 8. Delete the first and last words from each of the lines.
-9. Save the file and see whether your results match your neighbors.
+9. Save the file.
+10. Open up the file and copy and paste the contents to a text editor on your local laptop to submit as homework.
 
 ***
 
-### Overview of vim commands
-
-**Vim modes:**
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>i</button>     | insert mode - to write and edit text |
-| <button>esc</button>     | command mode - to issue commands / shortcuts  |
-
-
-**Saving and quiting:**
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>:w</button>     | to write to file (save) |
-| <button>:wq</button>     | to write to file and quit     |
-| <button>:q!</button>     | to quit without saving |
-
-
-**Shortcuts for navigation:**
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>gg</button>     | to move to top of file |
-| <button>G</button>     | to move to bottom of file     |
-| <button>$</button>     | to move to end of line |
-| <button>0</button>     | to move to beginning of line     |
-| <button>w</button>     | to move to next word     |
-| <button>b</button>     | to move to previous word     |
-
-**Shortcuts for editing:**
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>dw</button>     | to delete word |
-| <button>dd</button>     | to delete line     |
-| <button>u</button>     | to undo |
-| <button>Ctrl + r</button>     | to redo     |
-| <button>:set number</button>     | to number lines |
-| <button>:set nonumber</button>     | to remove line numbers    |
-| <button>/pattern</button>     | to search for a pattern (*n/N* to move to next/previous match)    |
-| <button>:%s/search/replace/g</button>     | to search for a pattern and replace for all occurences     |	
 
 ---
 
