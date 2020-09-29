@@ -69,49 +69,60 @@ $ sh listing.sh
 > 
 > **Were the `echo` commands helpful in letting you know what came next?**
 
-This is a very simple shell script, just to introduce you to the concept. In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
+This is a very simple shell script, just to introduce you to the concept. Before we jump into more scripts which better demonstrate their utility, we will take a moment to cover some key concepts to help get you there.
 
-Before we jump into more scripts, we will take a moment to cover some key concepts to help get you there.
+***
+
+**Exercise??**
+
+***
 
 ## Bash variables
-A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
 
-Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
+A *variable* is a common concept shared by many programming languages. **Variables are essentially a symbolic/temporary name for, or a reference to, some information**. Variables are analogous to "buckets", where **information can be stored, maintained and modified** without too much hassle. Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
 
-Let's start with a simple variable that has a single number stored in it:
+To create a variable in bash, you provide the name of the variable, followed by the equals sign, and finishing with tbe value we want to assign to the variable. Note that the variable name cannot contain spaces, nor can there be spaces on either side of the equals sign.
+
+Let's start by creating a variable called `num` that has the number 25 stored inside it:
 
 ```bash
 $ num=25
 ```
 
-*How do we know that we actually created the bash variable?* We can use the `echo` command to print to terminal:
+Once you press return, you will find yourself back at the command prompt. **How do we know that we actually created the bash variable?**
 
-```bash
-$ echo num
-```
-
-What do you see in the terminal? The `echo` utility takes what arguments you provide and prints to terminal. In this case it interpreted `num` as a a character string and simply printed it back to us. This is because **when trying to retrieve the value stored in the variable, we explicitly use a `$` in front of it**:
+One way to see the variable created is by using the `echo` command. As we learned earlier, this command takes the argument provided and prints it to the terminal. If we provide `num` as an argument it will simply be interpreted as a character string. We want `echo` to display the contents of the variable and not its name.  To do this we need to **explicitly use a `$` in front of the variable name**:
 
 ```bash
 $ echo $num
 ```
 
-Now you should see the number 25 returned to you. Did you notice that when we created the variable we just typed in the variable name? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
+You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
 
-Variables can also store a string of character values. In the example below, we define a variable or a 'bucket' called `file`. We will put a filename `Mov10_oe_1.subset.fq` as the value inside the bucket.
+> **NOTE:** Variables are not physical entities like files. Whe you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, there will be a long list reported back to you. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
+> 
+> If you use `declare`, try piping it to the `grep` command followed by the name of the variable so you trim that list to only display the variable you are interested in:
+> 
+> `declare | grep num`
+> 
+
+### Variables as input to commands
+
+So far it is hard to see the utility of a variable, and so it might be more helpful if we demonstrated it in the context of a relevant use case.
+
+Variables can also store character values. In the example below, we define a variable called `file`. We will put a filename `Mov10_oe_1.subset.fq` as the value inside the bucket.
 
 ```bash
 $ file=Mov10_oe_1.subset.fq
 ```
 
-Once you press return, you should be back at the command prompt. Let's check what's stored inside `file`, but first move into the `raw_fastq` directory::
+Once you press return, you should be back at the command prompt. Let's check what's stored inside `file` using the `echo` command:
 
 ```bash
-$ cd ~/unix_lesson/raw_fastq
 $ echo $file
 ```
 
-Let's try another command using the variable that we have created. We can also count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable:
+This time rather thatLet's try another command using the variable that we have created. We can also count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable:
 
 ```bash
 $ wc -l $file
@@ -187,6 +198,9 @@ $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
 ```
 
 You should now see that only `Mov10_oe_1.subset` is returned. 
+
+
+ In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
 
 ***
 
