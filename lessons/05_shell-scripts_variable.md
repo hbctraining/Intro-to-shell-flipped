@@ -148,6 +148,37 @@ What just happened? Because our variable contains multiple values, the shell run
 ***
 
 
+### The `basename` command
+
+We have one last concept that is a command that will be useful for future scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
+
+```bash
+$ cd
+```
+
+Then we will run the `basename` command on one of the FASTQ files. Be sure to specify the path to the file:
+
+```bash
+$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
+```
+
+What is returned to you? The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command returns only the filename. Now, suppose we wanted to also trim off the file extension (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
+
+```bash
+$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
+```
+
+You should now see that only `Mov10_oe_1.subset` is returned. 
+
+***
+
+**Exercise**
+
+* How would you modify the above `basename` command to only return `Mov10_oe_1`?
+
+***
+
+
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
