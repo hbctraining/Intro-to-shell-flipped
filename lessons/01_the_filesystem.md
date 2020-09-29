@@ -29,17 +29,7 @@ The data on a cluster is also stored differently than what we are used to with o
 
 We will be going into a lot more depth about the cluster architecture, storage systems and best practices on the last day of this workshop. For now, it a basic understanding is sufficient to get started with learning to interact with a computer using shell commands. Let's learn how to connect to O2.
 
-### Logging in
-
-**With Mac OS**
-
-Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell), both locally and on remote machines. We will be using it to log into O2. You can use the *Spotlight Search* at the top right hand corner of your screen to locate the Terminal.
-
-**With Windows OS**
-
-By default, there is no built-in terminal for the bash shell available with the Windows OS. So, we will be using a downloaded program called "**Git BASH**". Git BASH which is part of the [Git for Windows](https://git-for-windows.github.io/) download is a so-called shell (bash) emulator. What this means is that it shows you a very similar interface to, and provides you the functionality of the Terminal on Mac/Linux OS.
-
-> Windows users can use another program called [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) instead of a bash emulator to log in to remote machines, but it is a little more involved and has different capabilities. We encourage you to take a look at it, but we will not be covering it in this workshop.
+### Logging in to O2
 
 #### O2 accounts
 
@@ -49,9 +39,26 @@ For this workshop we will be using training accounts created for us by the HMS R
 
 > If you are interested in getting your own account on O2, please follow the intructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
 
+
+#### Tool(s) to access remote computers/clusters
+
+**With Mac OS**
+
+Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell), both locally and on remote machines. We will be using it to log into O2. 
+
+Please find and open the Terminal utility on your computers using the *Spotlight Search* at the top right hand corner of your screen.
+
+**With Windows OS**
+
+By default, there is no built-in terminal for the bash shell available with the Windows OS. So, we will be using a downloaded program called "**Git BASH**". Git BASH which is part of the [Git for Windows](https://git-for-windows.github.io/) download is a so-called shell (bash) emulator. What this means is that it shows you a very similar interface to, and provides you the functionality of the Terminal on Mac/Linux OS.
+
+Please find and open Git BASH.
+
+> Windows users can use another program called [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) instead of a bash emulator to log in to remote machines, but it is a little more involved and has different capabilities. We encourage you to take a look at it, but we will not be covering it in this workshop.
+
 #### Let's log in! 
 
-Everyone should have their Terminal (or Git Bash Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**.
+Everyone should have their Terminal (or Git BASH Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**. 
 
 To connect to the login node on O2, we need to type in the `ssh` command at the command prompt followed by a space, and then type your username plus the address of the cluster, i.e `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
 
@@ -59,7 +66,7 @@ To connect to the login node on O2, we need to type in the `ssh` command at the 
 ssh username@o2.hms.harvard.edu
 ```
 
-> **Tip** - The structure of using the shell command-line interface is - `command arguments`.
+> **Tip** - Syntax for commands on the command-line interface is `command` <space> `arguments`.
 
 Now press the return key (enter), you should receive a prompt for your password. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
 
@@ -73,7 +80,7 @@ Once logged in, you should see the O2 icon, some news, and a new command prompt:
 
 The command prompt on O2 will have some characters before the `$`, something like `[rc_training01@login01 ~]`, this is telling you the name of the login node you have connected to!
 
-Please note that from this point on in the workshop anything we want you to type next to the command prompt will be preceded by the `$` (see below). Please make sure you do not type out, or copy and paste, the `$` as part of your command
+Please note that from this point on in the workshop anything we want you to type next to the command prompt will be preceded by the `$` (see below). Please make sure you do not type out (or copy and paste) the `$` as part of your command
 
 #### Let's move from the login node to a compute node!
 
@@ -83,11 +90,11 @@ The first command we will copy and paste in front of the command prompt will be 
 $ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC /bin/bash
 ```
  
-Press enter after you copy and paste in that command. You should see a couple of messages, and in a few seconds you should get back the command prompt `$`; the string of characters before the command prompt should have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now.
+Press enter after you copy and paste in that command. You should see a couple of messages, and in a few seconds you should get back the command prompt `$`, but the string of characters before the command prompt should have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now.
 
 > **Tip** - When you run any command in shell, once the command has finished doing what it is supposed to do, it will bring you back your command prompt.
 
-Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use.
+Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use, it is referred to as you "home directory".
 
 > NOTE: When you run the `srun` command between the classes and after this workshop with your own account please remove the `--reservation` string.
 > 
@@ -121,11 +128,13 @@ ls
 
 You should see the string of characters "unix_lesson" show up as the output of `ls`. This is a folder we should all have duplicates of.
 
+> **Tip** - `ls` stands for "list" and it lists the contents of a directory.
+
 ## Starting with the shell
 
 Let's go look at what is inside the data folder and explore further. First instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using this terminology moving forward.
 
-To look inside the new unix_lesson folder, we need to use the command `cd` which stands for "change directory".
+To look inside the new unix_lesson directory, we need to change which directory we are in using the command `cd` which stands for "change directory". 
 
 ```bash
 $ cd unix_lesson
@@ -142,8 +151,6 @@ You should see:
 ```
 genomics_data  other  raw_fastq  README.txt  reference_data
 ```
-> **Tip** - `ls` stands for "list" and it lists the contents of a directory.
-
 
 ### Arguments
 
@@ -215,9 +222,9 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 
 ## The Unix directory file structure (a.k.a. where am I?)
  
-As you've already just seen, you can move around in different directories or folders at the command line. Why would you want to do this, rather than just navigating around the normal way using a GUI (GUI = Graphical User Interface, pronounced like "gooey").
+As you've already just seen, you can move around in different directories or folders at the command line. 
 
-#### Moving around the file system
+### Moving around the file system
 
 Let's practice moving around a bit. Let's go into the raw_fastq directory and see what is in there.
 
@@ -284,7 +291,7 @@ Finally, there is handy command that can help you see the structure of any direc
 $ tree
 ```
 
-#### Examining the contents of other directories
+### Examining the contents of other directories
 
 By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to the home directory if you are not already there.
 
