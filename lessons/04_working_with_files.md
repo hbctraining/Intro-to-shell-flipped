@@ -117,11 +117,11 @@ We've been able to do a lot of work with files that already exist, but what if w
 In order to create or edit files we will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can
 only work with plain character data, not tables, images, or any other media. The types of text editors available can generally be grouped into two categories: **graphical user interface (GUI) text editors** and **command-line editors**.
 
-**GUI text editors**
+### GUI text editors
 
 A GUI is an interface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking. You might be familar with GUI text editors, such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), which allow you to write and edit plain text documents. These editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. They are great tools, but since they are 'point-and-click', we cannot efficiently use them from the command line.
 
-**Command-line editors**
+### Command-line editors
 
 When working remotely, we need a text editor that functions from the command line interface. With command-line editors you must navigate the interface using the arrow keys and shortcuts, since you do not have the option to 'point-and-click'. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters. There are also simpler editors available for use (i.e. [nano](http://www.nano-editor.org/)), but tend to have limited functionality.
 
@@ -153,12 +153,15 @@ Vim has **_two basic modes_** that will allow you to create documents and edit y
 
 Upon creation of a file, vim is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. Now type in a few lines of text:
 
-![vim-insert-mode](../img/vim_insert.png)
+<p align="center">
+<img src="../img/vim_insert.png" width="600">
+</p>
+
 
 After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
 
 
-> #### Review of Vim modes
+> ### Review of Vim modes
 > | key              | action                 |
 > | ---------------- | ---------------------- |
 > | <button>i</button>     | insert mode - to write and edit text |
@@ -170,19 +173,27 @@ After you have finished typing, press <kbd>esc</kbd> to enter command mode. Noti
 
 To **write to file (or save the changes in the file)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
 
-![vim-save](../img/vim_save.png)
+<p align="center">
+<img src="../img/vim_save.png" width="600">
+</p>
 
 After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
 
-![vim-postsave](../img/vim_postsave.png)
+<p align="center">
+<img src="../img/vim_postsave.png" width="600">
+</p>
+
 
 Alternatively, we can **write to file (save changes) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
 
 To edit your `draft.txt` document, open up the file again by calling vim and entering the file name: `vim draft.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
  
-![vim-quit](../img/vim_quit.png)
+<p align="center">
+<img src="../img/vim_quit.png" width="600">
+</p>
 
-> #### Review of saving and quitting
+
+> ### Review of saving and quitting
 > | key              | action                 |
 > | ---------------- | ---------------------- |
 > | <button>:w</button>     | to write to file (save) |
@@ -196,11 +207,15 @@ While we cannot point and click to navigate the document, we can use the arrow k
 
 Create the document `spider.txt` in vim. Enter the text as shown below in the screenshot: 
 
-![image](../img/vim_spider.png)
+<p align="center">
+<img src="../img/vim_spider.png" width="600">
+</p>
 
 To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>.
 
-![image](../img/vim_spider_number.png)
+<p align="center">
+<img src="../img/vim_spider_number.png" width="600">
+</p>
 
 | key              | action                 |
 | ---------------- | ---------------------- |
