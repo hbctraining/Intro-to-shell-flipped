@@ -73,7 +73,11 @@ This is a very simple shell script, just to introduce you to the concept. Before
 
 ***
 
-**Exercise??**
+**Exercise**
+
+1. Open up the script `listing.sh` using vim. Add the command which prints to screen the contents of the file `Mov10_rnaseq_metadata.txt`.
+2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
+3. Run the new script. Provide the contents of the new script and the output after running it.
 
 ***
 
@@ -156,53 +160,14 @@ Either one of these options should have worked and you should see the number of 
 2. Create a new variable called `meta` and assign it the value `Mov10_rnaseq_metadata.txt`. For the following questions, use the `$meta` variable but do not change directories. Provide the code you would run to:
 	1. Display the contents of the file using `cat`.
 	1. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*)
-
 ***
 
 
+### Storing the output from a command as a variable
 
-Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once. Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `raw_fastq` directory as values. 
+When creating shell scripts, variables are used to store information that can be used later in the script (once or many times over). The value stored can be hard-coded in as we have done above, assigning the variable a numeric or character value. Alternatively, the value stored can be the output of another command. We will demonstrate this using a new command called `basename`.
 
-To list all the filenames in the directory that have a `.fq` extension, we know the command is:
-
-```bash
-$ ls *.fq
-```
-
-Now we want to *assign* the output of `ls` as the value of a variable:
-
-```bash
-$ allfiles=`ls *.fq`
-```
-
-> Note the syntax for assigning output of commands to variables, i.e. the backticks around the `ls` command.
-
-Check and see what's stored inside our newly created variable using `echo`:
-	
-```bash
-$ echo $allfiles
-```
-
-Let's try the `wc -l` command again, but this time using our new variable `allfiles` as the argument:
-
-```bash
-$ wc -l $allfiles
-```
-
-What just happened? Because our variable contains multiple values, the shell runs the command on each value stored in `allfiles` and prints the results to screen. 
-
-***
-
-**Exercise**
-
-* Use some of the other commands we learned in previous lessons (i.e. `head`, `tail`) on the `allfiles` variable. 
-
-***
-
-
-### The `basename` command
-
-We have one last concept that is a command that will be useful for future scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
+The **`basename` command** is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
 
 ```bash
 $ cd
@@ -214,7 +179,11 @@ Then we will run the `basename` command on one of the FASTQ files. Be sure to sp
 $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
 ```
 
-What is returned to you? The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command returns only the filename. Now, suppose we wanted to also trim off the file extension (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
+**What is returned to you?**
+
+The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command **returns only the filename**. 
+
+Now, suppose we wanted to also **trim off the file extension** (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
 
 ```bash
 $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
@@ -223,15 +192,38 @@ $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
 You should now see that only `Mov10_oe_1.subset` is returned. 
 
 
- In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
-
 ***
 
 **Exercise**
 
-* How would you modify the above `basename` command to only return `Mov10_oe_1`?
+1. How would you modify the above `basename` command above to only return `Mov10_oe_1`?
+2. Use `basename` with the file `Irrel_kd_1.subset.fq` as input. Return only `Irrel_kd_1` to the terminal.
 
 ***
+
+
+The `basename` command returns a character string and this is totally something we can store inside a variable! To do this we need to use a special syntax because when we run the command we have spaces. If you remember earlier, one of the rules of creating variables is that there cannot be any spaces. The special syntax involves a key that is probably not used much on your keyboard, it is the backtick <kbd>`</kbd>. On most keyboards this character is located just underneath the <kbd>esc</kbd> key. If you have trouble finding it you can also justy copy and paste it from the materials.
+
+The command that we are running is wrapped in backticks (one at the beginning and one at the end), and then we assign it to the variable as we would any other value. Let's try this with the `Mov10_oe_1.subset.fq` example from above:
+
+```bash
+$ base=`basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq`
+```
+
+Once you press return you should be back at the command prompt. Check to see what got stored in the `base` variable:
+
+```bash
+$ echo $base
+```
+
+
+
+In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
+
+
+
+
+
 
 
 ---
