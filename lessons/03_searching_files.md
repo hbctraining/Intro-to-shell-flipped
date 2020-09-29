@@ -12,12 +12,11 @@ Approximate time: 60 minutes
 - Learn how to write to file and append to file using output redirection
 - Explore how to use the pipe (`|`) character to chain together commands
 
-## Searching files
+## Searching files with `grep` command
 
 We went over how to search within a file using `less`. We can also
 search within files without even opening them, using `grep`. Grep is a command-line
-utility for searching plain-text data sets for lines matching a pattern or regular expression (regex).
-Let's give it a try!
+utility for searching plain-text data sets for lines matching a pattern or regular expression (regex). The syntax for `grep` is as follows: `grep word filename`. The pattern that we want to search is put at `word` slot, and the file is put at `filename` slot. Let's give it a try!
 
 We are going to practice searching with `grep` using our FASTQ files, which contain the sequencing reads (nucleotide sequences) output from a sequencing facility. Each sequencing read in a FASTQ file is associated with four lines of output, with the first line (header line) always starting with an `@` symbol. A whole fastq record for a single read should appear similar to the following:
 
@@ -36,7 +35,7 @@ $ grep NNNNNNNNNN Mov10_oe_1.subset.fq
 
 We get back a lot of lines.  What if we want to see the whole fastq record for each of these reads? 
 
-We can use the `-B` and `-A` arguments for grep to return the matched line plus one before (`-B1`) and two lines after (`-A2`). Since each record is four lines and the second line is the sequence, this should return the whole record.
+We need to specify some options for this command. Options are additional arguments that change the default behavior of a command. To look for all available options for the `grep` command, we can type `grep --help`. Here we use the `-B` and `-A` arguments for grep to return the matched line plus one before (`-B 1`) and two lines after (`-A 2`). Since each record is four lines and the second line is the sequence, this will return the whole record.
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq
@@ -58,11 +57,12 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 
 **Exercises**
 
-1. Search for the sequence CTCAATGA in `Mov10_oe_1.subset.fq`.
-In addition to finding the sequence, have your search also return
-the name of the sequence.
+1. Search for the sequence CTCAATGAGCCA in `Mov10_oe_1.subset.fq`. How many sequences do you find?
 
-2. Search for that sequence in all Mov10 replicate fastq files.
+2. In addition to finding the sequence, how can you modify the command so that your search also return
+the name of the sequence?
+
+3. Search for that sequence in all Mov10 replicate fastq files.
 
 ***
 
@@ -98,7 +98,7 @@ Take a look at the file and see if it contains what you think it should. *NOTE: 
  
 **The redirection command for appending something to an existing file is `>>`.**
 
-If we use `>>`, it will append to rather than overwrite a file.  This can be useful for saving more than one search, for example.
+If we use `>>`, it will append to rather than overwrite a file. This can be useful for saving more than one search. For example, the following command will append the bad reads from Mov10_oe_2 to the bad_reads.txt file that we just generated.
     
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_2.subset.fq >> bad_reads.txt
@@ -116,7 +116,7 @@ There's one more useful redirection command that we're going to show, and that's
 
 **The redirection command for using the output of a command as input for a different command is `|`.**
 
-It's probably not a key on your keyboard you use very much. What `|` does is take the output that went scrolling by on the terminal and runs it through another command. When it was all whizzing by before, we wished we could just slow it down and look at it, like we can with `less`. Well it turns out that we can! We pipe the `grep` command to `less` or to `head` to just see the first few lines.
+It's probably not a key you use very often on your keyboard (it is on the same key as the backslash, right above the Enter/Return key). What `|` does is take the output that went scrolling by on the terminal and runs it through another command. When it was all whizzing by before, we wished we could just slow it down and look at it, like we can with `less`. Well it turns out that we can! We pipe the `grep` command to `less` or to `head` to just see the first few lines.
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq | less
@@ -124,13 +124,13 @@ $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq | less
 
 Now we can use the arrows to scroll up and down and use `q` to get out.
 
-We can also do count the number of lines using the `wc` command. `wc` stands for *word count*. It counts the number of lines, words or characters. So, we can use it to count the number of lines we're getting back from our `grep` command using the `-l` argument. And that will magically tell us how many bad sequences we have in the file.
+We can also do count the number of lines using the `wc` command. `wc` stands for *word count*. It counts the number of lines, words or characters. So, we can use it to count the number of lines we're getting back from our `grep` command using the `-l` argument. And that will tell us how many bad sequences we have in the file.
 
 ```bash
 $ grep NNNNNNNNNN Mov10_oe_1.subset.fq | wc -l
 ```
 
-This command when used without any arguments would tell us the number of lines, words and characters in the file; the `-l` flag specifies that we only want the number of lines. Try it out without the `-l` to see the full output.
+When used without any arguments, the `wc` command would tell us the number of lines, words, and characters in the file; the `-l` flag specifies that we only want the number of lines. Try it out without the `-l` to see the full output. Similar to `grep`, you can type `wc --help` to see all options.
 
 Redirecting is not super intuitive, but it's really powerful for stringing together these different commands, so you can do whatever you need to do.
 
