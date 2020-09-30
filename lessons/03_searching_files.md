@@ -186,15 +186,15 @@ Now that we know what type of information is inside of our gtf file, let's explo
 To determine the number of unique exons on chromosome 1, we are going to perform a series of steps:
 	
 	1. Extract only the genomic coordinates of exon features
-	2. Subsetting dataset to only keep genomic coordinates
+	2. Subset dataset to only keep genomic coordinates
 	3. Remove duplicate exons
 	4. Count the total number of exons
 	
-#### 1. Extracting only the genomic coordinates of exon features
+#### 1. Extract only the genomic coordinates of exon features
 
 We only want the exons (not CDS or start_codon features), so let's use `grep` to search for the word "exon". You may check the first few lines by piping the result to the `head` command.
 
-#### 2. Subsetting dataset to only keep genomic coordinates
+#### 2. Subset dataset to only keep genomic coordinates
 
 We will define the uniqueness of an exon by its genomic coordinates. Therefore, we only need the genomic location (chr, start, stop, and strand) information to find the total number of unique exons. The columns corresponding to this information are 1, 4, 5, and 7. Use 'cut' to extract thoese columns. You may check the first few lines by piping the result to the `head` command. At this point, your fisrt few lines should look like this:
 
@@ -217,8 +217,6 @@ First, check how many lines we would have without using `sort -u` by piping the 
 Now, to count how many unique exons are on chromosome 1, we will add back the `sort -u` and pipe the output to `wc -l`. Do you observe a difference in number of lines?
 
 > For what we did in one command up here, we could have done it in multiple steps by saving the output of each command to a file. But that would not be as efficient as using pipes, because all we needed was a number to work with. The intermediate files are not useful, and they occupy precious space on the computer and add clutter to the file system. 
-
-***
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
