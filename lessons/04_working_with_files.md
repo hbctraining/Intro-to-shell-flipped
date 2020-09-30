@@ -12,11 +12,11 @@ Approximate time: 30 min
 * Create a new file using the Vim text editor
 * Learn basic operations using the Vim text editor
 
-# Examining Files
+## Examining Files
 
 We now know how to move around the file system and look at the contents of directories, but how do we look at the contents of files? On your laptop, viewing a file is as simple as finding it in the file explorer window and double clicking to open it. As you will have noticed so far, the point and click of the mouse is not very useful when working on the command-line. Instead we will need to equip ourseleves with some helpful commands.
 
-## `cat` command
+### `cat` command
 
 The easiest way to examine a file is to just print out all of its contents using the command `cat`. We can test this out by printing the contents of `~/unix_lesson/other/sequences.fa`. Enter the command followed by the filename, including the path when necessary:
 
@@ -50,7 +50,7 @@ QIKDLLVSSSTDLDTTLVLVNAIYFKGMWKTAFNAEDTREMPFHVTKQESKPVQMMCMNNSFNVATLPAE
 
 ```
 
-## `less` command
+### `less` command
 
 `cat` is a terrific command, but when the file is really big, it can be annoying to use. In practice, when you are running your analyses on the command-line you will most likely be dealing with large files. In our case, we have FASTQ files. Let's take a look at the list of raw_fastq files and add the `-h` modifier to see how big the files are. 
 
@@ -87,7 +87,7 @@ Use the shortcut keys to move through your FASTQ file, we will explore these fil
 For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>. There are other more sophisticated commands to search through your file (and we will cover these later), but this shortcut search is useful for a quick scan through. You can think of it as being analagous to using the <kbd>Ctrl-F</kbd> keystroke when searching on your laptop.
 
 
-## `head` and `tail` commands
+### `head` and `tail` commands
 
 There's another way that we can look at files, and just look at part of them. In particular, if we just want to see the beginning or end of the file to see how it's formatted.
 
@@ -109,23 +109,34 @@ $ head -n 1 Mov10_oe_1.subset.fq
 $ tail -n 1 Mov10_oe_1.subset.fq
 ```
 
+*** 
 
-# Writing files
+**Exercise**
+
+1. Change directories into `genomics_data`. You can do this using a full or relative path.
+2. Use the `less` command to open up the file `Encode-hesc-Nanog.bed`.
+3. Use the shortcut to search for the string `chr11`. Yould see all instances in the file highlighted.
+4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report three lines at the end of the file where you see `chr11` highlighted. Exit the file.
+5. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see in the terminal.
+
+***
+
+## Writing files
 
 We've been able to do a lot of work with files that already exist, but what if we want to write and create our own files? Obviously, we're not going to type in sequence information for a FASTA file, but you'll see as we go that there are a lot of situations in which we would need to write/create a file or edit an existing file.
 
 In order to create or edit files we will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can
 only work with plain character data, not tables, images, or any other media. The types of text editors available can generally be grouped into two categories: **graphical user interface (GUI) text editors** and **command-line editors**.
 
-### GUI text editors
+#### GUI text editors
 
 A GUI is an interface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking. You might be familar with GUI text editors, such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), which allow you to write and edit plain text documents. These editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. They are great tools, but since they are 'point-and-click', we cannot efficiently use them from the command line.
 
-### Command-line editors
+#### Command-line editors
 
 When working remotely, we need a text editor that functions from the command line interface. With command-line editors you must navigate the interface using the arrow keys and shortcuts, since you do not have the option to 'point-and-click'. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters. There are also simpler editors available for use (i.e. [nano](http://www.nano-editor.org/)), but tend to have limited functionality.
 
-## Introduction to Vim 
+### Introduction to Vim 
 
 To write and edit files, we're going to use a text editor called 'Vim'. Vim is a very powerful text editor, and it offers extensive text editing options. However, in this introduction we are going to focus on exploring some of the more basic functions. There is a lot of functionality that we are not going to cover during this session, but encourage you to go further as you become more comfortable using it. To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled a [cheatsheet](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf).
 
