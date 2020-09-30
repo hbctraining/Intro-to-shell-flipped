@@ -280,8 +280,6 @@ practice what we just learned in a brief challenge.
 9. Save the file.
 10. Open up the file and copy and paste the contents to a text editor on your local laptop to submit as homework.
 
-***
-
 
 ---
 
