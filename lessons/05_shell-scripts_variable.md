@@ -167,7 +167,7 @@ Either one of these options should have worked and you should see the number of 
 
 When creating shell scripts, variables are used to store information that can be used later in the script (once or many times over). The value stored can be hard-coded in as we have done above, assigning the variable a numeric or character value. Alternatively, the value stored can be the output of another command. We will demonstrate this using a new command called `basename`.
 
-The **`basename` command** is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
+The **`basename` command** is used for extracting the base name from a file path, which is accomplished using **string splitting**. Let's try an example, by first moving back to your home directory:
 
 ```bash
 $ cd
@@ -181,9 +181,9 @@ $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
 
 **What is returned to you?**
 
-The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command **returns only the filename**. 
+The path was split into all text leading up to the last `/` (which is `unix_lesson/raw_fastq/`) and everything after the `/` which is the filename `Mov10_oe_1.subset.fq`. The command **returns only the filename**. 
 
-Now, suppose we wanted to also **trim off the file extension** (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
+Now, suppose we wanted to also **trim off the file extension** (i.e. remove `.fq` leaving only the file *base name*). We can do this by **adding a parameter** to the command to specify what string of characters we want trimmed.
 
 ```bash
 $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
@@ -202,7 +202,9 @@ You should now see that only `Mov10_oe_1.subset` is returned.
 ***
 
 
-The `basename` command returns a character string and this is totally something we can store inside a variable! To do this we need to use a special syntax because when we run the command we have spaces. If you remember earlier, one of the rules of creating variables is that there cannot be any spaces. The special syntax involves a key that is probably not used much on your keyboard, it is the backtick <kbd>`</kbd>. On most keyboards this character is located just underneath the <kbd>esc</kbd> key. If you have trouble finding it you can also justy copy and paste it from the materials.
+The `basename` command returns a character string and this is totally something we can store inside a variable! To do this we need to use a special syntax because when we run the command we have spaces. If you remember earlier, one of the rules of creating variables is that there cannot be any spaces. 
+
+> **NOTE:** The special syntax involves a key that is probably not used much on your keyboard, it is **the backtick key** <kbd>`</kbd>. On most keyboards this character is located just underneath the <kbd>esc</kbd> key. If you have trouble finding it you can also just copy and paste it from the materials.
 
 The command that we are running is wrapped in backticks (one at the beginning and one at the end), and then we assign it to the variable as we would any other value. Let's try this with the `Mov10_oe_1.subset.fq` example from above:
 
@@ -216,7 +218,60 @@ Once you press return you should be back at the command prompt. Check to see wha
 $ echo $base
 ```
 
-## Advanced shell script
+## Advanced shell script (as an exercise?)
+
+Now it's time to put all of these concepts together to create a more advanced version of our script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
+
+1. Assign the path of the directory to a variable
+2. Create a variable that stores only the directory name (and no path information)
+3. Move from the current location in the filesystem into the directory 
+4. List the contents of the directory
+5. List the total number of files in the directory
+
+
+It seems like a lot, but we are equipped with all the necessary concepts and commands to do this quite easily!
+
+Let's get started by moving into the `other` directory and creating a script called `directory_info.sh`:
+
+```bash
+
+$ cd unix_lesson/other
+$ vim directory_info.sh
+```
+
+In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self know what each line of code is doing. We will begin with a first comment describing the **usage of this script**. This lets anyone who is using the script know what it does and what they need to provide (if anything). In our case we need the user to provide a path to the directory of interest. Our first line of code is assigning the path to a variable for use later in the script.
+
+```bash
+## USAGE: Provide the full path to the directory you want information on
+dirPath=~/unix_lesson/raw_fastq
+```
+
+
+```bash
+
+## USAGE: Provide the full path to the directory you want information on
+dirPath=~/unix_lesson/raw_fastq
+
+# Get only the directory name
+dirName=`basename $dirPath`
+
+echo "Reporting on the directory" $dirName "..."
+
+# Move into the directory
+cd $dirPath
+
+echo "These are the contents of this directory:"
+ls -l 
+
+echo "The total number of files in this directory is:"
+ls | wc -l
+
+echo "Report complete!"
+
+```
+
+
+
 
 Bring all concepts in this lesson together!
 
