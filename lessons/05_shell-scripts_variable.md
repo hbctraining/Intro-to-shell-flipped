@@ -239,13 +239,46 @@ $ cd unix_lesson/other
 $ vim directory_info.sh
 ```
 
-In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self know what each line of code is doing. We will begin with a first comment describing the **usage of this script**. This lets anyone who is using the script know what it does and what they need to provide (if anything). In our case we need the user to provide a path to the directory of interest. Our first line of code is assigning the path to a variable for use later in the script.
+In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self know what each line of code is doing. 
+
+We will begin with a first comment describing the **usage of this script**. This lets anyone who is using the script know what it does and what they need to provide (if anything). In our case we need the user to provide a path to the directory of interest. This will be assigned to a variable for use later in the script.
 
 ```bash
 ## USAGE: Provide the full path to the directory you want information on
 dirPath=~/unix_lesson/raw_fastq
 ```
 
+Next, we will create another variable to store the directory name. To get the directory name we can use `basename` command and extract it from the user provided path. *Note the use of the `$` to retrieve the value stored inside the variable!*
+
+```bash
+# Get only the directory name
+dirName=`basename $dirPath`
+```
+
+The next few tasks we wanto to execute require simple commands for changing directories (`cd`), listing contents of a directory (`ls -l`). We can add these into our script making sure we are referencing the correct variable and also including menaingful `echo` statements for verbosity.
+
+```bash
+
+echo "Reporting on the directory" $dirName "..."
+
+# Move into the directory
+cd $dirPath
+
+echo "These are the contents of" $dirName
+ls -l 
+
+```
+
+The final task of reporting the total number of files will require us to pipe (`|`) together multiple commands:
+
+```bash
+echo "The total number of files contained in" $dirName
+ls | wc -l
+
+echo "Report complete!"
+```
+
+After adding in a final `echo` statement, we are all set with script! If your script looks similar to what we have listed below, save and exit Vim. 
 
 ```bash
 
@@ -260,29 +293,26 @@ echo "Reporting on the directory" $dirName "..."
 # Move into the directory
 cd $dirPath
 
-echo "These are the contents of this directory:"
+echo "These are the contents of" $dirName
 ls -l 
 
-echo "The total number of files in this directory is:"
+echo "The total number of files contained in" $dirName
 ls | wc -l
 
 echo "Report complete!"
-
 ```
 
+***
 
+**Exercise**
 
+1. Run the script `directory_info.sh`. Report what gets printed to the screen.
+2. Open up the script `directory_info.sh` using vim. Change the approproiate line of code so that our directory of interest is `~/unix_lesson/genomics_data`. Save and exit Vim.
+3. Run the script with the changes and report what gets printed to the screen.
 
-Bring all concepts in this lesson together!
+***
 
-
-In later lessons, we will be learning how to write more complex ones scripts to illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
-
-
-
-
-
-
+In this lesson, we described shell scripts and introduced a few related concepts that are helpful when you are starting out. It is important to understand each of the indvidual concepts, but also to see how they all come together to add flexibility and efficency to your script. Later in the workshop we will further illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
