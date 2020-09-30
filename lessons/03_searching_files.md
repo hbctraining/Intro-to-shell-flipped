@@ -167,34 +167,32 @@ $ grep PLEKHN1 chr1-hg19_genes.gtf | head -n 5
 
 This search returns two different transcripts of the same gene, NM_001160184 and NM_032129, that contain the same exon.
 
+Before our practice, let's learn two new commands. 'cut' is a program that extracts columns from files. We will use `-f` flag, which means to cut specific fields(columns) from the dataset. For example, the code below extracts the 1st column (chromosome) and the 4th column (start genomic position) from `chr1-hg19_genes.gtf` file, and prints out the first few lines:
+
+```bash
+$ cut chr1-hg19_genes.gtf -f 1,4 | head
+```
+
+> The `cut` command assumes our data columns are separated by tabs (i.e. tab-delimited). The `chr1-hg19_genes.gtf` is a tab-delimited file, so the default `cut` command works for us. However, data can be separated by other types of delimiters. Another common delimiter is the comma, which separates data in comma-separated value (csv) files. If your data is not tab delimited, there is a `cut` command argument (`-d`) to specify the delimiter.
+
+`sort` is another useful command. It sorts a file and arranges the records in a particular order. We can use `-u` flag to return only unique lines and remove duplicates.
+
 Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many unique exons are present on chromosome 1 using `chr1-hg19_genes.gtf`?**
 
 To determine the number of unique exons on chromosome 1, we are going to perform a series of steps:
 	
 	1. Extract only the genomic coordinates of exon features
-	2. Subset the dataset to only include the feature type and genomic location information
+	2. Subsetting dataset to only keep genomic coordinates
 	3. Remove duplicate exons
 	4. Count the total number of exons
 	
-#### Extracting exon features
+#### 1. Extracting only the genomic coordinates of exon features
 
-We only want the exons (not CDS or start_codon features), so let's use `grep` to only keep the exon lines and pipe it to head to see what we get:
+We only want the exons (not CDS or start_codon features), so let's use `grep` to search for the word "exon". You may check the first few lines by piping the result to the `head` command.
 
-```bash
-$ grep exon chr1-hg19_genes.gtf | head
-```
+#### 2. Subsetting dataset to only keep genomic coordinates
 
-#### Subsetting dataset to only keep genomic coordinates
-
-We will define the uniqueness of an exon by its genomic coordinates. Therefore, we only need the genomic location (chr, start, stop, and strand) information to find the total number of unique exons. The columns corresponding to this information are 1, 4, 5, and 7. 
-
-'cut' is a program that will extract columns from files.  It is a very good command to know.  Let's first try out the 'cut' command on a just the exonic lines to make sure we have the command correct by using multiple piped commands and looking at the first 10 lines:
-
-```bash
-$ grep exon chr1-hg19_genes.gtf | cut -f1,4,5,7  | head
-```
-   
-`-f1,4,5,7` means to cut these fields (columns) from the dataset.  
+We will define the uniqueness of an exon by its genomic coordinates. Therefore, we only need the genomic location (chr, start, stop, and strand) information to find the total number of unique exons. The columns corresponding to this information are 1, 4, 5, and 7. Use 'cut' to extract thoese columns. You may check the first few lines by piping the result to the `head` command. At this point, your fisrt few lines should look like this:
 
 	chr1	14362	14829	-
 	chr1	14970	15038	-
@@ -202,35 +200,19 @@ $ grep exon chr1-hg19_genes.gtf | cut -f1,4,5,7  | head
 	chr1	16607	16765	-
 	chr1	16858	17055	-
 
-The `cut` command assumes our data columns are separated by tabs (i.e. tab-delimited). The `chr1-hg19_genes.gtf` is a tab-delimited file, so the default `cut` command works for us. However, data can be separated by other types of delimiters. Another common delimiter is the comma, which separates data in comma-separated value (csv) files. If your data is not tab delimited, there is a `cut` command argument (`-d`) to specify the delimiter.
+#### 3. Remove duplicate exons
 
-Our output looks good, so let's keep going...
+Now, we need to remove those exons that show up multiple times for different transcripts. Use the `sort` command with the `-u` option.
 
-#### Removing duplicate exons
+Do you see a change in how the sorting has changed? By default the `sort` command will sort and what you can't see here is that it has removed the duplicates. We will use step 4 to check if it works.
 
-Now, we need to remove those exons that show up multiple times for different transcripts. For this, we can use a new tool, `sort`, to remove exons that show up more than once. We can use the `sort` command with the `-u` option to return only unique lines.
+#### 4. Count the total number of exons
 
-```bash
-$ grep exon chr1-hg19_genes.gtf | cut -f1,4,5,7 | sort -u | head 
-```
+First, check how many lines we would have without using `sort -u` by piping the output to `wc -l`.
 
-Do you see a change in how the sorting has changed? By default the `sort` command will sort and what you can't see here is that it has removed the duplicates. How do we check this?
+Now, to count how many unique exons are on chromosome 1, we will add back the `sort -u` and pipe the output to `wc -l`. Do you observe a difference in number of lines?
 
-#### Counting the total number of exons
-
-First, let's check how many lines we would have without using `sort -u` by piping the output to `wc -l`.
-
-```bash
-grep exon chr1-hg19_genes.gtf | cut -f1,4,5,7 | wc -l
-```
-
-Now, to count how many unique exons are on chromosome 1, we will add back the `sort -u` and pipe the output to `wc -l`
-
-```bash
-$ grep exon chr1-hg19_genes.gtf | cut -f1,4,5,7 | sort -u | wc -l
-```
-
-What we did in one command up here, we could have done it in multiple steps by saving the output of each command to a file, but that would not be as efficient if all we needed was a number to work with. The intermediate files are not useful and they occupy precious space on the computer and add clutter to the file system. 
+> For what we did in one command up here, we could have done it in multiple steps by saving the output of each command to a file. But that would not be as efficient as using pipes, because all we needed was a number to work with. The intermediate files are not useful, and they occupy precious space on the computer and add clutter to the file system. 
 
 **Commands, options, and keystrokes covered in this lesson**
 
