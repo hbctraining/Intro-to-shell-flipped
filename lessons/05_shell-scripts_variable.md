@@ -9,15 +9,15 @@ Approximate time: 60 minutes
 ## Learning Objectives
 
 * Capture previous commands into a shell script
-* Understanding variables and their use case
-* Extracting useful text from a filename to create a prefix
+* Understanding variables and the different use cases
+* Illustrate the use of variables in a shell script
 
 
 ## Shell scripts
 
-By this point on the workshop you have been introduced to a number of commands to interrogate your data. To demonstrate the function of each we have run the commands one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the filesystem. When we are running analyses which require a series of tasks to be run and sometimes repeat these tasks on multiple files, there is a more efficent way to do this using shell scripts. 
+By this point on the workshop you have been introduced to a number of commands to interrogate your data. To demonstrate the function of each command we have run them one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the filesystem. When we are running analyses which require a series of tasks to be run, there is a more efficent way to do this using shell scripts. 
 
-Shell scripts are **text files that contain commands we want to run**. In this lesson we will introduce you to shell scripts by providing a simple example one. We will then introduce a few related concepts which will in turn help us to create a more advanced shell script example.
+Shell scripts are **text files that contain commands we want to run**. In this lesson we will introduce you to shell scripts by providing a simple example one. We will also introduce bash variables and their use case with a more advanced shell script example.
 
 ### A simple script
 
