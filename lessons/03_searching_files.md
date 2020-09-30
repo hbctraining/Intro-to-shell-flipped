@@ -167,7 +167,7 @@ $ grep PLEKHN1 chr1-hg19_genes.gtf | head -n 5
 
 This search returns two different transcripts of the same gene, NM_001160184 and NM_032129, that contain the same exon.
 
-Before our practice, let's learn two new commands. 'cut' is a program that extracts columns from files. We will use `-f` flag, which means to cut specific fields(columns) from the dataset. For example, the code below extracts the 1st column (chromosome) and the 4th column (start genomic position) from `chr1-hg19_genes.gtf` file, and prints out the first few lines:
+Before our practice, let's learn two new commands. `cut` is a program that extracts columns from files. We will use `-f` flag, which means to cut specific fields(columns) from the dataset. For example, the code below extracts the 1st column (chromosome) and the 4th column (start genomic position) from `chr1-hg19_genes.gtf` file, and prints out the first few lines:
 
 ```bash
 $ cut chr1-hg19_genes.gtf -f 1,4 | head
@@ -176,6 +176,10 @@ $ cut chr1-hg19_genes.gtf -f 1,4 | head
 > The `cut` command assumes our data columns are separated by tabs (i.e. tab-delimited). The `chr1-hg19_genes.gtf` is a tab-delimited file, so the default `cut` command works for us. However, data can be separated by other types of delimiters. Another common delimiter is the comma, which separates data in comma-separated value (csv) files. If your data is not tab delimited, there is a `cut` command argument (`-d`) to specify the delimiter.
 
 `sort` is another useful command. It sorts a file and arranges the records in a particular order. We can use `-u` flag to return only unique lines and remove duplicates.
+
+***
+
+**Exercises**
 
 Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many unique exons are present on chromosome 1 using `chr1-hg19_genes.gtf`?**
 
@@ -214,17 +218,7 @@ Now, to count how many unique exons are on chromosome 1, we will add back the `s
 
 > For what we did in one command up here, we could have done it in multiple steps by saving the output of each command to a file. But that would not be as efficient as using pipes, because all we needed was a number to work with. The intermediate files are not useful, and they occupy precious space on the computer and add clutter to the file system. 
 
-**Commands, options, and keystrokes covered in this lesson**
-
-```bash
-grep
-> (output redirection)
->> (output redirection, append)
-| (output redirection, pipe)
-wc
-cut
-sort
-```
+***
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
