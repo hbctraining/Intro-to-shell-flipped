@@ -218,7 +218,7 @@ Once you press return you should be back at the command prompt. Check to see wha
 $ echo $base
 ```
 
-## Advanced shell script (as an exercise?)
+## Advanced shell script 
 
 Now it's time to put all of these concepts together to create a more advanced version of our script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
 
