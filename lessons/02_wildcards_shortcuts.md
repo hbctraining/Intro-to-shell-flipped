@@ -147,28 +147,14 @@ to see a numbered list of recent commands, including this just issues
 ## Commands, options, and keystrokes covered
 
 ```
-bash
-cd
-ls
-man
-pwd
 ~           # home dir
 .           # current dir
 ..          # parent dir
 *           # wildcard
-echo
 ctrl + c    # cancel current command
 ctrl + a    # start of line
 ctrl + e    # end of line
 history
-cat
-less
-head
-tail
-cp
-mdkir
-mv
-rm
 ```
 
 #### Information on the shell
