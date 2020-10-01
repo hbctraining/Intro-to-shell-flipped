@@ -275,7 +275,7 @@ $ cd
 What is your present working directory now?
 
 ```bash
-pwd
+$ pwd
 ```
 
 This should now display a shorter string of directories starting with root. This is the full address to your home directory, also referred to as "**full path**". **The "full" here refers to the fact that the path starts with the root, which means you know which branch of the tree you are on in reference to the root.**
@@ -319,96 +319,56 @@ Can you think of an alternative?
 *You can use the full path to unix_lesson!*
 
 ```bash
-cd ~/unix_lesson
+$ cd ~/unix_lesson
 ```
-
 
 ****
 
 **Exercise**
 
 * Using one command move to your home directory.
-* Using one command list the contents of the `reference_data` directory.
+* Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
+* Using one command list one of the files in `reference_data`.
 
 ****
 
 #### Relative paths
 
-To go 'back up a level' we can use `..`
+We have talked about **full** paths so far, but there is away to specify paths to folders and files without having to worry about the root directory. And you have used this before when we were learning about the `cd` command.
 
-Type:
+Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step.
 
 ```bash
-$ cd ..
+$ cd
+$ cd unix_lesson/raw_fastq
 ```
 
-Now do `ls` and `pwd`. 
+This time we are not using the `~/` before `unix_lesson`. In this case we are using a relative path, relative to our current location - wherein we know that `unix_lesson` is a child folder in our home folder, and the `raw_fastq` folder is within `unix_lesson`.
 
-> `..` denotes parent directory, and you can use it anywhere in the system to go back to the parent directory. Can you think of an example when this won't work?
+> Previously we had used the following:
+> ```bash
+> $ cd ~/unix_lesson/raw_fastq
+> ```
 
+There is also a handy shortcut for the relative path to a parent directory, 2 periods `..`. Let's say we wanted to move from the `raw_fastq` folder to its parent folder.
 
-You might be wondering what ifThere is a really handy command (`tree`) that can help you see the structure of any directory.
+```bash
+cd ..
+```
+
+You should now be in the `unix_lesson` directory (check command prompt or run `pwd`).
+
+> You will be learning a little more about the `..` shortcut later. Can you think of an example when this shortcut to the parent directory won't work?
+
+When using relative paths, you might need to check what the branches are downstream of the folder you are in. There is a really handy command (`tree`) that can help you see the structure of any directory.
 
 ```bash
 $ tree
 ```
-### Examining the contents of other directories
 
-By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to the home directory if you are not already there.
+If you are aware of the directory structure, you can string together as long a list of directories as you like using either **relative** or **full** paths.
 
-Type:
-
-```bash
-$ cd
-```
-
-Then enter the command:
-
-```bash
-$ ls unix_lesson/
-```
-
-This will list the contents of the `unix_lesson` directory without you having to navigate there.
-
-The `cd` command works in a similar way.
-
-```bash
-$ cd unix_lesson/raw_fastq/
-$ pwd
-```
-
-You should now be in `raw_fastq` and you got there without having to go through the intermediate directory. 
-
-> If you are aware of the directory structure, you can string together as long a list as you like.
-
-## Full vs. Relative Paths
-
-The `cd` command takes an argument which is the directory name. Directories can be specified using either a *relative path* or a *full path*. As we know, the directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory (`cd`). Now, enter the `pwd` command and you should see:
-
-```bash
-$ pwd
-```
-
-```
-/home/username
-```
-
-which is the full path for your home directory. This tells you that you are in a directory called `username`, which sits inside a directory called `home` which sits inside the very top directory in the hierarchy, the *root directory*. So, to summarize: `username` is a directory in `home` which is a directory in `/`.
-
-Now enter the following command:
-
-```bash
-$ cd /home/username/unix_lesson/raw_fastq/
-```
-
-This jumps to `raw_fastq`. Now go back to the home directory (`cd`). We saw
-earlier that the command:
-
-```bash
-$ cd unix_lesson/raw_fastq/
-```
-
-had the same effect - it took us to the `raw_fastq` directory. But, instead of specifying the full path (`/home/username/unix_lesson/raw_fastq`), we specified a *relative path*. In other words, we specified the path **relative to our current working directory**. 
+#### Synopsis of Full versus Relative paths
 
 **A full path always starts with a `/`, a relative path does not.**
 
@@ -417,22 +377,6 @@ A relative path is like getting directions from someone on the street. They tell
 You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to just enter the relative path since it involves less typing.
 
 Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate among them.
-
-***
-
-**Exercise**
-
-Change directories to `/home/username/unix_lesson/raw_fastq/`, and list the contents of `unix_lesson/other` without changing directories again.
-
-***
-
-Finally, there is handy command that can help you see the structure of any directory, namely `tree`.
-
-```bash
-#Ensure that you are in your unix_lesson directory and run the following command
-
-$ tree
-```
 
 ### Saving time with tab completion, wildcards and other shortcuts 
 
