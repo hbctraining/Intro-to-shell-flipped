@@ -5,14 +5,10 @@ date: "August 7, 2017"
 ---
 
 ## Learning Objectives
-- How do you access the shell?
-- How do you use it?
-  - Getting around the Unix file system
-  - looking at files
-  - manipulating files
-  - automating tasks
-- What is it good for?
-
+- Become efficient when using the command-line interface (save time and prevent errors!)
+  - Describe the use of tab completion when writing paths
+  - Describe the use of the asterisk `*` wildcard when selecting multiple items
+  - List a few shortcuts 
 
 ### Saving time with tab completion, wildcards and other shortcuts 
 
