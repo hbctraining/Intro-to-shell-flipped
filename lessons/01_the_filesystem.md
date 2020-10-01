@@ -378,219 +378,126 @@ You can usually use either a full path or a relative path depending on what is m
 
 Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate among them.
 
-### Saving time with tab completion, wildcards and other shortcuts 
 
-#### Tab completion
+## Copying, creating, moving and removing data
 
-Navigate to the home directory. Typing out directory names can waste a lot of time. When you start typing out the name of a directory, then hit the tab key, the shell will try to fill in the rest of the directory name. For example, type `cd` to get back to your home directly, then enter:
+Now we can move around within the directory structure using the command line. But what if we want to do things like copy files or move them from one directory to another, rename them? 
+
+Let's move into the `raw_fastq` directory, this contains some fastq files which are the output of sequencing. 
 
 ```bash
-$ cd uni<tab>
+cd ~/unix_lesson/raw_fastq
 ```
 
-The shell will fill in the rest of the directory name for `unix_lesson`. Now go to `unix_lesson/raw_fastq` and 
+> **Tip** - These files are referred to as "raw" data since it has not been changed or analyzed after being generated.
+
+### Copying
+
+Let's use the copy (`cp`) command to make a copy of one of the files in this folder, `Mov10_oe_1.subset.fq`, and call the copied file `Mov10_oe_1.subset-copy.fq`. 
+The copy command has the following syntax: `cp  path-to-item-being-copied  path-to-new-copied-item`. In this case the files are in our current directory, so we just have to specify the name of the file being copied, followed by whatever we want to call the newly copied file.
 
 ```bash
-$ ls Mov10_oe_<tab><tab>
-```
-
-When you hit the first tab, nothing happens. The reason is that there are multiple directories in the home directory which start with `Mov10_oe_`. Thus, the shell does not know which one to fill in. When you hit tab again, the shell will list the possible choices.
-
-Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>` you will see that tab completion works. 
-
-> **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
-
-
-
-#### Wild cards
-
-Navigate to the `~/unix_lesson/raw_fastq` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
-
-The '*' character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
-
-```bash
-$ ls *fq
-```
-
-This lists every file that ends with a `fq`. This command:
-
-```bash
-$ ls /usr/bin/*.sh
-```
-
-Lists every file in `/usr/bin` that ends in the characters `.sh`.
-
-```bash
-$ ls Mov10*fq
-```
-
-lists only the files that begin with 'Mov10' and end with 'fq'
-
-So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for any other single character or a string of characters. 
-
-> An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
-
-****
-
-**Exercise**
-
-Do each of the following using a single `ls` command without
-navigating to a different directory.
-
-1.  List all of the files in `/bin` that start with the letter 'c'
-2.  List all of the files in `/bin` that contain the letter 'a'
-3.  List all of the files in `/bin` that end with the letter 'o'
-
-BONUS: List all of the files in `/bin` that contain the letter 'a' or 'c'.
-
-****
-
-
-#### Shortcuts
-
-There are some shortcuts which you should know about. Dealing with the
-home directory is very common. So, in the shell the tilde character,
-"~", is a shortcut for your home directory. Navigate to the `raw_fastq`
-directory:
-
-```bash
-$ cd
-```
-
-```bash
-$ cd unix_lesson/raw_fastq
-```
-
-Then enter the command:
-
-```bash
-$ ls ~
-```
-
-This prints the contents of your home directory, without you having to type the full path because the tilde "~" is equivalent to "/home/username".
-
-Another shortcut is the "..":
-
-```bash
-$ ls ..
-```
-
-The shortcut `..` always refers to the directory above your current directory. So, it prints the contents of the `unix_lesson`. You can chain these together, so:
-
-```bash
-$ ls ../..
-```
-
-prints the contents of `/home/username` which is your home directory. 
-
-Finally, the special directory `.` always refers to your current directory. So, `ls`, `ls .`, and `ls ././././.` all do the same thing, they print the contents of the current directory. This may seem like a useless shortcut right now, but we used it earlier when we copied over the data to our home directory.
-
-
-To summarize, while you are in your home directory, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts are not necessary, but they are really convenient!
-
-#### Command History
-
-You can easily access previous commands.  Hit the up arrow. Hit it again.  You can step backwards through your command history. The down arrow takes your forwards in the command history.
-
-'Ctrl-r' will do a reverse-search through your command history.  This
-is very useful.
-
-You can also review your recent commands with the `history` command.  Just enter:
-
-```bash
-$ history
-```
-
-to see a numbered list of recent commands, including this just issues
-`history` command. Only a certain number of commands are stored and displayed with `history`, there is a way to modify this to store a different number.
-
-> **NOTE:** So far we have only run very short commands that have few or no arguments, and so it would be faster to just retype it than to check the history. However, as you start to run analyses on the commadn-line you will find your commands to be more complex and the history to be very useful!
-
-**Other handy command-related shortcuts**
-
-- <button>Ctrl + C</button> will cancel the command you are writing, and give you a fresh prompt.
-- <button>Ctrl + A</button> will bring you to the start of the command you are writing.
-- <button>Ctrl + E</button> will bring you to the end of the command.
-
-
-## Creating, moving, copying, and removing
-
-Now we can move around in the file structure, look at files, search files, redirect. But what if we want to do normal things like copy files or move them around or get rid of them. Sure we could do most of these things without the command line, but what fun would that be?! Besides it's often faster to do it at the command line, or you'll be on a remote server like Amazon where you won't have another option.
-
-Our raw data in this case is fastq files. We don't want to change the original files, so let's make a copy to work with.
-
-Lets copy the file using the copy `cp` command. Navigate to the `raw_fastq` directory and enter:
-
-```bash
-$ cp Mov10_oe_1.subset.fq Mov10_oe_1.subset-copy.fq
+$ cp  Mov10_oe_1.subset.fq  Mov10_oe_1.subset-copy.fq
 
 $ ls -l
 ```
 
-Now ``Mov10_oe_1.subset-copy.fq`` has been created as a copy of `Mov10_oe_1.subset.fq`
+The copy command can also be used for copying over whole directories, but the `-r` argument has to be added after the `cp` command. The `-r` stands for recursively copy everything from the directory and its sub-directories". [We used it earlier when we copied over the `unix_lesson` directory to our home directories]().
 
-Let's make a 'backup' directory where we can put this file.
+### Creating
 
-The `mkdir` command is used to make a directory. Just enter `mkdir`
-followed by a space, then the directory name.
+Next, let's create a directory called `fastq_backup` and we can move the copy of the fastq file into that directory. 
+
+The `mkdir` command is used to make a directory, syntax: `mkdir  name-of-folder-to-be-created`.
 
 ```bash
-$ mkdir backup
+$ mkdir fastq_backup
 ```
 
-> File/directory/program names with spaces in them do not work in unix, use characters like hyphens or underscores instead.
+> **Tip** - File/directory/program names with spaces in them do not work in unix, use characters like hyphens or underscores instead.
 
-We can now move our backed up file in to this directory. We can move files around using the command `mv`. Enter this command:
+### Moving
+
+We can now move our copied fastq file in to the new directory. We can move files around using the move command, `mv`, syntax: `mv  path-to-item-being-moved  path-to-destination`. In this case we can use relative paths and just type the name of the file and folder.
 
 ```bash
-$ mv *copy.fq backup
+$ mv  Mov10_oe_1.subset-copy.fq  fastq_backup
 ```
 
-```bash
-$ ls -l backup
+Let's check if the move command worked like we wanted:
 
--rw-rw-r-- 1 mp298 mp298 75706556 Sep 30 13:56 Mov10_oe_1.subset-copy.fq
+```bash
+$ ls -l fastq_backup
 ```
 
-The `mv` command is also how you rename files. Since this file is so
-important, let's rename it:
+### Renaming
+
+The `mv` command has a second functionality, it is what you would use to rename files too. The syntax is identical to when we used `mv` for moving, but this time instead of giving a directory as its destination, we just give a new name as its destination. 
+
+Let's try out this functionality!
+
+The name Mov10_oe_1.subset-copy.fq is not very informative, we want to make sure that we have the word "backup" in it so we don't accidentally delete it.
 
 ```bash
-$ cd backup
+$ cd fastq_backup
 
-$ mv Mov10_oe_1.subset-copy.fq Mov10_oe_1.subset-backup.fq
+$ mv  Mov10_oe_1.subset-copy.fq   Mov10_oe_1.subset-backup.fq
 
 $ ls
-
-Mov10_oe_1.subset-backup.fq
 ```
 
-Finally, we decided this was silly and want to start over.
+> **Tip** - You can use move to move a file and rename it at the same time!
+
+Important notes about `mv`:
+* When using `mv`, shell will **not** check you if you are sure that you want to "replace existing file" or similar. 
+* Once replaced, it is not possible to get the replaced file back!
+
+### Removing
+
+We find our that we did not need to create backups of our fastq files manually as backups were generated by our collaborator; in the interest of saving space on the cluster we want to delete the contents of the `fastq-backup` folder and the folder itself. 
+
+```bash
+$ rm  Mov10_oe_1.subset-backup.fq
+```
+
+Important notes about `rm`
+* `rm` permanently removes/deletes the file/folder. 
+* There is no concept of "Trash" or "Recycle Bin" on the command-line. When you use `rm` to remove/delete they're really gone. 
+* **Be careful with this command!**
+* You can use the `-i` argument if you want it to ask before removing, `rm -i file-name`.
+
+Let's delete the fastq_backup folder too. First, we'll have to navigate our way to the parent directory (we can't delete the folder we are currently in/using). 
 
 ```bash
 $ cd ..
 
-$ rm backup/Mov*
+$ rm  fastq_backup 
 ```
 
-> The `rm` file permanently removes the file. Be careful with this command. The shell doesn't
-just nicely put the files in the Trash. They're really gone.
->
-> Same with moving and renaming files. It will **not** ask you if you are sure that you want to "replace existing file". You can use `rm -i` if you want it to ask before deleting the file(s).
+Did that work? Did you get an error?
 
-We really don't need these backup directories, so, let's delete both. By default, `rm`, will NOT delete directories, but you use the `-r` flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the `-i` flag.
+By default, `rm`, will NOT delete directories, but you use the `-r` flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the `-i` flag.
 
 ```bash
-$ rm -ri backup/ 
+$ rm -ri fastq_backup
 ```
 
 - `-r`: recursive, commonly used as an option when working with directories, e.g. with `cp`. 
 - `-i`: prompt before every removal.
 
+***
+
+**Exercise**
+
+* Create a new folder in `unix_lesson` called `selected_fastq`
+* Copy over the Mov10_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
+* Rename the `selected_fastq` folder and call it `exercise1`
+
+***
+
 ## Commands, options, and keystrokes covered
 
 ```
-bash
 cd
 ls
 man
@@ -598,16 +505,6 @@ pwd
 ~           # home dir
 .           # current dir
 ..          # parent dir
-*           # wildcard
-echo
-ctrl + c    # cancel current command
-ctrl + a    # start of line
-ctrl + e    # end of line
-history
-cat
-less
-head
-tail
 cp
 mdkir
 mv
