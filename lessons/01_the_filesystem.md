@@ -21,7 +21,9 @@ Since we are going to be working with this data on the **O2** cluster, we first 
 
 Before we do either of those things, let's take a quick look at the basic architecture of a cluster environment.
 
-<img src="../img/compute_cluster.png" width="600">
+<p align="center">
+<img src="../img/compute_cluster.png" width="500">
+</p>
 
 In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a desginated role, either for logging in or for performing computational analysis/work. A given cluster will usually have a few login nodes and several compute nodes.
 
@@ -94,7 +96,7 @@ Press enter after you copy and paste in that command. You should see a couple of
 
 > **Tip** - When you run any command in shell, once the command has finished doing what it is supposed to do, it will bring you back your command prompt.
 
-Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use, it is referred to as you "home directory".
+Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use, it is referred to as you "home" directory.
 
 > NOTE: When you run the `srun` command between the classes and after this workshop with your own account please remove the `--reservation` string.
 > 
@@ -220,11 +222,7 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 ***
 
 
-## The Unix directory file structure (a.k.a. where am I?)
- 
-As you've already just seen, you can move around in different directories or folders at the command line. 
-
-### Moving around the file system
+## The Unix directory file structure (a.k.a. where am I?) 
 
 Let's practice moving around a bit. Let's go into the raw_fastq directory and see what is in there.
 
@@ -234,42 +232,107 @@ $ cd raw_fastq/
 $ ls -l
 ```
 
-All six items in this directory look like files ending in `.fq` extension. 
+Great, we have now traversed some sub-directories, but where are we in the context of our pre-designated "home" directory that contains the `unix_lesson` directory?!
 
-That's all well and good, but where are we in the context of the directory that contains the `unix_lesson` directory?!
+### The "root" directory!
 
-Like on any computer you have used before the file structure within unix is hierarchical, like an upside down tree with root (/) as the starting point of the tree-like structure:
+Like on any computer you have used before the file structure within a Unix/Linux system is hierarchical, like an upside down tree with the "/" directory, called "root" as the starting point of this tree-like structure:
 
+<p align="center">
 <img src="../img/directory_structure.png" width="600">
+</p>
 
-That root (/) is often also called the 'top' level.
+> **Tip** - Yes, the root folder's actual name is just **`/`** (a forward slash).
 
-When you log in to a remote computer you are on one of the branches of that tree, your home directory (e.g. /home/username)
+That `/` or root is the 'top' level.
 
-> On mac OS, which is a UNIX-based OS, the root level is also "/". On a windows OS, it is drive specific; generally "C:\" is considered root, but it changes to "D:/", if you are on that drive.
+When you log in to a remote computer you land on one of the branches of that tree, i.e. your pre-designated "home" directory that usually has your login name as its name (e.g. `/home/rsk27`).
 
-Now let's go do that same navigation at the command line.
+> **Tip** - On mac OS, which is a UNIX-based OS, the root level is also "/". 
+>
+> **Tip** - On a windows OS, it is drive specific; "C:\" is considered the default root, but it changes to "D:/", if you are on that drive.
 
-Type:
+### Paths 
 
-```bash
-$ cd
-```
+Now let's learn more about the "addresses" of directories, called **"path"** and move around the file system.
 
-> This puts you in your home directory. No matter where you are in the directory system, `cd` will always bring you back to your home directory.
+Let's check to see what directory we are in. The command prompt tells us which directory we are in, but it doesn't give information about where the `raw_fastq` directory is with respect to our "home" directory or the `/` directory.
 
-
-Now using `cd` and `ls`, go in to the `unix_lesson` directory and list its contents. Now go into the `raw_fastq` directory, and list its contents.
-
-Let's also check to see where we are. Sometimes when we're wandering around in the file system, it's easy to lose track of where we are. The command that tells you this is:
+The command to check our current location is `pwd`, this command does not take any arguments and it returns the path or address of your **p**resent **w**orking **d**irectory (the folder you are in currently).
 
 ```bash
 $ pwd
 ```
 
-> This stands for 'print working directory'. i.e. the directory you're currently working in.
+In the output here, each folder is separated from it's "parent" or "child" folder by a "/", and the output starts with the root `/` directory. So, you are now able to determine the location of `raw_fastq` directory relative to the root directory!
+
+But which is your pre-designated home folder? No matter where you have navigated to in the file system, just typing in `cd` will bring you to your home directory. 
+
+```bash
+$ cd
+```
+
+What is your present working directory now?
+
+```bash
+pwd
+```
+
+This should now display a shorter string of directories starting with root. This is the full address to your home directory, also referred to as "**full path**". **The "full" here refers to the fact that the path starts with the root, which means you know which branch of the tree you are on in reference to the root.**
+
+Take a look at your command prompt now, does it show you the name of this directory (your username?)? 
+
+*No, it doesn't. Instead of the directory name it shows you a `~`.*
+
+Why is this so? 
+
+*This is because `~` = full path to home directory for the user.*
+
+Can we just type `~` instead of `/home/rsk27`?
+
+*Yes, we can!*
+
+#### Using paths with commands
+
+You can do a lot more with the idea of stringing together *parent/child* directories. Let's say we want to look at the contents of the `raw_fastq` folder, but do it from our current directory (the home directory. We can use the list command and follow it up with the path to the folder we want to list!
+
+```bash
+$ cd
+
+$ ls -l ~/unix_lesson/raw_fastq
+```
+
+Now, what if we wanted to change directories from `~` (home) to `raw_fastq` in a single step?
+
+```bash
+$ cd ~/unix_lesson/raw_fastq
+```
+
+Voila! You have moved 2 levels of directories in one command.
 
 What if we want to move back up and out of the `raw_fastq` directory? Can we just type `cd unix_lesson`? Try it and see what happens.
+
+*Unfortunately, that won't work because when you say `cd unix_lesson`, shell is looking for a folder called `unix_lesson` within your current directory, i.e. `raw_fastq`.*
+
+Can you think of an alternative? 
+
+*You can use the full path to unix_lesson!*
+
+```bash
+cd ~/unix_lesson
+```
+
+
+****
+
+**Exercise**
+
+* Using one command move to your home directory.
+* Using one command list the contents of the `reference_data` directory.
+
+****
+
+#### Relative paths
 
 To go 'back up a level' we can use `..`
 
@@ -283,14 +346,12 @@ Now do `ls` and `pwd`.
 
 > `..` denotes parent directory, and you can use it anywhere in the system to go back to the parent directory. Can you think of an example when this won't work?
 
-Finally, there is handy command that can help you see the structure of any directory, namely `tree`.
+
+You might be wondering what ifThere is a really handy command (`tree`) that can help you see the structure of any directory.
 
 ```bash
-#Ensure that you are in your unix_lesson directory and run the following command
-
 $ tree
 ```
-
 ### Examining the contents of other directories
 
 By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to the home directory if you are not already there.
@@ -319,15 +380,6 @@ $ pwd
 You should now be in `raw_fastq` and you got there without having to go through the intermediate directory. 
 
 > If you are aware of the directory structure, you can string together as long a list as you like.
-
-
-****
-
-**Exercise**
-
-List the `Mov10_oe_1.subset.fq` file from your home directory without changing directories
-
-****
 
 ## Full vs. Relative Paths
 
@@ -374,6 +426,14 @@ Change directories to `/home/username/unix_lesson/raw_fastq/`, and list the cont
 
 ***
 
+Finally, there is handy command that can help you see the structure of any directory, namely `tree`.
+
+```bash
+#Ensure that you are in your unix_lesson directory and run the following command
+
+$ tree
+```
+
 ### Saving time with tab completion, wildcards and other shortcuts 
 
 #### Tab completion
@@ -395,6 +455,8 @@ When you hit the first tab, nothing happens. The reason is that there are multip
 Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>` you will see that tab completion works. 
 
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
+
+
 
 #### Wild cards
 
