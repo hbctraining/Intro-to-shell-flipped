@@ -18,21 +18,23 @@ date: "August 7, 2017"
 
 #### Tab completion
 
-Navigate to the home directory. Typing out directory names can waste a lot of time. When you start typing out the name of a directory, then hit the tab key, the shell will try to fill in the rest of the directory name. For example, type `cd` to get back to your home directly, then enter:
+Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use `tab` completion. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, the shell will try to fill in the rest of the directory name. For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by `tab` key:
 
 ```bash
+$ cd
 $ cd uni<tab>
 ```
 
-The shell will fill in the rest of the directory name for `unix_lesson`. Now go to `unix_lesson/raw_fastq` and 
+The shell will fill in the rest of the directory name for `unix_lesson`. Now further go to `unix_lesson/raw_fastq`, then type `ls Mov10_oe_`, followed by `tab` key:
 
 ```bash
+$ cd raw_fastq/
 $ ls Mov10_oe_<tab><tab>
 ```
 
-When you hit the first tab, nothing happens. The reason is that there are multiple directories in the home directory which start with `Mov10_oe_`. Thus, the shell does not know which one to fill in. When you hit tab again, the shell will list the possible choices.
+When you hit `tab` just for once, nothing happens. The reason is that there are multiple directories in the current directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` again, the shell will then list all the possible choices.
 
-Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>` you will see that tab completion works. 
+Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>`, you will see that tab completion works. 
 
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
 
