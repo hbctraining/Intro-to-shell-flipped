@@ -10,9 +10,9 @@ date: "August 7, 2017"
   - Describe the use of the asterisk `*` wildcard when selecting multiple items
   - List a few shortcuts 
 
-### Saving time with tab completion, wildcards and other shortcuts 
+## Saving time with tab completion, wildcards and other shortcuts 
 
-#### Tab completion
+### Tab completion
 
 Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use `tab` completion. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, the shell will try to fill in the rest of the directory name. For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by `tab` key:
 
@@ -34,31 +34,31 @@ Tab completion can also fill in the names of commands. For example, enter `e<tab
 
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
 
-#### Wild cards
+### Wild cards
 
 Navigate to the `~/unix_lesson/raw_fastq` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
 
-The '*' character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
+The "*" character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
 
 ```bash
 $ ls *fq
 ```
 
-This lists every file that ends with a `fq`. This command:
+This lists every file that ends with a `fq`. Try this command:
 
 ```bash
 $ ls /usr/bin/*.sh
 ```
 
-Lists every file in `/usr/bin` that ends in the characters `.sh`.
+This lists every file in `/usr/bin` directory that ends in the characters `.sh`. "*" can be placed anywhere in your pattern. For example:
 
 ```bash
 $ ls Mov10*fq
 ```
 
-lists only the files that begin with 'Mov10' and end with 'fq'
+This lists only the files that begin with 'Mov10' and end with `fq`.
 
-So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for any other single character or a string of characters. 
+So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can match one or more occurrences of any character, including no character. 
 
 > An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
 
@@ -78,18 +78,15 @@ BONUS: List all of the files in `/bin` that contain the letter 'a' or 'c'.
 ****
 
 
-#### Shortcuts
+### Shortcuts
 
-There are some shortcuts which you should know about. Dealing with the
-home directory is very common. So, in the shell the tilde character,
-"~", is a shortcut for your home directory. Navigate to the `raw_fastq`
+There are some very useful shortcuts that you should also know about. Dealing with the
+home directory is very common. In shell, the tilde character,
+"~", is a shortcut for your home directory. Let's first navigate to the `raw_fastq`
 directory:
 
 ```bash
 $ cd
-```
-
-```bash
 $ cd unix_lesson/raw_fastq
 ```
 
@@ -99,30 +96,29 @@ Then enter the command:
 $ ls ~
 ```
 
-This prints the contents of your home directory, without you having to type the full path because the tilde "~" is equivalent to "/home/username".
+This prints the contents of your home directory, without you having to type the full path. This is because the tilde "~" is equivalent to "/home/username".
 
-Another shortcut is the "..":
+Another shortcut is "..":
 
 ```bash
 $ ls ..
 ```
 
-The shortcut `..` always refers to the directory above your current directory. So, it prints the contents of the `unix_lesson`. You can chain these together, so:
+The shortcut `..` always refers to the directory above your current directory. So, it prints the contents of the `unix_lesson`. You can also chain these together:
 
 ```bash
 $ ls ../..
 ```
 
-prints the contents of `/home/username` which is your home directory. 
+This prints the contents of `/home/username`, which is two levels above your current directory (your home directory). 
 
-Finally, the special directory `.` always refers to your current directory. So, `ls`, `ls .`, and `ls ././././.` all do the same thing, they print the contents of the current directory. This may seem like a useless shortcut right now, but we used it earlier when we copied over the data to our home directory.
+Finally, the special directory `.` always refers to your current directory. So, `ls` and `ls .` will do the same thing - they print the contents of the current directory. This may seem like a useless shortcut, but recall that we used it earlier when we copied over the data to our home directory.
 
+To summarize, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts can be convenient when you navigate through directories!
 
-To summarize, while you are in your home directory, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts are not necessary, but they are really convenient!
+### Command History
 
-#### Command History
-
-You can easily access previous commands.  Hit the up arrow. Hit it again.  You can step backwards through your command history. The down arrow takes your forwards in the command history.
+You can easily access previous commands by hitting the up arrow on your keyboard. You can step backwards through your command history. On the other hand, the down arrow takes your forwards in the command history.
 
 'Ctrl-r' will do a reverse-search through your command history.  This
 is very useful.
@@ -133,10 +129,10 @@ You can also review your recent commands with the `history` command.  Just enter
 $ history
 ```
 
-to see a numbered list of recent commands, including this just issues
+to see a numbered list of recent commands, including this just issued
 `history` command. Only a certain number of commands are stored and displayed with `history`, there is a way to modify this to store a different number.
 
-> **NOTE:** So far we have only run very short commands that have few or no arguments, and so it would be faster to just retype it than to check the history. However, as you start to run analyses on the commadn-line you will find your commands to be more complex and the history to be very useful!
+> **NOTE:** So far we have only run very short commands that have few or no arguments. It would look faster to just retype it than to check the history. However, as you start to run analyses on the commadn-line, you will find your commands to be more complexed, and the history will be very useful then!
 
 **Other handy command-related shortcuts**
 
@@ -156,28 +152,6 @@ ctrl + a    # start of line
 ctrl + e    # end of line
 history
 ```
-
-#### Information on the shell
-
-shell cheat sheets:<br>
-* [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
-* [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
-
-Explain shell - a web site where you can see what the different components of
-a shell command are doing.  
-* [http://explainshell.com](http://explainshell.com)
-* [http://www.commandlinefu.com](http://www.commandlinefu.com)
-
-Data Carpentry tutorial: [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)
-
-General help:
-- http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
-- man bash
-- Google - if you don't know how to do something, try Googling it. Other people
-have probably had the same question.
-- Learn by doing. There's no real other way to learn this than by trying it
-out.  Write your next paper in vim (really emacs or vi), open pdfs from
-the command line, automate something you don't really need to automate.
 
 ---
 
