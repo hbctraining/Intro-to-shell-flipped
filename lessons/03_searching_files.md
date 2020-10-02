@@ -183,7 +183,7 @@ $ cut chr1-hg19_genes.gtf -f 1,4 | head
 
 Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many unique exons are present on chromosome 1 using `chr1-hg19_genes.gtf`?**
 
-To determine the number of unique exons on chromosome 1, we are going to perform a series of steps:
+To determine the number of unique exons on chromosome 1, we are going to perform a series of steps as shown below. In this exercise, you need to figure out the command line for each step.
 	
 	1. Extract only the genomic coordinates of exon features
 	2. Subset dataset to only keep genomic coordinates
