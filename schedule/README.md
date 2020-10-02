@@ -5,7 +5,7 @@
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 10:00 - 10:30 | Workshop introduction | Radhika |
-| 10:30 - 11:45 | Introduction to Shell | Meeta |
+| 10:30 - 11:45 | Introduction to Shell | Radhika|
 | 11:45 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
 
