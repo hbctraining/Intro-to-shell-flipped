@@ -62,7 +62,7 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 2. In addition to finding the sequence, how can you modify the command so that your search also return
 the name of the sequence?
 
-3. Search for that sequence in all Mov10 replicate fastq files.
+3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
 ***
 
@@ -192,11 +192,11 @@ To determine the number of unique exons on chromosome 1, we are going to perform
 	
 #### 1. Extract only the genomic coordinates of exon features
 
-We only want the exons (not CDS or start_codon features), so let's use `grep` to search for the word "exon". You may check the first few lines by piping the result to the `head` command.
+We only want the exons (not CDS or start_codon features), so let's use `grep` to search for the word "exon". How would you write the command here? You may check the first few lines by piping the result to the `head` command.
 
 #### 2. Subset dataset to only keep genomic coordinates
 
-We will define the uniqueness of an exon by its genomic coordinates. Therefore, we only need the genomic location (chr, start, stop, and strand) information to find the total number of unique exons. The columns corresponding to this information are 1, 4, 5, and 7. Use 'cut' to extract thoese columns. You may check the first few lines by piping the result to the `head` command. At this point, your fisrt few lines should look like this:
+We will define the uniqueness of an exon by its genomic coordinates. Therefore, we only need the genomic location (chr, start, stop, and strand) information to find the total number of unique exons. The columns corresponding to this information are 1, 4, 5, and 7. We can use 'cut' to extract thoese columns. How would you write the command here? You may check the first few lines by piping the result to the `head` command. At this point, your fisrt few lines should look like this:
 
 	chr1	14362	14829	-
 	chr1	14970	15038	-
@@ -206,7 +206,7 @@ We will define the uniqueness of an exon by its genomic coordinates. Therefore, 
 
 #### 3. Remove duplicate exons
 
-Now, we need to remove those exons that show up multiple times for different transcripts. Use the `sort` command with the `-u` option.
+Now, we need to remove those exons that show up multiple times for different transcripts. We can use the `sort` command with the `-u` option. How would you write the command here? 
 
 Do you see a change in how the sorting has changed? By default the `sort` command will sort and what you can't see here is that it has removed the duplicates. We will use step 4 to check if it works.
 
