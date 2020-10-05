@@ -90,7 +90,7 @@ navigating to a different directory.
 2.  List all of the files in `/bin` that contain the letter 'a'
 3.  List all of the files in `/bin` that end with the letter 'o'
 
-BONUS: Using one command list all of the files in `/bin` that contain either 'a' or 'c'.
+BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
 
 ****
 
@@ -114,7 +114,7 @@ Then enter the command:
 $ ls ~
 ```
 
-This prints the contents of your home directory, without you having to type the full path. This is because the tilde "~" is equivalent to "/home/username", as we had mentioned in the previous lesson
+This prints the contents of your home directory, without you having to type the full path. This is because the tilde "~" is equivalent to "/home/username", as we had mentioned in the previous lesson.
 
 #### Parent directory or ".."
 
