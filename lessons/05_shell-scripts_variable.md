@@ -218,6 +218,9 @@ Once you press return you should be back at the command prompt. Check to see wha
 $ echo $base
 ```
 
+> #### The `basename` command
+> It is hard to see the utility of this command by just running it at command-line, but it is very useful command when creating scripts for analysis. Within a script it is common to create an output file and the `basename` allows us to easily create a prefix to use for naming the output files. We will demonstrate this in more detail during our ["Loops and Automation" lesson](04_loops_and_scripts.md).
+
 ## Shell scripting with bash variables
 
 Now it's time to put all of these concepts together to create a more advanced version of our script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
