@@ -8,14 +8,13 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Learn how to use variables to operate on multiple files
-
-
+* Introduce the concept of a `for loop` to iterate commands over multiple items
+* Automating tasks by using loops inside shell scripts
 
 
 ## Loops
 
-Another powerful concept in the Unix shell and useful when writing scripts is the concept of "Loops". We have just shown you that you can run a single command on multiple files by creating a variable whose values are the filenames that you wish to work on. But what if you want to **run a sequence of multiple commands, on multiple files**? This is where loop come in handy!
+Now that we have introduced you to the beauty and purpose of shell scripts, it's time t
 
 Looping is a concept shared by several programming languages, and its implementation in bash is very similar to other languages. 
 
