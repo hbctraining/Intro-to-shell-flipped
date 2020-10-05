@@ -140,10 +140,15 @@ to see a numbered list of recent commands, including this just issued
 - <button>Ctrl + A</button> will bring you to the start of the command you are writing.
 - <button>Ctrl + E</button> will bring you to the end of the command.
 
+****
+
 **Exercise**
 
 1.  Checking the output of the `history` command, how many commands have you typed in so far?
-2.  Use the up arrow key to check the command you used before `history` command. What is it? Does it make sense?
+2.  Use the up arrow key to check the command you typed before the `history` command. What is it? Does it make sense?
+3.  Type several random characters on your prompt. Can you bring the cursor to the start with <button>Ctrl + A</button>? Next, can you bring the cursor to the end with <button>Ctrl + E</button>? Finally, what happens when you use <button>Ctrl + C</button>?
+
+****
 
 ## Commands, options, and keystrokes covered
 
