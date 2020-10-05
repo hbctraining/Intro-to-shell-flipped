@@ -17,8 +17,9 @@
 * Shell scripts and variables in bash
 
 ### Assignment #1
-* The answers to all the exercises from above lessons (code and text) should be saved to a new text file created in Notepad++ or TextWrangler.
-* **Upload the saved file** to Dropbox **day before the next class**.
+* All exercise questions from the self-learning lessons have been put together in a [text file](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/homework/Day1_assignment.txt) (download for local access).
+  * The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
+* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to Dropbox **day before the next class**.
 * [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
 * Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
 
