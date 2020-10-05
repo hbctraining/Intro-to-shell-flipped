@@ -6,30 +6,32 @@
 
 Do each of the following using a single ls command without navigating to a different directory.
 
-a. List all of the files in /bin that start with the letter 'c'
+   a. List all of the files in /bin that start with the letter 'c'
 
-$ls /bin/c*
+     $ ls /bin/c*
 
-b. List all of the files in /bin that contain the letter 'a'
+   b. List all of the files in /bin that contain the letter 'a'
 
-$ls /bin/*a*
+     $ ls /bin/*a*
 
-c. List all of the files in /bin that end with the letter 'o'
+   c. List all of the files in /bin that end with the letter 'o'
 
-$ls /bin/*o
+     $ ls /bin/*o
 
-d. BONUS: List all of the files in /bin that contain the letter 'a' or 'c'.
+   d. BONUS: List all of the files in /bin that contain the letter 'a' or 'c'.
 
-$ls /bin/*a* /bin/*c* | sort -u
-OR
-$ls /bin/*[ac]*
+     $ ls /bin/*a* /bin/*c* | sort -u
+   OR
+     $ ls /bin/*[ac]*
+
 More on this square bracket wildcard usage: https://www.putorius.net/standard-wildcards-globbing-patterns-in.html
 
 ### Command history
 
 1. Checking the output of the history command, how many commands have you typed in so far?
 
-$history
+ $ history
+
 The number of commands will differ based on your history.
 
 2. Use the up arrow key to check the command you used before history command. What is it? Does it make sense?
@@ -46,24 +48,39 @@ Ctrl + C will cancel the command you wrote, and start a new prompt.
 
 1. Change directories into genomics_data. You can do this using a full or relative path.
  
- cd ~/unix_lesson/genomics_data
+ $ cd ~/unix_lesson/genomics_data
  OR
- cd ../genomics_data
+ $ cd ../genomics_data
 
 2. Use the less command to open up the file Encode-hesc-Nanog.bed.
 
-    less Encode-hesc-Nanog.bed
+ $ less Encode-hesc-Nanog.bed
 
-3. Use the shortcut to search for the string chr11. Yould see all instances in the file highlighted.
+3. Search for the string chr11; you'll see all instances in the file highlighted.
 
     /chr11
 
 4. Staying in the less buffer, use the shortcut to get to the end of the file. Report three highlighted lines at the end of the file where you see chr11. Exit the file.
-    
-    
-5. Print to screen the last 5 lines of the file Encode-hesc-Nanog.bed. Report what you see in the terminal.
 
-    tail -n 5 Encode-hesc-Nanog.bed
+ "G" to get to end of file
+ 
+ chr11   75374922        75375178
+ chr11   84136810        84137066
+ chr11   63529428        63529684
+    
+    
+5. Exit the less buffer and come back to the command prompt.
+  Type "q"
+
+6. Print to screen the last 5 lines of the file Encode-hesc-Nanog.bed. Report what you see as the output within the Terminal.
+
+   $ tail -n 5 Encode-hesc-Nanog.bed
+   
+ chr6	35265429	35265685
+ chr4	62253131	62253387
+ chr11	63529428	63529684
+ chr20	48816389	48816645
+ chr8	26499187	26499443
 
 
 ### Writing/Creating files with Vim
@@ -71,31 +88,47 @@ Ctrl + C will cancel the command you wrote, and start a new prompt.
 We have covered some basic commands in vim, but practice is key for getting comfortable with the program. Let's practice what we just learned in a brief challenge.
 
 1. Open spider.txt, and delete the word "water" from line #2.
+  gg - move to top
+  w - move to next word to get to "spider"
+  dw - delete word
 2. Quit without saving.
+  q!
 3. Open spider.txt again, and replace every occurrence of "spider" with "unicorn".
+  vim spider.txt
+  :%s/spider/unicorn/g 
 4. Delete: "Down came the rain."
+  dd - delete a line
 5. Save the file.
+  :w - save file
 6. Undo your previous deletion.
+  u
 7. Redo your previous deletion.
+  Ctrl+r
 8. Delete the first and last words from each of the lines.
-9. Save the file.
+  Use w to move through words and dw to delete words at the beginning and end
+9. Save the file. 
+  :w
 10. Open up the file and copy and paste the contents to a text editor on your local laptop to submit as homework.
+
+   itsy bitsy 
+   up the water .
+   washed the unicorn .
 
 ## Searching Files
 
 1. Search for the sequence CTCAATGAGCCA in Mov10_oe_1.subset.fq. How many sequences do you find?
 
-$grep CTCAATGAGCCA Mov10_oe_1.subset.fq
+ $ grep CTCAATGAGCCA Mov10_oe_1.subset.fq
 The output returns 5 sequences
 
 2. In addition to finding the sequence, how can you modify the command so that your search also return the name of the sequence?
 
-$grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq
+ $ grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq
 
 3. Search for that sequence in all Mov10 replicate fastq files.
 
-$grep CTCAATGAGCCA Mov10*
-The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2
+ $ grep CTCAATGAGCCA Mov10*
+ The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2
 
 ### Searching and redirection final exercise
 
@@ -103,50 +136,121 @@ Now that we know what type of information is inside of our gtf file, let's explo
 
 1. Extract only the genomic coordinates of exon features
 
-$grep exon chr1-hg19_genes.gtf | head
+ $ grep exon chr1-hg19_genes.gtf | head
 
 2. Subset dataset to only keep genomic coordinates
 
-$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head
+ $ grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head
 
 3. Remove duplicate exons
 
-$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head 
+ $ grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head 
 
 4. Count the total number of exons
 
-$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l
+ $ grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l
 The output returns 37213 lines.
 
-$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l
-The output returns 22769 lines, indicating that repetitive lines are removed.
+ $ grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l
+ The output returns 22769 lines, indicating that repetitive lines are removed.
 
 ## Shell scripts and variables 
 
 ### A simple shell script
 
 1. Open up the script listing.sh using vim. Add the command which prints to screen the contents of the file Mov10_rnaseq_metadata.txt.
+ cat Mov10_rnaseq_metadata.txt
+ 
 2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
+ echo "This is information about the files in our dataset:"
+ 
 3. Run the new script. Provide the contents of the new script and the output after running it.
+ $ sh listing.sh
+ 
+ Output:
+
+Your current working directory is:
+/home/mm573/unix_lesson/other
+These are the contents of this directory:
+total 240
+-rw-rw-r-- 1 mm573 mm573  346 Sep 30 12:47 directory_info.sh
+-rw-rw-r-- 1 mm573 mm573  193 Oct  5 14:53 listing.sh
+-rw-rw-r-- 1 mm573 mm573   93 Sep 30 10:40 Mov10_rnaseq_metadata.txt
+-rw-r--r-- 1 mm573 mm573 1057 Sep 30 10:40 sequences.fa
+-rw-rw-r-- 1 mm573 mm573   48 Oct  5 14:49 spider.txt
+This is information about the files in our dataset:
+sample	celltype
+OE.1	Mov10_oe
+OE.2	Mov10_oe
+OE.3	Mov10_oe
+IR.1	normal
+IR.2	normal
+IR.3	normal
 
 ### Bash variables
 
 1. Use the $file variable as input to the head and tail commands, and modify the arguments to display only four lines. Provide the lines of code used and report the header lines (@HWI) you retrieve from each command.
-2. Create a new variable called meta and assign it the value Mov10_rnaseq_metadata.txt. For the following questions, use the $meta variable but do not change directories. Provide the code you would run to:
+
+  $ head -n 4 $file
+  @HWI-ST330:304:H045HADXX:1:1101:1162:205
+
+  $ tail -n 4 $file
+  @HWI-ST330:304:H045HADXX:2:2212:15724:100530
+  
+2. Create a new variable called meta and assign it the value Mov10_rnaseq_metadata.txt. 
+
+ $ meta=Mov10_rnaseq_metadata.txt
+ 
+For the following questions, use the $meta variable but do not change directories. Provide the code you would run to:
+
     a. Display the contents of the file using cat.
+       $ cat ../other/$meta (relative path)
+       $ cat ~/unix_lesson/other/$meta (full path)
+    
     b. Retrieve only the lines which contain normal samples. (Hint: use grep)
+       $ grep normal ../other/$meta (relative path)
+       $ grep normal ~/unix_lesson/other/$meta (full path)
     
     
 ### basename command
 
 1. How would you modify the above basename command above to only return Mov10_oe_1?
-2. Use basename with the file Irrel_kd_1.subset.fq as input. Return only Irrel_kd_1 to the terminal.
+  $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .subset.fq
 
+2. Use basename with the file Irrel_kd_1.subset.fq as input. Return only Irrel_kd_1 to the terminal.
+  $ basename ~/unix_lesson/raw_fastq/Irrel_kd_1.subset.fq .subset.fq
 
 ### Shell scripting with bash variables
 
 1. Run the script directory_info.sh. Report what gets printed to the screen.
-2. Open up the script directory_info.sh using vim. Change the approproiate line of code so that our directory of interest is ~/unix_lesson/genomics_data. Save and exit Vim.
+  
+  $ sh directory_info.sh
+
+     Reporting on the directory raw_fastq ...
+     These are the contents of this directory:
+     total 384128
+     -rw-rw-r-- 1 mm573 mm573 55169229 Sep 30 10:40 Irrel_kd_1.subset.fq
+     -rw-rw-r-- 1 mm573 mm573 47460403 Sep 30 10:40 Irrel_kd_2.subset.fq
+     -rw-rw-r-- 1 mm573 mm573 36268325 Sep 30 10:40 Irrel_kd_3.subset.fq
+     -rw-rw-r-- 1 mm573 mm573 75706556 Sep 30 10:40 Mov10_oe_1.subset.fq
+     -rw-rw-r-- 1 mm573 mm573 68676755 Sep 30 10:40 Mov10_oe_2.subset.fq
+     -rw-rw-r-- 1 mm573 mm573 42742047 Sep 30 10:40 Mov10_oe_3.subset.fq
+     The total number of files in this directory is:
+     6
+
+2. Open up the script directory_info.sh using vim. Change the appropriate line of code so that our directory of interest is ~/unix_lesson/genomics_data. Save and exit Vim.
+
+   dirPath=~/unix_lesson/genomics_data
+
 3. Run the script with the changes and report what gets printed to the screen.
+
+    Reporting on the directory genomics_data ...
+    These are the contents of this directory:
+    total 26240
+    -rwxrwxr-- 1 mm573 mm573   130904 Sep 30 10:40 Encode-hesc-Nanog.bed
+    -rw-rw-r-- 1 mm573 mm573 21893006 Sep 30 10:40 na12878_q20_annot.vcf
+    The total number of files in this directory is:
+    2
+
 
 
