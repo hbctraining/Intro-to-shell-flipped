@@ -11,10 +11,10 @@
 
 ### Self Learning #1
 
-* [Wildcards and shortcuts in bash](../lessons/02_wildcards_shortcuts.md)
+* [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
 * [Searching and redirection](../lessons/03_working_with_files.md)
 * [Examining and creating files](../lessons/04_searching_files.md)
-* [Shell scripts and variables in bash](../lessons/05_shell-scripts_variable.md)
+* [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
 
 ### Assignment #1
 * All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access).
