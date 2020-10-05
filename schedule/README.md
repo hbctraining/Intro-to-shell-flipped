@@ -53,6 +53,32 @@
 | 11:45 - 12:00 | Wrap up | Radhika |
 
 ***
+
+## Dataset
+[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
+
+## Resources
+
+Cheat sheets:
+* [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
+* [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
+
+Online tutorials:
+* [Explain Shell](http://explainshell.com)
+* [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)
+* [BASH Programming - Introduction HOW-TO](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html)
+* [Bioinformatics from the Command Line](https://medium.com/ngs-sh)
+
+General help:
+* Google it! - if you don't know how to do something, try Googling it, other people have probably had the same question.
+* Learn by doing! There's no real other way to learn this than by trying it out.
+  * Use vim on your laptop
+  * Move around the directory structure on your laptop using the Terminal/Shell counts
+  * Open folders and files using the command `open`
+  * Automate something you don't really need to automate
+* Use `man bash` to get more information about bash (bourne-again shell)
+
+***
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
 * *Some materials used in these lessons were derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
