@@ -23,7 +23,7 @@ Let's take a quick look at the basic architecture of a cluster environment and s
 <img src="../img/compute_cluster.png" width="500">
 </p>
 
-In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a desginated role, either for logging in or for performing computational analysis/work. **A given cluster will usually have a few login nodes and several compute nodes.**
+In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a designated role, either for logging in or for performing computational analysis/work. **A given cluster will usually have a few login nodes and several compute nodes.**
 
 The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis. *We will be going into more depth about the cluster architecture, storage systems and best practices on the last day of this workshop.* 
 
@@ -33,7 +33,7 @@ The data on a cluster is also stored differently than what we are used to with o
 
 For this workshop we will be using training accounts to log in. These have been created for us by the [HMS Research Computing](https://rc.hms.harvard.edu/) (HMS-RC) team, they are the folks that manage the O2 cluster. We will be providing each of you with your own *training* account associated with a password for the duration of this workshop.
 
-> If you are interested in getting your own account on O2, please follow the intructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
+> If you are interested in getting your own account on O2, please follow the instructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
 
 #### Tool(s) to access remote computers/clusters
 
@@ -81,7 +81,7 @@ The command prompt on O2 will have some characters before the `$`, something lik
 
 #### Let's move from the login node to a compute node!
 
-The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not desginated to log in users).
+The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not designated to log in users).
 
 ```bash
 $ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC /bin/bash
@@ -261,7 +261,7 @@ The command to check our current location is `pwd`, this command does not take a
 $ pwd
 ```
 
-In the output here, each folder is separated from it's "parent" or "child" folder by a "/", and the output starts with the root `/` directory. So, you are now able to determine the location of `raw_fastq` directory relative to the root directory!
+In the output here, each folder is separated from its "parent" or "child" folder by a "/", and the output starts with the root `/` directory. So, you are now able to determine the location of `raw_fastq` directory relative to the root directory!
 
 But which is your pre-designated home folder? No matter where you have navigated to in the file system, just typing in `cd` will bring you to your home directory. 
 
@@ -331,7 +331,7 @@ $ cd ~/unix_lesson
 
 #### Relative paths
 
-We have talked about **full** paths so far, but there is away to specify paths to folders and files without having to worry about the root directory. And you have used this before when we were learning about the `cd` command.
+We have talked about **full** paths so far, but there is a way to specify paths to folders and files without having to worry about the root directory. And you have used this before when we were learning about the `cd` command.
 
 Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step.
 
@@ -411,7 +411,7 @@ The `mkdir` command is used to make a directory, syntax: `mkdir  name-of-folder-
 $ mkdir fastq_backup
 ```
 
-> **Tip** - File/directory/program names with spaces in them do not work in unix, use characters like hyphens or underscores instead.
+> **Tip** - File/directory/program names with spaces in them do not work in Unix, use characters like hyphens or underscores instead.
 
 ### Moving
 
@@ -451,7 +451,7 @@ Important notes about `mv`:
 
 ### Removing
 
-We find our that we did not need to create backups of our fastq files manually as backups were generated by our collaborator; in the interest of saving space on the cluster we want to delete the contents of the `fastq-backup` folder and the folder itself. 
+We find out that we did not need to create backups of our fastq files manually as backups were generated by our collaborator; in the interest of saving space on the cluster we want to delete the contents of the `fastq-backup` folder and the folder itself. 
 
 ```bash
 $ rm  Mov10_oe_1.subset-backup.fq
