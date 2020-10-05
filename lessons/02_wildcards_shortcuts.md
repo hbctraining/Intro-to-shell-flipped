@@ -29,20 +29,20 @@ Now, let's go into `raw_fastq`, then type `ls Mov10_oe_`, followed by pressing t
 
 ```bash
 $ cd raw_fastq/
-$ ls Mov10_oe_<tab><tab>
+$ ls Mov10_oe_<tab>
 ```
 
 **Nothing happens!!**
 
 The reason is that there are multiple files in the `raw_fastq` directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` a second time again, the shell will then list all the possible choices.
 
-```
+```bash
 $ ls Mov10_oe_<tab><tab>
 ```
 
 Now you can select the one you are interested in listed, and enter the number and hit tab again to fill in the complete name of the file.
 
-```
+```bash
 $ ls Mov10_oe_1<tab>
 ```
 
