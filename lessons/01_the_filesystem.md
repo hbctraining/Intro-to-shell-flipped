@@ -17,15 +17,15 @@ date: "September 28, 2020"
 
 We will spend most of our time learning about the basics of the shell command-line interface (CLI) by exploring experimental data on the **O2** cluster. So, we will need to log in to this remote compute cluster first before we can start with the basics.
 
-Let's take a quick look at the basic architecture of a cluster environment and some few cluster-specific jargon prior to logging in.
+Let's take a quick look at the basic architecture of a cluster environment and some cluster-specific jargon prior to logging in.
 
 <p align="center">
 <img src="../img/compute_cluster.png" width="500">
 </p>
 
-In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a designated role, either for logging in or for performing computational analysis/work. **A given cluster will usually have a few login nodes and several compute nodes.**
+The above image reflects the many computers that make up a **"cluster"** of computers. Each individual computer in the cluster is usually a lot more powerful than any laptop or desktop computer we are used to working with, and is referred to as a **"node"** (instead of computer). Each node has a designated role, either for logging in or for performing computational analysis/work. **A given cluster will usually have a few login nodes and several compute nodes.**
 
-The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis. *We will be going into more depth about the cluster architecture, storage systems and best practices on the last day of this workshop.* 
+The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis. ***We will be going into more depth about the cluster architecture, storage systems and best practices on the last day of this workshop.***
 
 ### Logging in to O2
 
@@ -33,7 +33,7 @@ The data on a cluster is also stored differently than what we are used to with o
 
 For this workshop we will be using training accounts to log in. These have been created for us by the [HMS Research Computing](https://rc.hms.harvard.edu/) (HMS-RC) team, they are the folks that manage the O2 cluster. We will be providing each of you with your own *training* account associated with a password for the duration of this workshop.
 
-> If you are interested in getting your own account on O2, please follow the instructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
+> If you are interested in getting your own personal account on O2, please follow the instructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
 
 #### Tool(s) to access remote computers/clusters
 
@@ -81,7 +81,7 @@ The command prompt on O2 will have some characters before the `$`, something lik
 
 #### Let's move from the login node to a compute node!
 
-The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not designated to log in users).
+The first command we will run at the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not designated to log in users). **Copy and paste the command below.**
 
 ```bash
 $ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC /bin/bash
@@ -97,11 +97,11 @@ Press enter, you should see a couple of messages and in a few seconds you should
 > 
 > The "reservation" is only active for the training accounts during class.
 
-Make sure that your command prompt is now contains the word "compute". Once it does, we are ready to copy over some data to work with!
+Make sure that your command prompt now contains the word "compute". Once it does, we are ready to copy over some data to work with!
 
 ### Copying example data folder
 
-Now that we are all set up to use O2, the first thing to do is to check if there are any files in the data folder we are currently in. When you log in to a cluster, you will land within a folder designated specifically for your use, and is referred to as you "home directory".
+Now that we are all set up to use O2, the first thing to do is to check if there are any files in the data folder we are currently in. When you log in to a cluster, you will land within a folder designated specifically for your use, and is referred to as your "home directory".
 
 Let's list the contents of our home directory using a command called `ls`.
 
@@ -111,7 +111,7 @@ $ ls
 
 It should show you that you have 0 files, or not show you anything at all because you don't have any data there as yet!
 
-Let's bring in a data folder from a different location on the cluster to our designated area by using the `cp` command. Copy and paste the following command all the way from `cp` and including the period symbol at the end `.`:
+Let's bring in a data folder from a different location on the cluster to our designated area by using the `cp` command. **Copy and paste the following command** all the way from `cp` and including the period symbol at the end `.`:
 
 ```bash
 $ cp -r /n/groups/hbctraining/unix_lesson/ .
@@ -119,7 +119,7 @@ $ cp -r /n/groups/hbctraining/unix_lesson/ .
 
 >'cp' is the command for copy. This command required you to specify the location of the item you want to copy (/groups/hbctraining/unix_lesson/) and the location of the destination (.); please note the space between the 2 in the command. The "-r" is an option that modifies the copy command to do something slightly different than usual. The "." means "here", i.e. the destination location is where you currently are.
 
-Now let's see if we can see this data folder we brought in can be "listed".
+Now let's see if we can see this data folder we brought in and if it can be "listed".
 
 ```bash
 ls
@@ -186,7 +186,7 @@ Each line of output represents a file or a directory. The directory lines start 
 ls -lF
 ```
 
-See the modification in the output?
+Do you see the modification in the output?
 
 > **Tip** - **All commands are essentially programs** that are able to perform specific, commonly-used tasks.
 
@@ -391,7 +391,11 @@ cd ~/unix_lesson/raw_fastq
 ### Copying
 
 Let's use the copy (`cp`) command to make a copy of one of the files in this folder, `Mov10_oe_1.subset.fq`, and call the copied file `Mov10_oe_1.subset-copy.fq`. 
-The copy command has the following syntax: `cp  path-to-item-being-copied  path-to-new-copied-item`. In this case the files are in our current directory, so we just have to specify the name of the file being copied, followed by whatever we want to call the newly copied file.
+The copy command has the following syntax: 
+
+`cp  path/to/item-being-copied  path/to/new-copied-item`
+
+In this case the files are in our current directory, so we just have to specify the name of the file being copied, followed by whatever we want to call the newly copied file.
 
 ```bash
 $ cp  Mov10_oe_1.subset.fq  Mov10_oe_1.subset-copy.fq
@@ -415,7 +419,11 @@ $ mkdir fastq_backup
 
 ### Moving
 
-We can now move our copied fastq file in to the new directory. We can move files around using the move command, `mv`, syntax: `mv  path-to-item-being-moved  path-to-destination`. In this case we can use relative paths and just type the name of the file and folder.
+We can now move our copied fastq file in to the new directory. We can move files around using the move command, `mv`, syntax: 
+
+`mv  path/to/item-being-moved  path/to/destination` 
+
+In this case we can use relative paths and just type the name of the file and folder.
 
 ```bash
 $ mv  Mov10_oe_1.subset-copy.fq  fastq_backup
@@ -445,7 +453,7 @@ $ ls
 
 > **Tip** - You can use move to move a file and rename it at the same time!
 
-Important notes about `mv`:
+**Important notes about `mv`**:
 * When using `mv`, shell will **not** check you if you are sure that you want to "replace existing file" or similar. 
 * Once replaced, it is not possible to get the replaced file back!
 
