@@ -140,6 +140,11 @@ to see a numbered list of recent commands, including this just issued
 - <button>Ctrl + A</button> will bring you to the start of the command you are writing.
 - <button>Ctrl + E</button> will bring you to the end of the command.
 
+**Exercise**
+
+1.  Checking the output of the `history` command, how many commands have you typed in so far?
+2.  Use the up arrow key to check the command you used before `history` command. What is it? Does it make sense?
+
 ## Commands, options, and keystrokes covered
 
 ```
