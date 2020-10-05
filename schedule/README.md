@@ -4,17 +4,17 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 10:00 - 10:30 | Workshop introduction | Radhika |
-| 10:30 - 11:45 | Introduction to Shell | Radhika|
+| 10:00 - 10:30 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Radhika |
+| 10:30 - 11:45 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika|
 | 11:45 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
 
 ### Self Learning #1
 
-* Wildcards and shortcuts in bash
-* Searching and redirection
-* Examining and creating files
-* Shell scripts and variables in bash
+* [Wildcards and shortcuts in bash](../lessons/02_wildcards_shortcuts.md)
+* [Searching and redirection](../lessons/03_working_with_files.md)
+* [Examining and creating files](../lessons/04_searching_files.md)
+* [Shell scripts and variables in bash](../lessons/05_shell-scripts_variable.md)
 
 ### Assignment #1
 * All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access).
