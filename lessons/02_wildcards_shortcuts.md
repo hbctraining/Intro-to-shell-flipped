@@ -14,25 +14,42 @@ date: "August 7, 2017"
 
 ### Tab completion
 
-Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use `tab` completion. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, the shell will try to fill in the rest of the directory name. For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by pressing the `tab` key:
+Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use **tab completion**. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, Shell will try to fill in the rest of the directory name. 
+
+For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by pressing the `tab` key:
 
 ```bash
 $ cd
 $ cd uni<tab>
 ```
 
-The shell will fill in the rest of the directory name for `unix_lesson`. Now further go to `unix_lesson/raw_fastq`, then type `ls Mov10_oe_`, followed by `tab` key:
+The shell will fill in the rest of the directory name for `unix_lesson`. 
+
+Now, let's go into `raw_fastq`, then type `ls Mov10_oe_`, followed by pressing the `tab` key once:
 
 ```bash
 $ cd raw_fastq/
 $ ls Mov10_oe_<tab><tab>
 ```
 
-When you hit `tab` just for once, nothing happens. The reason is that there are multiple directories in the current directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` again, the shell will then list all the possible choices.
+**Nothing happens!!**
+
+The reason is that there are multiple files in the `raw_fastq` directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` a second time again, the shell will then list all the possible choices.
+
+```
+$ ls Mov10_oe_<tab><tab>
+```
+
+Now you can select the one you are interested in listed, and enter the number and hit tab again to fill in the complete name of the file.
+
+```
+$ ls Mov10_oe_1<tab>
+```
 
 Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>`, you will see that tab completion works. 
 
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
+
 
 ### Wild cards
 
@@ -58,9 +75,9 @@ $ ls Mov10*fq
 
 This lists only the files that begin with 'Mov10' and end with `fq`.
 
-So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can match one or more occurrences of any character, including no character. 
+So how does this actually work? The Shell (bash) considers an asterisk "*" to be a wildcard character that can match one or more occurrences of any character, including no character. 
 
-> An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
+> **Tip** - An asterisk/star is only one of the many wildcards in Unix, but this is the most powerful one and we will be using this one the most for our exercises.
 
 ****
 
@@ -73,17 +90,18 @@ navigating to a different directory.
 2.  List all of the files in `/bin` that contain the letter 'a'
 3.  List all of the files in `/bin` that end with the letter 'o'
 
-BONUS: List all of the files in `/bin` that contain the letter 'a' or 'c'.
+BONUS: Using one command list all of the files in `/bin` that contain either 'a' or 'c'.
 
 ****
 
 
 ### Shortcuts
 
-There are some very useful shortcuts that you should also know about. Dealing with the
-home directory is very common. In shell, the tilde character,
-"~", is a shortcut for your home directory. Let's first navigate to the `raw_fastq`
-directory:
+There are some very useful shortcuts that you should also know about. 
+
+#### Home directory or "~"
+
+Dealing with the home directory is very common. In shell, the tilde character, "~", is a shortcut for your home directory. Let's first navigate to the `raw_fastq` directory (try to use tab completion here!):
 
 ```bash
 $ cd
@@ -96,15 +114,17 @@ Then enter the command:
 $ ls ~
 ```
 
-This prints the contents of your home directory, without you having to type the full path. This is because the tilde "~" is equivalent to "/home/username".
+This prints the contents of your home directory, without you having to type the full path. This is because the tilde "~" is equivalent to "/home/username", as we had mentioned in the previous lesson
 
-Another shortcut is "..":
+#### Parent directory or ".."
+
+Another shortcut you encountered in the previous lesson is "..":
 
 ```bash
 $ ls ..
 ```
 
-The shortcut `..` always refers to the directory above your current directory. So, it prints the contents of the `unix_lesson`. You can also chain these together:
+The shortcut `..` always refers to the parent directory of whatever directory you are in currently. So, `ls ..` will print the contents of `unix_lesson`. You can also chain these `..` together, separated by `/`:
 
 ```bash
 $ ls ../..
@@ -112,41 +132,43 @@ $ ls ../..
 
 This prints the contents of `/home/username`, which is two levels above your current directory (your home directory). 
 
+#### Current directory or "."
+
 Finally, the special directory `.` always refers to your current directory. So, `ls` and `ls .` will do the same thing - they print the contents of the current directory. This may seem like a useless shortcut, but recall that we used it earlier when we copied over the data to our home directory.
 
 To summarize, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts can be convenient when you navigate through directories!
 
 ### Command History
 
-You can easily access previous commands by hitting the up arrow on your keyboard. You can step backwards through your command history. On the other hand, the down arrow takes your forwards in the command history.
+You can easily access previous commands by hitting the <button>up</button> arrow key on your keyboard, this way you can step backwards through your command history. On the other hand, the <button>down</button> arrow key takes you forward in the command history.
 
-'Ctrl-r' will do a reverse-search through your command history.  This
-is very useful.
+***Try it out! While on the command prompt hit the <button>up</button> arrow a few times, and then hit the <button>down</button> arrow a few times until you are back to where you started.***
 
-You can also review your recent commands with the `history` command.  Just enter:
+You can also review your recent commands with the `history` command. Just enter:
 
 ```bash
 $ history
 ```
 
-to see a numbered list of recent commands, including this just issued
-`history` command. Only a certain number of commands are stored and displayed with `history`, there is a way to modify this to store a different number.
+You should see a numbered list of commands, including the `history` command you just ran! 
 
-> **NOTE:** So far we have only run very short commands that have few or no arguments. It would look faster to just retype it than to check the history. However, as you start to run analyses on the commadn-line, you will find your commands to be more complexed, and the history will be very useful then!
+Only a certain number of commands can be stored and displayed with the `history` command by default but you can increase or decrease it to a different number. It is outside the scope of this workshop, but feel free to look it up after class.
+
+> **NOTE:** So far we have only run very short commands that have very few or no arguments. It would be faster to just retype it than to check the history. However, as you start to run analyses on the command-line you will find that the commands are longer and more complex, and the `history` command will be very useful then!
 
 **Other handy command-related shortcuts**
 
-- <button>Ctrl + C</button> will cancel the command you are writing, and give you a fresh prompt.
-- <button>Ctrl + A</button> will bring you to the start of the command you are writing.
-- <button>Ctrl + E</button> will bring you to the end of the command.
+- <button>Ctrl</button> + <button>C</button> will cancel the command you are writing, and give you a fresh prompt.
+- <button>Ctrl</button> + <button>A</button> will bring you to the start of the command you are writing.
+- <button>Ctrl</button> + <button>E</button> will bring you to the end of the command.
 
 ****
 
 **Exercise**
 
 1.  Checking the output of the `history` command, how many commands have you typed in so far?
-2.  Use the up arrow key to check the command you typed before the `history` command. What is it? Does it make sense?
-3.  Type several random characters on your prompt. Can you bring the cursor to the start with <button>Ctrl + A</button>? Next, can you bring the cursor to the end with <button>Ctrl + E</button>? Finally, what happens when you use <button>Ctrl + C</button>?
+2.  Use the <button>up</button> arrow key to check the command you typed before the `history` command. What is it? Does it make sense?
+3.  Type several random characters on the command prompt. Can you bring the cursor to the start with <button>Ctrl</button> + <button>A</button>? Next, can you bring the cursor to the end with <button>Ctrl</button> + <button>E</button>? Finally, what happens when you use <button>Ctrl</button> + <button>C</button>?
 
 ****
 
