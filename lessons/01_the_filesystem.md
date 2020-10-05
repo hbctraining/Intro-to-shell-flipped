@@ -285,7 +285,7 @@ Why is this so?
 
 *This is because `~` = full path to home directory for the user.*
 
-Can we just type `~` instead of `/home/rsk27`?
+Can we just type `~` instead of `/home/username`?
 
 *Yes, we can!*
 
