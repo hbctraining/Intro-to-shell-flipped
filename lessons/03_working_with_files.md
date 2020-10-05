@@ -82,10 +82,17 @@ Rather than printing to screen, the `less` command opens the file in a new buffe
 
 Use the shortcut keys to move through your FASTQ file, we will explore these files in more detail later in the workshop. 
 
-`less` also gives you a way of searching through files. Just hit the <kbd>/</kbd> key to begin a search. Enter the name of the string of characters you would like to search for and hit enter. It will jump to the next location where that string is found. If you hit <kbd>/</kbd> then <kbd>ENTER</kbd>, `less` will just repeat the previous search. `less` searches from the current location and works its way forward. If you are at the end of the file and search for the word "cat", `less` will not find it. You need to go to the beginning of the file and search.
+#### Searching files with `less`
 
-For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>. There are other more sophisticated commands to search through your file (and we will cover these later), but this shortcut search is useful for a quick scan through. You can think of it as being analagous to using the <kbd>Ctrl-F</kbd> keystroke when searching on your laptop.
+`less` also gives you a way of searching through files. 
 
+Just type in <kbd>/</kbd> to begin a search, you will see that the `/` will show up at the  bottom of the `less` buffer. Now, enter the name of the string of characters you would like to search for and hit the enter key. The interface will move to show you the location where that string is found, and highlight the string. If you hit <kbd>/</kbd> then <kbd>ENTER</kbd>, `less` will just repeat the previous search. 
+
+`less` searches from the current location and works its way forward. For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. 
+
+If you start a search when you are at the end of the file, `less` will not find it. You need to go to the beginning of the file and search.
+
+To exit hit <kbd>q</kbd>. There are other more sophisticated commands to search through your file (and we will cover these later), but this shortcut search is useful for a quick scan through. You can think of it as being analagous to using the <kbd>Ctrl-F</kbd> keystroke when searching on your laptop.
 
 ### `head` and `tail` commands
 
@@ -101,7 +108,7 @@ $ head Mov10_oe_1.subset.fq
 $ tail Mov10_oe_1.subset.fq
 ```
 
-By default the first or last 10 lines will be printed to screen. The `-n` option can be used with either of these commands to specify the number `n` lines of a file to display. For example, let's print the first/last line of the file:
+By default, the first or last 10 lines will be printed to screen. The `-n` option can be used with either of these commands to specify the number `n` lines of a file to display. For example, let's print the first/last line of the file:
 
 ```bash
 $ head -n 1 Mov10_oe_1.subset.fq
@@ -115,15 +122,16 @@ $ tail -n 1 Mov10_oe_1.subset.fq
 
 1. Change directories into `genomics_data`. You can do this using a full or relative path.
 2. Use the `less` command to open up the file `Encode-hesc-Nanog.bed`.
-3. Use the shortcut to search for the string `chr11`. Yould see all instances in the file highlighted.
-4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report the three highlighted lines at the end of the file where you see `chr11` highlighted. Exit the file.
-5. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see in the terminal.
+3. Search for the string `chr11`; you'll see all instances in the file highlighted.
+4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report the three highlighted lines at the end of the file where you see `chr11` highlighted. 
+5. Exit the `less` buffer and come back to the command prompt.
+6. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see as the output within the Terminal.
 
 ***
 
 ## Writing files
 
-We've been able to do a lot of work with files that already exist, but what if we want to write and create our own files? Obviously, we're not going to type in sequence information for a FASTA file, but you'll see as we go that there are a lot of situations in which we would need to write/create a file or edit an existing file.
+We've been able to do a lot of work with files that already exist, but what if we want to write and/or create our own files? Obviously, we're not going to type in sequence information for a FASTA file, but you'll see as we go that there are a lot of situations in which we would need to write/create a file or edit an existing file.
 
 In order to create or edit files we will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can
 only work with plain character data, not tables, images, or any other media. The types of text editors available can generally be grouped into two categories: **graphical user interface (GUI) text editors** and **command-line editors**.
@@ -134,11 +142,11 @@ A GUI is an interface that has buttons and menus that you can click on to issue 
 
 #### Command-line editors
 
-When working remotely, we need a text editor that functions from the command line interface. With command-line editors you must navigate the interface using the arrow keys and shortcuts, since you do not have the option to 'point-and-click'. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters. There are also simpler editors available for use (i.e. [nano](http://www.nano-editor.org/)), but tend to have limited functionality.
+When working remotely, we need a text editor that functions from the command line interface. With command-line editors you must navigate the interface using the arrow keys and shortcuts, since you do not have the option to 'point-and-click'. Some popular editors include [Emacs](http://www.gnu.org/software/emacs/), [Vim](http://www.vim.org/), or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). These are editors which are generally available for use on high-performance compute clusters. There are also simpler editors available for use on the cluster (e.g. [nano](http://www.nano-editor.org/)), but tend to have limited functionality.
 
 ### Introduction to Vim 
 
-To write and edit files, we're going to use a text editor called 'Vim'. Vim is a very powerful text editor, and it offers extensive text editing options. However, in this introduction we are going to focus on **exploring some of the more basic functions**. There is a lot of functionality that we are not going to cover during this session, but encourage you to go further as you become more comfortable using it. 
+To write and edit files, we're going to use a text editor called 'Vim'. Vim is a very powerful text editor, and it offers extensive text editing options. However, in this introduction we are going to focus on **exploring some of the more basic functions**. 
 
 > #### How do I keep track of all these shortcuts in Vim?
 > To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled a [cheatsheet linked here](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf). Download it to your computer, it is a useful resource to have open while using Vim.
@@ -149,7 +157,9 @@ To write and edit files, we're going to use a text editor called 'Vim'. Vim is a
 
 ### Vim Interface
 
-You can create a document by calling a text editor (in our case `vim`) and providing the name of the document you wish to create. Change directories to the `~/unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
+You can create a document by calling a text editor (in our case `vim`) and providing the name of the document you wish to create. 
+
+Change directories to the `~/unix_lesson/other` folder and create a document using called `draft.txt` using the `vim` command:
 
 ```bash
 $ cd ~/unix_lesson/other
@@ -157,7 +167,7 @@ $ cd ~/unix_lesson/other
 $ vim draft.txt
 ```
 
-Notice the `"draft.txt" [New File]` typed at the bottom left-hand section of the screen. This tells you that you just created a new file in vim. 
+**Note the `"draft.txt" [New File]` typed at the bottom left-hand section of the screen.** This tells you that you just created a new file in vim. 
 
 
 ### Vim Modes
@@ -168,15 +178,15 @@ Vim has **_two basic modes_** that will allow you to create documents and edit y
 - **_insert (or edit) mode:_** will allow you to write and edit text
 
 
-Upon creation of a file, vim is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. Now type in a few lines of text:
+Upon creation of a file, vim is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. **Note the `--INSERT--` at the bottom left hand of the screen.** Now type in a few lines of text:
 
 <p align="center">
 <img src="../img/vim_insert.png" width="600">
 </p>
 
+After you have finished typing, **press <kbd>esc</kbd> to enter command mode.** 
 
-After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
-
+**Note the `--INSERT--` has now disappeared from the bottom of the screen.**
 
 > ### Review of Vim modes
 > | key              | action                 |
@@ -185,10 +195,9 @@ After you have finished typing, press <kbd>esc</kbd> to enter command mode. Noti
 > | <button>esc</button>     | command mode - to issue commands / shortcuts  |
 
 
-
 ### Saving and Quitting
 
-To **write to file (or save the changes in the file)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
+To **"write to file"** or save the modifications made to the file, **type <kbd>:w</kbd>** when in command mode. You can see the commands you type in the bottom left-hand corner of the screen. 
 
 <p align="center">
 <img src="../img/vim_save.png" width="600">
@@ -201,9 +210,9 @@ After you have saved the file, the total number of lines and characters in the f
 </p>
 
 
-Alternatively, we can **write to file (save changes) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
+Alternatively, we can **write to file (save changes) and quit** all at once by **typing <kbd>:wq</kbd>**. Now, you should have exited vim and returned back to your command prompt.
 
-To edit your `draft.txt` document, open up the file again by calling vim and entering the file name: `vim draft.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
+To edit the newly created `draft.txt` file, you can open it again with vim: `vim draft.txt`. First, change to *insert mode* and type a few additional lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by going into command mode by pressing the <button>esc</button> key, and then **typing <kbd>:q!</kbd>**.
  
 <p align="center">
 <img src="../img/vim_quit.png" width="600">
@@ -211,7 +220,7 @@ To edit your `draft.txt` document, open up the file again by calling vim and ent
 
 
 > ### Review of saving and quitting
-> | key              | action                 |
+> | key (in command mode)  | action                 |
 > | ---------------- | ---------------------- |
 > | <button>:w</button>     | to write to file (save) |
 > | <button>:wq</button>     | to write to file and quit     |
@@ -222,29 +231,29 @@ To edit your `draft.txt` document, open up the file again by calling vim and ent
 
 While we cannot point and click to navigate the document, we can use the arrow keys to move around. However, navigating with arrow keys can be very slow, so Vim has shortcuts (which are completely unintuitive, but very useful as you get used to them over time). 
 
-Create the document `spider.txt` in vim. Enter the text as shown below in the screenshot: 
+Create a new file called `spider.txt` using `vim`. Go into *insert mode* and enter the text as shown below in the screenshot: 
 
 <p align="center">
 <img src="../img/vim_spider.png" width="600">
 </p>
 
-To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>.
+Once you have finished typing, you can display line numbers by changing to *command mode* and then typing the <kbd>:set number</kbd> command. Later, if you choose to remove the line numbers you can reset it with <kbd>:set nonumber</kbd>.
 
 <p align="center">
 <img src="../img/vim_spider_number.png" width="600">
 </p>
 
-| key              | action                 |
+| key (in command mode)  | action                 |
 | ---------------- | ---------------------- |
 | <button>:set number</button>     | to number lines |
 | <button>:set nonumber</button>     | to remove line numbers    |
 
 
- **Save the document.** Check to see what mode you are currently in. **While in command mode**, try moving around the file `spider.txt` and familarizing yourself with some of these shortcuts!  
+**Save the document.** Check to see what mode you are currently in. **While in command mode**, try moving around the file `spider.txt` and familarizing yourself with some of these shortcuts!  
 
 **Navigating around the file**
 
-| key              | action                 |
+| key (in command mode) | action                 |
 | ---------------- | ---------------------- |
 | <button>gg</button>     | to move to top of file |
 | <button>G</button>     | to move to bottom of file     |
@@ -257,7 +266,7 @@ Practice some of the editing shortcuts, then **quit the document without saving 
 
 **Editing the file**
 
-| key              | action                 |
+| key (in command mode) | action                 |
 | ---------------- | ---------------------- |
 | <button>dw</button>     | to delete word |
 | <button>dd</button>     | to delete line     |
@@ -265,7 +274,6 @@ Practice some of the editing shortcuts, then **quit the document without saving 
 | <button>Ctrl + r</button>     | to redo     |
 | <button>/*pattern*</button>     | to search for a pattern (*n/N* to move to next/previous match)    |
 | <button>:%s/*search*/*replace*/g</button>     | to search for a pattern and replace for all occurences     |
-
 
 
 *** 
