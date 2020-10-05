@@ -9,21 +9,30 @@ Approximate time: 60 minutes
 ## Learning Objectives
 
 * Capture previous commands into a shell script
-* Understanding variables and the different use cases
+* Describe variables in Shell and the different use cases
 * Illustrate the use of variables in a shell script
 
 
 ## Shell scripts
 
-By this point on the workshop you have been introduced to a number of commands to interrogate your data. To demonstrate the function of each command we have run them one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the filesystem. When we are running analyses which require a series of tasks to be run, there is a more efficent way to do this using shell scripts. 
+By this point in the workshop you have been introduced to a number of commands to explore your data. To demonstrate the function of each command we have run them one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the file system. When we are running analyses which require a series of tasks to be run, there is a more efficent way to do this using shell scripts. 
 
-Shell scripts are **text files that contain commands we want to run**. In this lesson we will introduce you to shell scripts by providing a simple example one. We will also introduce bash variables and their use case with a more advanced shell script example.
+Shell scripts are **text files that contain commands we want to run**. In this lesson we will introduce you to shell scripts by providing a simple example. We will also introduce bash variables and their use case with a more advanced shell script example.
+
+> ### Review of Vim modes
+>
+> ***You will be using Vim quite a bit in this lesson, so before you get started, make sure you review the modes in vim.***
+>
+> | key              | action                 |
+> | ---------------- | ---------------------- |
+> | <button>i</button>     | insert mode - to write and edit text |
+> | <button>esc</button>     | command mode - to issue commands / shortcuts  |
 
 ### A simple script
 
-We are finally ready to see what makes the shell such a powerful programming environment. To create our first script, we are going to take some of the commands we have run previously and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. For historical reasons, a bunch of commands saved in a file is referred to as shell script, but make no mistake, this is actually a small program. 
+We are finally ready to see what makes the shell such a powerful programming environment. To create our first script, we are going to take some of the commands we have run previously and save them into a file so that we can **re-run all those operations** again later, by typing just **one single command**. For historical reasons, a bunch of commands saved in a file is referred to as shell script, but make no mistake, this is actually a small program! 
 
-As with any file in bash, you can give a shell script any name (with or without an extension). However, it is best practice and helpful to you and your collaborators to easily identify a file as a shell script if it has the extension `.sh`. 
+Interestingly, when working with Shell or on the command line you can give files any (or no) extension. Similarly, for a shell script you don't need a specific extension. However, it is best practice to give shell scripts the extension `.sh`. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
 
 Move over to the `other` directory and create a new file using `vim`. We will call our script `listing.sh`:
 
@@ -37,23 +46,26 @@ This shell script will do two things:
 1. Tell us our current working directory
 2. List the contents of the directory 
 
-We already know the commands for doing both of these things, so let's add them into our script:
+We already know the commands for doing both of these things, so let's go into the insert mode in vim, and add the 2 commands into our script:
 
 ```bash
 pwd
 ls -l 
 ```
 
-Now, we could save and quit and this shell script would run perfectly fine. But instead, we will add some verbosity to our script by using the `echo` command. The `echo` command is used to display a line of text that is passed in as an argument. This is a built in bash command that is mostly used in shell scripts to output status text to the screen or a file. Place the following `echo` statements on the lines before each of the commands:
+Now, we could save and quit and this shell script would run perfectly fine. But, we will add some verbosity to our script by using the `echo` command (verbosity is a good thing here!). The `echo` command is used to display a line of text that is passed in as an argument. This is a bash command that is mostly used in shell scripts to output status to the screen or to a file. 
+
+Place the following `echo` statements on the lines before each of the commands:
 
 ```bash
 echo "Your current working directory is:"
 pwd
+
 echo "These are the contents of this directory:"
 ls -l 
 ```
 
-Now we are all set! You can save the file and exit `vim`. You should now be back at the command prompt. Check and see that the new script file you created is there:
+Now we are all set! You can move to the command mode in vim now and save the file and exit `vim`. This should bring you back to the command prompt. Check and see that the new script file you created is in this directory:
 
 ```bash
 $ ls -l
@@ -77,7 +89,7 @@ This is a very simple shell script, just to introduce you to the concept. Before
 
 1. Open up the script `listing.sh` using vim. Add the command which prints to screen the contents of the file `Mov10_rnaseq_metadata.txt`.
 2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
-3. Run the new script. Provide the contents of the new script and the output after running it.
+3. Run the new script. Report the contents of the new script and the output you got after running it.
 
 ***
 
@@ -85,7 +97,7 @@ This is a very simple shell script, just to introduce you to the concept. Before
 
 A *variable* is a common concept shared by many programming languages. **Variables are essentially a symbolic/temporary name for, or a reference to, some information**. Variables are analogous to "buckets", where **information can be stored, maintained and modified** without too much hassle. Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
 
-To create a variable in bash, you provide the name of the variable, followed by the equals sign, and finishing with tbe value we want to assign to the variable. Note that the variable name cannot contain spaces, nor can there be spaces on either side of the equals sign.
+To create a variable in bash, you provide the name of the variable, followed by the equals sign, and finishing with the value we want to assign to the variable. Note that the variable name cannot contain spaces, nor can there be spaces on either side of the equals sign.
 
 Let's start by creating a variable called `num` that has the number 25 stored inside it:
 
@@ -95,7 +107,7 @@ $ num=25
 
 Once you press return, you will find yourself back at the command prompt. **How do we know that we actually created the bash variable?**
 
-One way to see the variable created is by using the `echo` command. As we learned earlier, this command takes the argument provided and prints it to the terminal. If we provide `num` as an argument it will simply be interpreted as a character string. We want `echo` to display the contents of the variable and not its name.  To do this we need to **explicitly use a `$` in front of the variable name**:
+One way to see the variable created is by using the `echo` command. As we learned earlier, this command takes the argument provided and prints it to the terminal. If we provide `num` as an argument it will be simply interpreted as a character string "num". We want `echo` to display the contents of the variable and not its name. To do this we need to **explicitly use a `$` in front of the variable name**:
 
 ```bash
 $ echo $num
@@ -112,7 +124,7 @@ You should see the number 25 returned to you. Did you notice that when we create
 
 ### Using variables as input to commands
 
-So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically a filename:
+So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically the name of one of the files in the `raw_fastq` director:
 
 ```bash
 $ file=Mov10_oe_1.subset.fq
@@ -181,7 +193,7 @@ $ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
 
 **What is returned to you?**
 
-The path was split into all text leading up to the last `/` (which is `unix_lesson/raw_fastq/`) and everything after the `/` which is the filename `Mov10_oe_1.subset.fq`. The command **returns only the filename**. 
+The path was split into all text leading up to the last `/` (which is `~/unix_lesson/raw_fastq/`) and everything after the `/` which is the file name `Mov10_oe_1.subset.fq`. The command **returns only the file name**. 
 
 Now, suppose we wanted to also **trim off the file extension** (i.e. remove `.fq` leaving only the file *base name*). We can do this by **adding a parameter** to the command to specify what string of characters we want trimmed.
 
@@ -209,40 +221,40 @@ The `basename` command returns a character string and this is totally something 
 The command that we are running is wrapped in backticks (one at the beginning and one at the end), and then we assign it to the variable as we would any other value. Let's try this with the `Mov10_oe_1.subset.fq` example from above:
 
 ```bash
-$ base=`basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq`
+$ samplename=`basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq`
 ```
 
-Once you press return you should be back at the command prompt. Check to see what got stored in the `base` variable:
+Once you press return you should be back at the command prompt. Check to see what got stored in the `samplename` variable:
 
 ```bash
-$ echo $base
+$ echo $samplename
 ```
 
 > #### The `basename` command
 > It is hard to see the utility of this command by just running it at command-line, but it is very useful command when creating scripts for analysis. Within a script it is common to create an output file and the `basename` allows us to easily create a prefix to use for naming the output files. We will demonstrate this in more detail during our ["Loops and Automation" lesson](04_loops_and_scripts.md).
 
+
 ## Shell scripting with bash variables
 
-Now it's time to put all of these concepts together to create a more advanced version of our script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
+Now it's time to put all of these concepts together to create a more advanced version of the script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
 
 1. Assign the path of the directory to a variable
 2. Create a variable that stores only the directory name (and no path information)
-3. Move from the current location in the filesystem into the directory 
+3. Move from the current location in the filesystem into the directory we selected in 1.
 4. List the contents of the directory
 5. List the total number of files in the directory
 
 
-It seems like a lot, but we are equipped with all the necessary concepts and commands to do this quite easily!
+It seems like a lot, but you are equipped with all the necessary concepts and commands to do this quite easily!
 
 Let's get started by moving into the `other` directory and creating a script called `directory_info.sh`:
 
 ```bash
-
-$ cd unix_lesson/other
+$ cd ~/unix_lesson/other
 $ vim directory_info.sh
 ```
 
-In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self know what each line of code is doing. 
+In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code by Shell. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self to know what each line of code is doing. 
 
 We will begin with a first comment describing the **usage of this script**. This lets anyone who is using the script know what it does and what they need to provide (if anything). In our case we need the user to provide a path to the directory of interest. This will be assigned to a variable for use later in the script.
 
@@ -258,10 +270,9 @@ Next, we will create another variable to store the directory name. To get the di
 dirName=`basename $dirPath`
 ```
 
-The next few tasks we wanto to execute require simple commands for changing directories (`cd`), listing contents of a directory (`ls -l`). We can add these into our script making sure we are referencing the correct variable and also including menaingful `echo` statements for verbosity.
+The next few tasks we want to execute require simple commands for changing directories (`cd`), listing contents of a directory (`ls -l`). We can add these into our script making sure we are referencing the correct variable and also including meaningful `echo` statements for verbosity.
 
 ```bash
-
 echo "Reporting on the directory" $dirName "..."
 
 # Move into the directory
@@ -269,7 +280,6 @@ cd $dirPath
 
 echo "These are the contents of" $dirName
 ls -l 
-
 ```
 
 The final task of reporting the total number of files will require us to pipe (`|`) together multiple commands:
@@ -281,10 +291,9 @@ ls | wc -l
 echo "Report complete!"
 ```
 
-After adding in a final `echo` statement, we are all set with script! If your script looks similar to what we have listed below, save and exit Vim. 
+After adding in a final `echo` statement, we are all set with script! Make sure that your script looks similar to what we have listed below. If it does, save and exit Vim. 
 
 ```bash
-
 ## USAGE: Provide the full path to the directory you want information on
 dirPath=~/unix_lesson/raw_fastq
 
@@ -312,7 +321,6 @@ echo "Report complete!"
 1. Run the script `directory_info.sh`. Report what gets printed to the screen.
 2. Open up the script `directory_info.sh` using vim. Change the approproiate line of code so that our directory of interest is `~/unix_lesson/genomics_data`. Save and exit Vim.
 3. Run the script with the changes and report what gets printed to the screen.
-
 ***
 
 In this lesson, we described shell scripts and introduced a few related concepts that are helpful when you are starting out. It is important to understand each of the indvidual concepts, but also to see how they all come together to add flexibility and efficency to your script. Later in the workshop we will further illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
