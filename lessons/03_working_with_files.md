@@ -116,7 +116,7 @@ $ tail -n 1 Mov10_oe_1.subset.fq
 1. Change directories into `genomics_data`. You can do this using a full or relative path.
 2. Use the `less` command to open up the file `Encode-hesc-Nanog.bed`.
 3. Use the shortcut to search for the string `chr11`. Yould see all instances in the file highlighted.
-4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report three lines at the end of the file where you see `chr11` highlighted. Exit the file.
+4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report the three highlighted lines at the end of the file where you see `chr11` highlighted. Exit the file.
 5. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see in the terminal.
 
 ***
