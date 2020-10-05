@@ -7,15 +7,38 @@
 Do each of the following using a single ls command without navigating to a different directory.
 
 a. List all of the files in /bin that start with the letter 'c'
+
+$ls /bin/c*
+
 b. List all of the files in /bin that contain the letter 'a'
+
+$ls /bin/*a*
+
 c. List all of the files in /bin that end with the letter 'o'
+
+$ls /bin/*o
+
 d. BONUS: List all of the files in /bin that contain the letter 'a' or 'c'.
+
+$ls /bin/*a* /bin/*c* | sort -u
+OR
+$ls /bin/*[ac]*
+More on this square bracket wildcard usage: https://www.putorius.net/standard-wildcards-globbing-patterns-in.html
 
 ### Command history
 
 1. Checking the output of the history command, how many commands have you typed in so far?
+
+$history
+The number of commands will differ based on your history.
+
 2. Use the up arrow key to check the command you used before history command. What is it? Does it make sense?
 
+You should be able to retrieve that command by pressing the up arrow key twice.
+
+3. Type several random characters on your prompt. Can you bring the cursor to the start with Ctrl + A? Next, can you bring the cursor to the end with Ctrl + E? Finally, what happens when you use Ctrl + C?
+
+Ctrl + C will cancel the command you wrote, and start a new prompt.
 
 ## Working with Files
 
@@ -61,9 +84,18 @@ We have covered some basic commands in vim, but practice is key for getting comf
 ## Searching Files
 
 1. Search for the sequence CTCAATGAGCCA in Mov10_oe_1.subset.fq. How many sequences do you find?
+
+$grep CTCAATGAGCCA Mov10_oe_1.subset.fq
+The output returns 5 sequences
+
 2. In addition to finding the sequence, how can you modify the command so that your search also return the name of the sequence?
+
+$grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq
+
 3. Search for that sequence in all Mov10 replicate fastq files.
 
+$grep CTCAATGAGCCA Mov10*
+The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2
 
 ### Searching and redirection final exercise
 
@@ -71,12 +103,23 @@ Now that we know what type of information is inside of our gtf file, let's explo
 
 1. Extract only the genomic coordinates of exon features
 
+$grep exon chr1-hg19_genes.gtf | head
+
 2. Subset dataset to only keep genomic coordinates
+
+$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head
 
 3. Remove duplicate exons
 
+$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head 
+
 4. Count the total number of exons
 
+$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l
+The output returns 37213 lines.
+
+$grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l
+The output returns 22769 lines, indicating that repetitive lines are removed.
 
 ## Shell scripts and variables 
 
