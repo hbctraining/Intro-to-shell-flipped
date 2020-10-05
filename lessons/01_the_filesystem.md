@@ -15,32 +15,25 @@ date: "September 28, 2020"
 
 ## Setting up
 
-We will spend most of our time learning about the basics of the shell command-line interface (CLI) by exploring experimental data.
+We will spend most of our time learning about the basics of the shell command-line interface (CLI) by exploring experimental data on the **O2** cluster. So, we will need to log in to this remote compute cluster first before we can start with the basics.
 
-Since we are going to be working with this data on the **O2** cluster, we first need to log in.
-
-Before we do either of those things, let's take a quick look at the basic architecture of a cluster environment.
+Let's take a quick look at the basic architecture of a cluster environment and some few cluster-specific jargon prior to logging in.
 
 <p align="center">
 <img src="../img/compute_cluster.png" width="500">
 </p>
 
-In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a desginated role, either for logging in or for performing computational analysis/work. A given cluster will usually have a few login nodes and several compute nodes.
+In the above image are represented all the computers that make up a **"cluster"** of computers. Each computer is usually a lot more powerful than any laptop or desktop computer we are used to working with and is referred to as a **"node"** (instead of computer). Each node has a desginated role, either for logging in or for performing computational analysis/work. **A given cluster will usually have a few login nodes and several compute nodes.**
 
-The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis.
-
-We will be going into a lot more depth about the cluster architecture, storage systems and best practices on the last day of this workshop. For now, it a basic understanding is sufficient to get started with learning to interact with a computer using shell commands. Let's learn how to connect to O2.
+The data on a cluster is also stored differently than what we are used to with our laptops and desktops, in that it is not computer- or node-specific storage, but all of the data is available to all the nodes in a cluster. This ensures that you don't have to worry about which node is working on your analysis. *We will be going into more depth about the cluster architecture, storage systems and best practices on the last day of this workshop.* 
 
 ### Logging in to O2
 
 #### O2 accounts
 
-All clusters require you to have an account to be able to log in. In that way it is similar to any apps that store your data or information. 
-
-For this workshop we will be using training accounts created for us by the HMS Research Computing team, they are the folks that manage the O2 cluster. Each of us should have our own training account associated with a password. These training accounts will be available for workshop-related activities from today until the last day of the workshop.
+For this workshop we will be using training accounts to log in. These have been created for us by the [HMS Research Computing](https://rc.hms.harvard.edu/) (HMS-RC) team, they are the folks that manage the O2 cluster. We will be providing each of you with your own *training* account associated with a password for the duration of this workshop.
 
 > If you are interested in getting your own account on O2, please follow the intructions [provided here](https://wiki.rc.hms.harvard.edu/display/O2/Frequently+Asked+Questions+and+Answers#FrequentlyAskedQuestionsandAnswers-Accountsandloggingin) after this workshop.
-
 
 #### Tool(s) to access remote computers/clusters
 
@@ -52,51 +45,51 @@ Please find and open the Terminal utility on your computers using the *Spotlight
 
 **With Windows OS**
 
-By default, there is no built-in terminal for the bash shell available with the Windows OS. So, we will be using a downloaded program called "**Git BASH**". Git BASH which is part of the [Git for Windows](https://git-for-windows.github.io/) download is a so-called shell (bash) emulator. What this means is that it shows you a very similar interface to, and provides you the functionality of the Terminal on Mac/Linux OS.
+By default, there is no built-in Terminal that uses the bash shell on the Windows OS. So, we will be using a downloaded program called "**Git BASH**" which is part of the [Git for Windows](https://git-for-windows.github.io/) tool set. **Git BASH is a shell/bash emulator.** What this means is that it shows you a very similar interface to, and provides you the functionality of, the Terminal utility found on the Mac and Linux Operating systems.
 
 Please find and open Git BASH.
 
-> Windows users can use another program called [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) instead of a bash emulator to log in to remote machines, but it is a little more involved and has different capabilities. We encourage you to take a look at it, but we will not be covering it in this workshop.
+> **Tip** - Windows users can use another program called [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) instead of a *bash emulator* to log in to remote machines, but it is a little more involved and has different capabilities. We encourage you to take a look at it, but we will not be covering it in this workshop.
 
 #### Let's log in! 
 
 Everyone should have their Terminal (or Git BASH Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**. 
 
-To connect to the login node on O2, we need to type in the `ssh` command at the command prompt followed by a space, and then type your username plus the address of the cluster, i.e `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
+To connect to the login node on O2:
+
+1. Type in the `ssh` command at the command prompt followed by a space, and then type your username (e.g. rc_training10) plus the address of the cluster `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
 
 ```bash
 ssh username@o2.hms.harvard.edu
 ```
 
-> **Tip** - Syntax for commands on the command-line interface is `command` <space> `arguments`.
+2. Press the return/enter key and you should receive a prompt for your password. 
+3. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
+4. If this is the first time you are connecting to the cluster, **a warning will pop up** and will ask you if you are sure you want to do this; **type `Yes` or `Y`**. 
 
-Now press the return key (enter), you should receive a prompt for your password. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
-
-If this is the first time you are connecting to the cluster, **a warning will pop up** and will ask you if you are sure you want to do this; **type `Yes` or `Y`**. 
+> **Tip** - Syntax for all commands on the command-line interface is the command followed by space and then optionally a few arguments.
 
 Once logged in, you should see the O2 icon, some news, and a new command prompt: 
 
 ```bash
-[rc_training10@login01 ~]$ 
+[username@login01 ~]$ 
 ```
 
-The command prompt on O2 will have some characters before the `$`, something like `[rc_training01@login01 ~]`, this is telling you the name of the login node you have connected to!
+The command prompt on O2 will have some characters before the `$`, something like `[rc_training10@login01 ~]`, this is telling you your username and the name of the login node you have connected to!
 
-Please note that from this point on in the workshop anything we want you to type next to the command prompt will be preceded by the `$` (see below). Please make sure you do not type out (or copy and paste) the `$` as part of your command
+***Please note that from this point on in the workshop anything we want you to type next to the command prompt will be preceded by the `$` (see below). Please make sure you do not type out (or copy and paste) the `$` at the beginning of a command into the Terminal.***
 
 #### Let's move from the login node to a compute node!
 
-The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis.
+The first command we will copy and paste in front of the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not desginated to log in users).
 
 ```bash
 $ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC /bin/bash
 ```
  
-Press enter after you copy and paste in that command. You should see a couple of messages, and in a few seconds you should get back the command prompt `$`, but the string of characters before the command prompt should have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now.
+Press enter, you should see a couple of messages and in a few seconds you should get back the command prompt `$`. Now the string of characters before the command prompt will be different. They should say something like `[rc_training10@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now and it is specifying the name of that compute node.
 
-> **Tip** - When you run any command in shell, once the command has finished doing what it is supposed to do, it will bring you back your command prompt.
-
-Once you make sure that your command prompt is preceded by a character string that contains the word "compute" we will copy over some data from a shared location on the cluster to a folder designated to each one of us. By default, when you log in you will automatically be looking at the main folder designated for your use, it is referred to as you "home" directory.
+> **Tip** - When you run any command in Shell, the command prompt might disappear and once command has been executed, the prompt is returned. This indicates that Shell is ready to accept another command.
 
 > NOTE: When you run the `srun` command between the classes and after this workshop with your own account please remove the `--reservation` string.
 > 
@@ -104,9 +97,13 @@ Once you make sure that your command prompt is preceded by a character string th
 > 
 > The "reservation" is only active for the training accounts during class.
 
+Make sure that your command prompt is now contains the word "compute". Once it does, we are ready to copy over some data to work with!
+
 ### Copying example data folder
 
-Now that we are all set up to use O2, the first thing to do is to check if there are any files in the data folder we are currently in. To do this we will run a command called `ls` or list.
+Now that we are all set up to use O2, the first thing to do is to check if there are any files in the data folder we are currently in. When you log in to a cluster, you will land within a folder designated specifically for your use, and is referred to as you "home directory".
+
+Let's list the contents of our home directory using a command called `ls`.
 
 ```bash
 $ ls
@@ -134,9 +131,9 @@ You should see the string of characters "unix_lesson" show up as the output of `
 
 ## Starting with the shell
 
-Let's go look at what is inside the data folder and explore further. First instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using this terminology moving forward.
+Let's look at what is inside the data folder and explore further. First instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using folder and directory interchangeably moving forward.
 
-To look inside the new unix_lesson directory, we need to change which directory we are in using the command `cd` which stands for "change directory". 
+To look inside the `unix_lesson` directory, we need to change which directory we are *in*. To do this we can use the `cd` command, which stands for "change directory". 
 
 ```bash
 $ cd unix_lesson
@@ -156,7 +153,7 @@ genomics_data  other  raw_fastq  README.txt  reference_data
 
 ### Arguments
 
-There are five items listed when you run `ls`, but what types of files are they, or are they directories? 
+There are five items listed when you run `ls`, but what types of files are they, or are they directories or files? 
 
 We can modify the default behavior of `ls` with one or more **"arguments"** to get more information. 
 
@@ -191,9 +188,9 @@ ls -lF
 
 See the modification in the output?
 
-> **Tip** - All commands are essentially programs that are able to perform specific, commonly-used tasks.
+> **Tip** - **All commands are essentially programs** that are able to perform specific, commonly-used tasks.
 
-Most commands will take additional arguments that control their exact behavior, some of them will take a file or directory name as input. How do we know what the available arguments that go with a particular command are? Most commonly used shell commands have a manual available in the shell. You can access the
+Most commands will take additional arguments that control their behavior, some of them will take a file or directory name as input. How do we know what the available arguments that go with a particular command are? Most commonly used shell commands have a manual available in the shell. You can access the
 manual using the `man` command. Let's try this command with `ls`:
 
 ```bash
