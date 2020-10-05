@@ -495,20 +495,25 @@ $ rm -ri fastq_backup
 
 ***
 
-## Commands, options, and keystrokes covered
+## Commands
 
 ```
-cd
-ls
-man
-pwd
-~           # home dir
-.           # current dir
-..          # parent dir
-cp
-mdkir
-mv
-rm
+cd          # change directory
+ls          # list contents
+man         # manual for a command
+pwd         # check present working directory
+cp          # copy
+mdkir       # make new directory
+mv          # move or rename 
+rm          # remove/delete
+```
+
+## Shortcuts
+
+```
+~           # home directory
+.           # current directory
+..          # parent directory
 ```
 
 ---
