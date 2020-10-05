@@ -14,18 +14,29 @@ Approximate time: 60 minutes
 
 ## Searching files with `grep` command
 
-We went over how to search within a file using `less`. We can also
-search within files without even opening them, using `grep`. Grep is a command-line
-utility for searching plain-text data sets for lines matching a pattern or regular expression (regex). The syntax for `grep` is as follows: `grep word filename`. The pattern that we want to search is put at `word` slot, and the file is put at `filename` slot. Let's give it a try!
+We went over how to search within a file using `less`. We can also search within files without even opening them, using `grep`. Grep is a command-line utility for searching plain-text data sets for lines matching a pattern or regular expression (regex). 
 
-We are going to practice searching with `grep` using our FASTQ files, which contain the sequencing reads (nucleotide sequences) output from a sequencing facility. Each sequencing read in a FASTQ file is associated with four lines of output, with the first line (header line) always starting with an `@` symbol. A whole fastq record for a single read should appear similar to the following:
+The syntax for `grep` is as follows: `grep search_term filename`. The pattern that we want to search is specified in `search_term` slot, and the file we want to search within is specified in the `filename` slot. Let's give it a try by searching the FASTQ files in the `raw_fastq` directory. 
+
+FASTQ files contain the sequencing reads (nucleotide sequences) output from a sequencing facility. Each sequencing read in a FASTQ file is associated with four lines, with the first line (header line) always starting with an `@` symbol. A whole fastq record for a single read should appear similar to the following:
 
 	@HWI-ST330:304:H045HADXX:1:1101:1111:61397
 	CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNNNNNNNNNNNNNNGATCTTGG
 	+
-	@?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
+	B?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
 
-Suppose we want to see how many reads in our file `Mov10_oe_1.subset.fq` are "bad", with 10 consecutive Ns (`NNNNNNNNNN`).
+> **More information about the FASTQ file format**
+>
+> |Line|Description|
+> |----|-----------|
+> |1|Read name preceded by '@'|
+> |2|The actual DNA sequence|
+> |3|Read name (same as line 1) preceded by a '+' or just a '+' sign|
+> |4|String of characters which represent the quality score of each nucleotide in line 2; must have same number of characters as line 2|
+>
+> You can find more information about FASTQ files in [this lesson](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon/lessons/02_assessing_quality.html#unmapped-read-data-fastq) from our [RNA-seq workshop](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon/).
+
+Suppose we want to see how many reads in our file `Mov10_oe_1.subset.fq` contain "bad" data, i.e. reads with 10 consecutive Ns (`NNNNNNNNNN`).
 
 ```bash
 $ cd ~/unix_lesson/raw_fastq
@@ -33,9 +44,11 @@ $ cd ~/unix_lesson/raw_fastq
 $ grep NNNNNNNNNN Mov10_oe_1.subset.fq
 ```
 
-We get back a lot of lines.  What if we want to see the whole fastq record for each of these reads? 
+We get back a lot of reads or lines of text!  
 
-We need to specify some options for this command. Options are additional arguments that change the default behavior of a command. To look for all available options for the `grep` command, we can type `grep --help`. Here we use the `-B` and `-A` arguments for grep to return the matched line plus one before (`-B 1`) and two lines after (`-A 2`). Since each record is four lines and the second line is the sequence, this will return the whole record.
+What if we wanted to see the whole FASTQ record for each of these reads? We would need to modify the default behavior of `grep` and specify some argument/options. To look for all available options for the `grep` command, we can type `grep --help` (or `man grep`). 
+
+Looks like the `-B` and `-A` arguments for grep will be useful to return the matched line plus one before (`-B 1`) and two lines after (`-A 2`). Since each record is four lines, using these arguments will return the whole record. Within the whole record, the second line will the actual sequence that has the pattern we searched for.
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq
@@ -59,8 +72,7 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 
 1. Search for the sequence CTCAATGAGCCA in `Mov10_oe_1.subset.fq`. How many sequences do you find?
 
-2. In addition to finding the sequence, how can you modify the command so that your search also return
-the name of the sequence?
+2. In addition to finding the sequence, how can you modify the command so that your search also returnthe name of the sequence?
 
 3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
@@ -68,27 +80,19 @@ the name of the sequence?
 
 ## Redirection
 
-We're excited we have all these sequences that we care about that we
-just got from the FASTQ files. That is a really important motif
-that is going to help us answer our important question. But all those
-sequences just went whizzing by with grep. How can we capture them?
+We're excited we have all these sequences that we are interested in within the FASTQ files. That is a really important motif that is going to help us answer our important question. But all those sequences just went whizzing by with `grep`. How can we capture them?
 
-We can do that with something called "redirection". The idea is that
-we're redirecting the output from the terminal (all the stuff that went
-whizzing by) to something else. In this case, we want to print it
-to a file, so that we can look at it later.
+We can do that with something called "redirection". The idea is that we're redirecting the output from the Terminal (all the stuff that went whizzing by) to something else. In this case, we want to print it to a file, so that we can look at it later.
 
 **The redirection command for writing something to file is `>`.**
 
-Let's try it out and put all the sequences that contain 'NNNNNNNNNN'
-from all the files into another file called `bad_reads.txt`.
+Let's try it out and put all the sequences that contain 'NNNNNNNNNN' from all the files into another file called `bad_reads.txt`.
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq > bad_reads.txt
 ```
 
-The prompt should sit there a little bit, and then it should look like nothing
-happened. But you should have a new file called `bad_reads.txt`. 
+The prompt should sit there a little bit, and then it should look like nothing happened. But you should have a new file called `bad_reads.txt`. 
 
 ```bash
 $ ls -l
