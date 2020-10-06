@@ -14,7 +14,7 @@ Approximate time: 60 minutes
 
 ## Loops
 
-Now that we have introduced you to the beauty and purpose of shell scripts, it's time t
+Typically, when you are running analyses on the cluster, you are running multiple commands which correspond to inidvidual steps in your workflow. We learned earlier that we can compile these commands into a single shell script to make this process more efficient. What if we could further increase our efficiency so that the same series of commands could be easily repeated for each indvidual sample in our dataset? We can do this with the use of loops in Shell!
 
 Looping is a concept shared by several programming languages, and its implementation in bash is very similar to other languages. 
 
@@ -22,27 +22,55 @@ The structure or the syntax of (*for*) loops in bash is as follows:
 
 ```bash
 for (variable_name) in (list)
-do
-(command1 $variable_name)
-.
-.
-done
+	do
+	(command1 $variable_name)
+	(command2 $variable_name)
+	...
+	....
+	done
 ```
 
-where the ***variable_name*** defines (or initializes) a variable that takes the value of every member of the specified ***list*** one at a time. At each iteration, the loop retrieves the value stored in the variable (which is a member of the input list) and runs through the commands indicated between the `do` and `done` one at a time. *This syntax/structure is virtually set in stone.* 
+The text that is **red, are parts of the loop structure that remain constant**. That is, for every loop your create you will need to have the words: `for`, `in`, `do` and `done`. *This syntax/structure is virtually set in stone.* The text that goes in between those words will change depending on what it is you want your loop to do.
 
+### How do loops work?
 
-#### What does this loop do? 
+Let's use the example below to go through step-by-step how a loop is actually working.
 
 ```bash
-for x in *.fq
+for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
  do
    echo $x
    wc -l $x
  done
 ```
 
-Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
+1. When we start the loop, we define a temporary ***variable_name*** and a **list** of things that we would like to iterate over. In our example, the temporary variable is called `x` and the list is the filenames for all of the Mov10 samples in our dataset. The variable is initialized by taking the value of the first item in the list. 
+
+> **We don't explictly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
+
+2. Next, all of the commands in the body of the loop (between the `do` and `done`) are executed. Usually, the commands placed here will be using the temporary variable as input. **Remember, if you are using the value stored in the variable you need to use $ to reference it!** In the example, we are running two commands:
+
+* `echo $x`: print out the value stored in `x`
+* `wc -l $x`: count/report the number of lines in `x`
+
+3. Once those two commands are complete, the temporary variable is assigned a new value. It now takes the value of the second item in the list.
+
+> **The variable is reassigned a value `x=Mov10_oe_2.subset.fq`.**
+
+4. Once again, all of the commands in between the `do` and `done` are executed. This time they are using the new value stored in `x` as input.
+
+5. The temporary variable then takes on the value of the third item in the list.
+
+> **The variable is reassigned a value `x=Mov10_oe_3.subset.fq`.**
+
+6. Once again, all of the commands in between the `do` and `done` are executed using the new value stored in `x`. 
+
+7. Now that we have gone through every item in the list, the loop is `done` and it exits. 
+
+Essentially, **the number of items in the list == number of times the code will loop through**. So in our case, we had three files listed and so the series of commands in the body of the loop were repeated three times. If we had provided all six files, the series of commands would be repeated six times.
+
+
+### Best practices
 
 In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. 
 
@@ -50,7 +78,7 @@ In this case the list of files is specified using the asterisk wildcard: `*.fq`,
 
 Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
-Essentially, **the number of items in the list (variable name) == number of times the code will loop through**, in our case that is 2 times since we have 2 files in `~/unix_lesson/raw_fastq` that end in `.fq`, and these filenames are stored in the `filename` variable.
+
 
 It doesn't matter what variable name we use, but it is advisable to make it something more intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
