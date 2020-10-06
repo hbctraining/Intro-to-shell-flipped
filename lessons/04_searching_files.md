@@ -74,7 +74,7 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 
 1. Search for the sequence CTCAATGAGCCA in `Mov10_oe_1.subset.fq`. How many sequences do you find?
 
-2. In addition to finding the sequence, how can you modify the command so that your search also return the name of the sequence?
+2. In addition to finding the sequence, how can you modify the command so that your search also returns the name of the sequence?
 
 3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
