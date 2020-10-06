@@ -87,6 +87,7 @@ Now that we know what type of information is inside of our gtf file, let's explo
 
 4. Count the total number of exons
 
+
 ## Shell scripts and variables 
 
 ### A simple shell script
