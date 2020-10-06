@@ -18,13 +18,13 @@ Do each of the following using a single ls command without navigating to a diffe
 
      $ ls /bin/*o
 
-   d. BONUS: List all of the files in /bin that contain the letter 'a' or 'c'.
+   d. BONUS: Using one command to list all of the files in /bin that contain either 'a' or 'c'.
 
-     $ ls /bin/*a* /bin/*c* | sort -u
-   OR
      $ ls /bin/*[ac]*
+     
+     [OR  ls /bin/*a* /bin/*c*]
 
-More on this square bracket wildcard usage: https://www.putorius.net/standard-wildcards-globbing-patterns-in.html
+More on the square bracket "[ ]" wildcard usage: https://www.putorius.net/standard-wildcards-globbing-patterns-in.html
 
 ### Command history
 
@@ -38,7 +38,7 @@ The number of commands will differ based on your history.
 
 You should be able to retrieve that command by pressing the up arrow key twice.
 
-3. Type several random characters on your prompt. Can you bring the cursor to the start with Ctrl + A? Next, can you bring the cursor to the end with Ctrl + E? Finally, what happens when you use Ctrl + C?
+3. Type several random characters on the command prompt. Can you bring the cursor to the start with Ctrl + A? Next, can you bring the cursor to the end with Ctrl + E? Finally, what happens when you use Ctrl + C?
 
 Ctrl + C will cancel the command you wrote, and start a new prompt.
 
@@ -60,7 +60,7 @@ Ctrl + C will cancel the command you wrote, and start a new prompt.
 
     /chr11
 
-4. Staying in the less buffer, use the shortcut to get to the end of the file. Report three highlighted lines at the end of the file where you see chr11. Exit the file.
+4. Staying in the less buffer, use the shortcut to get to the end of the file. Report three highlighted lines at the end of the file where you see chr11. 
 
  "G" to get to end of file
  
@@ -121,11 +121,11 @@ We have covered some basic commands in vim, but practice is key for getting comf
  $ grep CTCAATGAGCCA Mov10_oe_1.subset.fq
 The output returns 5 sequences
 
-2. In addition to finding the sequence, how can you modify the command so that your search also return the name of the sequence?
+2. In addition to finding the sequence, how can you modify the command so that your search also returns the name of the sequence?
 
  $ grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq
 
-3. Search for that sequence in all Mov10 replicate fastq files.
+3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
  $ grep CTCAATGAGCCA Mov10*
  The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2
@@ -164,7 +164,7 @@ The output returns 37213 lines.
 2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
  echo "This is information about the files in our dataset:"
  
-3. Run the new script. Provide the contents of the new script and the output after running it.
+3. Run the new script. Report the contents of the new script and the output you got after running it.
  $ sh listing.sh
  
  Output:
