@@ -72,21 +72,37 @@ Essentially, **the number of items in the list == number of times the code will 
 
 ### Best practices
 
-In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. 
-
-> **What else could we have used in place of the `ls *.fq`?**
-
-Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
-
-
-
+#### Meaningful variable names
 It doesn't matter what variable name we use, but it is advisable to make it something more intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
+#### Using the wildcard to define the list 
+In the example above, we typed out each item in the list leaving a space in between each item. This is usually fine for one or two items, but with larger lists this can tedious and error-prone. If the list you are iterating over share some similarities in the naming we recommend using the wildcard shortcut to specify the list. For example, instead of typing out each Mov10 file we could list them using `Mov*.fq`.
 
+**But, if I am listing the files don't I need to use the `ls` command in the first line of my loop?**
+
+No, you don't. Even though it seems that way intuitively, when using a `for` loop the `ls` is implied. 
+
+Let's rewrite the for loop above using a more meaningful variable name and using the wildcard:
+
+```bash
+for file in Mov10*.fq
+ do
+   echo $file
+   wc -l $file
+ done
+```
+
+> **Don't forget to change the name of the variable being referenced inside of the loop!**
+
+***
+
+**Exercise**
+
+***
 
 ## Automating with Scripts
 	
-Now we're ready to incorporate these new concepts into a complex shell script and put this processing power to work. Imagine, if you will, a script that will run a series of commands that would do the following for us each time we get a new data set:
+Let's take our shell scripting to another level! Imagine, if you will, a script that will run a series of commands that would do the following for us each time we get a new data set:
 
 - Use for loop to iterate over each FASTQ file
 - Generate a prefix to use for naming our output files
