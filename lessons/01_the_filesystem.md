@@ -495,7 +495,7 @@ $ rm -ri fastq_backup
 **Exercise**
 
 * Create a new folder in `unix_lesson` called `selected_fastq`
-* Copy over the Mov10_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
+* Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
 * Rename the `selected_fastq` folder and call it `exercise1`
 
 ***
