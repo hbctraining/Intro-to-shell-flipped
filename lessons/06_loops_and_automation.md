@@ -70,13 +70,13 @@ for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
 Essentially, **the number of items in the list == number of times the code will loop through**. So in our case, we had three files listed and so the series of commands in the body of the loop were repeated three times. If we had provided all six files, the series of commands would be repeated six times.
 
 
-### Best practices
+### Creating loops using best practices
 
 #### Meaningful variable names
 It doesn't matter what variable name we use, but it is advisable to make it something more intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
 #### Using the wildcard to define the list 
-In the example above, we typed out each item in the list leaving a space in between each item. This is usually fine for one or two items, but with larger lists this can tedious and error-prone. If the list you are iterating over share some similarities in the naming we recommend using the wildcard shortcut to specify the list. For example, instead of typing out each Mov10 file we could list them using `Mov*.fq`.
+In the example above, we typed out each item in the list leaving a space in between each item. This is usually fine for one or two items, but with larger lists this can become tedious and error-prone. If the list you are iterating over share some similarities in the naming we recommend using the wildcard shortcut to specify the list. For example, instead of typing out each Mov10 file we could list them using `Mov*.fq`.
 
 **But, if I am listing the files don't I need to use the `ls` command in the first line of my loop?**
 
