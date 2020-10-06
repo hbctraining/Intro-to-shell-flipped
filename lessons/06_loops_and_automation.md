@@ -14,7 +14,7 @@ Approximate time: 60 minutes
 
 ## Loops
 
-Typically, when you are running analyses on the cluster, you are running multiple commands which correspond to inidvidual steps in your workflow. We learned earlier that we can compile these commands into a single shell script to make this process more efficient. What if we could further increase our efficiency so that the same series of commands could be easily repeated for each indvidual sample in our dataset? We can do this with the use of loops in Shell!
+Typically, when you are running analyses on the cluster, you are running multiple commands which correspond to individual steps in your workflow. We learned earlier that we can compile these commands into a single shell script to make this process more efficient. What if we could further increase our efficiency so that the same series of commands could be easily repeated for each sample in our dataset? We can do this with the use of loops in Shell!
 
 Looping is a concept shared by several programming languages, and its implementation in bash is very similar to other languages. 
 
@@ -37,14 +37,27 @@ The text that is **red, are parts of the loop structure that remain constant**. 
 Let's use the example below to go through step-by-step how a loop is actually working.
 
 ```bash
-for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
+$ for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
  do
    echo $x
    wc -l $x
  done
 ```
 
-1. When we start the loop, we define a temporary ***variable_name*** and a **list** of things that we would like to iterate over. In our example, the temporary variable is called `x` and the list is the filenames for all of the Mov10 samples in our dataset. The variable is initialized by taking the value of the first item in the list. 
+|    Loop component      |      Value          |
+| ---------------- | ---------------------- |
+| ***variable_name*** | `x` |
+| **list** | `Mov10_oe` FASTQ files |
+| ***body (commands to be executed)*** | `echo` and `wc -l` |
+
+
+> #### Running loops at the command prompt
+> In our materials, the for loop is written out using multiple lines rather than the single line commands we have been running so far. When running this at the command prompt begin by typing out the `for` statement, then press the return key. You will notice that you are not back at your command prompt. Rather than a `$`, you should see a `>`. The shell has acknowledged that you have started a for loop and is waiting for you to complete it. Continue to type code line by line. Once you type in `done` and press return the shell will know you are done and will run the loop. 
+
+> > **NOTE:** Use your up arrow at the command prompt to traverse through your history and see the for loop that you just ran. Even though we typed it out on multiple lines, it shows up on a single line. You can also create for loops using this syntax alhtough we don't recommend it as it can be hard to read.
+
+
+1. When we start the loop, the temporary variable is initialized by taking the value of the first item in the list. 
 
 > **We don't explictly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
 
@@ -76,7 +89,7 @@ Essentially, **the number of items in the list == number of times the code will 
 It doesn't matter what variable name we use, but it is advisable to make it something more intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
 #### Using the wildcard to define the list 
-In the example above, we typed out each item in the list leaving a space in between each item. This is usually fine for one or two items, but with larger lists this can become tedious and error-prone. If the list you are iterating over share some similarities in the naming we recommend using the wildcard shortcut to specify the list. For example, instead of typing out each Mov10 file we could list them using `Mov*.fq`.
+In the example above, we typed out each item in the list leaving a space in between each item. This is usually fine for one or two items, but with larger lists this can become tedious and error-prone. If the list you are iterating over share some similarities in the naming we recommend using the wildcard shortcut to specify the list. For example, instead of typing out each Mov10 filename we could list them using `Mov*.fq`.
 
 **But, if I am listing the files don't I need to use the `ls` command in the first line of my loop?**
 
@@ -85,7 +98,7 @@ No, you don't. Even though it seems that way intuitively, when using a `for` loo
 Let's rewrite the for loop above using a more meaningful variable name and using the wildcard:
 
 ```bash
-for file in Mov10*.fq
+$ for file in Mov10*.fq
  do
    echo $file
    wc -l $file
@@ -98,26 +111,24 @@ for file in Mov10*.fq
 
 **Exercise**
 
-1. Change the for loop example above such that:
-	a. it runs on all six samples
-	b. it prints out the first line of each file
+1. Change the for loop example above so that it runs on all six FASTQ files.
+2. Change the for loop example above so that it prints out the first line of each file.
 
 ***
 
-> NOTE about how it shows up in a single line syntax. 
 
 ## Automating with Scripts
-	
-Let's take our shell scripting to another level! Imagine, if you will, a script that will run a series of commands that would do the following for us each time we get a new data set:
+
+We've already had some fun with shell scripts, but now it's time to take our shell scripting to another level by incorporating loops! Imagine, if you will, a script that would do the following for us each time we get a new data set:
 
 - Use for loop to iterate over each FASTQ file
 - Generate a prefix to use for naming our output files
 - Dump out bad reads into a new file
-- Get the count of the number of bad reads and generate a summary file
+- Get the count of the number of bad reads and report it to a running log file
 
-You might not realize it, but this is something that you now know how to do. Let's get started...
+It might seem daunting, but everything in the list is something that you now know how to do. Let's get started...
 
-Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back in to `unix_lesson` and use `vim` to create our new script file:
+Move back in to `unix_lesson` and use `vim` to create our new script file:
 
 ```bash
 $ cd ~/unix_lesson
@@ -125,29 +136,34 @@ $ cd ~/unix_lesson
 $ vim generate_bad_reads_summary.sh
 ```
 
-We always want to start our scripts with a shebang line: 
+At the beginning of our script we are going to add what is called a **shebang line**. This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
+
+> #### Why do I need a shebang line? My scripts ran perfectly well before without it?
+> Having a shebang line is best practice. While your script will run fine without it in environments where bash is the default shell, it won't if the user of this script is using a different shell. To avoid any issues, we explcitly state that this script needs to executed using the bash shell.
 
 ```bash
 #!/bin/bash
 ```
 
-This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
+After the shebang line, we enter the commands we want to execute. First we want to move into our `raw_fastq` directory. 
 
-After the shebang line, we enter the commands we want to execute. First we want to move into our `raw_fastq` directory:
+> *Note the use of comments using the `#` symbol. Always comment liberally when creating your scripts!*
 
 ```bash
 # enter directory with raw FASTQs
 cd ~/unix_lesson/raw_fastq
 ```
 
-And now we loop over all the FASTQs:
+And now we loop over all the FASTQ files:
 
 ```bash
 # enter directory with raw FASTQs
 for filename in *.fq
 ```
 
-For each file that we process we can use `basename` to create a variable that will uniquely identify our output file based on where it originated from:
+For each file that we process we can use `basename` to create a prefix from the original filename. We will store this prefix in a variable called `base` and use it to to uniquely label our output files.
+
+> *Note the use of backticks to assign the output of the `basename` command as value to the variable! If you cannot find the backtick key on your keyboard, just copy and paste from the lesson.*
 
 ```bash
 do
@@ -155,7 +171,7 @@ do
   base=`basename $filename .subset.fq`
 ```
 
-and then we execute the commands for each loop:
+and then we execute the commands for each loop, starting with an echo statement. We use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence and write them to a file. Our output file is named using the `base` variable we created earlier in the loop. 
 
 ```bash
   # tell us what file we're working on
@@ -164,6 +180,10 @@ and then we execute the commands for each loop:
   # grab all the bad read records into new file
   grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 ``` 
+
+> #### Why are we using curly brackets with the variable name?
+> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside is the variable name. So print out the variable contents and then append the free text.
+
   
 We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
 
@@ -173,7 +193,7 @@ We'll also count the number of these reads and put that in a new file, using the
 done
 ```
 
-If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the match string. This is useful for when we generate the summary file and we know what number associates with which file.
+If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the count value. This is useful for when we generate the summary file and we know what number associates with which file.
 
 Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
@@ -194,7 +214,7 @@ do
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fq
 
   # grab the number of bad reads and write it to a summary file
   grep -cH NNNNNNNNNN $filename >> badreads.count.summary
