@@ -11,7 +11,7 @@
 
 ### Self Learning #1
 
-Before you start with the self-learning portions, please check that you are logged into O2 and are working on a compute node (i.e. your command prompt should have the word `compute` in it).
+Before you start with the self-learning portion of the workshop, please check that **you are logged into O2** and **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
 
 > If you are not logged into O2 or are not on a compute node, please follow the steps below as appropriate before you start with the self-learning lessons:
 > 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (HMSXXcluster) (replace the "XX" with the number you were assigned in class) 
