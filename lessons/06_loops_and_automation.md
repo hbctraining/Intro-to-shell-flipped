@@ -98,7 +98,13 @@ for file in Mov10*.fq
 
 **Exercise**
 
+1. Change the for loop example above such that:
+	a. it runs on all six samples
+	b. it prints out the first line of each file
+
 ***
+
+> NOTE about how it shows up in a single line syntax. 
 
 ## Automating with Scripts
 	
