@@ -128,7 +128,7 @@ The **final triplet** shows us what **everyone else** (who isn't the file's owne
 r--
 ```
 
-> ### The execute permissions
+> #### The execute permissions
 > We don't see the execute permission set here since we are not working with executable files. To see an example of a file that is actually executable, try `ls -l /bin/ls`.
 > 
 > Sometimes the `x` is replaced by another character, but it is beyond the scope of today's class. You can [get more information here](https://en.wikipedia.org/wiki/File_system_permissions#Notation_of_traditional_Unix_permissions), if you are interested.
