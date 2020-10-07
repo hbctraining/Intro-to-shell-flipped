@@ -197,58 +197,87 @@ Which of the following statements is true?
 
 ****
 
-## **Environment Variables**
+## Environment Variables
 
-Environment variables are, in short, variables that describe the environment in which programs run, and they are predefined for a given computer or cluster that you are on. You can reset them to customize the environment. Two commonly encountered environment variables are `$HOME` and `$PATH`.
+Environment variables are, in short, variables that describe the environment in which programs run, and they are predefined for a given computer or cluster that you are on. You can reset them to customize the environment. 
+
+Let's see our list of environment variables on O2:
+
+```bash
+$ env
+```
+It's a pretty long list! **In the context of the shell the environment variables are usually all in upper case.**
+
+In this lesson, we are going to focus on two commonly encountered environment variables: `$HOME` and `$PATH`.
 
 * `$HOME` defines the full path for the home directory of a given user.
 * `$PATH` defines a list of directories to search in when looking for a command/program to execute.
 
-In the context of the shell the environment variables are usually all in upper case.
 
-First, let's see our list of environmental variables:
-```bash
-$ env
-```
-
-Let's see what is stored in these variables:
+Environment variables, in most systems, are called or denoted with a "$" before the variable name, just like a regular variable. Let's use the `echo` command to see what is stored in `$HOME`:
 
 ```bash
 $ echo $HOME
 ```
 
-Variables, in most systems, are called or denoted with a "$" before the variable name, just like a regular variable.
+You should see the path to your home directory. That one is pretty straighforward. How about we take a look at what is stored in the `$PATH` variable:
 
 ```bash
 $ echo $PATH
 
-/opt/lsf/7.0/linux2.6-glibc2.3-x86_64/bin:/groups/bcbio/bcbio/anaconda/bin:/opt/bcbio/local/bin:/opt/lsf/7.0/linux2.6-glibc2.3-x86_64/etc:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
+/n/cluster/bin:/opt/singularity/bin:/usr/local/rvm/gems/ruby-2.4.9/bin:/usr/local/rvm/gems/ruby-2.4.9@global/bin:/usr/local/rvm/rubies/ruby-2.4.9/bin:/n/cluster/bin:/opt/singularity/bin:/usr/local/bin:/usr/bin:/opt/puppetlabs/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/sbin:/home/rc_training01/.local/bin:/home/rc_training01/bin
 ```
 
-I have a lot of full/absolute paths in my $PATH variable, which are separated from each other by a ":"; here is the list in a more readable format:
+You should see alot of full/absolute paths in your $PATH variable, each of which are separated from each other by a ":"; here is the list in a more readable format:
 
 * /n/cluster/bin
-* /n/app/bcbio/tools/bin
+* /opt/singularity/bin
+* /usr/local/rvm/gems/ruby-2.4.9/bin
+* /usr/local/rvm/gems/ruby-2.4.9@global/bin
+* /usr/local/rvm/rubies/ruby-2.4.9/bin
+* /n/cluster/bin:/opt/singularity/bin
 * /usr/local/bin
 * /usr/bin
-* /usr/local/sbin
-* /usr/sbin
 * /opt/puppetlabs/bin
+* /usr/local/rvm/bin
+* /usr/local/sbin/usr/sbin
+* /home/rc_training01/.local/bin
+* /home/rc_training01/bin
 
-These are the directories that the shell will look through (in the same order as they are listed) for a command or an executable file that you type on the command prompt.
+### What are all these paths? And what do they represent?
 
-When someone says that a command or an executable file is "in my path", they mean that the parent directory for that command/file is contained in the list within the $PATH variable. 
+These are the directories that the shell will look through (in the same order as they are listed) for any given command or executable file that you type on the command prompt.
+
+For example, we have been using the `ls` command to list contents in a directory. When we type `ls` at the command prompt, the shell searches through each path in `$PATH` until it finds an executable for `ls`. So which of those paths contain the executable file?
 
 For any command you execute on the command prompt, you can find out where they are located using the `which` command.
 
-Try it on a few of the basic commands we have learned so far:
 ```bash
 $ which ls
+```
+What path was returned to you? Does it match with any of the paths stored in `$PATH`?
+
+Try it on a few of the basic commands we have learned so far:
+```bash
 $ which <your favorite command>
 $ which <your favorite command>
 ```
 
+Check the path `/usr/bin/` and see what other executable files you recognize. (Note that executable files will be listed as green text).
+
+```bash
+$ ls -l /usr/bin/
+```
+
+Most of the commands we have learned in the workshop are listed! When someone says that a command or an executable file is "in my path", they mean that the parent directory for that command/file is contained in the list within the $PATH variable. 
+
+***
+
+**Exercise**
+
 Are the directories listed by the `which` command within `$PATH`?
+
+***
 
 > #### Modifying Environment Variables
 >
