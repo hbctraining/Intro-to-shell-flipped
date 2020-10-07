@@ -8,7 +8,7 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Introduce the concept of a `for loop` to iterate commands over multiple items
+* Introduce the concept of 'looping' to iterate commands over multiple items
 * Automating tasks by using loops inside shell scripts
 
 
@@ -112,7 +112,7 @@ $ for file in Mov10*.fq
 **Exercise**
 
 1. Change the for loop example above so that it runs on all six FASTQ files.
-2. Change the for loop example above so that it prints out the first line of each file.
+2. Change the for loop example above so that it prints out the first line of all six files.
 
 ***
 
@@ -126,19 +126,19 @@ We've already had some fun with shell scripts, but now it's time to take our she
 - Dump out bad reads into a new file
 - Get the count of the number of bad reads and report it to a running log file
 
-It might seem daunting, but everything in the list is something that you now know how to do. Let's get started...
+It might seem daunting, but everything outlined above is something that you know how to do. Let's get started...
 
-Move back in to `unix_lesson` and use `vim` to create our new script file:
+Move back in to `other` and use `vim` to create our new script file:
 
 ```bash
-$ cd ~/unix_lesson
+$ cd ~/unix_lesson/other
 
 $ vim generate_bad_reads_summary.sh
 ```
 
 At the beginning of our script we are going to add what is called a **shebang line**. This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
 
-> #### Why do I need a shebang line? My scripts ran perfectly well before without it?
+> #### Why do I need a shebang line? My scripts ran perfectly well before without it.
 > Having a shebang line is best practice. While your script will run fine without it in environments where bash is the default shell, it won't if the user of this script is using a different shell. To avoid any issues, we explcitly state that this script needs to executed using the bash shell.
 
 ```bash
@@ -161,6 +161,8 @@ And now we loop over all the FASTQ files:
 for filename in *.fq
 ```
 
+Type out `do` followed by all the things we need to do.
+
 For each file that we process we can use `basename` to create a prefix from the original filename. We will store this prefix in a variable called `base` and use it to to uniquely label our output files.
 
 > *Note the use of backticks to assign the output of the `basename` command as value to the variable! If you cannot find the backtick key on your keyboard, just copy and paste from the lesson.*
@@ -171,21 +173,21 @@ do
   base=`basename $filename .subset.fq`
 ```
 
-and then we execute the commands for each loop, starting with an echo statement. We use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence and write them to a file. Our output file is named using the `base` variable we created earlier in the loop. 
+Now we execute the command required to dump the bad reads to file, but first start with an `echo` statement to keep the user informed. We will use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence read and write them to a file. Our output file is named using the `base` variable we created earlier in the loop. 
 
 ```bash
   # tell us what file we're working on
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fq
 ``` 
 
 > #### Why are we using curly brackets with the variable name?
-> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside is the variable name. So print out the variable contents and then append the free text.
+> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base-badreads.fq`.
 
   
-We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
+We'll also count the number of identified bad reads using the count flag of `grep`, which will return the number of matches rather than the actual matches themself. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
 
 ```bash
   # grab the number of bad reads and write it to a summary file
@@ -193,9 +195,7 @@ We'll also count the number of these reads and put that in a new file, using the
 done
 ```
 
-If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the count value. This is useful for when we generate the summary file and we know what number associates with which file.
-
-Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
+Close the loop with `done`. Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
 ```bash
 #!/bin/bash 
@@ -234,13 +234,11 @@ How do we know if the script worked? Take a look inside the `raw_fastq` director
 $ ls -l ~/unix_lesson/raw_fastq 
 ```
 
-To keep our data organized, let's move all of the bad read files out of the `raw_fastq` directory into a new directory called `other`, and the script to a new directory called `scripts`.
+To keep our data organized, let's move all of the bad read files out of the `raw_fastq` directory into a new directory called `other`.
 
 ```bash
-$ mv raw_fastq/*bad* other/
+$ mv ../raw_fastq/*bad* .
 
-$ mkdir scripts
-$ mv *.sh scripts/
 ```
 
 ---
