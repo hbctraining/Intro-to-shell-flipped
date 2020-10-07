@@ -18,7 +18,7 @@ Unix controls who can read, modify, and run files using *permissions*. In this l
 
 To start, every file and directory on a Unix computer belongs to one owner and one group. Along with each file's content, the operating system stores the information about the user and group that own it, which is the "metadata" for a given file. Typically, the user is also the group on your personal computer if the user was the one who setup the computer.
 
-**Users of a multi-user UNIX system can belong to any number of groups.**
+**Users of a multi-user UNIX system (i.e. the O2 cluster) can belong to any number of groups.**
 
 Let's see what groups we all belong to. Type `groups` into the command prompt.
 
@@ -33,7 +33,7 @@ Depending on our affiliation, we all belong to at least a couple of groups. Sinc
 * genomebrowser-uploads 
 * domain-users
 
-The user-and-group model means that for each file every user on the system falls into one of three categories:
+The user-and-group model means that for each file **every user on the system falls into one of three categories**:
 
 * the owner of the file
 * a member of the group the file belongs to
@@ -64,22 +64,15 @@ The `-l` flag tells `ls` to give us a long-form listing. It's a lot of informati
 
 1. File/directory names
 2. Times and dates last modified. Backup systems and other tools use this information in a variety of ways, but you can use it to tell when you (or anyone else with permission) last changed a file.
-3. File size in bytes
+3. File size in bytes.
 4. Name of the group that owns the file.
-5. User name of the file’s owner
-6. File’s number of hard links (not important for this class)
+5. User name of the file’s owner.
+6. File’s number of hard links (not important for this class).
 7. Permissions to the file
 
-> *NOTE:* When listing the contents of a directory using the `ls -l` command, the number reported for any sub-directories do not reflect the size of the data inside it. Rather, the number represents the size of space on the disk that is used to store the meta-information for the directory. The command you’ll want to use to get the actual size of a directory is `du -sh`, which is short for “disk usage”.
+> *NOTE:* When listing the contents of a directory using the `ls -l` command, the number reported for any sub-directories do not reflect the size of the data inside it. Rather, the number represents the size of space on the disk that is used to store the meta-information for the directory. The command you’ll want to use to get the actual size of a directory's contents is `du -sh`, which is short for “disk usage”.
 
-The **permissions (first column) is provided as a string of characters. How do we interpret this?**
-
-* The first character indicates the type of file. Among the different types, a leading dash (`-`) means a regular file, while a `d` indicates a directory. 
-* The next three characters are the permissions for the file’s owner.
-* The next three characters are for members of the file’s group.
-* The final three characters are for everyone else. 
-
-Take a look at the `unix_lesson` directory in your home directory to explore that permissions column a little more:
+Take a look at the `unix_lesson` directory in your home directory.
 
 ```bash
 ls -l ~/unix_lesson/
@@ -95,8 +88,9 @@ Who is the owner of the files in this directory? Which group do the files belong
 
 Basically, O2 has you (your account ID) listed both as an owner and a group, and this is usually the assignment for the files and folders in your personal directory.
 
+### Interpreting the permissions string
 
-
+The permissions (first column) is provided as a string of characters. How do we interpret this?
 
 Let's have a closer look at one of those permission strings for README.txt:
 
@@ -104,15 +98,24 @@ Let's have a closer look at one of those permission strings for README.txt:
 -rw-rw-r--
 ```
 
-**The first character** tells us whether the listing is a regular file `-` or a directory `d`, or there may be some other character meaning more esoteric things. In this case, it is `-` which means it is a regular file.
+* The first character indicates the type of file. Among the different types, a leading dash (`-`) means a regular file, while a `d` indicates a directory. 
 
-The next 9 characters are usually some combination of the following in the order listed below:
+> In our case, it is `-` which means README.txt is a regular file.
+
+* The next 9 characters are usually some combination of the following in the order listed below:
 
 <button>r</button> = read permission
 
 <button>w</button> = write/modify permission
  
 <button>x</button> = execute permission (run a script/program or traverse a directory).
+
+  * The first triplet are the permissions for the file’s owner.
+  * The next three characters are for members of the file’s group.
+  * The final three characters are for everyone else
+
+
+
 
 > Sometimes the `x` is replaced by another character, but it is beyond the scope of today's class. You can [get more information here](https://en.wikipedia.org/wiki/File_system_permissions#Notation_of_traditional_Unix_permissions), if you are interested.
 >
