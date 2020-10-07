@@ -17,7 +17,7 @@ Before you start with the self-learning portion of the workshop, please check th
 > 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (HMSXXcluster) (replace the "XX" in both the username and the password with the number you were assigned in class). 
 > 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:00 --mem 1G /bin/bash` to get on a compute node.
 > 3. Proceed with the self learning once your command prompt has the word `compute` in it.
-> 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node.
+> 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
 
 * [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
 * [Examining and creating files](../lessons/03_working_with_files.md)
