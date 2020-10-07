@@ -90,8 +90,6 @@ Basically, O2 has you (your account ID) listed both as an owner and a group, and
 
 ### Interpreting the permissions string
 
-The permissions (first column) is provided as a string of characters. How do we interpret this?
-
 Let's have a closer look at one of those permission strings for README.txt:
 
 ```bash
@@ -100,54 +98,70 @@ Let's have a closer look at one of those permission strings for README.txt:
 
 * The first character indicates the type of file. Among the different types, a leading dash (`-`) means a regular file, while a `d` indicates a directory. 
 
-> In our case, it is `-` which means README.txt is a regular file.
+>> In our case, it is `-` which means README.txt is a regular file.
 
-* The next 9 characters are usually some combination of the following in the order listed below:
+* The next 9 characters are usually some combination of `r`, `w` and `x`, where:
 
-<button>r</button> = read permission
+<kbd>r</kbd> = read permission
 
-<button>w</button> = write/modify permission
+<kbd>w</kbd> = write/modify permission
  
-<button>x</button> = execute permission (run a script/program or traverse a directory).
+<kbd>x</kbd>= execute permission (run a script/program or traverse a directory).
 
-  * The first triplet are the permissions for the file’s owner.
-  * The next three characters are for members of the file’s group.
-  * The final three characters are for everyone else
+The **first triplet** is the permissions for the file’s **owner**. Here, the owner can read and write the file: `rw-`. If the permission is turned off, we see a dash, so `rw-` means "read and write, but not execute". 
 
+```bash
+rw-
+```
 
+The **second triplet** shows us the **group's permissions**. Here, the group can read and write the file. (In this case the group and the owner are the same so it makes sense that this is the same for both.)
 
+```bash
+rw-
+```
 
+The **final triplet** shows us what **everyone else** (who isn't the file's owner, or in the file's group) can do. In this case, it's `r--`, so **everyone else** on the system can only read the file's contents.
+ 
+```bash
+r--
+```
+
+> ### The execute permissions
+> We don't see the execute permission set here since we are not working with executable files. To see an example of a file that is actually executable, try `ls -l /bin/ls`.
+> 
 > Sometimes the `x` is replaced by another character, but it is beyond the scope of today's class. You can [get more information here](https://en.wikipedia.org/wiki/File_system_permissions#Notation_of_traditional_Unix_permissions), if you are interested.
 >
-> To see an example of a file that is actually executable, try `ls -l /bin/ls`.
 
-The **next three characters** tell us what permissions the file's **owner** has. Here, the owner can read and write the file: `rw-`. 
 
-The **middle triplet** shows us the **group's permissions**. If the permission is turned off, we see a dash, so `rw-` means "read and write, but not execute". (In this case the group and the owner are the same so it makes sense that this is the same for both.)
+#### Is the permissions string interpreted in the same way for directories?
 
-The **final triplet** shows us what everyone who isn't the file's owner, or in the file's group, can do. In this case, it's `r--` again, so **everyone else** on the system can read the file's contents.
-
-Now, if we take a look at the permissions for directories (e.g. `drwxrwsr-x`): the `x` for the permissions here indicates that "execute" is turned on. What does that mean, given that a directory isn't a program or an executable file, we can't "execute" it? 
+If we take a look at the permissions for directories (e.g. `drwxrwsr-x`): the `x` for the permissions here indicates that "execute" is turned on. What does that mean, given that a directory isn't a program or an executable file, we can't "execute" it? 
 
 Well, `x` means something different for directories. It gives someone the right to *traverse* the directory, but not to look at its contents. This is beyond the scope of today's class, but note that you can give access to a specific file that's deep inside a directory structure without giving them access to all the files and sub-directories within.
 
 ### Changing permissions
 
-To change permissions, we use the `chmod` command (whose name stands for "change mode"). Let's make our README.txt file **inaccessible** to all users other than you and the group the file belong to (you, in this case), currently they are able to read it:
+To change permissions, we use the `chmod` command (whose name stands for "change mode"). The arguments we provide `chmod` include:
+
+* Whose permissions are we changing? ("user" <kbd>u</kbd>, "group" <kbd>g</kbd>, or "other" <kbd>o</kbd>)
+* Are we adding permissions (<kbd>+</kbd>) or removing permissions (<kbd>-</kbd>)?
+* Which permissions (or combination of) would we like to add/remove? ("read" <kbd>r</kbd>, "write" <kbd>w</kbd>, and "execute" <kbd>x</kbd>)
+
+Let's make our README.txt file **inaccessible** to all users other than you and the group the file belong to (you, in this case). Currently, everyone else is able to read the file.
 
 ```bash
 $ ls -l ~/unix_lesson/README.txt
 
--rw-rw-r-- 1 rsk27 rsk27 377 Oct  6 10:28 /home/rsk27/unix_lesson/README.txt
+-rw-rw-r-- 1 rc_training01 rc_training01 377 Oct  6 10:57 ~/unix_lesson/README.txt
 
-$ chmod o-rw ~/unix_lesson/README.txt         # the "-" after o denotes removing that permission
+$ chmod o-r ~/unix_lesson/README.txt         # the "-" after o denotes removing that permission
 
 $ ls -l ~/unix_lesson/README.txt
 
--rw-rw---- 1 rsk27 rsk27 377 Oct  6 10:28 /home/rsk27/unix_lesson/README.txt
+-rw-rw---- 1 rc_training01 rc_training01 377 Oct  6 10:57 ~/unix_lesson/README.txt
 ```
 
-The `o` signals that we're changing the privileges of "others".
+The `o` signals that we're changing the privileges of "others" which also represents "everyone else" as we have referred to throughout this lesson.
 
 Let's change it back to allow it to be readable by others:
 
@@ -159,7 +173,7 @@ $ ls -l ~/unix_lesson/README.txt
 -rw-rw-r-- 1 rsk27 rsk27 377 Oct  6 10:28 /home/rsk27/unix_lesson/README.txt
 ```
 
-If we wanted to make this an executable file for ourselves (the file's owners) we would say `chmod u+rwx`, where the `u` signals that we are changing permission for the file's owner. To change permissions for the "group", you'd use the letter `g`, e.g. `chmod g-w`. 
+If we wanted to make this an executable file for ourselves (the file's owners) we would say `chmod u+x`, where the `u` signals that we are changing permission for the file's owner. To change permissions for the "group", you'd use the letter `g`, e.g. remove write permissions for the group with `chmod g-w`. 
 
 >> The fact that something is marked as executable doesn't actually mean it contains or is a program of some kind. We could easily mark the `~/unix_lesson/raw_fastq/Irrel_kd_1.subset.fq` file as executable using `chmod`. Depending on the operating system we're using, trying to "run" it will fail (because it doesn't contain instructions the computer recognizes, i.e. it is not a script of some type).
 
