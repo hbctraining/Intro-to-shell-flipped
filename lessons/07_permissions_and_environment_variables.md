@@ -14,7 +14,9 @@ Approximate time: 40 minutes
 
 ## Permissions
 
-Unix controls who can read, modify, and run files using *permissions*. In this lesson, we are going to learn more about how those permissions are set and how they can be modified.
+Unix controls who can read, modify, and run files using *permissions*. 
+
+In this lesson, we are going to learn more about how those permissions are set and how they can be modified.
 
 To start, every file and directory on a Unix computer belongs to one owner and one group. Along with each file's content, the operating system stores the information about the user and group that own it, which is the "metadata" for a given file. Typically, the user is also the group on your personal computer if the user was the one who setup the computer.
 
