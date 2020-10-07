@@ -12,25 +12,26 @@ Approximate time: 40 minutes
 * What is an "Environment Variable" in a shell.
 * What is $PATH, and why I should care.
 
-## **Permissions**
+## Permissions
 
-Unix controls who can read, modify, and run files using *permissions*.
+Unix controls who can read, modify, and run files using *permissions*. In this lesson, we are going to learn more about how those permissions are set and how they can be modified.
 
-Users of a multi-user UNIX system can belong to any number of groups.
+To start, every file and directory on a Unix computer belongs to one owner and one group. Along with each file's content, the operating system stores the information about the user and group that own it, which is the "metadata" for a given file. Typically, the user is also the group on your personal computer if the user was the one who setup the computer.
 
-Let's see what groups we all belong to:
+**Users of a multi-user UNIX system can belong to any number of groups.**
+
+Let's see what groups we all belong to. Type `groups` into the command prompt.
 
 ```bash
 $ groups
 ```
 
-Depending on our affiliation, we all belong to at least a couple of groups. I belong to 4 groups,
-* rsk27
-* bcbio
-* hbctraining
-* Domain_Users
+Depending on our affiliation, we all belong to at least a couple of groups. Since we are all using training accounts you will likely see the groups listed below:
 
-As you can imagine, on a shared system it is important to protect each user's data. To start, every file and directory on a Unix computer belongs to one owner and one group. Along with each file's content, the operating system stores the information about the user and group that own it, which is the "metadata" for a given file.
+* rc_training01 
+* training 
+* genomebrowser-uploads 
+* domain-users
 
 The user-and-group model means that for each file every user on the system falls into one of three categories:
 
@@ -38,51 +39,64 @@ The user-and-group model means that for each file every user on the system falls
 * a member of the group the file belongs to
 * and everyone else.
 
+As you can imagine, on a shared system it is important to protect each user's data. This is done by use of **permissions**.
+
 For each of these three categories, the computer keeps track of whether people in that category can read the file, write to the file, or execute the file (i.e., run it if it is a program).
 
 Let's look at this model in action by running the command `ls -l /n/groups/hbctraining/`, to list the files in that directory:
 
 ```bash
 $ ls -l /n/groups/hbctraining/
-
+total 30G
 drwxrwsr-x  4 mm573 hbctraining 831 Feb 29  2016 bcbio-rnaseq
-drwxrwsr-x 12 mm573 hbctraining 318 May 24 11:13 chip-seq
+drwxrwsr-x 14 mm573 hbctraining 382 Jul 10 17:03 chip-seq
 -rw-r--r--  1 root  hbctraining   0 Apr  5  2015 copy_me.txt
 drwxrwsr-x  3 rsk27 hbctraining 201 Apr  5  2015 exercises
-drwxrwsr-x  6 rsk27 hbctraining 293 Oct 27 09:40 for_chipseq
-drwxrwsr-x  4 mp298 hbctraining  51 Dec  6  2016 mep-data
-drwxrwsr-x  4 rsk27 hbctraining  53 Jun  2 15:57 ngs_course
-drwxrwsr-x  4 rsk27 hbctraining  53 Nov  2  2016 ngs-course_backup_Nov1-2016
-drwxrwsr-x  6 mm573 hbctraining 107 Mar 24  2016 ngs-data-analysis2016
+drwxrwsr-x  6 rsk27 hbctraining 293 Oct 27  2017 for_chipseq
+drwxrwsr-x 14 mm573 hbctraining 494 May 21  2018 intro_rnaseq_hpc
 .
 .
 .
 .
 ```
 
-The `-l` flag tells `ls` to give us a long-form listing. It's a lot of information, so let's go through the columns in turn.
+The `-l` flag tells `ls` to give us a long-form listing. It's a lot of information, so let's go through the columns in turn **starting from the right side moving left**.
 
-On the right side, we have the files' names. Next to them, moving left, are the times and dates they were last modified. Backup systems and other tools use this information in a variety of ways, but you can use it to tell when you (or anyone else with permission) last changed a file.
+1. File/directory names
+2. Times and dates last modified. Backup systems and other tools use this information in a variety of ways, but you can use it to tell when you (or anyone else with permission) last changed a file.
+3. File size in bytes
+4. Name of the group that owns the file.
+5. User name of the file’s owner
+6. File’s number of hard links (not important for this class)
+7. Permissions to the file
 
-Next to the modification time is the file's size in bytes and the names of the user and group that owns it. In this case, it is the eCommons IDs denoting either Mary, Meeta or me as an owner and `hbctraining` is the associated group. 
+> *NOTE:* When listing the contents of a directory using the `ls -l` command, the number reported for any sub-directories do not reflect the size of the data inside it. Rather, the number represents the size of space on the disk that is used to store the meta-information for the directory. The command you’ll want to use to get the actual size of a directory is `du -sh`, which is short for “disk usage”.
 
-Now, take a look at the `unix_lesson` directory in your home directory to explore that first column a little more:
+The **permissions (first column) is provided as a string of characters. How do we interpret this?**
+
+* The first character indicates the type of file. Among the different types, a leading dash (`-`) means a regular file, while a `d` indicates a directory. 
+* The next three characters are the permissions for the file’s owner.
+* The next three characters are for members of the file’s group.
+* The final three characters are for everyone else. 
+
+Take a look at the `unix_lesson` directory in your home directory to explore that permissions column a little more:
 
 ```bash
 ls -l ~/unix_lesson/
 
-drwxrwsr-x 2 rsk27 rsk27  78 Aug 22 21:08 genomics_data
-drwxrwsr-x 2 rsk27 rsk27 725 Aug 22 21:16 other
-drwxrwsr-x 2 rsk27 rsk27 256 Aug 22 21:16 raw_fastq
--rw-rw-r-- 1 rsk27 rsk27 377 Sep 22 10:00 README.txt
-drwxrwsr-x 2 rsk27 rsk27  62 Aug 22 21:07 reference_data
+drwxrwxr-x 2 rc_training01 rc_training01  78 Oct  6 10:57 genomics_data
+drwxrwxr-x 2 rc_training01 rc_training01  73 Oct  6 10:57 other
+drwxrwxr-x 5 rc_training01 rc_training01 302 Oct  6 11:53 raw_fastq
+-rw-rw-r-- 1 rc_training01 rc_training01 377 Oct  6 10:57 README.txt
+drwxrwxr-x 2 rc_training01 rc_training01  62 Oct  6 10:57 reference_data
 ```
 
 Who is the owner of the files in this directory? Which group do the files belong to?
 
 Basically, O2 has you (your account ID) listed both as an owner and a group, and this is usually the assignment for the files and folders in your personal directory.
 
-We'll skip over the second column for now (the one showing `1` for each file), because it's the first column that we care about most. This shows the file's permissions, i.e., who can read, write, or execute it.
+
+
 
 Let's have a closer look at one of those permission strings for README.txt:
 
