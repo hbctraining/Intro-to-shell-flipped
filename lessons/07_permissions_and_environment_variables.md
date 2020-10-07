@@ -250,7 +250,7 @@ These are the directories that the shell will look through (in the same order as
 
 For example, we have been using the `ls` command to list contents in a directory. When we type `ls` at the command prompt, the shell searches through each path in `$PATH` until it finds an executable for `ls`. So which of those paths contain the executable file?
 
-For any command you execute on the command prompt, you can find out where they are located using the `which` command.
+For any command you execute on the command prompt, you can find out where the executable file is located using the `which` command.
 
 ```bash
 $ which ls
@@ -269,7 +269,8 @@ Check the path `/usr/bin/` and see what other executable files you recognize. (N
 $ ls -l /usr/bin/
 ```
 
-Most of the commands we have learned in the workshop are listed! When someone says that a command or an executable file is "in my path", they mean that the parent directory for that command/file is contained in the list within the $PATH variable. 
+The path `/usr/bin` is usually where executables for commonly used commands are stored. 
+
 
 ***
 
