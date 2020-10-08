@@ -1,7 +1,7 @@
 ---
 title: "Permissions and Environment variables"
 author: "Christina Koch, Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu"
-date: "Wednesday, September 20, 2017"
+date: "Thursday, October 8, 2020"
 ---
 
 Approximate time: 40 minutes
@@ -9,18 +9,18 @@ Approximate time: 40 minutes
 ## Learning Objectives
  
 * How to grant or restrict access to files on a multi-user UNIX system
-* What is an "Environment Variable" in a shell.
-* What is $PATH, and why I should care.
+* What is an "Environment Variable" in Shell
+* What is $PATH, and why I should care
 
 ## Permissions
 
-Unix controls who can read, modify, and run files using *permissions*. 
+Unix controls who can read, modify, and run files by conferring *permissions* to files and directories. As you can imagine, on a shared system it is important to protect each user's data. This is done by use of **permissions**.
 
-In this lesson, we are going to learn more about how those permissions are set and how they can be modified.
+In this lesson, we are going to learn more about how those permissions are set and how they can be modified. 
 
-To start, every file and directory on a Unix computer belongs to one owner and one group. Along with each file's content, the operating system stores the information about the user and group that own it, which is the "metadata" for a given file. Typically, the user is also the group on your personal computer if the user was the one who setup the computer.
+To start, every file and directory on a Unix computer belongs to one owner (referred to as "user") and one group. Along with each file's content, the operating system stores the information about the user and group that own it, i.e. the "metadata" for a given file. 
 
-**Users of a multi-user UNIX system (i.e. the O2 cluster) can belong to any number of groups.**
+**Users of a multi-user Unix system (i.e. the O2 cluster) can belong to any number of groups.**
 
 Let's see what groups we all belong to. Type `groups` into the command prompt.
 
@@ -35,15 +35,13 @@ Depending on our affiliation, we all belong to at least a couple of groups. Sinc
 * genomebrowser-uploads 
 * domain-users
 
-The user-and-group model means that for each file **every user on the system falls into one of three categories**:
+The user-and-group model means that for each file/directory **every user on the system falls into one of three categories**:
 
-* the owner of the file
-* a member of the group the file belongs to
-* and everyone else.
+* `user` or `u`: **the owner**
+* `group` or `g`: **a member of the group the file/directory belongs to**
+* `others` or `o`: **everyone else**
 
-As you can imagine, on a shared system it is important to protect each user's data. This is done by use of **permissions**.
-
-For each of these three categories, the computer keeps track of whether people in that category can read the file, write to the file, or execute the file (i.e., run it if it is a program).
+For each of these three categories, the computer keeps track of whether people in that category can read the file (`r`), write to the file (`w`), or execute the file (i.e., run the program written in it) (`x`). More about this aspect of permissions is coming up later in this lesson.
 
 Let's look at this model in action by running the command `ls -l /n/groups/hbctraining/`, to list the files in that directory:
 
@@ -62,7 +60,7 @@ drwxrwsr-x 14 mm573 hbctraining 494 May 21  2018 intro_rnaseq_hpc
 .
 ```
 
-The `-l` flag tells `ls` to give us a long-form listing. It's a lot of information, so let's go through the columns in turn **starting from the right side moving left**.
+As we have learned, the `-l` flag tells `ls` to give us a long-form listing. Let's take another look at the columns in this output, **starting from the right side moving left**.
 
 1. File/directory names
 2. Times and dates last modified. Backup systems and other tools use this information in a variety of ways, but you can use it to tell when you (or anyone else with permission) last changed a file.
@@ -72,9 +70,11 @@ The `-l` flag tells `ls` to give us a long-form listing. It's a lot of informati
 6. File’s number of hard links (not important for this class).
 7. Permissions to the file
 
-> *NOTE:* When listing the contents of a directory using the `ls -l` command, the number reported for any sub-directories do not reflect the size of the data inside it. Rather, the number represents the size of space on the disk that is used to store the meta-information for the directory. The command you’ll want to use to get the actual size of a directory's contents is `du -sh`, which is short for “disk usage”.
+> *NOTE:* When listing the contents of a directory using the `ls -l` command, the file size reported for directories do not reflect the size of the data inside it. The number actually represents the size of space on the disk that is used to store the metadata for the directory. 
+>
+> The command you’ll want to use to get the size of a directory's contents is `du -sh`. `du` is short for “*d*isk *u*sage”.
 
-Take a look at the `unix_lesson` directory in your home directory.
+Let's list the contents of the `unix_lesson` directory:
 
 ```bash
 ls -l ~/unix_lesson/
@@ -88,11 +88,11 @@ drwxrwxr-x 2 rc_training01 rc_training01  62 Oct  6 10:57 reference_data
 
 Who is the owner of the files in this directory? Which group do the files belong to?
 
-Basically, O2 has you (your account ID) listed both as an owner and a group, and this is usually the assignment for the files and folders in your personal directory.
+Basically, O2 has you (your account ID) listed both as an owner and a group, and this is usually the assignment for the files and folders in your personal directory. Essentially, when a new user is created on a Unix system, a group of the same name is created and personal files for that user are also "owned" by that user's group.
 
 ### Interpreting the permissions string
 
-Let's have a closer look at one of those permission strings for README.txt:
+Let's have a closer look at one of those permission strings in the first column for the `README.txt` file:
 
 ```bash
 -rw-rw-r--
@@ -106,23 +106,25 @@ Let's have a closer look at one of those permission strings for README.txt:
 
 <kbd>r</kbd> = read permission
 
-<kbd>w</kbd> = write/modify permission
+<kbd>w</kbd> = write/edit permission
  
-<kbd>x</kbd>= execute permission (run a script/program or traverse a directory).
+<kbd>x</kbd> = execute permission (run a script/program or traverse a directory).
 
-The **first triplet** is the permissions for the file’s **owner**. Here, the owner can read and write the file: `rw-`. If the permission is turned off, we see a dash, so `rw-` means "read and write, but not execute". 
-
-```bash
-rw-
-```
-
-The **second triplet** shows us the **group's permissions**. Here, the group can read and write the file. (In this case the group and the owner are the same so it makes sense that this is the same for both.)
+The **first triplet** is the permissions for the file’s **owner (`u`)**. Here, the owner can read and write the file: `rw-`. If the permission is turned off, we see a dash, so `rw-` means "read and write, but not execute". 
 
 ```bash
 rw-
 ```
 
-The **final triplet** shows us what **everyone else** (who isn't the file's owner, or in the file's group) can do. In this case, it's `r--`, so **everyone else** on the system can only read the file's contents.
+The **second triplet** shows us the **group's permissions (`g`)**. Here, the group can read and write the file. (In this case the group and the owner are the same so it makes sense that this is the same for both.)
+
+```bash
+rw-
+```
+
+The **final triplet** shows us what **everyone else (`o`)** can do. In this case, it's `r--`, so **everyone else** on the system can only read the file's contents. 
+
+> "Everyone" else refers to other users on the system who are not the file's owner, or in the group that the file's belongs to. 
  
 ```bash
 r--
@@ -134,12 +136,11 @@ r--
 > Sometimes the `x` is replaced by another character, but it is beyond the scope of today's class. You can [get more information here](https://en.wikipedia.org/wiki/File_system_permissions#Notation_of_traditional_Unix_permissions), if you are interested.
 >
 
-
 #### Is the permissions string interpreted in the same way for directories?
 
 If we take a look at the permissions for directories (e.g. `drwxrwsr-x`): the `x` for the permissions here indicates that "execute" is turned on. What does that mean, given that a directory isn't a program or an executable file, we can't "execute" it? 
 
-Well, `x` means something different for directories. It gives someone the right to *traverse* the directory, but not to look at its contents. This is beyond the scope of today's class, but note that you can give access to a specific file that's deep inside a directory structure without giving them access to all the files and sub-directories within.
+Well, `x` means something different for directories. It gives someone the right to *traverse* the directory, but not to look at (or list) its contents. This is beyond the scope of today's class, but note that you can give someone access to a file that's deep inside a directory structure *without allowing them to see what other files exist in the sub-directories which are part of the path*.
 
 ### Changing permissions
 
@@ -149,13 +150,15 @@ To change permissions, we use the `chmod` command (whose name stands for "change
 * Are we adding permissions (<kbd>+</kbd>) or removing permissions (<kbd>-</kbd>)?
 * Which permissions (or combination of) would we like to add/remove? ("read" <kbd>r</kbd>, "write" <kbd>w</kbd>, and "execute" <kbd>x</kbd>)
 
-Let's make our README.txt file **inaccessible** to all users other than you and the group the file belong to (you, in this case). Currently, everyone else is able to read the file.
+Let's make our README.txt file **inaccessible** to all users other than you and the group the file belong to. Currently, everyone else is able to read the file.
 
 ```bash
 $ ls -l ~/unix_lesson/README.txt
 
 -rw-rw-r-- 1 rc_training01 rc_training01 377 Oct  6 10:57 ~/unix_lesson/README.txt
+```
 
+```bash
 $ chmod o-r ~/unix_lesson/README.txt         # the "-" after o denotes removing that permission
 
 $ ls -l ~/unix_lesson/README.txt
@@ -172,7 +175,7 @@ $ chmod o+r ~/unix_lesson/README.txt         # the "+" after o denotes adding/gi
 
 $ ls -l ~/unix_lesson/README.txt
 
--rw-rw-r-- 1 rsk27 rsk27 377 Oct  6 10:28 /home/rsk27/unix_lesson/README.txt
+-rw-rw-r-- 1 rc_training01 rc_training01 377 Oct  6 10:57 /home/rsk27/unix_lesson/README.txt
 ```
 
 If we wanted to make this an executable file for ourselves (the file's owners) we would say `chmod u+x`, where the `u` signals that we are changing permission for the file's owner. To change permissions for the "group", you'd use the letter `g`, e.g. remove write permissions for the group with `chmod g-w`. 
