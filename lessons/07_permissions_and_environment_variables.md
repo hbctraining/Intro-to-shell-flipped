@@ -204,18 +204,18 @@ Which of the following statements is true?
 
 Environment variables are, in short, variables that describe the environment in which programs run, and they are predefined for a given computer or cluster that you are on. You can reset them to customize the environment. 
 
-Let's see our list of environment variables on O2:
+Let's see the full list of environment variables on O2:
 
 ```bash
 $ env
 ```
+
 It's a pretty long list! **In the context of the shell the environment variables are usually all in upper case.**
 
-In this lesson, we are going to focus on two commonly encountered environment variables: `$HOME` and `$PATH`.
+In this lesson, we are going to focus on two most commonly encountered environment variables: `$HOME` and `$PATH`.
 
 * `$HOME` defines the full path for the home directory of a given user.
 * `$PATH` defines a list of directories to search in when looking for a command/program to execute.
-
 
 Environment variables, in most systems, are called or denoted with a "$" before the variable name, just like a regular variable. Let's use the `echo` command to see what is stored in `$HOME`:
 
@@ -223,42 +223,49 @@ Environment variables, in most systems, are called or denoted with a "$" before 
 $ echo $HOME
 ```
 
-You should see the path to your home directory. That one is pretty straighforward. How about we take a look at what is stored in the `$PATH` variable:
+You should see the path to your home directory. `$HOME` can be used instead of the `~` (if you want to type 4 more characters).
+
+
+`$HOME` is pretty straighforward, how about we take a look at what is stored in the `$PATH` variable:
 
 ```bash
 $ echo $PATH
 
 /n/cluster/bin:/opt/singularity/bin:/usr/local/rvm/gems/ruby-2.4.9/bin:/usr/local/rvm/gems/ruby-2.4.9@global/bin:/usr/local/rvm/rubies/ruby-2.4.9/bin:/n/cluster/bin:/opt/singularity/bin:/usr/local/bin:/usr/bin:/opt/puppetlabs/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/sbin:/home/rc_training01/.local/bin:/home/rc_training01/bin
 ```
+This output is a lot more complex! Let's break it down. When you look closely at the output of `echo $PATH`, you should a list of full paths separated from each other by a ":". 
 
-You should see alot of full/absolute paths in your $PATH variable, each of which are separated from each other by a ":"; here is the list in a more readable format:
+Here is the list of paths in a more readable format:
+* `/n/cluster/bin`
+* `/opt/singularity/bin`
+* `/usr/local/rvm/gems/ruby-2.4.9/bin`
+* `/usr/local/rvm/gems/ruby-2.4.9@global/bin`
+* `/usr/local/rvm/rubies/ruby-2.4.9/bin`
+* `/n/cluster/bin:/opt/singularity/bin`
+* `/usr/local/bin`
+* `/usr/bin`
+* `/opt/puppetlabs/bin`
+* `/usr/local/rvm/bin`
+* `/usr/local/sbin/usr/sbin`
+* `/home/rc_training01/.local/bin`
+* `/home/rc_training01/bin`
 
-* /n/cluster/bin
-* /opt/singularity/bin
-* /usr/local/rvm/gems/ruby-2.4.9/bin
-* /usr/local/rvm/gems/ruby-2.4.9@global/bin
-* /usr/local/rvm/rubies/ruby-2.4.9/bin
-* /n/cluster/bin:/opt/singularity/bin
-* /usr/local/bin
-* /usr/bin
-* /opt/puppetlabs/bin
-* /usr/local/rvm/bin
-* /usr/local/sbin/usr/sbin
-* /home/rc_training01/.local/bin
-* /home/rc_training01/bin
+Each of these paths are referring to a directory, in this case a lot of them are named `bin`. 
 
 ### What are all these paths? And what do they represent?
 
 These are the directories that the shell will look through (in the same order as they are listed) for any given command or executable file that you type on the command prompt.
 
-For example, we have been using the `ls` command to list contents in a directory. When we type `ls` at the command prompt, the shell searches through each path in `$PATH` until it finds an executable for `ls`. So which of those paths contain the executable file?
+For example, we have been using the `ls` command to list contents in a directory. When we type `ls` at the command prompt, the shell searches through each path in `$PATH` until it finds an executable file called `ls`. So which of those paths contain that executable file?
 
 For any command you execute on the command prompt, you can find out where the executable file is located using the `which` command.
 
 ```bash
 $ which ls
 ```
+
 What path was returned to you? Does it match with any of the paths stored in `$PATH`?
+
 
 Try it on a few of the basic commands we have learned so far:
 ```bash
@@ -266,14 +273,15 @@ $ which <your favorite command>
 $ which <your favorite command>
 ```
 
-Check the path `/usr/bin/` and see what other executable files you recognize. (Note that executable files will be listed as green text).
+Check the path `/usr/bin/` and see what other executable files you recognize. (Note that executable files will be listed as green text or have the `*` after their name).
 
 ```bash
-$ ls -l /usr/bin/
+$ ls -lF /usr/bin/
 ```
 
 The path `/usr/bin` is usually where executables for commonly used commands are stored. 
 
+> As pointed out earlier, a lot of the folders listed in the `$PATH` variable are called `bin`. This is because of a convention in Unix to call directories that contain all the commands (in ***binary*** format) **`bin`**.
 
 ***
 
@@ -283,31 +291,39 @@ Are the directories listed by the `which` command within `$PATH`?
 
 ***
 
-> #### Modifying Environment Variables
->
-> If you are interested in adding a new entry to the path variable, the command to use is `export`. This command is usually executed as follows: 
->
-> `export PATH=$PATH:~/opt/bin`, which tells the shell to add the `~/opt/bin` directory to the end of the preexisting list within `$PATH`. Alternatively, if you use `export PATH=~/opt/bin:$PATH`, the same directory will be added to the beginning of the list. The order determines which directory the shell will look in first to find a program.
+#### Modifying Environment Variables
+
+You can modify the contents of the `$PATH` environment variable with the `export` command. 
+
+The `export` command:
+* Example `export PATH=$PATH:~/opt/bin` (**do not run this**)
+* The arguments or **input to `export` should always include `$PATH`**
+  * This specifies that you want to maintain the existing contents.
+  * If you don't maintain all the `bin` directories, none of your commands will work anymore!
+* Use the ":" to separate added paths from one another, **with no spaces**
+* The new path being added, should not end in `/`. Even though `ls ~/opt/bin` and `ls ~/opt/bin/` give you the same results, the `$PATH` variable cannot have the training `/`.
+* Order matters -
+  * If you run `export PATH=$PATH:~/opt/bin` Shell will add the `~/opt/bin` directory to **the end of the pre-existing list** within the `$PATH` environment variable. 
+  * Alternatively, if you use `export PATH=~/opt/bin:$PATH`, the same directory will be added to the beginning of the list. The order determines which directory Shell will look in first to find a program.
+  
+This command is often used to add paths to a directory with commands you commonly want to use. 
+
+Let's say you often use the `bowtie2` command for alignment and it exists in `/home/rsk27/installations/alignment_tools/dna/bowtie/`. If you want to run this tool, you will have to say `$ /home/rsk27/installations/alignment_tools/dna/bowtie/bowtie2 <inputfile>`. However, if `/home/rsk27/installations/alignment_tools/dna/bowtie` is part of the `$PATH` variable you can just say `$ bowtie2 <inputfile>` instead. 
 
 #### Closer look at the inner workings of the shell, in the context of $PATH
  
-The $PATH variable is reset to a set of defaults (/bin:/usr/bin and so on), each time you start a new shell Terminal. To make sure that a command/program you need is always at your fingertips, you have to put it in one of 2 special shell scripts that are always run when you start a new terminal. These are hidden files in your home directory called `.bashrc` and `.bash_profile`. You can create them if they don't exist, and shell will use them.
+Each time you log in to a cluster, or start a new interactive session on a compute node, 2 special shell scripts are run automatically in the background. You have the ability to modify these scripts, so if you want to customize your environment you can add the customizing commands to these shell scripts. One common use of this is to add an `export` command that adds paths to the pre-existing contents of the `$PATH` environment variable.
 
-Check what hidden files exist in our home directory using the `-a` flag:
+So, what are these files and where are they located? These are called `.bashrc` and `.bash_profile`, and they are located in your home directory. You can create them if they don't exist, and Shell will use them!
+
+
+Check what hidden files exist in our home directory using the `-a` flag with the `ls` command:
+
 ```bash
 $ ls -al ~/
 ```
 
-Suppose we want to add `/n/app/bcbio/tools/bin` to the beginning of the list in `$PATH`. This directory contains executables for many tools useful for NGS analysis. We can add this location by including an `export` command to do this at the end of the `.bashrc` file, this will make it so that when you start a new shell session the location will always be in your path. 
-
-Open the `.bashrc` file using `vim` and at the end of the file add the export command that adds a specific location to the list in `$PATH`. 
-
-```bash
-$ vim ~/.bashrc
-
-# at the end of the file type in the following - export PATH=/n/app/bcbio/tools/bin:$PATH
-# Don't forget the ":" between the full path and the "$PATH"!
-```
+> You can use `vim` to modify these files and/or create them.
 
 **In closing, permissions and environment variables, especially `$PATH`, are very useful and important concepts to understand in the context of UNIX and HPC.**
 
