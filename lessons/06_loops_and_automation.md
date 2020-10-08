@@ -37,7 +37,7 @@ The text that is **red, are parts of the loop structure that remain constant**. 
 Let's use the example below to go through step-by-step how a loop is actually working.
 
 ```bash
-$ for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
+$ for x in Mov10_oe_1.subset.fq Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
  do
    echo $x
    wc -l $x
@@ -54,27 +54,27 @@ $ for x in Mov10_oe_1.subset.fq  Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
 > #### Running loops at the command prompt
 > In our materials, the for loop is written out using multiple lines rather than the single line commands we have been running so far. When running this at the command prompt begin by typing out the `for` statement, then press the return key. You will notice that you are not back at your command prompt. Rather than a `$`, you should see a `>`. The shell has acknowledged that you have started a for loop and is waiting for you to complete it. Continue to type code line by line. Once you type in `done` and press return the shell will know you are done and will run the loop. 
 
-> > **NOTE:** Use your up arrow at the command prompt to traverse through your history and see the for loop that you just ran. Even though we typed it out on multiple lines, it shows up on a single line. You can also create for loops using this syntax alhtough we don't recommend it as it can be hard to read.
+> > **NOTE:** Use your <button> up </button> arrow at the command prompt to traverse through your history and see the for loop that you just ran. Even though we typed it out on multiple lines, it shows up on a single line. You can also create for loops using this syntax alhtough we don't recommend it as it can be hard to read.
 
 
 1. When we start the loop, the temporary variable is initialized by taking the value of the first item in the list. 
 
-> **We don't explictly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
+	> **We don't explictly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
 
 2. Next, all of the commands in the body of the loop (between the `do` and `done`) are executed. Usually, the commands placed here will be using the temporary variable as input. **Remember, if you are using the value stored in the variable you need to use $ to reference it!** In the example, we are running two commands:
 
-* `echo $x`: print out the value stored in `x`
-* `wc -l $x`: count/report the number of lines in `x`
+	* `echo $x`: print out the value stored in `x`
+	* `wc -l $x`: count/report the number of lines in `x`
 
 3. Once those two commands are complete, the temporary variable is assigned a new value. It now takes the value of the second item in the list.
 
-> **The variable is reassigned a value `x=Mov10_oe_2.subset.fq`.**
+	> **The variable is reassigned a value `x=Mov10_oe_2.subset.fq`.**
 
 4. Once again, all of the commands in between the `do` and `done` are executed. This time they are using the new value stored in `x` as input.
 
 5. The temporary variable then takes on the value of the third item in the list.
 
-> **The variable is reassigned a value `x=Mov10_oe_3.subset.fq`.**
+	> **The variable is reassigned a value `x=Mov10_oe_3.subset.fq`.**
 
 6. Once again, all of the commands in between the `do` and `done` are executed using the new value stored in `x`. 
 
