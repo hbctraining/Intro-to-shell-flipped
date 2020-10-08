@@ -1,0 +1,15 @@
+# Day 2 self-learning Exercises
+
+## Permissions
+
+If ls -l myfile.php returns the following details:
+
+-rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
+Which of the following statements is true?
+
+1. members of caro (a group) can read, write, and execute myfile.php
+2. members of zoo (a group) cannot execute myfile.php
+3. caro (the owner) can read, write, and execute myfile.php
+
+## Environment Variables
+Are the directories listed by the which command within $PATH?
