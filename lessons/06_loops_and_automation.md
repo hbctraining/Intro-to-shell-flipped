@@ -170,7 +170,7 @@ For each file that we process we can use `basename` to create a prefix from the 
 ```bash
 do
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  samplename=`basename $filename .subset.fq`
 ```
 
 Now we execute the command required to dump the bad reads to file, but first start with an `echo` statement to keep the user informed. We will use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence read and write them to a file. Our output file is named using the `base` variable we created earlier in the loop. 
@@ -180,7 +180,7 @@ Now we execute the command required to dump the bad reads to file, but first sta
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${samplename}-badreads.fq
 ``` 
 
 > #### Why are we using curly brackets with the variable name?
@@ -208,13 +208,13 @@ for filename in *.fq
 do 
 
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  samplename=`basename $filename .subset.fq`
 
   # tell us what file we're working on	
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${samplename}-badreads.fq
 
   # grab the number of bad reads and write it to a summary file
   grep -cH NNNNNNNNNN $filename >> badreads.count.summary
