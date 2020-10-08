@@ -54,12 +54,12 @@ $ for x in Mov10_oe_1.subset.fq Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
 > #### Running loops at the command prompt
 > In our materials, the for loop is written out using multiple lines rather than the single line commands we have been running so far. When running this at the command prompt begin by typing out the `for` statement, then press the return key. You will notice that you are not back at your command prompt. Rather than a `$`, you should see a `>`. The shell has acknowledged that you have started a for loop and is waiting for you to complete it. Continue to type code line by line. Once you type in `done` and press return the shell will know you are done and will run the loop. 
 
-> > **NOTE:** Use your <button> up </button> arrow at the command prompt to traverse through your history and see the for loop that you just ran. Even though we typed it out on multiple lines, it shows up on a single line. You can also create for loops using this syntax alhtough we don't recommend it as it can be hard to read.
+> > **NOTE:** Use your <button> up </button> arrow at the command prompt to traverse through your history and see the for loop that you just ran. Even though we typed it out on multiple lines, it shows up on a single line. You can also create for loops using this syntax although we don't recommend it as it can be hard to read.
 
 
 1. When we start the loop, the temporary variable is initialized by taking the value of the first item in the list. 
 
-	> **We don't explictly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
+	> **We don't explicitly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
 
 2. Next, all of the commands in the body of the loop (between the `do` and `done`) are executed. Usually, the commands placed here will be using the temporary variable as input. **Remember, if you are using the value stored in the variable you need to use $ to reference it!** In the example, we are running two commands:
 
@@ -139,7 +139,7 @@ $ vim generate_bad_reads_summary.sh
 At the beginning of our script we are going to add what is called a **shebang line**. This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
 
 > #### Why do I need a shebang line? My scripts ran perfectly well before without it.
-> Having a shebang line is best practice. While your script will run fine without it in environments where bash is the default shell, it won't if the user of this script is using a different shell. To avoid any issues, we explcitly state that this script needs to executed using the bash shell.
+> Having a shebang line is best practice. While your script will run fine without it in environments where bash is the default shell, it won't if the user of this script is using a different shell. To avoid any issues, we explicitly state that this script needs to executed using the bash shell.
 
 ```bash
 #!/bin/bash
@@ -187,7 +187,7 @@ Now we execute the command required to dump the bad reads to file, but first sta
 > When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base-badreads.fq`.
 
   
-We'll also count the number of identified bad reads using the count flag of `grep`, which will return the number of matches rather than the actual matches themself. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
+We'll also count the number of identified bad reads using the count flag of `grep`, `-c`, which will return the number of matches rather than the actual matching lines. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
 
 ```bash
   # grab the number of bad reads and write it to a summary file
