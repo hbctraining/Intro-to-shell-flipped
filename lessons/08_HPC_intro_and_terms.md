@@ -39,7 +39,7 @@ There are 2 options for built-in data storage
 This is a simple point, how much data can my computer store? It is measured in bytes, usually Gigabytes (GB) or Terabytes (TB). E.g. my laptop has 1 TB of storage on an HDD. What does your computer have?
 
 ### Memory
-Memory is a small amount of volatile or temporary information storage. This is distinct from the data storage we discussed in the previous point. It is an essential component of any computer, as this is where data is stored when some computation is being performed on it. If you have every used R, note that all the objects in your environment are usually stored in memory until you save your environment. 
+Memory is a small amount of volatile or temporary information storage. This is distinct from the data storage we discussed in the previous point. It is an essential component of any computer, as this is where data is stored when some computation is being performed on it. If you have ever used R, note that all the objects in your environment are usually stored in memory until you save your environment. 
 
 E.g. my laptop has 16 GB of memory. How much memory do you have on your computer?
 
