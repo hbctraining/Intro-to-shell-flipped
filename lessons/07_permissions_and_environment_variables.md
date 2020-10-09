@@ -226,7 +226,7 @@ $ echo $HOME
 You should see the path to your home directory. `$HOME` can be used instead of the `~` (if you want to type 4 more characters).
 
 
-`$HOME` is pretty straighforward, how about we take a look at what is stored in the `$PATH` variable:
+`$HOME` is pretty straightforward, how about we take a look at what is stored in the `$PATH` variable:
 
 ```bash
 $ echo $PATH
