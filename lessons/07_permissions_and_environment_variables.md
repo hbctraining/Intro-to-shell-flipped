@@ -308,7 +308,19 @@ The `export` command:
   
 This command is often used to add paths to a directory with commands you commonly want to use. 
 
-Let's say you often use the `bowtie2` command for alignment and it exists in `/home/rsk27/installations/alignment_tools/dna/bowtie/`. If you want to run this tool, you will have to say `$ /home/rsk27/installations/alignment_tools/dna/bowtie/bowtie2 <inputfile>`. However, if `/home/rsk27/installations/alignment_tools/dna/bowtie` is part of the `$PATH` variable you can just say `$ bowtie2 <inputfile>` instead. 
+Let's say you often use the `bowtie2` command for alignment and it exists in `/home/rsk27/installations/alignment_tools/dna/bowtie/`. 
+
+If you want to run this tool, you will have to type:
+
+```bash 
+$ /home/rsk27/installations/alignment_tools/dna/bowtie/bowtie2 <inputfile>
+```
+
+However, if `/home/rsk27/installations/alignment_tools/dna/bowtie` is part of the `$PATH` variable you can instead just type:
+
+```bash
+$ bowtie2 <inputfile>
+```
 
 #### Closer look at the inner workings of the shell, in the context of $PATH
  
