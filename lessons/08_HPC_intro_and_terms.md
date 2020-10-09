@@ -52,9 +52,9 @@ So how do all these components come into play when we talk about the cluster or 
 </p>
 
 As we discussed in the first lesson, the above image shows us the many nodes (or computers) that make up a **"cluster"** of computers. Each individual node in an HPC environment is a lot **more powerful** than any laptop or desktop computer we are used to working with. What we mean by *powerful* here is that each of these nodes have:
-* a lot more memory (temporary storage)
-* many more, faster CPUs
-* each of those CPUs has many more cores
+  * a lot more memory (temporary storage)
+  * many more, faster CPUs
+  * each of those CPUs has many more cores
 
 E.g. A cluster “Node” that has eight “quad"-core CPUs, means that node has 32 cores (ability to process 32 computations at a time).
 
