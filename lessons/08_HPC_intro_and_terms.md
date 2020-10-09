@@ -108,7 +108,7 @@ With parallelization, several samples can be analysed at the same time!
 
 We will be going over the specifics of using the O2 cluster in class. We will discuss:
 * how to use software on O2
-* how to request resources, like cores, memory, time etc. on Slurm (Simple Linux Utility for Resource Management)
+* how to request resources, like cores, memory, time etc. with the *job scheduler* Slurm (Simple Linux Utility for Resource Management)
 * best practices (how to be a good cluster citizen)
 * data storage limits
 
