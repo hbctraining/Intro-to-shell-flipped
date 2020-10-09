@@ -86,7 +86,7 @@ On a cluster we have access to many cores on a single node, so in theory we coul
 <img src="../img/multithreaded_hpc.png" width="450">
 </p>
 
-> **Note:** Multithreading is done internally by analysis tools being employed, and **not** by manually splitting the input except in very unusual circumstances.
+> **Note:** Multithreading is done internally by analysis tools being employed, and **not** by manually splitting the input (except in very unusual circumstances).
 
 #### Three input files
 
@@ -96,7 +96,7 @@ Now, what if we had 3 input files? Well, we could process these files **in seria
 <img src="../img/serial_hpc_3samples.png" width="450">
 </p>
 
-This is great, but it is not as efficient as using multithreading each analysis and using a set of 8 cores for each of the 3 input samples. This is actually considered to be true parallelization.
+This is great, but it is not as efficient as multithreading each analysis, and using a set of 8 cores for each of the three input samples. This is actually considered to be true parallelization.
 
 <p align="center">
 <img src="../img/multithreaded_hpc_3samples.png" width="650">
