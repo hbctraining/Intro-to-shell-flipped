@@ -29,7 +29,7 @@ This is the component that processes everything you do on your computer. On my M
   1. **Number of Processors**:	1
   1. **Total Number of Cores**:	4
 
-So, I have a processor with 4 "core", i.e. a Quad-core processor. This means that my processor can do 4 distinct computations at the same time. Do you have a quad-core processor? Or maybe it is a duo-core (2 cores in 1 CPU)?
+So, I have a processor with 4 "cores", i.e. a "quad-core" processor. This means that my processor can do 4 distinct computations at the same time. Do you have a quad-core processor? Or maybe it is a duo-core (2 cores in 1 CPU)?
 
 ### Data Storage
 There are 2 options for built-in data storage
