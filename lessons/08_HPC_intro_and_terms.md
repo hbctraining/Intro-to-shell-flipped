@@ -1,7 +1,7 @@
 ---
 title: HPC intro
 author: Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu
-date: "Friday, September 11, 2020"
+date: "Thursday, October 8, 2020"
 ---
 
 ## Learning Objectives
