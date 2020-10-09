@@ -24,17 +24,17 @@ A lot of you probably only think about these things when you buy a new computer,
 
 ### CPU or Central Processing Unit 
 This is the component that processes everything you do on your computer. On my Macbook, the specs associated with this component are:
-  1. Processor Name:	Intel Core i7
-  1. Processor Speed:	2.9 GHz
-  1. Number of Processors:	1
-  1. Total Number of Cores:	4
+  1. **Processor Name**:	Intel Core i7
+  1. **Processor Speed**:	2.9 GHz
+  1. **Number of Processors**:	1
+  1. **Total Number of Cores**:	4
 
 So, I have a processor with 4 "core", i.e. a Quad-core processor. This means that my processor can do 4 distinct computations at the same time. Do you have a quad-core processor? Or maybe it is a duo-core (2 cores in 1 CPU)?
 
 ### Data Storage
 There are 2 options for built-in data storage
-1. HDD: Hard Disk Drive (spinning)
-2. SSD: Solid State Drive
+1. **HDD**: Hard Disk Drive (spinning)
+2. **SSD**: Solid State Drive
 
 This is a simple point, how much data can my computer store? It is measured in bytes, usually Gigabytes (GB) or Terabytes (TB). E.g. my laptop has 1 TB of storage on an HDD. What does your computer have?
 
