@@ -20,7 +20,7 @@ When you bought your last computer, what did you look for? Probably some of the 
 * Does the processor speed really matter? Maybe I'll get the fastest one in my budget.
 * How much memory do I need? 
 
-A lot of you probably only think about these things when you buy a new computer, but not everyday. When using the cluster thinking about some of these computer components is essential to make sure you are using cluster resources effectively. In this lesson we will review some of these components and introduce you to some associated jargon.
+A lot of you probably only think about these things when you buy a new computer, but not every day. When using the cluster thinking about some of these computer components is essential to make sure you are using cluster resources effectively. In this lesson we will review some of these components and introduce you to some associated jargon.
 
 ### CPU or Central Processing Unit 
 This is the component that processes everything you do on your computer. On my Macbook, the specs associated with this component are:
@@ -29,7 +29,7 @@ This is the component that processes everything you do on your computer. On my M
   1. Number of Processors:	1
   1. Total Number of Cores:	4
 
-So, I have a processor with 4 "core", i.e. a Quad-core processor. This means that my processor can do 4 distinct computations at the same time. Do you have a quad-core processor? Or maybe its a duo-core?
+So, I have a processor with 4 "core", i.e. a Quad-core processor. This means that my processor can do 4 distinct computations at the same time. Do you have a quad-core processor? Or maybe it is a duo-core (2 cores in 1 CPU)?
 
 ### Data Storage
 There are 2 options for built-in data storage
@@ -62,7 +62,7 @@ E.g. A cluster “Node” that has eight “quad"-core CPUs, means that node has
 
 ### Why use the cluster or an HPC environment?
 
-1. A lot of software is designed to work with the resources on an HPC environment and is either unavailable for, or unuseable on, a personal computer.
+1. A lot of software is designed to work with the resources on an HPC environment and is either unavailable for, or unusable on, a personal computer.
 2. If you are performing analysis on large data files (e.g. high-throughput sequencing data), you should work on the cluster to avoid issues with memory and to get the analysis done a lot faster with the superior processing capacity. Essentially, a cluster has:
   * 100s of cores for processing!
   * 100s of Gigabytes or Petabytes of storage!
@@ -80,7 +80,7 @@ Let's start with the most basic idea of processing 1 input file to generate 1 ou
 <img src="../img/serial_hpc_crop.png" width="50">
 </p>
 
-On a cluster we have access to many cores on a single node, so in theory we could split up the analysis of a single file into mutliple distinct processes and use as many cores to speed up the generation of an output file. This is called **multithreading**, i.e. using multiple threads or cores. As you can imagine, multithreading can speed up how fast the analysis is performed! In the example below, the input file is analysed using 8 cores, likely resulting in an 8 fold speed up!
+On a cluster we have access to many cores on a single node, so in theory we could split up the analysis of a single file into multiple distinct processes and use as many cores to speed up the generation of an output file. This is called **multithreading**, i.e. using multiple threads or cores. As you can imagine, multithreading can speed up how fast the analysis is performed! In the example below, the input file is analyzed using 8 cores, likely resulting in an 8 fold speed up!
 
 <p align="center">
 <img src="../img/multithreaded_hpc.png" width="450">
@@ -102,7 +102,7 @@ This is great, but it is not as efficient as using multithreading each analysis 
 <img src="../img/multithreaded_hpc_3samples.png" width="650">
 </p>
 
-With parellization, several samples can be analysed at the same time!
+With parallelization, several samples can be analysed at the same time!
 
 ## O2 cluster
 
