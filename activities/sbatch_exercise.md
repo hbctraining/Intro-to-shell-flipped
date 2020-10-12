@@ -29,3 +29,7 @@ Next, open the `sbatch_generate_bad_reads_summary.sh` and do the following:
     * Are there any new files with names ending in `.out` and `.err`?
     * What are the contents of these two files?
 1. Check the contents of `~/unix_lesson/raw_fastq/sbatch_output/`, are the expected files there?
+
+---
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
