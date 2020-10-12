@@ -8,13 +8,13 @@ Convert existing script to a batch script and run it using the `sbatch` command 
 
 ### Update the new shell script
 Next, open the `sbatch_generate_bad_reads_summary.sh` and do the following:
-1. Update the following lines of code, sych that the `gerp` output in both cases is redirected to the `~/unix_lesson/raw_fastq/sbatch_output/` directory. *Do not change the names of the output files.*
+1. Update the following lines of code, such that the `grep` output in both cases is redirected to the `~/unix_lesson/raw_fastq/sbatch_output/` directory. *Do not change the names of the output files.*
       ```bash
       grep -A 2 -B 1 NNNNNNNNN $filename > ${samplename}-badreads.fq 
       
       grep -c -H  NNNNNNNNNN $filename >> badreads.count.summary
       ```
-1. Add SLURM directives at the top of the script requesting the following resources:
+1. Add SLURM/`sbatch` directives at the top of the script requesting the following resources:
    * Use partition `priority` (-p)
    * Request 5 minutes (-t)
    * Request 100MB of memory (--mem)
