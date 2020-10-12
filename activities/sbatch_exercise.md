@@ -3,7 +3,7 @@
 Convert existing script to a batch script and run it using the `sbatch` command from Slurm
 
 ### Set up
-1. Copy the `generate_bad_reads_summary.sh` & create a new script called `sbatch_generate_bad_reads_summary.sh
+1. Copy the `generate_bad_reads_summary.sh` & create a new script called `sbatch_generate_bad_reads_summary.sh`
 2. Create a new directory within the `raw_fastq` directory called `sbatch_output`
 
 ### Update the new shell script
@@ -23,7 +23,7 @@ Next, open the `sbatch_generate_bad_reads_summary.sh` and do the following:
 ### Run the new shell script to start a new job on O2
 1. Run the new script using the `sbatch` command
 
-### Checking the job (during and after) 
+### Check the job/run 
 1. Use `sacct` to check the status of your job submission
 1. Check the contents of your current directory -
     * Are there any new files with names ending in `.out` and `.err`?
