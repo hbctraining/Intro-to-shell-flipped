@@ -70,11 +70,17 @@ Before you start with the self-learning portion of the workshop, please check th
 ## Dataset
 [Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
 
+## Advanced bash comands
+If you are interested in learning some more advanced tools for working on the command-line, we encourage you to walk-through the materials linked below:
+
+* [More fun with bash (advanced)](../lessons/extra_bash_tools.md)
+
 ## Resources
 
 Cheat sheets:
 * [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
 * [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
+* Simplified version of the `man` pages (online and searchable): [tldr_](https://tldr.ostera.io/)
 
 Online tutorials:
 * [Explain Shell](http://explainshell.com)
