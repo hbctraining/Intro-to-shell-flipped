@@ -18,10 +18,10 @@ Using vim open up the file `sbatch_generate_bad_reads_summary.sh` to make some e
       grep -c -H  NNNNNNNNNN $filename >> badreads.count.summary
       ```
 1. Add SLURM/`sbatch` directives at the top of the script requesting the following resources:
-   * Use partition `priority` (-p)
-   * Request 5 minutes (-t)
-   * Request 100MB of memory (--mem)
-   * Request a single core (-c)
+   * Use partition `priority` (`-p`)
+   * Request 5 minutes (`-t`)
+   * Request 100MB of memory (`--mem`)
+   * Request a single core (`-c`)
    
 1. Save the file and exit vim.
 
