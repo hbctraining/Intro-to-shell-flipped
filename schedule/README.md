@@ -51,6 +51,7 @@ Before you start with the self-learning portion of the workshop, please check th
 * Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/6zPM8itMzGcTOgSxKQrc) **day before the next class**.
 * [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
 * Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
+* [Answer key](../homework/Day2_answer_key.txt)
 
 ***
 
