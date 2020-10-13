@@ -80,7 +80,7 @@ If you are interested in learning some more advanced tools for working on the co
 Cheat sheets:
 * [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
 * [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
-* Simplified version of the `man` pages (online and searchable): [tldr_](https://tldr.ostera.io/)
+* [tldr_ : Simplified version of the `man` pages (online and searchable)](https://tldr.ostera.io/)
 
 Online tutorials:
 * [Explain Shell](http://explainshell.com)
