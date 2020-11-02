@@ -4,7 +4,7 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 10:00 - 10:30 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Radhika |
+| 10:00 - 10:30 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Meeta |
 | 10:30 - 11:45 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika|
 | 11:45 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
