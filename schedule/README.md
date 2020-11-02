@@ -27,10 +27,10 @@ Before you start with the self-learning portion of the workshop, please check th
 ### Assignment #1
 * All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access).
   * The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/WG2XCQEmvMbw84H8s0PM) **day before the next class**.
+* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XuBjbDj6EgdvLUmrilyK) **day before the next class**.
 * [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
 * Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
-* [Answer key]()
+* Answer key
 
 ***
 
@@ -48,10 +48,10 @@ Before you start with the self-learning portion of the workshop, please check th
 ### Assignment #2
 * All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access).
   * The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/6zPM8itMzGcTOgSxKQrc) **day before the next class**.
+* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox]() **day before the next class**.
 * [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
 * Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
-* [Answer key]()
+* Answer key
 
 ***
 
