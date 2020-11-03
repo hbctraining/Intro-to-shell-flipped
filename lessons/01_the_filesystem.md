@@ -84,18 +84,12 @@ The command prompt on O2 will have some characters before the `$`, something lik
 The first command we will run at the command prompt will be to start a so-called "interactive session" on O2. This command will connect us to a compute node, so that all of the commands we run will be processed by a computer designated to do analysis (and not designated to log in users). **Copy and paste the command below.**
 
 ```bash
-$ srun --pty -p interactive -t 0-2:00 --mem 1G --reservation=HBC1 /bin/bash
+$ srun --pty -p interactive -t 0-2:00 --mem 1G /bin/bash
 ```
  
 Press enter, you should see a couple of messages and in a few seconds you should get back the command prompt `$`. Now the string of characters before the command prompt will be different. They should say something like `[rc_training10@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now and it is specifying the name of that compute node.
 
 > **Tip** - When you run any command in Shell, the command prompt might disappear and once command has been executed, the prompt is returned. This indicates that Shell is ready to accept another command.
-
-> NOTE: When you run the `srun` command between the classes and after this workshop with your own account please remove the `--reservation` string.
-> 
-> `srun --pty -p interactive -t 0-2:00 --mem 1G /bin/bash`
-> 
-> The "reservation" is only active for the training accounts during class.
 
 Make sure that your command prompt now contains the word "compute". Once it does, we are ready to copy over some data to work with!
 
