@@ -222,10 +222,11 @@ To edit the newly created `draft.txt` file, you can open it again with vim: `vim
 
 
 > ### Review of saving and quitting
-> | key (in command mode)  | action                 |
+> 
+> | key (in command mode)  | action           |
 > | ---------------- | ---------------------- |
 > | <button>:w</button>     | to write to file (save) |
-> | <button>:wq</button>     | to write to file and quit     |
+> | <button>:wq</button>     | to write to file and quit |
 > | <button>:q!</button>     | to quit without saving |
 
 
