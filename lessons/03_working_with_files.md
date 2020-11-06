@@ -189,10 +189,12 @@ After you have finished typing, **press <kbd>esc</kbd> to enter command mode.**
 **Note the `--INSERT--` has now disappeared from the bottom of the screen.**
 
 > ### Review of Vim modes
+> 
 > | key              | action                 |
 > | ---------------- | ---------------------- |
 > | <button>i</button>     | insert mode - to write and edit text |
 > | <button>esc</button>     | command mode - to issue commands / shortcuts  |
+> 
 
 
 ### Saving and Quitting
