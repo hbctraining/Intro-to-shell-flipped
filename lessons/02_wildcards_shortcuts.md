@@ -17,7 +17,7 @@ You need to be logged into O2, and be on a compute node to run through this less
 If you are not logged into O2 or are not on a compute node, please follow the steps below as appropriate:
 
 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (HMSXXcluster) (replace the "XX" with the number you were assigned in class) 
-2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:00 --mem 1G /bin/bash` to get on a compute node.
+2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
 3. Proceed to the next section once your command prompt has the word `compute` in it.
 
 ## Saving time with tab completion, wildcards and other shortcuts 
