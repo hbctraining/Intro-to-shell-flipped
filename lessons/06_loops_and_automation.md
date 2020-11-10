@@ -128,10 +128,16 @@ We've already had some fun with shell scripts, but now it's time to take our she
 
 It might seem daunting, but everything outlined above is something that you know how to do. Let's get started...
 
-Move back in to `other` and use `vim` to create our new script file:
+We will first create a directory for any ouput files that we generate.
 
 ```bash
-$ cd ~/unix_lesson/other
+$ mkdir ~/unix_lesson/badreads
+```
+
+Now, move back in to the `badreads` directory and use `vim` to create our new script file:
+
+```bash
+$ cd ~/unix_lesson/badreads
 
 $ vim generate_bad_reads_summary.sh
 ```
@@ -163,7 +169,7 @@ for filename in *.fq
 
 Type out `do` followed by all the things we need to do.
 
-For each file that we process we can use `basename` to create a prefix from the original filename. We will store this prefix in a variable called `base` and use it to to uniquely label our output files.
+For each file that we process we can use `basename` to create a prefix from the original filename. We will store this prefix in a variable called `samplename` and use it to to uniquely label our output files.
 
 > *Note the use of backticks to assign the output of the `basename` command as value to the variable! If you cannot find the backtick key on your keyboard, just copy and paste from the lesson.*
 
@@ -173,14 +179,14 @@ do
   samplename=`basename $filename .subset.fq`
 ```
 
-Now we execute the command required to dump the bad reads to file, but first start with an `echo` statement to keep the user informed. We will use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence read and write them to a file. Our output file is named using the `base` variable we created earlier in the loop. 
+Now we execute the command required to dump the bad reads to file, but first start with an `echo` statement to keep the user informed. We will use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence read and write them to a file. Our output file is named using the `samplename` variable we created earlier in the loop. We will also add a path to redirect output to the `badreads` directory.
 
 ```bash
   # tell us what file we're working on
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > ${samplename}-badreads.fq
+  grep -B1 -A2 NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
 ``` 
 
 > #### Why are we using curly brackets with the variable name?
@@ -191,7 +197,7 @@ We'll also count the number of identified bad reads using the count flag of `gre
 
 ```bash
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename >> badreads.count.summary
+  grep -cH NNNNNNNNNN $filename >> ~/unix_lesson/badreads/badreads.count.summary
 done
 ```
 
@@ -214,10 +220,10 @@ do
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > ${samplename}-badreads.fq
+  grep -B1 -A2 NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
 
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename >> badreads.count.summary
+  grep -cH NNNNNNNNNN $filename >> ~/unix_lesson/badreads/badreads.count.summary
 done
 
 ```
@@ -228,18 +234,12 @@ To run this script, we simply enter the following command:
 $ sh generate_bad_reads_summary.sh
 ```
 
-How do we know if the script worked? Take a look inside the `raw_fastq` directory, we should see that for every one of the original FASTQ files we have one bad read file. We should also have a summary log file documenting the total number of bad reads from each file.
+How do we know if the script worked? Take a look inside the `badreads` directory, we should see that for every one of the original FASTQ files we have one bad read file. We should also have a summary log file documenting the total number of bad reads from each file.
 
 ```bash
-$ ls -l ~/unix_lesson/raw_fastq 
+$ ls -l ~/unix_lesson/badreads
 ```
 
-To keep our data organized, let's move all of the bad read files out of the `raw_fastq` directory into a new directory called `other`.
-
-```bash
-$ mv ../raw_fastq/*bad* .
-
-```
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
