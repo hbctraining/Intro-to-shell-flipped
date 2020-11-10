@@ -73,7 +73,8 @@ Before you start with the self-learning portion of the workshop, please check th
 ## Advanced bash commands
 If you are interested in learning some more advanced tools for working on the command-line, we encourage you to walk-through the materials linked below:
 
-* [More fun with bash (advanced)](../lessons/extra_bash_tools.md)
+* [More fun with bash commands](../lessons/extra_bash_tools.md)
+* [Advanced bash commands (aliases, copying files, and symlinks)](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon-flipped/lessons/more_bash_cluster.html)
 
 ## Resources
 
