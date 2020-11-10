@@ -3,8 +3,9 @@
 Convert existing script to a batch script and run it using the `sbatch` command from Slurm
 
 ### Set up
-1. Copy the `generate_bad_reads_summary.sh` & create a new script called `sbatch_generate_bad_reads_summary.sh`.
-2. Create a new directory inside the `raw_fastq` directory called `sbatch_output`.
+1. Locate the file `generate_bad_reads_summary.sh` (which was created in the [Loops and Automation lesson](../lessons/06_loops_and_automation.md))
+2. Duplicate this file and call the duplicate file `sbatch_generate_bad_reads_summary.sh`. (*Hint: use the `cp` command*)
+3. Create a new directory inside the `raw_fastq` directory called `sbatch_output`.
 
 ### Update the new shell script
 Using vim open up the file `sbatch_generate_bad_reads_summary.sh` to make some edits. Once inside the file, do the following:
