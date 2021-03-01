@@ -8,10 +8,16 @@
 | 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Mary|
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
+### Before the next class:
 
-### Self Learning #1
+1. Please **study the contents** and **work through all the code** within the following lessons:
 
-Before you start with the self-learning portion of the workshop, please check that **you are logged into O2** and **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
+  * [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
+  * [Examining and creating files](../lessons/03_working_with_files.md)
+  * [Searching and redirection](../lessons/04_searching_files.md)
+  * [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
+
+**Before you start, please check that **you are logged into O2** and **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
 
 > If you are not logged into O2 or are not on a compute node, please follow the steps below as appropriate before you start with the self-learning lessons:
 > 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were assigned in class). 
@@ -19,18 +25,16 @@ Before you start with the self-learning portion of the workshop, please check th
 > 3. Proceed with the self learning once your command prompt has the word `compute` in it.
 > 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
 
-* [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
-* [Examining and creating files](../lessons/03_working_with_files.md)
-* [Searching and redirection](../lessons/04_searching_files.md)
-* [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
+2. **Complete the exercises**:
+   * Each lesson above contain exercises; please go through each of them.
+   * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
+   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XuBjbDj6EgdvLUmrilyK) the **day before the next class**.
+   
 
-### Assignment #1
-* All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access).
-  * The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XuBjbDj6EgdvLUmrilyK) **day before the next class**.
-* [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
-* Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
-* **[Answer Key](../homework/Day1_answer_key.txt)**
+### Questions?
+* ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
+* Post any **conceptual questions** that you would like to have **reviewed in class** [here](https://PollEv.com/hbctraining945).
+
 
 ***
 
