@@ -5,7 +5,7 @@
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Meeta |
-| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika|
+| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Mary|
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
 
@@ -38,7 +38,7 @@ Before you start with the self-learning portion of the workshop, please check th
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 10:45 | Self-learning lessons review | All |
+| 09:30 - 10:45 | Self-learning lessons review | Jihe/Mary |
 | 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Meeta |
 
 ### Self Learning #2
@@ -60,10 +60,10 @@ Before you start with the self-learning portion of the workshop, please check th
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 09:30 - 10:00 | Self-learning lessons review | All |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_October2020.pdf)| Radhika |
-| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md)| Meeta |
-| 11:30 - 11:45 | [Introduction to the O2 cluster - data storage](../lectures/HPC_intro_O2_October2020.pdf)| Radhika |
-| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Radhika |
+| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_October2020.pdf)| Meeta |
+| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md)| Jihe |
+| 11:30 - 11:45 | [Introduction to the O2 cluster - data storage](../lectures/HPC_intro_O2_October2020.pdf)| Mary |
+| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Meeta |
 
 ***
 
