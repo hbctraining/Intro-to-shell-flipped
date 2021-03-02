@@ -10,25 +10,23 @@
 
 ### Before the next class:
 
-1. **Log into O2** and make sure you **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
-
-> If you are not logged into O2 or are not on a compute node, please follow the steps below:
-> 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were assigned in class). 
-> 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
-> 3. Proceed once your command prompt has the word `compute` in it.
-> 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
-
-2. Please **study the contents** and **work through all the code** within the following lessons:
+1. Please **study the contents** and **work through all the code** within the following lessons:
 
   * [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
   * [Examining and creating files](../lessons/03_working_with_files.md)
   * [Searching and redirection](../lessons/04_searching_files.md)
   * [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
 
-3. **Complete the exercises**:
+> **NOTE:** To run through the code above, you will need to be **logged into O2** and **working on a compute node** (i.e. your command prompt should have the word `compute` in it).
+> 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were assigned in class). 
+> 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
+> 3. Proceed once your command prompt has the word `compute` in it.
+> 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
+
+2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XuBjbDj6EgdvLUmrilyK) the **day before the next class**.
+   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/M7r4LA9aeoajWPbjMjht) the **day before the next class**.
    
 
 ### Questions?
@@ -47,17 +45,17 @@
 
 ### Before the next class:
 
-1. **Log into O2** and make sure you **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
-
-2. Please **study the contents** and **work through all the code** within the following lessons:
+1. Please **study the contents** and **work through all the code** within the following lessons:
 
 * [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
 * [Introduction to High-performance computing](../lessons/08_HPC_intro_and_terms.md)
 
-3. **Complete the exercises**:
+> **NOTE:** To run through the code above, you will need to be **logged into O2** and **working on a compute node** (i.e. your command prompt should have the word `compute` in it). For login instructions, please see above.
+
+2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/Pq0q17q029BjlU7xsFjm) the **day before the next class**.
+   * **Upload the saved text file** to [Dropbox]() the **day before the next class**.
    
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
