@@ -15,7 +15,7 @@
 > If you are not logged into O2 or are not on a compute node, please follow the steps below:
 > 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were assigned in class). 
 > 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
-> 3. Proceed with the self learning once your command prompt has the word `compute` in it.
+> 3. Proceed once your command prompt has the word `compute` in it.
 > 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
 
 2. Please **study the contents** and **work through all the code** within the following lessons:
@@ -45,17 +45,24 @@
 | 09:30 - 10:45 | Self-learning lessons review | Jihe/Mary |
 | 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Meeta |
 
-### Self Learning #2
+### Before the next class:
+
+1. **Log into O2** and make sure you **are working on a compute node** (i.e. your command prompt should have the word `compute` in it).
+
+2. Please **study the contents** and **work through all the code** within the following lessons:
+
 * [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
 * [Introduction to High-performance computing](../lessons/08_HPC_intro_and_terms.md)
 
-### Assignment #2
-* All exercise questions from the self-learning lessons have been put together in a [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access).
-  * The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-* Add your solutions to the exercises in the downloaded .txt file and **upload the saved text file** to [Dropbox](https://www.dropbox.com/request/Pq0q17q029BjlU7xsFjm) **day before the next class**.
-* [Email us](mailto:hbctraining@hsph.harvard.edu) about questions regarding the homework that you need answered before the next class.
-* Post questions that you would like to have reviewed in class [here](https://PollEv.com/hbctraining945).
-* [Answer key](../homework/Day2_answer_key.txt)
+3. **Complete the exercises**:
+   * Each lesson above contain exercises; please go through each of them.
+   * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
+   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/Pq0q17q029BjlU7xsFjm) the **day before the next class**.
+   
+### Questions?
+* ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
+* Post any **conceptual questions** that you would like to have **reviewed in class** [here](https://PollEv.com/hbctraining945).
+
 
 ***
 
@@ -73,6 +80,11 @@
 
 ## Dataset
 [Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
+
+## Answer keys
+* [Day 1 Exercises](../homework/Day1_answer_key.txt)
+* [Day 2 Exercises](../homework/Day2_answer_key.txt)
+
 
 ## Advanced bash commands
 If you are interested in learning some more advanced tools for working on the command-line, we encourage you to walk-through the materials linked below:
