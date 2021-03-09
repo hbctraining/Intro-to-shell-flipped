@@ -115,7 +115,7 @@ $ echo $num
 
 You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
 
-> **NOTE:** Variables are not physical entities like files. Whe you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, the output of `declare` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
+> **NOTE:** Variables are not physical entities like files. When you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, the output of `declare` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
 > 
 > If you use `declare`, try piping it to the `grep` command followed by the name of the variable so you trim that list to only display the variable you are interested in:
 > 
@@ -124,7 +124,7 @@ You should see the number 25 returned to you. Did you notice that when we create
 
 ### Using variables as input to commands
 
-So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically the name of one of the files in the `raw_fastq` director:
+So far, it is hard to see the utility of a variable and why we need it. One important aspect of the variable is that the value stored inside it can be used as input to commands. To demonstrate this we will create a new variable called `file`. We will store a character string as the value of the variable, specifically the name of one of the files in the `raw_fastq` directory:
 
 ```bash
 $ file=Mov10_oe_1.subset.fq
@@ -146,14 +146,14 @@ $ wc -l $file
 
 The `wc -l` command is used to count and report the number of lines in a file. Here, we provided a file but we did not get a number reported. Instead we got the error `wc: Mov10_oe_1.subset.fq: No such file or directory`. This is because the file that we listed does not exist in our current working directory. To get around this we can do one of two things.
 
-1. Provide a path to the file:
+* Provide a path to the file:
 
 ```bash
 $ wc -l ~/unix_lesson/raw_fastq/$file
 ```
 OR 
 
-2. Change directories to where the file lives: 
+* Change directories to where the file lives: 
 
 ```bash
 $ cd ~/unix_lesson/raw_fastq
@@ -172,6 +172,7 @@ Either one of these options should have worked and you should see the number of 
 2. Create a new variable called `meta` and assign it the value `Mov10_rnaseq_metadata.txt`. For the following questions, use the `$meta` variable but do not change directories. Provide the code you would run to:
 	1. Display the contents of the file using `cat`.
 	1. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*)
+	
 ***
 
 
@@ -321,6 +322,8 @@ echo "Report complete!"
 1. Run the script `directory_info.sh`. Report what gets printed to the screen.
 2. Open up the script `directory_info.sh` using vim. Change the approproiate line of code so that our directory of interest is `~/unix_lesson/genomics_data`. Save and exit Vim.
 3. Run the script with the changes and report what gets printed to the screen.
+
+
 ***
 
 In this lesson, we described shell scripts and introduced a few related concepts that are helpful when you are starting out. It is important to understand each of the indvidual concepts, but also to see how they all come together to add flexibility and efficency to your script. Later in the workshop we will further illustrate the power of scripts and how they can make our lives (when coding) much easier. Any type of data you will want to analyze will inevitably involve not just one step, but many steps and perhaps many different tools/software programs. Compiling these into a shell script is the first step in creating your analysis workflow!
