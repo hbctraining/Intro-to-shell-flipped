@@ -55,7 +55,7 @@
 2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-   * **Upload the saved text file** to [Dropbox]() the **day before the next class**.
+   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XD2tbbTvKoM6FOBhyLBL) the **day before the next class**.
    
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
