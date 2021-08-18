@@ -182,10 +182,10 @@ ls -lF
 
 Do you see the modification in the output?
 
-    <details>
-      <summary>Explanation</summary>
-      <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
-    </details>
+<details>
+  <summary><i>Explanation</i></summary>
+  <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
+</details>
 
 > **Tip** - **All commands are essentially programs** that are able to perform specific, commonly-used tasks.
 
@@ -513,10 +513,10 @@ $ rm  fastq_backup
 
 Did that work? Did you get an error?
 
-    <details>
-      <summary>Answer</summary>
-      <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
-    </details><br>
+<details>
+  <summary><i>Explanation</i></summary>
+  <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
+</details><br>
 
 ```bash
 $ rm -ri fastq_backup
