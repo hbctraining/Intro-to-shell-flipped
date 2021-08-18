@@ -97,10 +97,32 @@ Do each of the following using a single `ls` command without
 navigating to a different directory.
 
 1.  List all of the files in `/bin` that start with the letter 'c'
+
+<details>
+  <summary>Answer</summary>
+  <code>ls /bin/c*</code>
+</details>
+
 2.  List all of the files in `/bin` that contain the letter 'a'
+
+<details>
+  <summary>Answer</summary>
+  <code>ls /bin/*a*</code>
+</details>
+
 3.  List all of the files in `/bin` that end with the letter 'o'
 
+<details>
+  <summary>Answer</summary>
+  <code>ls /bin/*o</code>
+</details>
+
 BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
+
+<details>
+  <summary>Answer</summary>
+  <code>ls /bin/*[ac]*</code>
+</details>
 
 ****
 
