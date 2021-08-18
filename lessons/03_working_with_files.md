@@ -10,7 +10,7 @@ Approximate time: 30 min
 
 * Examine the contents of files
 * Create a new file using the Vim text editor
-* Learn basic operations using the Vim text editor
+* Utilize basic operations in the Vim text editor
 
 ## Examining Files
 
@@ -26,7 +26,7 @@ $ cat ~/unix_lesson/other/sequences.fa
 
 The `cat` command prints out the all the contents of `sequences.fa` to the screen.
 
-> `cat` stands for catenate; it has many uses and printing the contents of a files onto the terminal is one of them.
+> `cat` stands for **cat**enate; it has many uses and printing the contents of a files onto the terminal is one of them.
 
 **What does this file contain?**
 
@@ -121,11 +121,55 @@ $ tail -n 1 Mov10_oe_1.subset.fq
 **Exercise**
 
 1. Change directories into `genomics_data`. You can do this using a full or relative path.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>cd ~/unix_lesson/genomics_data</code> or <code>cd ../genomics_data</code>
+</details>
+
 2. Use the `less` command to open up the file `Encode-hesc-Nanog.bed`.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>less Encode-hesc-Nanog.bed</code>
+</details>
+
 3. Search for the string `chr11`; you'll see all instances in the file highlighted.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>/chr11</code>
+</details>
+
 4. Staying in the `less` buffer, use the shortcut to get to the end of the file. Report the three highlighted lines at the end of the file where you see `chr11` highlighted. 
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+ 	<kbd>G</kbd> to get to the end of the file<br>
+	<pre><code>chr11	75374922	75375178<br>
+chr11	84136810	84137066<br>
+chr11	63529428	63529684</code></pre>
+</details>
+
+
 5. Exit the `less` buffer and come back to the command prompt.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Type <kbd>q</kbd>
+</details>
+
 6. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see as the output within the Terminal.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>tail -n 5 Encode-hesc-Nanog.bed</code>
+	<pre><code>chr6	35265429	35265685
+chr4	62253131	62253387
+chr11	63529428	63529684
+chr20	48816389	48816645
+chr8	26499187	26499443</code></pre>
+</details>
 
 ***
 
@@ -205,7 +249,7 @@ To **"write to file"** or save the modifications made to the file, **type <kbd>:
 <img src="../img/vim_save.png" width="600">
 </p>
 
-After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
+Hit <kbd>Enter</kbd> to save. After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
 
 <p align="center">
 <img src="../img/vim_postsave.png" width="600">
@@ -287,14 +331,70 @@ We have covered some basic commands in vim, but practice is key for getting comf
 practice what we just learned in a brief challenge.
 
 1. Open `spider.txt`, and delete the word "water" from line #2.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>vim spider.txt</code><br>
+	Type <code>/water</code>, then type <code>dw</code>
+</details>
+
 2. Quit without saving.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Type <code>:q!</code>
+</details>
+
 3. Open `spider.txt` again, and replace every occurrence of "spider" with "unicorn".
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	<code>vim spider.txt</code><br>
+	Type <code>:%s/spider/unicorn/g</code>
+</details>
+
 4. Delete: "Down came the rain." 
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Navigate to the line with "Down came the rain", then type <code>dd</code>.
+</details>
+
 5. Save the file.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Type <code>:w</code>
+</details>
+
 6. Undo your previous deletion.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Press <kbd>u</kbd>
+</details>
+
 7. Redo your previous deletion.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Press <kbd>Ctrl</kbd>+<kbd>r</kbd>
+</details>
+
 8. Delete the first and last words from each of the lines.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Press <kbd>w</kbd> to move through words and <code>dw</code> to delete words at the beginning and the end
+</details>
+
 9. Save the file.
+
+<details>
+	<summary><i><b>Click here for the answer</b></i></summary>
+	Type <code>:w</code>
+</details>
+	
 10. Open up the file and copy and paste the contents to a text editor on your local laptop to submit as homework.
 
 
