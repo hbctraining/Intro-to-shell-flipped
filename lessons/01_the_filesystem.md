@@ -211,7 +211,7 @@ This will open the manual page for `ls` and you will lose the command prompt. It
     * Do you think you might be able to learn this much information about the very many command by heart? 
     * Do you think this format of information display is useful for you?  
 <details>
-  <summary>Answer</summary>
+  <summary><h4>Answer</h4></summary>
   <P><code>man find</code></P>
 </details>
 
