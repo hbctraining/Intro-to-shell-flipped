@@ -182,10 +182,10 @@ ls -lF
 
 Do you see the modification in the output?
 
-<details>
-  <summary>Explanation</summary>
-  <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
-</details>
+    <details>
+      <summary>Explanation</summary>
+      <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
+    </details>
 
 > **Tip** - **All commands are essentially programs** that are able to perform specific, commonly-used tasks.
 
@@ -209,19 +209,18 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 
 * Open up the manual page for the `find` command. Skim through some of the information. 
     * Do you think you might be able to learn this much information about the very many command by heart? 
-    * Do you think this format of information display is useful for you?  
-<details>
-  <summary><h4>Answer</h4></summary>
-  <P><code>man find</code></P>
-</details>
-
-
+    * Do you think this format of information display is useful for you?
+     
+    <details>
+      <summary>Answer</summary>
+      <P><code>man find</code></P>
+    </details>
+    
 * Quit the `man` buffer and come back to your command prompt.  
-<details>
-  <summary>Answer</summary>
-  <P>Press <code>q</code> while on the manual page</P>
-</details><br>
-
+    <details>
+      <summary>Answer</summary>
+      <P>Press <code>q</code> while on the manual page</P>
+    </details><br>
 
 > **Tip** - Shell commands can get extremely complicated. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
 >
@@ -336,24 +335,24 @@ $ cd ~/unix_lesson
 
 * Using one command move to your home directory.
 
-<details>
-  <summary>Answer</summary>
-  <P><code>cd</code>, <code>cd ~</code> or <code>cd /home/your_eCommonsID/</code> </P>
-</details>
+    <details>
+      <summary>Answer</summary>
+      <P><code>cd</code>, <code>cd ~</code> or <code>cd /home/your_eCommonsID/</code> </P>
+    </details>
 
 * Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
 
-<details>
-  <summary>Answer</summary>
-  <P><code>ls ~/unix_lesson/reference_data/</code></P>
-</details>
+    <details>
+      <summary>Answer</summary>
+      <P><code>ls ~/unix_lesson/reference_data/</code></P>
+    </details>
 
 * Using one command list one of the files in `reference_data`.
 
-<details>
-  <summary>Answer</summary>
-  <P><code>ls ~/unix_lesson/reference_data/chr1.fa</code> or <code>ls ~/unix_lesson/reference_data/chr1-hg19_genes.gtf</code></P>
-</details>
+    <details>
+      <summary>Answer</summary>
+      <P><code>ls ~/unix_lesson/reference_data/chr1.fa</code> or <code>ls ~/unix_lesson/reference_data/chr1-hg19_genes.gtf</code></P>
+    </details>
 
 ****
 
@@ -385,10 +384,10 @@ You should now be in the `unix_lesson` directory (check command prompt or run `p
 
 > You will be learning a little more about the `..` shortcut later. Can you think of an example when this shortcut to the parent directory won't work?
 >
-><details>
->  <summary>Answer</summary>
->  <P>When you are at the root directory, since there is no parent to the root directory!</P>
-></details>
+>   <details>
+>     <summary>Answer</summary>
+>     <P>When you are at the root directory, since there is no parent to the root directory!</P>
+>   </details>
 
 When using relative paths, you might need to check what the branches are downstream of the folder you are in. There is a really handy command (`tree`) that can help you see the structure of any directory.
 
@@ -514,10 +513,10 @@ $ rm  fastq_backup
 
 Did that work? Did you get an error?
 
-<details>
-  <summary>Answer</summary>
-  <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
-</details><br>
+    <details>
+      <summary>Answer</summary>
+      <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
+    </details><br>
 
 ```bash
 $ rm -ri fastq_backup
@@ -531,24 +530,23 @@ $ rm -ri fastq_backup
 **Exercise**
 
 * Create a new folder in `unix_lesson` called `selected_fastq`
-<details>
-  <summary>Answer</summary>
-  <P><code>mkdir ~/unix_lesson/selected_fastq</code></P>
-</details>
+    <details>
+      <summary>Answer</summary>
+      <P><code>mkdir ~/unix_lesson/selected_fastq</code></P>
+    </details>
 
 * Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
-<details>
-  <summary>Answer</summary>
-  <P><code>cp ~/unix_lesson/raw_fastq/Irrel_kd_2.subset.fq ~/unix_lesson/selected_fastq</code><br>
-  <code>cp ~/unix_lesson/raw_fastq/Mov10_oe_2.subset.fq ~/unix_lesson/selected_fastq</code></P>
-</details>
+    <details>
+      <summary>Answer</summary>
+      <P><code>cp ~/unix_lesson/raw_fastq/Irrel_kd_2.subset.fq ~/unix_lesson/selected_fastq</code><br>
+      <code>cp ~/unix_lesson/raw_fastq/Mov10_oe_2.subset.fq ~/unix_lesson/selected_fastq</code></P>
+    </details>
 
 * Rename the `selected_fastq` folder and call it `exercise1`
-
-<details>
-  <summary>Answer</summary>
-  <P><code>mv ~/unix_lesson/selected_fastq ~/unix_lesson/exercise1</code></P>
-</details><br>
+    <details>
+      <summary>Answer</summary>
+      <P><code>mv ~/unix_lesson/selected_fastq ~/unix_lesson/exercise1</code></P>
+    </details><br>
 
 ***
 
