@@ -5,13 +5,13 @@ date: "September 28, 2020"
 ---
 
 ## Learning Objectives
-- How do you access the shell?
-- How do you use it?
-  - Getting around the Unix file system
-  - looking at files
-  - manipulating files
-  - automating tasks
-- What is it good for?
+- To access the shell
+- To execute basic tasks in the shell, including:
+  - Navigating around the Unix file system
+  - Differentiating between full and relative paths
+  - Listing files in a directory
+  - Copying, removing and moving files 
+
 
 ## Setting up
 
@@ -111,7 +111,7 @@ Let's bring in a data folder from a different location on the cluster to our des
 $ cp -r /n/groups/hbctraining/unix_lesson/ .
 ```
 
->'cp' is the command for copy. This command required you to specify the location of the item you want to copy (/groups/hbctraining/unix_lesson/) and the location of the destination (.); please note the space between the 2 in the command. The "-r" is an option that modifies the copy command to do something slightly different than usual. The "." means "here", i.e. the destination location is where you currently are.
+>'cp' is the command for copy. This command required you to specify the location of the item you want to copy (/n/groups/hbctraining/unix_lesson/) and the location of the destination (.); please note the space between the 2 in the command. The "-r" is an option that modifies the copy command to do something slightly different than usual. The "." means "here", i.e. the destination location is where you currently are.
 
 Now let's see if we can see this data folder we brought in and if it can be "listed".
 
@@ -121,7 +121,7 @@ ls
 
 You should see the string of characters "unix_lesson" show up as the output of `ls`. This is a folder we should all have duplicates of.
 
-> **Tip** - `ls` stands for "list" and it lists the contents of a directory.
+> **Tip** - `ls` stands for "**l**i**s**t" and it lists the contents of a directory.
 
 ## Starting with the shell
 
@@ -182,6 +182,11 @@ ls -lF
 
 Do you see the modification in the output?
 
+<details>
+  <summary>Explanation</summary>
+  <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
+</details>
+
 > **Tip** - **All commands are essentially programs** that are able to perform specific, commonly-used tasks.
 
 Most commands will take additional arguments that control their behavior, some of them will take a file or directory name as input. How do we know what the available arguments that go with a particular command are? Most commonly used shell commands have a manual available in the shell. You can access the
@@ -194,6 +199,7 @@ $ man ls
 This will open the manual page for `ls` and you will lose the command prompt. It will bring you to a so-called "buffer" page, a page you can navigate with your mouse or if you want to use your keyboard we have listed some basic key strokes:
 * 'spacebar' to go forward 
 * 'b' to go backward
+* Up or down arrows to go forward or backward, respectively
 
 **To get out of the `man` "buffer" page and to be able to type commands again on the command prompt, press the `q` key!**
 
@@ -203,8 +209,19 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 
 * Open up the manual page for the `find` command. Skim through some of the information. 
     * Do you think you might be able to learn this much information about the very many command by heart? 
-    * Do you think this format of information display is useful for you?
-* Quit the `man` buffer and come back to your command prompt.
+    * Do you think this format of information display is useful for you?  
+<details>
+  <summary>Answer</summary>
+  <P><code>man find</code></P>
+</details>
+
+
+* Quit the `man` buffer and come back to your command prompt.  
+<details>
+  <summary>Answer</summary>
+  <P>Press <code>q</code> while on the manual page</P>
+</details><br>
+
 
 > **Tip** - Shell commands can get extremely complicated. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
 >
@@ -315,11 +332,28 @@ $ cd ~/unix_lesson
 
 ****
 
-**Exercise**
+**Exercises**
 
 * Using one command move to your home directory.
+
+<details>
+  <summary>Answer</summary>
+  <P><code>cd</code>, <code>cd ~</code> or <code>cd /home/your_eCommonsID/</code> </P>
+</details>
+
 * Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
+
+<details>
+  <summary>Answer</summary>
+  <P><code>ls ~/unix_lesson/reference_data/</code></P>
+</details>
+
 * Using one command list one of the files in `reference_data`.
+
+<details>
+  <summary>Answer</summary>
+  <P><code>ls ~/unix_lesson/reference_data/chr1.fa</code> or <code>ls ~/unix_lesson/reference_data/chr1-hg19_genes.gtf</code></P>
+</details>
 
 ****
 
@@ -350,6 +384,11 @@ cd ..
 You should now be in the `unix_lesson` directory (check command prompt or run `pwd`).
 
 > You will be learning a little more about the `..` shortcut later. Can you think of an example when this shortcut to the parent directory won't work?
+>
+><details>
+>  <summary>Answer</summary>
+>  <P>When you are at the root directory, since there is no parent to the root directory!</P>
+></details>
 
 When using relative paths, you might need to check what the branches are downstream of the folder you are in. There is a really handy command (`tree`) that can help you see the structure of any directory.
 
@@ -409,7 +448,7 @@ The `mkdir` command is used to make a directory, syntax: `mkdir  name-of-folder-
 $ mkdir fastq_backup
 ```
 
-> **Tip** - File/directory/program names with spaces in them do not work in Unix, use characters like hyphens or underscores instead.
+> **Tip** - File/directory/program names with spaces in them do not work well in Unix, use characters like hyphens or underscores instead. Using underscores instead of spaces is called "snake_case". Alternatively, some people choose to skip spaces and rather just capitalize the first letter of each new word (i.e. MyNewFile). This alternative technique is called "CamelCase".
 
 ### Moving
 
@@ -448,7 +487,7 @@ $ ls
 > **Tip** - You can use move to move a file and rename it at the same time!
 
 **Important notes about `mv`**:
-* When using `mv`, shell will **not** check you if you are sure that you want to "replace existing file" or similar. 
+* When using `mv`, shell will **not** ask if you are sure that you want to "replace existing file" or similar unless you use the -i option. 
 * Once replaced, it is not possible to get the replaced file back!
 
 ### Removing
@@ -475,7 +514,10 @@ $ rm  fastq_backup
 
 Did that work? Did you get an error?
 
-By default, `rm`, will NOT delete directories, but you use the `-r` flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the `-i` flag.
+<details>
+  <summary>Answer</summary>
+  <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
+</details><br>
 
 ```bash
 $ rm -ri fastq_backup
@@ -489,8 +531,24 @@ $ rm -ri fastq_backup
 **Exercise**
 
 * Create a new folder in `unix_lesson` called `selected_fastq`
+<details>
+  <summary>Answer</summary>
+  <P><code>mkdir ~/unix_lesson/selected_fastq</code></P>
+</details>
+
 * Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
+<details>
+  <summary>Answer</summary>
+  <P><code>cp ~/unix_lesson/raw_fastq/Irrel_kd_2.subset.fq ~/unix_lesson/selected_fastq</code><br>
+  <code>cp ~/unix_lesson/raw_fastq/Mov10_oe_2.subset.fq ~/unix_lesson/selected_fastq</code></P>
+</details>
+
 * Rename the `selected_fastq` folder and call it `exercise1`
+
+<details>
+  <summary>Answer</summary>
+  <P><code>mv ~/unix_lesson/selected_fastq ~/unix_lesson/exercise1</code></P>
+</details><br>
 
 ***
 
@@ -501,6 +559,7 @@ cd          # change directory
 ls          # list contents
 man         # manual for a command
 pwd         # check present working directory
+tree        # prints a tree of the file structure
 cp          # copy
 mdkir       # make new directory
 mv          # move or rename 
