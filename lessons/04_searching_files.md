@@ -8,9 +8,9 @@ Approximate time: 60 minutes
 
 ## Learning objectives
 
-- Learn how to search for characters or patterns in a text file using the `grep` command
-- Learn how to write to file and append to file using output redirection
-- Explore how to use the pipe (`|`) character to chain together commands
+- Search for characters or patterns in a text file using the `grep` command
+- Write to and append a file using output redirection
+- Use the pipe (`|`) character to chain together commands
 
 ## Searching files with `grep` command
 
@@ -20,7 +20,7 @@ We went over how to search within a file using `less`. We can also search within
 
 The syntax for `grep` is as follows: `grep  search_term  filename`. The pattern that we want to search is specified in `search_term` slot, and the file we want to search within is specified in the `filename` slot. Let's give it a try by searching the FASTQ files in the `raw_fastq` directory. 
 
-FASTQ files contain the sequencing reads (nucleotide sequences) output from a sequencing facility. Each sequencing read in a FASTQ file is associated with four lines, with the first line (header line) always starting with an `@` symbol. A whole fastq record for a single read should appear similar to the following:
+FASTQ files contain the sequencing reads (nucleotide sequences) output from a sequencing facility. Each sequencing read in a FASTQ file is associated with four lines, with the first line (header line) always starting with an `@` symbol. A whole FASTQ record for a single read should appear similar to the following:
 
 	@HWI-ST330:304:H045HADXX:1:1101:1111:61397
 	CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNNNNNNNNNNNNNNGATCTTGG
@@ -78,6 +78,18 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 
 3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
+	<details>
+		<summary><b><i>Click here for the answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>grep CTCAATGAGCCA Mov10_oe_1.subset.fq</code><br>
+		The output returns 5 sequences.</p>
+		<p><i>Question 2</i><br>
+			<code>grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq</code></p>
+		<p><i>Question 3</i><br>
+		<code>grep CTCAATGAGCCA Mov10*</code><br>
+		The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2.</p>
+	</details>
+
 ***
 
 ## Redirection
@@ -130,7 +142,7 @@ $ mv bad_reads.txt ../other/
 
 **The redirection command for using the output of a command as input for a different command is `|`.**
 
-**The pipe key** (<button>|</button>) is very likely not something you use very often (it is on the same key as the back slash (<button>\</button>), right above the <button>Enter/Return</button> key). 
+**The pipe key** (<button>|</button>) is very likely not something you use very often (it is on the same key as the back slash (<kbd>\\</kbd>), right above the <button>Enter/Return</button> key). 
 
 What `|` does is take the output from one command, e.g. the output from `grep` that went whizzing by and runs it through the command specified after it. When it was all whizzing by before, we wished we could just take a look at it! Maybe we could use `less` instead of the rapid scroll. Well, it turns out that we can! We can **pipe the output `grep` command** to `less` to slowly scroll through, or to `head` to just see the first few lines.
 
@@ -148,7 +160,7 @@ $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq | head -n 5
 
 Another thing we can also do is count the number of lines output by `grep`. 
 
-The `wc` command stands for *word count*. This command counts the number of lines, words and characters in the text input given to it. The `-l` argument will only count the number of lines instead of counting everything.
+The `wc` command stands for ***w**ord **c**ount*. This command counts the number of lines, words and characters in the text input given to it. The `-l` argument will only count the number of lines instead of counting everything.
 
 ```bash
 $ grep NNNNNNNNNN Mov10_oe_1.subset.fq | wc -l
@@ -162,7 +174,7 @@ $ grep NNNNNNNNNN Mov10_oe_1.subset.fq | wc -l
 * The pipe is a very important/powerful concept in Shell
 * You can string along as many commands together as you like
 
-The philosophy behind the three redirection operators (`>`, `>>`, `|`) you have learning so far is that none of them by themselves do a lot. BUT when you start chaining them together, you can do some really powerful things really efficiently. 
+The philosophy behind the three redirection operators (`>`, `>>`, `|`) you have learned so far is that none of them by themselves do a lot. BUT when you start chaining them together, you can do some really powerful things really efficiently. 
 
 **To be able to use the shell effectively, becoming proficient in the use of the pipe and redirection operators is essential.**
 
@@ -226,12 +238,22 @@ $ cut -f 1,4 chr1-hg19_genes.gtf | wc -l
 ```
 *How many lines are returned to you?*
 
+<details>
+	<summary><b><i>Click here to check your output</i></b></summary>
+	<p>Your command should have returned 76,767 lines.</p>
+</details>
+
 Now apply the `sort -u` command before counting the lines.
 
 ```bash
 $ cut -f 1,4 chr1-hg19_genes.gtf | sort -u | wc -l
 ```
 *How many lines do you see now?*
+
+<details>
+	<summary><b><i>Click here to check your output</i></b></summary>
+	<p>Your command should have returned 27,852 lines.</p>
+</details>
 
 ***
 
@@ -279,6 +301,21 @@ First, check how many lines we would have without using `sort -u` by piping the 
 Now, to count how many unique exons are on chromosome 1, we will add back the `sort -u` and pipe the output to `wc -l`. Do you observe a difference in number of lines?
 
 ***Report the command you have at this stage and the number of lines you see with and without the `sort -u`.***
+
+<details>
+	<summary><b><i>Click here for the answers</i></b></summary>
+	<p><i>Question 1</i><br>
+	<code>grep exon chr1-hg19_genes.gtf | head</code><br></p>
+	<p><i>Question 2</i><br>
+	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head</code><br></p>
+	<p><i>Question 3</i><br>
+	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head</code><br></p>
+	<p><i>Question 4</i><br>
+	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l</code><br>
+	The output returns 37213 lines.<br>
+	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l</code><br>
+	The output returns 22769 lines, indicating that repetitive lines have been removed.<br>
+</details>
 
 ### Summary!
 
