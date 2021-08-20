@@ -8,8 +8,8 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Introduce the concept of 'looping' to iterate commands over multiple items
-* Automating tasks by using loops inside shell scripts
+* Describe the concept of 'looping' to iterate commands over multiple items
+* Automate tasks by using loops inside shell scripts
 
 
 ## Loops
@@ -113,6 +113,22 @@ $ for file in Mov10*.fq
 
 1. Change the for loop example above so that it runs on all six FASTQ files.
 2. Change the for loop example above so that it prints out the first line of all six files.
+
+	<details>
+		<summary><b><i>Click here for the answers</i></b></summary>
+		<p><i>Question 1</i></p>
+		<pre> for file in *.fq
+	do
+		echo $file
+		wc -l $file
+	done</pre>
+		<p><i>Question 2</i></p>
+		<pre> <font color="red">for</font> file in *.fq
+ 	do
+		echo $file
+		wc -l $file
+		head -n 1 $file
+	done</pre>
 
 ***
 
