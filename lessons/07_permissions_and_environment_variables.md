@@ -296,7 +296,7 @@ Are the directories listed by the `which` command within `$PATH`?
 
    <details>
         <summary><b><i>Click here for the answer</i></b></summary>
-        It should be. For example, if you would like to check the directory of command `pwd` - the output for `which pwd` is `/usr/bin/pwd`, and `/usr/bin` is within $PATH.
+        It should be. For example, if you would like to check the directory of command <code>pwd</code> - the output for <code>which pwd</code> is <code>/usr/bin/pwd</code>, and <code>/usr/bin</code> is within $PATH.
     </details>
 
 ***
