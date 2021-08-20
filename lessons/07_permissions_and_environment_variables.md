@@ -8,7 +8,7 @@ Approximate time: 40 minutes
 
 ## Learning Objectives
  
-* How to grant or restrict access to files on a multi-user UNIX system
+* Grant or restrict access to files on a multi-user UNIX system
 * What is an "Environment Variable" in Shell
 * What is $PATH, and why I should care
 
@@ -198,6 +198,11 @@ Which of the following statements is true?
 2. members of zoo (a group) cannot execute myfile.php
 3. caro (the owner) can read, write, and execute myfile.php
 
+     <details>
+       <summary><b><i>Click here for the answer</i></b></summary>
+       The third statement is true.
+     </details>
+
 ****
 
 ## Environment Variables
@@ -289,6 +294,11 @@ The path `/usr/bin` is usually where executables for commonly used commands are 
 
 Are the directories listed by the `which` command within `$PATH`?
 
+   <details>
+        <summary><b><i>Click here for the answer</i></b></summary>
+        It should be. For example, if you would like to check the directory of command `pwd` - the output for `which pwd` is `/usr/bin/pwd`, and `/usr/bin` is within $PATH.
+    </details>
+
 ***
 
 #### Modifying Environment Variables
@@ -301,7 +311,7 @@ The `export` command:
   * This specifies that you want to maintain the existing contents.
   * If you don't maintain all the `bin` directories, none of your commands will work anymore!
 * Use the ":" to separate added paths from one another, **with no spaces**
-* The new path being added, should not end in `/`. Even though `ls ~/opt/bin` and `ls ~/opt/bin/` give you the same results, the `$PATH` variable cannot have the training `/`.
+* The new path being added, should not end in `/`. Even though `ls ~/opt/bin` and `ls ~/opt/bin/` give you the same results, the `$PATH` variable cannot have the trailing `/`.
 * Order matters -
   * If you run `export PATH=$PATH:~/opt/bin` Shell will add the `~/opt/bin` directory to **the end of the pre-existing list** within the `$PATH` environment variable. 
   * Alternatively, if you use `export PATH=~/opt/bin:$PATH`, the same directory will be added to the beginning of the list. The order determines which directory Shell will look in first to find a program.
