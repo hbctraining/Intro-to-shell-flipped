@@ -4,8 +4,8 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Meeta |
-| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Mary|
+| 9:30 - 10:10 | [Workshop introduction]() | Radhika |
+| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Meeta|
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Jihe |
 
 ### Before the next class:
@@ -18,21 +18,20 @@
   * [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
 
 > **NOTE:** To run through the code above, you will need to be **logged into O2** and **working on a compute node** (i.e. your command prompt should have the word `compute` in it).
-> 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were assigned in class). 
+> 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were [assigned in class]()). 
 > 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
 > 3. Proceed once your command prompt has the word `compute` in it.
 > 4. If you log out between lessons (using the `exit` command twice), please follow points 1. and 2. above to log back in and get on a compute node when you restart with the self learning.
 
 2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
-   * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day1_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/M7r4LA9aeoajWPbjMjht) the **day before the next class**.
-   
+   * **Copy over** your the answers for the exercises into a plain text file on your local computer, using Notepad++, TextWrangler or similar. 
+     * **Please do not copy all of the content from your Terminal, just the answers.**
+   * **Upload the text file** to [Dropbox]() the **day before the next class**.
 
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
 * Post any **conceptual questions** that you would like to have **reviewed in class** [here](https://PollEv.com/hbctraining945).
-
 
 ***
 
@@ -40,7 +39,7 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 10:45 | Self-learning lessons review | Jihe/Mary |
+| 09:30 - 10:45 | Self-learning lessons review | Jihe/Radhika |
 | 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Meeta |
 
 ### Before the next class:
@@ -54,13 +53,13 @@
 
 2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
-   * **Copy over** your code from the exercises into this [text file](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/homework/Day2_assignment.txt) (download for local access). The text file can be opened with any text editor application (i.e. Notepad++, TextWrangler) on your local computer
-   * **Upload the saved text file** to [Dropbox](https://www.dropbox.com/request/XD2tbbTvKoM6FOBhyLBL) the **day before the next class**.
+   * **Copy over** your the answers for the exercises into a plain text file on your local computer, using Notepad++, TextWrangler or similar. 
+     * **Please do not copy all of the content from your Terminal, just the answers.**
+   * **Upload the text file** to [Dropbox]() the **day before the next class**.
    
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
 * Post any **conceptual questions** that you would like to have **reviewed in class** [here](https://PollEv.com/hbctraining945).
-
 
 ***
 
@@ -69,10 +68,10 @@
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 09:30 - 10:00 | Self-learning lessons review | All |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Feb2021.pdf)| Meeta |
+| 10:00 - 11:00 | [Introduction to the O2 cluster]()| Radhika |
 | 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Jihe |
-| 11:30 - 11:45 | [Introduction to the O2 cluster - data storage](../lectures/HPC_intro_O2_Feb2021.pdf)| Mary |
-| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Meeta |
+| 11:30 - 11:45 | [Introduction to the O2 cluster - data storage]()| Meeta |
+| 11:45 - 12:00 | [Wrap up]() | Radhika |
 
 ***
 
