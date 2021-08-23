@@ -26,8 +26,8 @@
 2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your the answers for the exercises into a plain text file on your local computer, using Notepad++, TextWrangler or similar. 
-     * **Please do not copy all of the content from your Terminal, just the answers.**
-   * **Upload the text file** to [Dropbox]() the **day before the next class**.
+     * *Please do not copy all of the content from your Terminal, just the answers.*
+   * **Upload the text file** to [Dropbox](https://www.dropbox.com/request/a4C5YfsulgFP5te9e7mY) the **day before the next class**.
 
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
@@ -54,8 +54,8 @@
 2. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your the answers for the exercises into a plain text file on your local computer, using Notepad++, TextWrangler or similar. 
-     * **Please do not copy all of the content from your Terminal, just the answers.**
-   * **Upload the text file** to [Dropbox]() the **day before the next class**.
+     * *Please do not copy all of the content from your Terminal, just the answers.*
+   * **Upload the text file** to [Dropbox](https://www.dropbox.com/request/P7gY9pcAXoxP4elQaRyK) the **day before the next class**.
    
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
