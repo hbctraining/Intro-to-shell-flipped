@@ -148,7 +148,7 @@ Finally, the special directory `.` always refers to your current directory. So, 
 
 To summarize, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts can be convenient when you navigate through directories!
 
-### Command History
+#### Command History
 
 You can easily access previous commands by hitting the <button>up</button> arrow key on your keyboard, this way you can step backwards through your command history. On the other hand, the <button>down</button> arrow key takes you forward in the command history.
 
@@ -166,9 +166,16 @@ Only a certain number of commands can be stored and displayed with the `history`
 
 > **NOTE:** So far we have only run very short commands that have very few or no arguments. It would be faster to just retype it than to check the history. However, as you start to run analyses on the command-line you will find that the commands are longer and more complex, and the `history` command will be very useful then!
 
+#### Cancel a command
+
+Sometimes as you enter a command, you realize that you don't want to continue or run the current line. Instead of deleting everything you have entered (which could be very long), you could quickly cancel the current line and start a fresh prompt with <button>Ctrl</button> + <button>C</button>.
+
+```bash
+$ # Run some random words, then hit "Ctrl + C". Observe what happens
+```
+
 **Other handy command-related shortcuts**
 
-- <button>Ctrl</button> + <button>C</button> will cancel the command you are writing, and give you a fresh prompt.
 - <button>Ctrl</button> + <button>A</button> will bring you to the start of the command you are writing.
 - <button>Ctrl</button> + <button>E</button> will bring you to the end of the command.
 
@@ -182,7 +189,7 @@ Only a certain number of commands can be stored and displayed with the `history`
 
 ****
 
-## Commands, options, and keystrokes covered
+## Summary: Commands, options, and keystrokes covered
 
 ```
 ~           # home dir
