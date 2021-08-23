@@ -210,17 +210,8 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 * Open up the manual page for the `find` command. Skim through some of the information. 
     * Do you think you might be able to learn this much information about the very many command by heart? 
     * Do you think this format of information display is useful for you?
-     
-    <details>
-      <summary>Answer</summary>
-      <P><code>man find</code></P>
-    </details>
     
 * Quit the `man` buffer and come back to your command prompt.  
-    <details>
-      <summary>Answer</summary>
-      <P>Press <code>q</code> while on the manual page</P>
-    </details><br>
 
 > **Tip** - Shell commands can get extremely complicated. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
 >
@@ -333,26 +324,9 @@ $ cd ~/unix_lesson
 
 **Exercises**
 
-* Using one command move to your home directory.
-
-    <details>
-      <summary>Answer</summary>
-      <P><code>cd</code>, <code>cd ~</code> or <code>cd /home/your_eCommonsID/</code> </P>
-    </details>
-
-* Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
-
-    <details>
-      <summary>Answer</summary>
-      <P><code>ls ~/unix_lesson/reference_data/</code></P>
-    </details>
-
-* Using one command list one of the files in `reference_data`.
-
-    <details>
-      <summary>Answer</summary>
-      <P><code>ls ~/unix_lesson/reference_data/chr1.fa</code> or <code>ls ~/unix_lesson/reference_data/chr1-hg19_genes.gtf</code></P>
-    </details>
+1. Using one command move to your home directory.
+2. Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
+3. Using one command list one of the files in `reference_data`.
 
 ****
 
@@ -529,24 +503,9 @@ $ rm -ri fastq_backup
 
 **Exercise**
 
-* Create a new folder in `unix_lesson` called `selected_fastq`
-    <details>
-      <summary>Answer</summary>
-      <P><code>mkdir ~/unix_lesson/selected_fastq</code></P>
-    </details>
-
-* Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
-    <details>
-      <summary>Answer</summary>
-      <P><code>cp ~/unix_lesson/raw_fastq/Irrel_kd_2.subset.fq ~/unix_lesson/selected_fastq</code><br>
-      <code>cp ~/unix_lesson/raw_fastq/Mov10_oe_2.subset.fq ~/unix_lesson/selected_fastq</code></P>
-    </details>
-
-* Rename the `selected_fastq` folder and call it `exercise1`
-    <details>
-      <summary>Answer</summary>
-      <P><code>mv ~/unix_lesson/selected_fastq ~/unix_lesson/exercise1</code></P>
-    </details><br>
+1. Create a new folder in `unix_lesson` called `selected_fastq`
+2. Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
+3. Rename the `selected_fastq` folder and call it `exercise1`
 
 ***
 
