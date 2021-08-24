@@ -330,11 +330,49 @@ $ cd ~/unix_lesson
 
 ****
 
+#### Tab completion
+
+Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use **tab completion**. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, Shell will try to fill in the rest of the directory name. 
+
+For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by pressing the `tab` key:
+
+```bash
+$ cd
+$ cd uni<tab>
+```
+
+The shell will fill in the rest of the directory name for `unix_lesson`. 
+
+Now, let's go into `raw_fastq`, then type `ls Mov10_oe_`, followed by pressing the `tab` key once:
+
+```bash
+$ cd raw_fastq/
+$ ls Mov10_oe_<tab>
+```
+
+**Nothing happens!!**
+
+The reason is that there are multiple files in the `raw_fastq` directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` a second time again, the shell will then list all the possible choices.
+
+```bash
+$ ls Mov10_oe_<tab><tab>
+```
+
+Now you can select the one you are interested in listed, and enter the number and hit tab again to fill in the complete name of the file.
+
+```bash
+$ ls Mov10_oe_1<tab>
+```
+
+> **NOTE:** Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>`, you will see that tab completion works. 
+
+**Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command. We encourage you to use this when working on the command line. 
+
 #### Relative paths
 
 We have talked about **full** paths so far, but there is a way to specify paths to folders and files without having to worry about the root directory. And you have used this before when we were learning about the `cd` command.
 
-Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step.
+Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step. (*Feel free to use your tab-completion to complete your path!*)
 
 ```bash
 $ cd
