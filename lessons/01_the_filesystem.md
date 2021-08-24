@@ -55,6 +55,12 @@ Please find and open Git BASH.
 
 Everyone should have their Terminal (or Git BASH Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**. 
 
+Here is an illustration of the log in process. The detailed instructions are described in following paragraphs.
+
+<p align="center">
+<img src="../img/login_workflow.png" width="800">
+</p>
+
 To connect to the login node on O2:
 
 1. Type in the `ssh` command at the command prompt followed by a space, and then type your username (e.g. rc_training10) plus the address of the cluster `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
