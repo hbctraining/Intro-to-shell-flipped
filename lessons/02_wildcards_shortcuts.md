@@ -61,7 +61,7 @@ navigating to a different directory.
 2.  List all of the files in `/bin` that contain the letter 'a'
 3.  List all of the files in `/bin` that end with the letter 'o'
 
-BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
+BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'. (Hint: you might need to use a different wildcard here. Refer to this [post](https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/) for some ideas.)
 
 ****
 
