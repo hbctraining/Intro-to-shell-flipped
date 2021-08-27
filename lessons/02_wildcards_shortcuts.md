@@ -24,6 +24,8 @@ If you are not logged into O2 or are not on a compute node, please follow the st
 
 ### Wild cards
 
+**The "\*" wildcard:**
+
 Navigate to the `~/unix_lesson/raw_fastq` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
 
 The "*" character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
@@ -49,6 +51,8 @@ This lists only the files that begin with 'Mov10' and end with `fq`.
 So how does this actually work? The Shell (bash) considers an asterisk "*" to be a wildcard character that can match one or more occurrences of any character, including no character. 
 
 > **Tip** - An asterisk/star is only one of the many wildcards in Unix, but this is the most powerful one and we will be using this one the most for our exercises.
+
+**The "?" wildcard:**
 
 Another wildcard that is sometimes helpful is `?`. `?` is similar to `*` except that it is a placeholder for exactly one position. Recall that `*` can represent any number of following positions, including no positions. To highlight this distinction lets look at a few examples. First, try this command:
 
