@@ -79,7 +79,7 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
 
 	<details>
-		<summary><b><i>Click here for the answers</i></b></summary>
+		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		<code>grep CTCAATGAGCCA Mov10_oe_1.subset.fq</code><br>
 		The output returns 5 sequences.</p>
@@ -303,7 +303,7 @@ Now, to count how many unique exons are on chromosome 1, we will add back the `s
 ***Report the command you have at this stage and the number of lines you see with and without the `sort -u`.***
 
 <details>
-	<summary><b><i>Click here for the answers</i></b></summary>
+	<summary><b><i>Answers</i></b></summary>
 	<p><i>Question 1</i><br>
 	<code>grep exon chr1-hg19_genes.gtf | head</code><br></p>
 	<p><i>Question 2</i><br>
