@@ -105,7 +105,7 @@ navigating to a different directory.
 BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
 
 <details>
-  <summary><b><i>Click here to see the answers</i></b></summary>
+  <summary><b><i>Answers</i></b></summary>
   <p><br>Click each question below to reveal the answer.</p>
   <details>
     <summary><i>Question 1</i></summary>
