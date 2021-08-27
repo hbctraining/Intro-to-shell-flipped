@@ -92,7 +92,7 @@ This is a very simple shell script, just to introduce you to the concept. Before
 3. Run the new script. Report the contents of the new script and the output you got after running it.
 
 	<details>
-		<summary><b><i>Click here for the answers</i></b></summary>
+		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		Add this command to <code>listing.sh</code> using vim:<br>
 		<code>cat Mov10_rnaseq_metadata.txt</code></p>
@@ -202,7 +202,7 @@ Either one of these options should have worked and you should see the number of 
 	2. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*).  
 
 	<br><details>
-		<summary><b><i>Click here for the answers</i></b></summary>
+		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		<code>head -n 4 $file</code><br>
 		@HWI-ST330:304:H045HADXX:1:1101:1162:205<br></p>
@@ -256,7 +256,7 @@ You should now see that only `Mov10_oe_1.subset` is returned.
 2. Use `basename` with the file `Irrel_kd_1.subset.fq` as input. Return only `Irrel_kd_1` to the terminal.
 
 	<details>
-		<summary><b><i>Click here for the answers</i></b></summary>
+		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		<code>basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .subset.fq</code></p>
 		<p><i>Question 2</i><br>
@@ -287,7 +287,7 @@ $ echo $samplename
 
 ## Shell scripting with bash variables
 
-Now it's time to put all of these concepts together to create a more advanced version of the script that we started with at the beginning of this lesson! This  script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
+Now it's time to put all of these concepts together to create a more advanced version of the script that we started with at the beginning of this lesson! This script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
 
 1. Assign the path of the directory to a variable
 2. Create a variable that stores only the directory name (and no path information)
@@ -375,7 +375,7 @@ echo "Report complete!"
 
 	
 	<details>
-		<summary><b><i>Click here for the answers</i></b></summary>
+		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		<code>sh directory_info.sh</code></p>
 	<pre> Reporting on the directory raw_fastq ...
