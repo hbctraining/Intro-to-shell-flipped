@@ -132,42 +132,42 @@ $ tail -n 1 Mov10_oe_1.subset.fq
 
 6. Print to screen the last 5 lines of the file `Encode-hesc-Nanog.bed`. Report what you see as the output within the Terminal.
 
-<details>
-	<summary><i><b>Click here for the answers</b></i></summary>
-	<p><br>Click each question below to reveal the answer.</p>
 	<details>
-		<summary><i>Question 1</i></summary>
-		<code>cd ~/unix_lesson/genomics_data</code> or <code>cd ../genomics_data</code>
+		<summary><i><b>Answers</b></i></summary>
+		<p><br>Click each question below to reveal the answer.</p>
+		<details>
+			<summary><i>Question 1</i></summary>
+			<code>cd ~/unix_lesson/genomics_data</code> or <code>cd ../genomics_data</code>
+		</details>
+		<details>
+		<summary><i>Question 2</i></summary>
+		<code>less Encode-hesc-Nanog.bed</code>
+		</details>
+		<details>
+		<summary><i>Question 3</i></summary>
+		<code>/chr11</code>
+		</details>
+		<details>
+		<summary><i>Question 4</i></summary>
+	 	<kbd>G</kbd> to get to the end of the file<br>
+		<pre><code>chr11	75374922	75375178<br>
+	chr11	84136810	84137066<br>
+	chr11	63529428	63529684</code></pre>
+		</details>
+		<details>
+		<summary><i>Question 5</i></summary>
+		Type <kbd>q</kbd>
+		</details>
+		<details>
+		<summary><i>Question 6</i></summary>
+		<code>tail -n 5 Encode-hesc-Nanog.bed</code>
+		<pre><code>chr6	35265429	35265685
+	chr4	62253131	62253387
+	chr11	63529428	63529684
+	chr20	48816389	48816645
+	chr8	26499187	26499443</code></pre>
 	</details>
-	<details>
-	<summary><i>Question 2</i></summary>
-	<code>less Encode-hesc-Nanog.bed</code>
 	</details>
-	<details>
-	<summary><i>Question 3</i></summary>
-	<code>/chr11</code>
-	</details>
-	<details>
-	<summary><i>Question 4</i></summary>
- 	<kbd>G</kbd> to get to the end of the file<br>
-	<pre><code>chr11	75374922	75375178<br>
-chr11	84136810	84137066<br>
-chr11	63529428	63529684</code></pre>
-	</details>
-	<details>
-	<summary><i>Question 5</i></summary>
-	Type <kbd>q</kbd>
-	</details>
-	<details>
-	<summary><i>Question 6</i></summary>
-	<code>tail -n 5 Encode-hesc-Nanog.bed</code>
-	<pre><code>chr6	35265429	35265685
-chr4	62253131	62253387
-chr11	63529428	63529684
-chr20	48816389	48816645
-chr8	26499187	26499443</code></pre>
-</details>
-</details>
 
 
 ***
@@ -349,48 +349,48 @@ practice what we just learned in a brief challenge.
 	
 10. Open up the file and copy and paste the contents to a text editor on your local laptop to submit as homework.
 
-<details>
-	<summary><i><b>Click here for the answers</b></i></summary>
-	<p><br>Click each question below to reveal the answer.</p>
 	<details>
-		<summary>Question 1</summary>
-		<code>vim spider.txt</code><br>
-		Type <code>/water</code>, then type <code>dw</code>
+		<summary><i><b>Answers</b></i></summary>
+		<p><br>Click each question below to reveal the answer.</p>
+		<details>
+			<summary>Question 1</summary>
+			<code>vim spider.txt</code><br>
+			Type <code>/water</code>, then type <code>dw</code>
+		</details>
+		<details>
+			<summary><i>Question 2</i></summary>
+			Type <code>:q!</code>
+		</details>
+		<details>
+			<summary><i>Question 3</i></summary>
+			<code>vim spider.txt</code><br>
+			Type <code>:%s/spider/unicorn/g</code>
+		</details>
+		<details>
+			<summary><i>Question 4</i></summary>
+			Navigate to the line with "Down came the rain", then type <code>dd</code>.
+		</details>
+		<details>
+			<summary><i>Question 5</i></summary>
+			Type <code>:w</code>
+		</details>
+		<details>
+			<summary><i>Question 6</i></summary>
+			Press <kbd>u</kbd>
+		</details>
+		<details>
+			<summary><i>Question 7</i></summary>
+			Press <kbd>Ctrl</kbd>+<kbd>r</kbd>
+		</details>
+		<details>
+			<summary><i>Question 8</i></summary>
+			Press <kbd>w</kbd> to move through words and <code>dw</code> to delete words at the beginning and the end
+		</details>
+		<details>
+			<summary><i>Question 9</i></summary>
+			Type <code>:w</code>
+		</details>
 	</details>
-	<details>
-		<summary><i>Question 2</i></summary>
-		Type <code>:q!</code>
-	</details>
-	<details>
-		<summary><i>Question 3</i></summary>
-		<code>vim spider.txt</code><br>
-		Type <code>:%s/spider/unicorn/g</code>
-	</details>
-	<details>
-		<summary><i>Question 4</i></summary>
-		Navigate to the line with "Down came the rain", then type <code>dd</code>.
-	</details>
-	<details>
-		<summary><i>Question 5</i></summary>
-		Type <code>:w</code>
-	</details>
-	<details>
-		<summary><i>Question 6</i></summary>
-		Press <kbd>u</kbd>
-	</details>
-	<details>
-		<summary><i>Question 7</i></summary>
-		Press <kbd>Ctrl</kbd>+<kbd>r</kbd>
-	</details>
-	<details>
-		<summary><i>Question 8</i></summary>
-		Press <kbd>w</kbd> to move through words and <code>dw</code> to delete words at the beginning and the end
-	</details>
-	<details>
-		<summary><i>Question 9</i></summary>
-		Type <code>:w</code>
-	</details>
-</details>
 
 
 ---
