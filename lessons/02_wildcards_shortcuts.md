@@ -50,6 +50,18 @@ So how does this actually work? The Shell (bash) considers an asterisk "*" to be
 
 > **Tip** - An asterisk/star is only one of the many wildcards in Unix, but this is the most powerful one and we will be using this one the most for our exercises.
 
+Another wildcard that is sometimes helpful is `?`. `?` is similar to `*` except that it is a placeholder for exactly one position. Recall that `*` can represent any number of following positions, including no positions. To highlight this distinction lets look at a few examples. First, try this command:
+
+`ls /bin/d*`
+
+This will display all files in `/bin/` that start with "d" regardless of length. However, if you only wanted the things in `/bin/` that start with "d" and are two characters long then you can use:
+
+`ls /bin/d?`
+
+Lastly, you can chain together multiple "?" marks to help specify a length. In the example below, you would be looking for all things in `/bin/` that start with a "d" and have a name length of three characters.  
+
+`ls /bin/d??` 
+
 ****
 
 **Exercise**
