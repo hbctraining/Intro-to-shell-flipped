@@ -163,7 +163,7 @@ cd ~/unix_lesson/raw_fastq
 And now we loop over all the FASTQ files:
 
 ```bash
-# enter directory with raw FASTQs
+# loop over each FASTQ file
 for filename in *.fq
 ```
 
@@ -209,7 +209,7 @@ Close the loop with `done`. Save and exit `vim`, and voila! You now have a scrip
 # enter directory with raw FASTQs
 cd ~/unix_lesson/raw_fastq
 
-# count bad reads for each FASTQ file in our directory
+# loop over each FASTQ file
 for filename in *.fq 
 do 
 
