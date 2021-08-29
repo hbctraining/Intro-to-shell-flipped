@@ -183,7 +183,7 @@ ls -lF
 Do you see the modification in the output?
 
 <details>
-  <summary>Explanation</summary>
+  <summary><i>Explanation</i></summary>
   <P>Notice that the listed directories now have <code>/</code> at the end of their names.</P>
 </details>
 
@@ -209,19 +209,9 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 
 * Open up the manual page for the `find` command. Skim through some of the information. 
     * Do you think you might be able to learn this much information about the very many command by heart? 
-    * Do you think this format of information display is useful for you?  
-<details>
-  <summary>Answer</summary>
-  <P><code>man find</code></P>
-</details>
-
-
+    * Do you think this format of information display is useful for you?
+    
 * Quit the `man` buffer and come back to your command prompt.  
-<details>
-  <summary>Answer</summary>
-  <P>Press <code>q</code> while on the manual page</P>
-</details><br>
-
 
 > **Tip** - Shell commands can get extremely complicated. No one can possibly learn all of these arguments, of course. So you will probably find yourself referring to the manual page frequently.
 >
@@ -334,34 +324,55 @@ $ cd ~/unix_lesson
 
 **Exercises**
 
-* Using one command move to your home directory.
-
-<details>
-  <summary>Answer</summary>
-  <P><code>cd</code>, <code>cd ~</code> or <code>cd /home/your_eCommonsID/</code> </P>
-</details>
-
-* Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
-
-<details>
-  <summary>Answer</summary>
-  <P><code>ls ~/unix_lesson/reference_data/</code></P>
-</details>
-
-* Using one command list one of the files in `reference_data`.
-
-<details>
-  <summary>Answer</summary>
-  <P><code>ls ~/unix_lesson/reference_data/chr1.fa</code> or <code>ls ~/unix_lesson/reference_data/chr1-hg19_genes.gtf</code></P>
-</details>
+1. Using one command move to your home directory.
+2. Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
+3. Using one command list one of the files in `reference_data`.
 
 ****
+
+#### Tab completion
+
+Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use **tab completion**. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, Shell will try to fill in the rest of the directory name. 
+
+For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by pressing the `tab` key:
+
+```bash
+$ cd
+$ cd uni<tab>
+```
+
+The shell will fill in the rest of the directory name for `unix_lesson`. 
+
+Now, let's go into `raw_fastq`, then type `ls Mov10_oe_`, followed by pressing the `tab` key once:
+
+```bash
+$ cd raw_fastq/
+$ ls Mov10_oe_<tab>
+```
+
+**Nothing happens!!**
+
+The reason is that there are multiple files in the `raw_fastq` directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` a second time again, the shell will then list all the possible choices.
+
+```bash
+$ ls Mov10_oe_<tab><tab>
+```
+
+Now you can select the one you are interested in listed, and enter the number and hit tab again to fill in the complete name of the file.
+
+```bash
+$ ls Mov10_oe_1<tab>
+```
+
+> **NOTE:** Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>`, you will see that tab completion works. 
+
+**Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command. We encourage you to use this when working on the command line. 
 
 #### Relative paths
 
 We have talked about **full** paths so far, but there is a way to specify paths to folders and files without having to worry about the root directory. And you have used this before when we were learning about the `cd` command.
 
-Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step.
+Let's change directories back to our home directory, and once more change directories from `~` (home) to `raw_fastq` in a single step. (*Feel free to use your tab-completion to complete your path!*)
 
 ```bash
 $ cd
@@ -385,10 +396,10 @@ You should now be in the `unix_lesson` directory (check command prompt or run `p
 
 > You will be learning a little more about the `..` shortcut later. Can you think of an example when this shortcut to the parent directory won't work?
 >
-><details>
->  <summary>Answer</summary>
->  <P>When you are at the root directory, since there is no parent to the root directory!</P>
-></details>
+>   <details>
+>     <summary>Answer</summary>
+>     <P>When you are at the root directory, since there is no parent to the root directory!</P>
+>   </details>
 
 When using relative paths, you might need to check what the branches are downstream of the folder you are in. There is a really handy command (`tree`) that can help you see the structure of any directory.
 
@@ -515,7 +526,7 @@ $ rm  fastq_backup
 Did that work? Did you get an error?
 
 <details>
-  <summary>Answer</summary>
+  <summary><i>Explanation</i></summary>
   <P>By default, <code>rm</code>, will NOT delete directories, but you use the <code>-r</code> flag if you are sure that you want to delete the directories and everything within them. To be safe, let's use it with the <code>-i</code> flag.</P>
 </details><br>
 
@@ -530,25 +541,9 @@ $ rm -ri fastq_backup
 
 **Exercise**
 
-* Create a new folder in `unix_lesson` called `selected_fastq`
-<details>
-  <summary>Answer</summary>
-  <P><code>mkdir ~/unix_lesson/selected_fastq</code></P>
-</details>
-
-* Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
-<details>
-  <summary>Answer</summary>
-  <P><code>cp ~/unix_lesson/raw_fastq/Irrel_kd_2.subset.fq ~/unix_lesson/selected_fastq</code><br>
-  <code>cp ~/unix_lesson/raw_fastq/Mov10_oe_2.subset.fq ~/unix_lesson/selected_fastq</code></P>
-</details>
-
-* Rename the `selected_fastq` folder and call it `exercise1`
-
-<details>
-  <summary>Answer</summary>
-  <P><code>mv ~/unix_lesson/selected_fastq ~/unix_lesson/exercise1</code></P>
-</details><br>
+1. Create a new folder in `unix_lesson` called `selected_fastq`
+2. Copy over the Irrel_kd_2.subset.fq and Mov10_oe_2.subset.fq from `raw_fastq` to the `~/unix_lesson/selected_fastq` folder
+3. Rename the `selected_fastq` folder and call it `exercise1`
 
 ***
 

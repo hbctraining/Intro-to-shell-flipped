@@ -20,48 +20,11 @@ If you are not logged into O2 or are not on a compute node, please follow the st
 2. Once you are on the login node, use `srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash` to get on a compute node.
 3. Proceed to the next section once your command prompt has the word `compute` in it.
 
-## Saving time with tab completion, wildcards and other shortcuts 
-
-### Tab completion
-
-Typing out full directory names can be time-consuming and error-prone. One way to avoid that is to use **tab completion**. The `tab` key is located on the left side of your keyboard, right above the `caps lock` key. When you start typing out the first few characters of a directory name, then hit the `tab` key, Shell will try to fill in the rest of the directory name. 
-
-For example, first type `cd` to get back to your home directly, then type `cd uni`, followed by pressing the `tab` key:
-
-```bash
-$ cd
-$ cd uni<tab>
-```
-
-The shell will fill in the rest of the directory name for `unix_lesson`. 
-
-Now, let's go into `raw_fastq`, then type `ls Mov10_oe_`, followed by pressing the `tab` key once:
-
-```bash
-$ cd raw_fastq/
-$ ls Mov10_oe_<tab>
-```
-
-**Nothing happens!!**
-
-The reason is that there are multiple files in the `raw_fastq` directory that start with `Mov10_oe_`. As a result, shell does not know which one to fill in. When you hit `tab` a second time again, the shell will then list all the possible choices.
-
-```bash
-$ ls Mov10_oe_<tab><tab>
-```
-
-Now you can select the one you are interested in listed, and enter the number and hit tab again to fill in the complete name of the file.
-
-```bash
-$ ls Mov10_oe_1<tab>
-```
-
-Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ech<tab>`, you will see that tab completion works. 
-
-> **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
-
+## Saving time with wildcards and other shortcuts 
 
 ### Wild cards
+
+**The "\*" wildcard:**
 
 Navigate to the `~/unix_lesson/raw_fastq` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
 
@@ -89,6 +52,20 @@ So how does this actually work? The Shell (bash) considers an asterisk "*" to be
 
 > **Tip** - An asterisk/star is only one of the many wildcards in Unix, but this is the most powerful one and we will be using this one the most for our exercises.
 
+**The "?" wildcard:**
+
+Another wildcard that is sometimes helpful is `?`. `?` is similar to `*` except that it is a placeholder for exactly one position. Recall that `*` can represent any number of following positions, including no positions. To highlight this distinction lets look at a few examples. First, try this command:
+
+`ls /bin/d*`
+
+This will display all files in `/bin/` that start with "d" regardless of length. However, if you only wanted the things in `/bin/` that start with "d" and are two characters long then you can use:
+
+`ls /bin/d?`
+
+Lastly, you can chain together multiple "?" marks to help specify a length. In the example below, you would be looking for all things in `/bin/` that start with a "d" and have a name length of three characters.  
+
+`ls /bin/d??` 
+
 ****
 
 **Exercise**
@@ -102,7 +79,7 @@ navigating to a different directory.
 
 3.  List all of the files in `/bin` that end with the letter 'o'
 
-4. BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
+4. BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'. (Hint: you might need to use a different wildcard here. Refer to this [post](https://www.putorius.net/standard-wildcards-globbing-patterns-in.html) for some ideas.)
 
     <details>
       <summary><b><i>Answers</i></b></summary>
@@ -170,7 +147,7 @@ Finally, the special directory `.` always refers to your current directory. So, 
 
 To summarize, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts can be convenient when you navigate through directories!
 
-### Command History
+#### Command History
 
 You can easily access previous commands by hitting the <button>up</button> arrow key on your keyboard, this way you can step backwards through your command history. On the other hand, the <button>down</button> arrow key takes you forward in the command history.
 
@@ -188,9 +165,16 @@ Only a certain number of commands can be stored and displayed with the `history`
 
 > **NOTE:** So far we have only run very short commands that have very few or no arguments. It would be faster to just retype it than to check the history. However, as you start to run analyses on the command-line you will find that the commands are longer and more complex, and the `history` command will be very useful then!
 
+#### Cancel a command
+
+Sometimes as you enter a command, you realize that you don't want to continue or run the current line. Instead of deleting everything you have entered (which could be very long), you could quickly cancel the current line and start a fresh prompt with <button>Ctrl</button> + <button>C</button>.
+
+```bash
+$ # Run some random words, then hit "Ctrl + C". Observe what happens
+```
+
 **Other handy command-related shortcuts**
 
-- <button>Ctrl</button> + <button>C</button> will cancel the command you are writing, and give you a fresh prompt.
 - <button>Ctrl</button> + <button>A</button> will bring you to the start of the command you are writing.
 - <button>Ctrl</button> + <button>E</button> will bring you to the end of the command.
 
@@ -204,7 +188,7 @@ Only a certain number of commands can be stored and displayed with the `history`
 
 ****
 
-## Commands, options, and keystrokes covered
+## Summary: Commands, options, and keystrokes covered
 
 ```
 ~           # home dir

@@ -32,7 +32,7 @@ Shell scripts are **text files that contain commands we want to run**. In this l
 
 We are finally ready to see what makes the shell such a powerful programming environment. To create our first script, we are going to take some of the commands we have run previously and save them into a file so that we can **re-run all those operations** again later, by typing just **one single command**. For historical reasons, a bunch of commands saved in a file is referred to as shell script, but make no mistake, this is actually a small program! 
 
-Interestingly, when working with Shell or on the command line you can give files any (or no) extension. Similarly, for a shell script you don't need a specific extension. However, it is best practice to give shell scripts the extension `.sh`. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
+Interestingly, when working with Shell or on the command line you can give files any (or no) extension (.txt, .tsv, .csv, etc.). Similarly, for a shell script you don't need a specific extension. However, it is best practice to give shell scripts the extension `.sh`. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
 
 Move over to the `other` directory and create a new file using `vim`. We will call our script `listing.sh`:
 
@@ -91,6 +91,34 @@ This is a very simple shell script, just to introduce you to the concept. Before
 2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
 3. Run the new script. Report the contents of the new script and the output you got after running it.
 
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		Add this command to <code>listing.sh</code> using vim:<br>
+		<code>cat Mov10_rnaseq_metadata.txt</code></p>
+		<p><i>Question 2</i><br>
+		Add this command to <code>listing.sh</code> using vim:<br>
+		<code>echo "This is information about the files in our dataset:"</code></p>
+		<p><i>Question 3</i><br>
+		<code>sh listing.sh</code></p>
+		<p><pre> Your current working directory is:
+	/home/mm573/unix_lesson/other
+	These are the contents of this directory:
+	total 240
+	-rw-rw-r-- 1 mm573 mm573  346 Sep 30 12:47 directory_info.sh
+	-rw-rw-r-- 1 mm573 mm573  193 Oct  5 14:53 listing.sh
+	-rw-rw-r-- 1 mm573 mm573   93 Sep 30 10:40 Mov10_rnaseq_metadata.txt
+	-rw-r--r-- 1 mm573 mm573 1057 Sep 30 10:40 sequences.fa
+	-rw-rw-r-- 1 mm573 mm573   48 Oct  5 14:49 spider.txt
+	This is information about the files in our dataset:
+	sample	celltype
+	OE.1	Mov10_oe
+	OE.2	Mov10_oe
+	OE.3	Mov10_oe
+	IR.1	normal
+	IR.2	normal
+	IR.3	normal</pre>
+	</details>
 ***
 
 ## Bash variables
@@ -171,8 +199,23 @@ Either one of these options should have worked and you should see the number of 
 1. Use the `$file` variable as input to the `head` and `tail` commands, and modify the arguments to display only four lines. Provide the lines of code used and report the header lines (`@HWI`) you retrieve from each command. 
 2. Create a new variable called `meta` and assign it the value `Mov10_rnaseq_metadata.txt`. For the following questions, use the `$meta` variable but do not change directories. Provide the code you would run to:
 	1. Display the contents of the file using `cat`.
-	1. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*)
-	
+	2. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*).  
+
+	<br><details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>head -n 4 $file</code><br>
+		@HWI-ST330:304:H045HADXX:1:1101:1162:205<br></p>
+		<p><code>head -n 4 $file</code><br>
+		@HWI-ST330:304:H045HADXX:2:2212:15724:100530</p>
+		<i>Question 2</i><br>
+		<p><i>Part i</i><br>
+		<code>cat ../other/$meta</code> (relative path) or <br> 
+		<code>cat ~/unix_lesson/other/$meta</code> (full path)<br></p>
+		<p style="margin-left: 40px"><i>Part ii</i><br>
+		<code>grep normal ../other/$meta</code> (relative path) or<br>
+       		<code>grep normal ~/unix_lesson/other/$meta</code> (full path)<br></p>
+	</details>
 ***
 
 
@@ -212,6 +255,13 @@ You should now see that only `Mov10_oe_1.subset` is returned.
 1. How would you modify the above `basename` command above to only return `Mov10_oe_1`?
 2. Use `basename` with the file `Irrel_kd_1.subset.fq` as input. Return only `Irrel_kd_1` to the terminal.
 
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .subset.fq</code></p>
+		<p><i>Question 2</i><br>
+		<code>basename ~/unix_lesson/raw_fastq/Irrel_kd_1.subset.fq .subset.fq</code></p>
+
 ***
 
 
@@ -237,7 +287,7 @@ $ echo $samplename
 
 ## Shell scripting with bash variables
 
-Now it's time to put all of these concepts together to create a more advanced version of the script that we started with at the beginning of this lesson! This will script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
+Now it's time to put all of these concepts together to create a more advanced version of the script that we started with at the beginning of this lesson! This script will allow the user to get information on any given directory. These are the steps we will code into our shell script:
 
 1. Assign the path of the directory to a variable
 2. Create a variable that stores only the directory name (and no path information)
@@ -255,7 +305,7 @@ $ cd ~/unix_lesson/other
 $ vim directory_info.sh
 ```
 
-In this script, we will be adding **comments by using the hashtag symbol `#`**. Lines in your script that begin with with `#` will not be interpreted as code by Shell. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self to know what each line of code is doing. 
+In this script, we will be adding **comments by using the hashtag symbol `#`**. Almost all lines in your script that begin with `#` will not be interpreted as code by Shell. Comments are crucial for proper documentation of your scripts. This will allow your collaborators or your future self to know what each line of code is doing. 
 
 We will begin with a first comment describing the **usage of this script**. This lets anyone who is using the script know what it does and what they need to provide (if anything). In our case we need the user to provide a path to the directory of interest. This will be assigned to a variable for use later in the script.
 
@@ -323,6 +373,38 @@ echo "Report complete!"
 2. Open up the script `directory_info.sh` using vim. Change the approproiate line of code so that our directory of interest is `~/unix_lesson/genomics_data`. Save and exit Vim.
 3. Run the script with the changes and report what gets printed to the screen.
 
+	
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>sh directory_info.sh</code></p>
+	<pre> Reporting on the directory raw_fastq ...
+	These are the contents of this directory:
+	total 384128
+	-rw-rw-r-- 1 mm573 mm573 55169229 Sep 30 10:40 Irrel_kd_1.subset.fq
+	-rw-rw-r-- 1 mm573 mm573 47460403 Sep 30 10:40 Irrel_kd_2.subset.fq
+	-rw-rw-r-- 1 mm573 mm573 36268325 Sep 30 10:40 Irrel_kd_3.subset.fq
+	-rw-rw-r-- 1 mm573 mm573 75706556 Sep 30 10:40 Mov10_oe_1.subset.fq
+	-rw-rw-r-- 1 mm573 mm573 68676755 Sep 30 10:40 Mov10_oe_2.subset.fq
+	-rw-rw-r-- 1 mm573 mm573 42742047 Sep 30 10:40 Mov10_oe_3.subset.fq
+	The total number of files in this directory is:
+	6</pre>
+		<p><i>Question 2</i><br>
+		Change:<br>
+		<code>dirPath=~/unix_lesson/raw_fastq</code> to:<br>
+		<code>dirPath=~/unix_lesson/genomics_data</code></p>
+		<p><i>Question 3</i><br>
+		<code>sh directory_info.sh</code></p>
+	<pre> Reporting on the directory raw_fastq ...
+	These are the contents of this directory:
+	total 26240
+	-rwxrwxr-- 1 mm573 mm573   130904 Sep 30 10:40 Encode-hesc-Nanog.bed
+	-rw-rw-r-- 1 mm573 mm573 21893006 Sep 30 10:40 na12878_q20_annot.vcf
+	The total number of files in this directory is:
+	2</pre>
+	</details>
+			
+			
 
 ***
 
