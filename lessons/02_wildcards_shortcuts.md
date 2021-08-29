@@ -102,28 +102,28 @@ navigating to a different directory.
 
 3.  List all of the files in `/bin` that end with the letter 'o'
 
-BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
+4. BONUS: Using one command to list all of the files in `/bin` that contain either 'a' or 'c'.
 
-<details>
-  <summary><b><i>Answers</i></b></summary>
-  <p><br>Click each question below to reveal the answer.</p>
-  <details>
-    <summary><i>Question 1</i></summary>
-    <code>ls /bin/c*</code>
-  </details>
-  <details>
-    <summary><i>Question 2</i></summary>
-    <code>ls /bin/*a*</code>
-  </details>
-  <details>
-    <summary><i>Question 3</i></summary>
-    <code>ls /bin/*o</code>
-  </details>
-  <details>
-  <summary><i>BONUS</i></summary>
-  <code>ls /bin/*[ac]*</code>
-  </details>
-</details>
+    <details>
+      <summary><b><i>Answers</i></b></summary>
+      <p><br>Click each question below to reveal the answer.</p>
+      <details>
+        <summary><i>Question 1</i></summary>
+        <code>ls /bin/c*</code>
+      </details>
+      <details>
+        <summary><i>Question 2</i></summary>
+        <code>ls /bin/*a*</code>
+      </details>
+      <details>
+        <summary><i>Question 3</i></summary>
+        <code>ls /bin/*o</code>
+      </details>
+      <details>
+      <summary><i>BONUS</i></summary>
+      <code>ls /bin/*[ac]*</code>
+      </details>
+    </details>
 
 ****
 
