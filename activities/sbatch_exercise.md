@@ -35,6 +35,8 @@ Using vim open up the file `sbatch_generate_bad_reads_summary.sh` to make some e
    * Request 5 minutes (`-t`)
    * Request 100MB of memory (`--mem`)
    * Request a single core (`-c`)
+   * Specify the output file name (`-o`)
+   * Specify the error file name (`-e`)
    
 1. Save the file and exit vim.
 
