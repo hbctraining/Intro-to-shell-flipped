@@ -16,7 +16,7 @@ cp generate_bad_reads_summary.sh sbatch_generate_bad_reads_summary.sh
 
 3. Create a new directory inside the `badreads` directory called `sbatch_output`.
 ```bash
-mkdir sbatch_output
+mkdir badreads/sbatch_output
 ```
 
 ### Update the new shell script
