@@ -199,7 +199,7 @@ Which of the following statements is true?
 3. caro (the owner) can read, write, and execute myfile.php
 
      <details>
-       <summary><b><i>Click here for the answer</i></b></summary>
+       <summary><b><i>Answer</i></b></summary>
        The third statement is true.
      </details>
 
@@ -295,7 +295,7 @@ The path `/usr/bin` is usually where executables for commonly used commands are 
 Are the directories listed by the `which` command within `$PATH`?
 
    <details>
-        <summary><b><i>Click here for the answer</i></b></summary>
+        <summary><b><i>Answer</i></b></summary>
         It should be. For example, if you would like to check the directory of command <code>pwd</code> - the output for <code>which pwd</code> is <code>/usr/bin/pwd</code>, and <code>/usr/bin</code> is within $PATH.
     </details>
 
