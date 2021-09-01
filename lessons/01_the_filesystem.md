@@ -55,6 +55,10 @@ Please find and open Git BASH.
 
 Everyone should have their Terminal (or Git BASH Terminal) window open. Using this Terminal window, you can interact with your own computer using bash commands! You see the "$" symbol? That is where you write the "commands" that will be executed by shell (bash in this case) and your computer's kernel. The "$" is called the **"command prompt"**. 
 
+<p align="center">
+<img src="../img/login1.png" width="700">
+</p>
+
 To connect to the login node on O2:
 
 1. Type in the `ssh` command at the command prompt followed by a space, and then type your username (e.g. rc_training10) plus the address of the cluster `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
@@ -63,13 +67,25 @@ To connect to the login node on O2:
 ssh username@o2.hms.harvard.edu
 ```
 
-2. Press the return/enter key and you should receive a prompt for your password. 
-3. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
+<p align="center">
+<img src="../img/login2.png" width="900">
+</p>
+
+2. Press the return/enter key and you should receive a prompt for your password. Type in your password and note that **the cursor will not move as you type** it in! This is normal and know that the computer is receiving and transmitting your typed password to the remote system, i.e. the O2 cluster.
+
+<p align="center">
+<img src="../img/login3.png" width="700">
+</p>
+
 4. If this is the first time you are connecting to the cluster, **a warning will pop up** and will ask you if you are sure you want to do this; **type `Yes` or `Y`**. 
 
 > **Tip** - Syntax for all commands on the command-line interface is the command followed by space and then optionally a few arguments.
 
 Once logged in, you should see the O2 icon, some news, and a new command prompt: 
+
+<p align="center">
+<img src="../img/login4.png" width="700">
+</p>
 
 ```bash
 [username@login01 ~]$ 
@@ -86,12 +102,20 @@ The first command we will run at the command prompt will be to start a so-called
 ```bash
 $ srun --pty -p interactive -t 0-2:30 --mem 1G /bin/bash
 ```
- 
+
+<p align="center">
+<img src="../img/srun1.png" width="800">
+</p>
+
 Press enter, you should see a couple of messages and in a few seconds you should get back the command prompt `$`. Now the string of characters before the command prompt will be different. They should say something like `[rc_training10@compute-a-16-73 ~]`. This is telling you that you are using one of the compute nodes/computer on the cluster now and it is specifying the name of that compute node.
 
 > **Tip** - When you run any command in Shell, the command prompt might disappear and once command has been executed, the prompt is returned. This indicates that Shell is ready to accept another command.
 
 Make sure that your command prompt now contains the word "compute". Once it does, we are ready to copy over some data to work with!
+
+<p align="center">
+<img src="../img/srun2.png" width="700">
+</p>
 
 ### Copying example data folder
 
