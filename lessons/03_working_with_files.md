@@ -1,5 +1,5 @@
 ---
-title: Working with files on the command-line"
+title: Working with files on the command-line
 author: "Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "Wednesday October 26, 2016"
 ---
