@@ -1,7 +1,7 @@
 ---
 title: "Shell scripts and other related concepts"
-author: "Meeta Mistry, Bob Freeman, Mary Piper, Radhika Khetani, Jihe Liu"
-date: "Thursday, May 5, 2016"
+author: "Meeta Mistry, Bob Freeman, Mary Piper, Radhika Khetani, Jihe Liu, Will Gammerdinger"
+date: "October 2021"
 ---
 
 Approximate time: 60 minutes
@@ -209,6 +209,7 @@ Either one of these options should have worked and you should see the number of 
 		<p><code>head -n 4 $file</code><br>
 		@HWI-ST330:304:H045HADXX:2:2212:15724:100530</p>
 		<i>Question 2</i><br>
+		<code>meta=Mov10_rnaseq_metadata.txt</code>
 		<p><i>Part i</i><br>
 		<code>cat ../other/$meta</code> (relative path) or <br> 
 		<code>cat ~/unix_lesson/other/$meta</code> (full path)<br></p>
@@ -282,7 +283,7 @@ $ echo $samplename
 ```
 
 > #### The `basename` command
-> It is hard to see the utility of this command by just running it at command-line, but it is very useful command when creating scripts for analysis. Within a script it is common to create an output file and the `basename` allows us to easily create a prefix to use for naming the output files. We will demonstrate this in more detail during our ["Loops and Automation" lesson](04_loops_and_scripts.md).
+> It is hard to see the utility of this command by just running it at command-line, but it is very useful command when creating scripts for analysis. Within a script it is common to create an output file and the `basename` allows us to easily create a prefix to use for naming the output files. We will demonstrate this in more detail during our ["Loops and Automation" lesson](06_loops_and_automation.md).
 
 
 ## Shell scripting with bash variables
@@ -388,7 +389,8 @@ echo "Report complete!"
 	-rw-rw-r-- 1 mm573 mm573 68676755 Sep 30 10:40 Mov10_oe_2.subset.fq
 	-rw-rw-r-- 1 mm573 mm573 42742047 Sep 30 10:40 Mov10_oe_3.subset.fq
 	The total number of files in this directory is:
-	6</pre>
+	6
+	Report complete!</pre>
 		<p><i>Question 2</i><br>
 		Change:<br>
 		<code>dirPath=~/unix_lesson/raw_fastq</code> to:<br>
@@ -401,7 +403,8 @@ echo "Report complete!"
 	-rwxrwxr-- 1 mm573 mm573   130904 Sep 30 10:40 Encode-hesc-Nanog.bed
 	-rw-rw-r-- 1 mm573 mm573 21893006 Sep 30 10:40 na12878_q20_annot.vcf
 	The total number of files in this directory is:
-	2</pre>
+	2
+	Report complete!</pre>
 	</details>
 			
 			

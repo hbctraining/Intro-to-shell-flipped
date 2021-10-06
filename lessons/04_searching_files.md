@@ -1,7 +1,7 @@
 ---
 title: "The Shell: Searching and Redirection"
-author: "Sheldon  McKay, Bob Freeman, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
-date: "Wednesday, August 23, 2017"
+author: "Sheldon  McKay, Bob Freeman, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu, Will Gammerdinger"
+date: "October 2021"
 ---
 
 Approximate time: 60 minutes
@@ -36,7 +36,7 @@ FASTQ files contain the sequencing reads (nucleotide sequences) output from a se
 > |3|Read name (same as line 1) preceded by a '+' or just a '+' sign|
 > |4|String of characters which represent the quality score of each nucleotide in line 2; must have same number of characters as line 2|
 >
-> You can find more information about FASTQ files in [this lesson](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon/lessons/02_assessing_quality.html#unmapped-read-data-fastq) from our [RNA-seq workshop](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon/).
+> You can find more information about FASTQ files in [this lesson](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon-flipped/lessons/05_qc_running_fastqc_interactively.html) from our [RNA-seq workshop](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon-flipped/).
 
 Suppose we want to see how many reads in our file `Mov10_oe_1.subset.fq` contain "bad" data, i.e. reads with 10 consecutive Ns (`NNNNNNNNNN`).
 
@@ -50,7 +50,7 @@ We get back a lot of reads or lines of text!
 
 What if we wanted to see the whole FASTQ record for each of these reads? We would need to modify the default behavior of `grep` and specify some argument/options. To look for all available options for the `grep` command, we can type `grep --help` (or `man grep`). 
 
-Looks like the `-B` and `-A` arguments for grep will be useful to return the matched line plus one before (`-B 1`) and two lines after (`-A 2`). Since each record is four lines, using these arguments will return the whole record. Within the whole record, the second line will the actual sequence that has the pattern we searched for.
+Looks like the `-B` and `-A` arguments for grep will be useful to return the matched line plus one before (`-B 1`) and two lines after (`-A 2`). Since each record is four lines, using these arguments will return the whole record. Within the whole record, the second line will be the actual sequence that has the pattern we searched for.
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq
@@ -142,7 +142,7 @@ $ mv bad_reads.txt ../other/
 
 **The redirection command for using the output of a command as input for a different command is `|`.**
 
-**The pipe key** (<button>|</button>) is very likely not something you use very often (it is on the same key as the back slash (<kbd>\\</kbd>), right above the <button>Enter/Return</button> key). 
+**The pipe key** (<kbd>|</kbd>) is very likely not something you use very often (it is on the same key as the back slash (<kbd>\\</kbd>), right above the <button>Enter/Return</button> key). 
 
 What `|` does is take the output from one command, e.g. the output from `grep` that went whizzing by and runs it through the command specified after it. When it was all whizzing by before, we wished we could just take a look at it! Maybe we could use `less` instead of the rapid scroll. Well, it turns out that we can! We can **pipe the output `grep` command** to `less` to slowly scroll through, or to `head` to just see the first few lines.
 
@@ -168,7 +168,7 @@ $ grep NNNNNNNNNN Mov10_oe_1.subset.fq | wc -l
 
 *Try it out without the `-l` to see the full output.* 
 
-> **Tip** - Similar to `grep`, you can type `wc --help` to see all options.
+> **Tip** - Similar to `grep`, you can type `wc --help` or `man wc` to see all options.
 
 **About Pipes:**
 * The pipe is a very important/powerful concept in Shell
@@ -312,9 +312,9 @@ Now, to count how many unique exons are on chromosome 1, we will add back the `s
 	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head</code><br></p>
 	<p><i>Question 4</i><br>
 	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l</code><br>
-	The output returns 37213 lines.<br>
+	The output returns 37,213 lines.<br>
 	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l</code><br>
-	The output returns 22769 lines, indicating that repetitive lines have been removed.<br>
+	The output returns 22,769 lines, indicating that repetitive lines have been removed.<br>
 </details>
 
 ### Summary!

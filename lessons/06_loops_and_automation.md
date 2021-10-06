@@ -1,7 +1,7 @@
 ---
 title: "The Shell: Loops and automation"
-author: "Meeta Mistry, Bob Freeman, Mary Piper, Radhika Khetani, Jihe Liu"
-date: "Thursday, May 5, 2016"
+author: "Meeta Mistry, Bob Freeman, Mary Piper, Radhika Khetani, Jihe Liu, Will Gammerdinger"
+date: "October 2021"
 ---
 
 Approximate time: 60 minutes
@@ -30,13 +30,15 @@ for (variable_name) in (list)
 	done
 ```
 
-The text that is **bolded, are parts of the loop structure that remain constant**. That is, for every loop your create you will need to have the words: `for`, `in`, `do` and `done`. *This syntax/structure is virtually set in stone.* The text that goes in between those words will change depending on what it is you want your loop to do.
+The text that is **red, are parts of the loop structure that remain constant**. That is, for every loop your create you will need to have the words: `for`, `in`, `do` and `done`. *This syntax/structure is virtually set in stone.* The text that goes in between those words will change depending on what it is you want your loop to do.
 
 ### How do loops work?
 
 Let's use the example below to go through step-by-step how a loop is actually working.
 
 ```bash
+$ cd ~/unix_lesson/raw_fastq/
+
 $ for x in Mov10_oe_1.subset.fq Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
  do
    echo $x

@@ -1,5 +1,5 @@
 ---
-title: Intro to O2 (HMS-RC cluster)
+title: Intro to the FASRC cluster
 author: Radhika Khetani, Meeta Mistry, Kathleen Keating, Kristina Holton, Andy Bergman, Mary Piper, Jihe Liu
 date: "Friday, September 11, 2020"
 ---
