@@ -317,6 +317,8 @@ Now, to count how many unique exons are on chromosome 1, we will add back the `s
 	The output returns 22,769 lines, indicating that repetitive lines have been removed.<br>
 </details>
 
+
+
 ### Summary!
 
 For what we did in one line of code in the exercise at the end, we could have done it in multiple steps by saving the output of each command to a new file. But that would not be as efficient as using pipes! All we needed was the number of unique exons, and the intermediate output was not useful. Avoiding the storage of the data from each of the intermediate steps prevents clutter, and helps us avoid wasting precious storage space! 
