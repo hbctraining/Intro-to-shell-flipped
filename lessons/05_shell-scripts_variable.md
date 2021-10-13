@@ -119,6 +119,8 @@ This is a very simple shell script, just to introduce you to the concept. Before
 	IR.2	normal
 	IR.3	normal</pre>
 	</details>
+
+
 ***
 
 ## Bash variables
@@ -201,8 +203,8 @@ Either one of these options should have worked and you should see the number of 
 	1. Display the contents of the file using `cat`.
 	2. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*).  
 
-	<br><details>
-		<summary><b><i>Answers</i></b></summary>
+	<details>
+	<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
 		<code>head -n 4 $file</code><br>
 		@HWI-ST330:304:H045HADXX:1:1101:1162:205<br></p>
@@ -213,10 +215,12 @@ Either one of these options should have worked and you should see the number of 
 		<p><i>Part i</i><br>
 		<code>cat ../other/$meta</code> (relative path) or <br> 
 		<code>cat ~/unix_lesson/other/$meta</code> (full path)<br></p>
-		<p style="margin-left: 40px"><i>Part ii</i><br>
+		<p><i>Part ii</i><br>
 		<code>grep normal ../other/$meta</code> (relative path) or<br>
        		<code>grep normal ~/unix_lesson/other/$meta</code> (full path)<br></p>
 	</details>
+	
+	
 ***
 
 
