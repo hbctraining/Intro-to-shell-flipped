@@ -145,12 +145,12 @@ $ echo $num
 
 You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
 
-> **NOTE:** Variables are not physical entities like files. When you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare`. You will notice that while you only have created one variable so far, the output of `declare` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
+> **NOTE:** Variables are not physical entities like files. When you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare` with the `-p` option. You will notice that while you only have created one variable so far, the output of `declare -p` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
 > 
-> If you use `declare`, try piping it to the `grep` command followed by the name of the variable so you trim that list to only display the variable you are interested in:
+> If you use `declare -p`, try piping it to the `grep` command followed by the name of the variable so you trim that list to only display the variable you are interested in:
 > 
-> `declare | grep num`
-> 
+> `declare -p | grep num`
+>
 
 ### Using variables as input to commands
 
