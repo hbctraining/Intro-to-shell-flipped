@@ -92,9 +92,86 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 
 ***
 
+### More about searching text files with `grep`
+
+#### Group separators (`--`), and how to remove them
+You will notice that when we use the `-B` and/or `-A` arguments with the `grep` command, the output has some additional lines with dashes (`--`), these dashes work to separate your returned "groups" of lines and are referred to as "group separators". This might be problematic if you are trying to maintain the FASTQ file structure or if you simply do not want them in your output. Using the argument `--no-group-separator` with `grep` will disable this behavior:
+
+```bash
+$ grep -B 1 -A 2 --no-group-separator NNNNNNNNNN Mov10_oe_1.subset.fq
+```
+
+Now your output should be returned as:
+
+```
+@HWI-ST330:304:H045HADXX:1:1101:1111:61397
+CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNNNNNNNNNNNNNNGATCTTGG
++
+@?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
+@HWI-ST330:304:H045HADXX:1:1101:1106:89824
+CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNNNNNNNNNNNNNNNNNGTTGG
++
+?@@DDDDDB1@?:E?;3A:1?9?E9?<?DGCDGBBDBF@;8DF#########################################################
+```
+
+#### Which line number has a match?
+Another useful option when using `grep` is the `-n` option, which will print out the line number from the file for the match. Adding this option to our previous command would work like this:
+
+```bash
+$ grep -B 1 -A 2 --no-group-separator -n NNNNNNNNNN Mov10_oe_1.subset.fq
+```
+
+This would return the output:
+
+```
+861213-@HWI-ST330:304:H045HADXX:1:1101:1111:61397
+861214:CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNNNNNNNNNNNNNNGATCTTGG
+861215-+
+861216-@?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
+861953-@HWI-ST330:304:H045HADXX:1:1101:1106:89824
+861954:CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNNNNNNNNNNNNNNNNNGTTGG
+861955-+
+861956-?@@DDDDDB1@?:E?;3A:1?9?E9?<?DGCDGBBDBF@;8DF#########################################################
+```
+
+A small thing you should note is that when using the `-n` option, lines that have a `:` after the line number correspond to the lines with the match (e.g `861214:CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNN...`), while lines with a `-` after the line number are the surrounding lines retrieved when using the `-A` and/or `-B` options (e.g. `861213-@HWI-ST330:304:H045HADXX:1:1101:1111:61397`).
+
+#### Only returning lines that **DO NOT** match
+One last `grep` option you might find quite useful is the `-v` option, which does an inverted match. This will return everything that does ***not*** match the pattern. In order to demonstrate this let's first view a smaller file that you have.
+
+```bash
+$ cat ~/unix_lesson/other/Mov10_rnaseq_metadata.txt 
+```
+
+This is the metadata file for the FASTQ data we are looking at. This should return:
+
+```
+sample	celltype
+OE.1	Mov10_oe
+OE.2	Mov10_oe
+OE.3	Mov10_oe
+IR.1	normal
+IR.2	normal
+IR.3	normal
+```
+Now, let's consider the case that we didn't want to output the "normal" cell type. We can use the `-v` option in `grep` like this:
+
+```bash
+$ grep -v normal ~/unix_lesson/other/Mov10_rnaseq_metadata.txt 
+```
+
+This will return all of lines that don't have "normal" in the line.
+
+```
+sample	celltype
+OE.1	Mov10_oe
+OE.2	Mov10_oe
+OE.3	Mov10_oe
+```
+
 ## Redirection
 
-When we use grep, the matching lines print to the Terminal (also called Standard Output or "stdout"). If the result of the `grep` search is a few lines, we can view them easily, but if the output is very long, the lines will just keep printing and we won't be able to see anything except the last few lines. You have experienced this when you searched for the pattern `NNNNNNNNNN`. How can we capture them instead?
+When we use `grep`, the matching lines print to the Terminal (also called Standard Output or "stdout"). If the result of the `grep` search is a few lines, we can view them easily, but if the output is very long, the lines will just keep printing and we won't be able to see anything except the last few lines. You have experienced this when you searched for the pattern `NNNNNNNNNN`. How can we capture them instead?
 
 We can do that with something called "redirection". The idea is that we're redirecting the output from the Terminal (all the stuff that went whizzing by) to something else. In this case, we want to save it to a file, so that we can look at it later.
 
