@@ -68,7 +68,34 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 ?@@DDDDDB1@?:E?;3A:1?9?E9?<?DGCDGBBDBF@;8DF#########################################################
 ```
 
-You may notice that when we used this `grep` command that the entries returned were separated by a `--`. This might be a problematic behavior if your are trying to maintain the FASTQ file structure. These `--` are created when you use the `-A` and/or `-B` option(s) in order to separate your returned "groups", hence the name group separator. If you would like to disable this behavior, simply use the option `--no-group-separator` like this:
+***
+
+**Exercises**
+
+1. Search for the sequence CTCAATGAGCCA in `Mov10_oe_1.subset.fq`. How many sequences do you find?
+
+2. In addition to finding the sequence, how can you modify the command so that your search also returns the name of the sequence?
+
+3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
+
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>grep CTCAATGAGCCA Mov10_oe_1.subset.fq</code><br>
+		The output returns 5 sequences.</p>
+		<p><i>Question 2</i><br>
+			<code>grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq</code></p>
+		<p><i>Question 3</i><br>
+		<code>grep CTCAATGAGCCA Mov10*</code><br>
+		The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2.</p>
+	</details>
+
+***
+
+### More about searching text files with `grep`
+
+#### Group separators (`--`), and how to remove them
+You will notice that when we use the `-B` and/or `-A` arguments with the `grep` command, the output has some additional lines with dashes (`--`), these dashes work to separate your returned "groups" of lines and are referred to as "group separators". This might be problematic if you are trying to maintain the FASTQ file structure or if you simply do not want them in your output. Using the argument `--no-group-separator` with `grep` will disable this behavior:
 
 ```bash
 $ grep -B 1 -A 2 --no-group-separator NNNNNNNNNN Mov10_oe_1.subset.fq
@@ -87,7 +114,8 @@ CACAAATCGGCTCAGGAGGCTTGTAGAAAAGCTCAGCTTGACANNNNNNNNNNNNNNNNNGNGNACGAAACNNNNGNNNN
 ?@@DDDDDB1@?:E?;3A:1?9?E9?<?DGCDGBBDBF@;8DF#########################################################
 ```
 
-Another useful option when using `grep` is the `-n` option, which will print out the line number from the file for the match. Adding this option to our previous command would like this:
+#### Which line number has a match?
+Another useful option when using `grep` is the `-n` option, which will print out the line number from the file for the match. Adding this option to our previous command would work like this:
 
 ```bash
 $ grep -B 1 -A 2 --no-group-separator -n NNNNNNNNNN Mov10_oe_1.subset.fq
@@ -105,8 +133,10 @@ This would return the output:
 861955-+
 861956-?@@DDDDDB1@?:E?;3A:1?9?E9?<?DGCDGBBDBF@;8DF#########################################################
 ```
-A small thing you can note is that when using the `-n` option, lines that have a `:` after the line number correspond to the lines with the match, while lines with a `-` after the line number are the surrounding lines retrieved when using the `-A` and/or `-B` options.
 
+A small thing you should note is that when using the `-n` option, lines that have a `:` after the line number correspond to the lines with the match (e.g `861214:CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNN...`), while lines with a `-` after the line number are the surrounding lines retrieved when using the `-A` and/or `-B` options (e.g. `861213-@HWI-ST330:304:H045HADXX:1:1101:1111:61397`).
+
+#### Only returning lines that **DO NOT** match
 One last `grep` option you might find quite useful is the `-v` option, which does an inverted match. This will return everything that does ***not*** match the pattern. In order to demonstrate this let's first view a smaller file that you have.
 
 ```bash
@@ -139,33 +169,9 @@ OE.2	Mov10_oe
 OE.3	Mov10_oe
 ```
 
-***
-
-**Exercises**
-
-1. Search for the sequence CTCAATGAGCCA in `Mov10_oe_1.subset.fq`. How many sequences do you find?
-
-2. In addition to finding the sequence, how can you modify the command so that your search also returns the name of the sequence?
-
-3. If you want to search for that sequence in **all** Mov10 replicate fastq files, what command would you use?
-
-	<details>
-		<summary><b><i>Answers</i></b></summary>
-		<p><i>Question 1</i><br>
-		<code>grep CTCAATGAGCCA Mov10_oe_1.subset.fq</code><br>
-		The output returns 5 sequences.</p>
-		<p><i>Question 2</i><br>
-			<code>grep -B 1 CTCAATGAGCCA Mov10_oe_1.subset.fq</code></p>
-		<p><i>Question 3</i><br>
-		<code>grep CTCAATGAGCCA Mov10*</code><br>
-		The output returns 5 sequences for Mov10_oe_1 and 3 sequences for Mov10_oe_2.</p>
-	</details>
-
-***
-
 ## Redirection
 
-When we use grep, the matching lines print to the Terminal (also called Standard Output or "stdout"). If the result of the `grep` search is a few lines, we can view them easily, but if the output is very long, the lines will just keep printing and we won't be able to see anything except the last few lines. You have experienced this when you searched for the pattern `NNNNNNNNNN`. How can we capture them instead?
+When we use `grep`, the matching lines print to the Terminal (also called Standard Output or "stdout"). If the result of the `grep` search is a few lines, we can view them easily, but if the output is very long, the lines will just keep printing and we won't be able to see anything except the last few lines. You have experienced this when you searched for the pattern `NNNNNNNNNN`. How can we capture them instead?
 
 We can do that with something called "redirection". The idea is that we're redirecting the output from the Terminal (all the stuff that went whizzing by) to something else. In this case, we want to save it to a file, so that we can look at it later.
 
