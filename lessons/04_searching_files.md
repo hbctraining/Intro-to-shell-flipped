@@ -379,20 +379,20 @@ Now, to count how many unique exons are on chromosome 1, we will add back the `s
 
 ***Report the command you have at this stage and the number of lines you see with and without the `sort -u`.***
 
-<details>
-	<summary><b><i>Answers</i></b></summary>
-	<p><i>Question 1</i><br>
-	<code>grep exon chr1-hg19_genes.gtf | head</code><br></p>
-	<p><i>Question 2</i><br>
-	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head</code><br></p>
-	<p><i>Question 3</i><br>
-	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head</code><br></p>
-	<p><i>Question 4</i><br>
-	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l</code><br>
-	The output returns 37,213 lines.<br>
-	<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l</code><br>
-	The output returns 22,769 lines, indicating that repetitive lines have been removed.<br>
-</details>
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		<code>grep exon chr1-hg19_genes.gtf | head</code><br></p>
+		<p><i>Question 2</i><br>
+		<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7  | head</code><br></p>
+		<p><i>Question 3</i><br>
+		<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | head</code><br></p>
+		<p><i>Question 4</i><br>
+		<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | wc -l</code><br>
+		The output returns 37,213 lines.<br>
+		<code>grep exon chr1-hg19_genes.gtf | cut -f 1,4,5,7 | sort -u | wc -l</code><br>
+		The output returns 22,769 lines, indicating that repetitive lines have been removed.<br>
+	</details>
 
 
 
