@@ -5,9 +5,8 @@ date: "August 7, 2017"
 ---
 
 ## Learning Objectives
-- Become efficient when using the command-line interface (save time and prevent errors!)
-  - Describe the use of tab completion when writing paths
-  - Describe the use of the asterisk `*` wildcard when selecting multiple items
+  - Implement tab completion when writing paths
+  - Use of the asterisk `*` wildcard to select multiple items
   - List a few shortcuts 
 
 ## Are you logged into O2 and on a compute node?
