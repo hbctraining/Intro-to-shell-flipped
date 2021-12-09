@@ -8,9 +8,9 @@ Approximate time: 30 min
 
 ## Learning Objectives
 
-* Examine the contents of files
-* Create a new file using the Vim text editor
-* Execute basic operations using the Vim text editor
+- View the contents of a file
+- Create a new file using the Vim text editor
+- Execute basic shortcuts in the Vim text editor
 
 ## Examining Files
 
