@@ -1,6 +1,6 @@
 ---
 title: "Permissions and Environment variables"
-author: "Christina Koch, Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu"
+author: "Christina Koch, Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu, Will Gammerdinger"
 date: "Thursday, October 8, 2020"
 ---
 
@@ -8,9 +8,9 @@ Approximate time: 40 minutes
 
 ## Learning Objectives
  
-* Grant or restrict access to files on a multi-user UNIX system
-* View "Environment Variables" in Shell
-* Describe $PATH and how to append it
+- Grant or restrict access to files on a multi-user UNIX system
+- View "Environment Variables" in Shell
+- Describe the $PATH variable and how to append it
 
 ## Permissions
 
