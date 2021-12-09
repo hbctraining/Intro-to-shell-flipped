@@ -5,12 +5,11 @@ date: "September 28, 2020"
 ---
 
 ## Learning Objectives
-- To access the shell
-- To execute basic tasks in the shell, including:
-  - Navigating around the Unix file system
-  - Differentiating between full and relative paths
-  - Listing files in a directory
-  - Copying, removing and moving files 
+- Log in to a high-performance computing cluster 
+- Navigate around the Unix file system
+- Differentiate between full and relative paths
+- List files in a directory
+- Copy, remove and move files 
 
 
 ## Setting up
