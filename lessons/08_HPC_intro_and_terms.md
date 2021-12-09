@@ -1,14 +1,13 @@
 ---
 title: HPC intro
-author: Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu
+author: Radhika Khetani, Meeta Mistry, Mary Piper, Jihe Liu, Will Gammerdinger
 date: "Thursday, October 8, 2020"
 ---
 
 ## Learning Objectives
 
-* Describe the basic components of a computer
-* Explain jargon associated with high-performance computing environments
-* Describe compute parallelization
+- Describe the basic components of a computer and high-performance computing cluster
+- Diffentiate between running tasks in serial versus parallel
 
 
 ## Computer components
