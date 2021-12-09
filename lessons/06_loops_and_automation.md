@@ -9,7 +9,7 @@ Approximate time: 60 minutes
 ## Learning Objectives
 
 * Describe the concept of 'looping' to iterate commands over multiple items
-* Automate tasks by using loops inside shell scripts
+* Automate a task by using a loop inside of a shell script
 
 
 ## Loops
