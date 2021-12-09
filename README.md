@@ -14,7 +14,9 @@ This repository has teaching materials for a 1-day Introduction to shell worksho
 
 ### Learning Objectives
 
-1.	Understand the necessity for, and use of, the command line interface (bash/shell).
+1.	Navigate around the command line interface (bash/shell)
+2.	Create and manipulate text files 
+3.	Submit jobs to a high-performance computing cluster
 
 ### Lessons
 * [Workshop schedule (trainer-led learning)](schedule/)
