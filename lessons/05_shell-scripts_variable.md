@@ -8,9 +8,8 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Capture previous commands into a shell script
-* Describe variables in Shell and the different use cases
-* Illustrate the use of variables in a shell script
+- Capture previous commands into a shell script
+- Implement variables in a shell script
 
 
 ## Shell scripts
