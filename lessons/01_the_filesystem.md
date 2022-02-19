@@ -579,7 +579,7 @@ man         # manual for a command
 pwd         # check present working directory
 tree        # prints a tree of the file structure
 cp          # copy
-mdkir       # make new directory
+mkdir       # make new directory
 mv          # move or rename 
 rm          # remove/delete
 ```
