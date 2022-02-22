@@ -257,7 +257,7 @@ Great, we have now traversed some sub-directories, but where are we in the conte
 
 ### The "root" directory!
 
-Like on any computer you have used before the file structure within a Unix/Linux system is hierarchical, like an upside down tree with the "/" directory, called "root" as the starting point of this tree-like structure:
+Like on any computer you have used before, the file structure within a Unix/Linux system is hierarchical, like an upside down tree with the "/" directory, called "root" as the starting point of this tree-like structure:
 
 <p align="center">
 <img src="../img/directory_structure.png" width="600">
