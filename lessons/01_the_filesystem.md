@@ -347,9 +347,8 @@ $ cd ~/unix_lesson
 
 **Exercises**
 
-1. Using one command move to your home directory.
-2. Using one command list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
-3. Using one command list one of the files in `reference_data`.
+1. First, move to your home directory.
+2. Then, list the contents of the `reference_data` directory that is within the `unix_lesson` directory.
 
 ****
 
