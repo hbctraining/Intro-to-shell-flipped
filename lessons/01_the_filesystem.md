@@ -464,7 +464,7 @@ The copy command has the following syntax:
 In this case the files are in our current directory, so we just have to specify the name of the file being copied, followed by whatever we want to call the newly copied file.
 
 ```bash
-$ cp  Mov10_oe_1.subset.fq  Mov10_oe_1.subset-copy.fq
+$ cp Mov10_oe_1.subset.fq Mov10_oe_1.subset-copy.fq
 
 $ ls -l
 ```
