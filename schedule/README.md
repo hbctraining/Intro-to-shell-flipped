@@ -67,19 +67,36 @@ II. **Complete the exercises**:
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 10:45 | Self-learning lessons review | Jihe/Radhika |
-| 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Meeta |
+| 09:30 - 10:45 | Self-learning lessons review | Will |
+| 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Jihe |
 
 ### Before the next class:
 
-1. Please **study the contents** and **work through all the code** within the following lessons:
+I. Please **study the contents** and **work through all the code** within the following lessons:
 
-* [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
-* [Introduction to High-performance computing](../lessons/08_HPC_intro_and_terms.md)
+1. [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
+
+      <details>
+       <summary><i>Click here for a preview of this lesson</i></summary>
+         <br>When using a multi-user system like the O2 cluster, you may want to limit access to your work. Permissions exist to clearly delineate who has the ability to read, write and execute your files.<br><br>
+         Also, when working in a UNIX system, there are a core set of default variables that control the behavior of your command-line. One of the most important of these is the $PATH variable, which tells the system where to look for commands that you give it. <br><br>This lesson will cover:<br>
+             - Interepting and modifying existing permissions<br>
+             - Querying environmental variables<br>
+             - Reading and appending to the $PATH variable<br><br>
+        </details>
+
+2. [Introduction to High-performance computing](../lessons/08_HPC_intro_and_terms.md)
+
+      <details>
+       <summary><i>Click here for a preview of this lesson</i></summary>
+         <br>Now that you had a chance to explore the O2 cluster, let's focus on the components of this system, how it is different than your personal computer and the advantages that it offers in terms of parallelization. <br><br>This lesson will cover:<br>
+             - Differentiating a high-performance compuitng cluster like O2 from your personal computer<br>
+             - Discuss the large parallelization advantage that O2 has over a personal computer<br><br>
+        </details>
 
 > **NOTE:** To run through the code above, you will need to be **logged into O2** and **working on a compute node** (i.e. your command prompt should have the word `compute` in it). For login instructions, please see above.
 
-2. **Complete the exercises**:
+II. **Complete the exercises**:
    * Each lesson above contain exercises; please go through each of them.
    * **Copy over** your the answers for the exercises into a plain text file on your local computer, using Notepad++, TextWrangler or similar. 
      * *Please do not copy all of the content from your Terminal, just the answers.*
