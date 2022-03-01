@@ -383,7 +383,7 @@ echo "Report complete!"
 		<p><i>Question 1</i><br>
 		<code>sh directory_info.sh</code></p>
 	<pre> Reporting on the directory raw_fastq ...
-	These are the contents of this directory:
+	These are the contents of raw_fastq
 	total 384128
 	-rw-rw-r-- 1 mm573 mm573 55169229 Sep 30 10:40 Irrel_kd_1.subset.fq
 	-rw-rw-r-- 1 mm573 mm573 47460403 Sep 30 10:40 Irrel_kd_2.subset.fq
@@ -400,9 +400,9 @@ echo "Report complete!"
 		<code>dirPath=~/unix_lesson/genomics_data</code></p>
 		<p><i>Question 3</i><br>
 		<code>sh directory_info.sh</code></p>
-	<pre> Reporting on the directory raw_fastq ...
-	These are the contents of this directory:
-	total 26240
+	<pre> Reporting on the directory genomics_data ...
+	These are the contents of genomics_data
+	total 26244
 	-rwxrwxr-- 1 mm573 mm573   130904 Sep 30 10:40 Encode-hesc-Nanog.bed
 	-rw-rw-r-- 1 mm573 mm573 21893006 Sep 30 10:40 na12878_q20_annot.vcf
 	The total number of files in this directory is:
