@@ -207,7 +207,7 @@ Either one of these options should have worked and you should see the number of 
 		<p><i>Question 1</i><br>
 		<code>head -n 4 $file</code><br>
 		@HWI-ST330:304:H045HADXX:1:1101:1162:205<br></p>
-		<p><code>head -n 4 $file</code><br>
+		<p><code>tail -n 4 $file</code><br>
 		@HWI-ST330:304:H045HADXX:2:2212:15724:100530</p>
 		<i>Question 2</i><br>
 		<code>meta=Mov10_rnaseq_metadata.txt</code>
