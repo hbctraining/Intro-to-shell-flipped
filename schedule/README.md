@@ -90,7 +90,7 @@ I. Please **study the contents** and **work through all the code** within the fo
       <details>
        <summary><i>Click here for a preview of this lesson</i></summary>
          <br>Now that you had a chance to explore the O2 cluster, let's focus on the components of this system, how it is different than your personal computer and the advantages that it offers in terms of parallelization. <br><br>This lesson will cover:<br>
-             - Differentiating a high-performance compuitng cluster like O2 from your personal computer<br>
+             - Differentiating a high-performance computing cluster like O2 from your personal computer<br>
              - Discuss the large parallelization advantage that O2 has over a personal computer<br><br>
         </details>
 
