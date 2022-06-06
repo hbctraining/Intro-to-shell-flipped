@@ -4,9 +4,9 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Will |
-| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Jihe|
-| 11:40 - 12:00 | Overview of self-learning materials and homework submission | Will |
+| 13:30 - 14:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Radhika |
+| 14:10 - 15:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika |
+| 15:40 - 16:00 | Overview of self-learning materials and homework submission | Will |
 
 ### Before the next class:
 
@@ -67,8 +67,8 @@ II. **Complete the exercises**:
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 10:45 | Self-learning lessons review | Will |
-| 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Jihe |
+| 13:30 - 14:45 | Self-learning lessons review | All |
+| 14:45 - 16:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Radhika |
 
 ### Before the next class:
 
@@ -112,11 +112,11 @@ II. **Complete the exercises**:
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 10:00 | Self-learning lessons review | Jihe |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_March2022.pdf)| Will |
-| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Jihe |
-| 11:30 - 11:45 | [Introduction to the O2 cluster - data storage](../lectures/HPC_intro_O2_March2022.pdf)| Jihe |
-| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Will |
+| 13:30 - 10:00 | Self-learning lessons review | All |
+| 14:00 - 15:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_March2022.pdf)| Radhika |
+| 15:00 - 15:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Will |
+| 15:30 - 15:45 | [Introduction to the O2 cluster - data storage](../lectures/HPC_intro_O2_March2022.pdf)| Will |
+| 15:45 - 16:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Radhika |
 
 ***
 
