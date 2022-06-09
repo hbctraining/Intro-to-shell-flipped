@@ -569,6 +569,18 @@ $ rm -ri fastq_backup
 
 ***
 
+## Exiting from the cluster
+
+To close the interactive session on the cluser as well as to disconnect from the cluster, the command is `exit`. So, you are going to have to run the exit command twice.
+
+```
+[rc_training01@compute-a-16-166 ~]$ exit
+[rc_training01@login04 ~]$ exit
+logout
+Connection to o2.hms.harvard.edu closed.
+HSPH-Radhikas-MacBook-Pro:~ rsk394$ 
+```
+
 ## Commands
 
 ```
