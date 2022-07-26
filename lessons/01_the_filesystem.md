@@ -469,7 +469,7 @@ $ cp Mov10_oe_1.subset.fq Mov10_oe_1.subset-copy.fq
 $ ls -l
 ```
 
-The copy command can also be used for copying over whole directories, but the `-r` argument has to be added after the `cp` command. The `-r` stands for "recursively copy everything from the directory and its sub-directories". [We used it earlier when we copied over the `unix_lesson` directory to our home directories]().
+The copy command can also be used for copying over whole directories, but the `-r` argument has to be added after the `cp` command. The `-r` stands for "recursively copy everything from the directory and its sub-directories". [We used it earlier when we copied over the `unix_lesson` directory to our home directories](#copying-example-data-folder).
 
 ### Creating
 
