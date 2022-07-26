@@ -148,7 +148,7 @@ You should see the string of characters "unix_lesson" show up as the output of `
 
 ## Starting with the shell
 
-Let's look at what is inside the data folder and explore further. First instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using folder and directory interchangeably moving forward.
+Let's look at what is inside the data folder and explore further. First, instead of clicking on the folder name to open it and look at its contents, we have to change the folder we are in. When working with any programming tools, **folders are called directories**. We will be using folder and directory interchangeably moving forward.
 
 To look inside the `unix_lesson` directory, we need to change which directory we are *in*. To do this we can use the `cd` command, which stands for "change directory". 
 
@@ -231,7 +231,7 @@ This will open the manual page for `ls` and you will lose the command prompt. It
 **Exercise**
 
 * Open up the manual page for the `find` command. Skim through some of the information. 
-    * Do you think you might be able to learn this much information about the very many command by heart? 
+    * Do you think you might be able to learn this much information about many commands by heart? 
     * Do you think this format of information display is useful for you?
     
 * Quit the `man` buffer and come back to your command prompt.  
