@@ -113,9 +113,9 @@ II. **Complete the exercises**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:00 | Self-learning lessons review | Will |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_July2022.pdf) | Jihe |
-| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Will |
-| 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Will |
+| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_July2022.pdf) | Will |
+| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Jihe |
+| 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Jihe |
 | 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Jihe |
 
 ***
