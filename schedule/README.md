@@ -80,7 +80,7 @@ I. Please **study the contents** and **work through all the code** within the fo
        <summary><i>Click here for a preview of this lesson</i></summary>
          <br>When using a multi-user system like the O2 cluster, you may want to limit access to your work. Permissions exist to clearly delineate who has the ability to read, write and execute your files.<br><br>
          Also, when working in a UNIX system, there are a core set of default variables that control the behavior of your command-line. One of the most important of these is the $PATH variable, which tells the system where to look for commands that you give it. <br><br>This lesson will cover:<br>
-             - Interepting and modifying existing permissions<br>
+             - Interpreting and modifying existing permissions<br>
              - Querying environmental variables<br>
              - Reading and appending to the $PATH variable<br><br>
         </details>
