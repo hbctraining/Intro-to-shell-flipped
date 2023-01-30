@@ -7,7 +7,7 @@ date: "Thursday, October 8, 2020"
 ## Learning Objectives
 
 - Describe the basic components of a computer and high-performance computing cluster
-- Diffentiate between running tasks in serial versus parallel
+- Differentiate between running tasks in serial versus parallel
 
 
 ## Computer components
