@@ -45,7 +45,7 @@ I. Please **study the contents** and **work through all the code** within the fo
 
 II. **Complete the exercises**:
    * Each lesson above contains exercises; please go through each of them.
-   * **Copy over** your solutions into the [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfL04I7TVfs5At3n7OCLBieUsJ8nxZgjbO6mQQwCzKoBG1iLA/viewform?usp=sf_link) the **day before the next class**.
+   * **Copy over** your solutions into the [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdrIjkOw6-vNmgDMlKQml49yFFEBKX1Z63dmSUyp_49-xeMCQ/viewform?usp=sf_link) the **day before the next class**.
 
 ### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
