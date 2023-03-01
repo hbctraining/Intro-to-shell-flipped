@@ -4,7 +4,6 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-
 | 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Will |
 | 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika |
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Will |
