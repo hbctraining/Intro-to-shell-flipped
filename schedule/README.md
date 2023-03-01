@@ -4,6 +4,7 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
+
 | 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Will |
 | 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Radhika |
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Will |
@@ -36,14 +37,6 @@ I. Please **study the contents** and **work through all the code** within the fo
              - Writing the output of a command to a file<br>
              - Redirecting the output of a command to an additional command<br><br>
         </details>
-        
-  4. [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
-      <details>
-       <summary><i>Click here for a preview of this lesson</i></summary>
-         <br>Being able to reproduce your work is critically important for good science and writing your commands to a Shell script is a simple way to do this. Additionally, when writing shell scripts you will find it helpful to use variables to hold information, such as paths, in order to avoid typos and improve the readability of your script.<br><br>This lesson will cover:<br>
-             - Creating Shell scripts<br>
-             - Assigning variables in Shell<br><br>
-        </details>
 
 > **NOTE:** To run through the code above, you will need to be **logged into O2** and **working on a compute node** (i.e. your command prompt should have the word `compute` in it).
 > 1. Log in using `ssh rc_trainingXX@o2.hms.harvard.edu` and enter your password (replace the "XX" in the username with the number you were [assigned in class](https://docs.google.com/spreadsheets/d/1kBlYowhjjHJC9ZovmbBULmbqozKpprM17vZ2wPlhNg0/edit?usp=sharing)). 
@@ -67,8 +60,10 @@ II. **Complete the exercises**:
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 9:30 - 10:45 | Self-learning lessons review | Will |
-| 10:45 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Radhika |
+| 09:30 - 10:10 | Self-learning lessons review | Will |
+| 10:10 - 10:55 | [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)| Will |
+| 10:55 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Radhika |
+
 
 ### Before the next class:
 
