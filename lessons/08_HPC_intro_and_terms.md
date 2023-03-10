@@ -64,7 +64,7 @@ E.g. A cluster “Node” that has eight “quad"-core CPUs, means that node has
 1. A lot of software is designed to work with the resources on an HPC environment and is either unavailable for, or unusable on, a personal computer.
 2. If you are performing analysis on large data files (e.g. high-throughput sequencing data), you should work on the cluster to avoid issues with memory and to get the analysis done a lot faster with the superior processing capacity. Essentially, a cluster has:
     * 100s of cores for processing!
-    * 100s of Gigabytes or Petabytes of storage!
+    * 100s of Terabytes or Petabytes of storage!
     * 100s of Gigabytes of memory!
 
 ### Parallelization
