@@ -124,7 +124,9 @@ This is a very simple shell script, just to introduce you to the concept. Before
 
 ## Bash variables
 
-A *variable* is a common concept shared by many programming languages. **Variables are essentially a symbolic/temporary name for, or a reference to, some information**. Variables are analogous to "buckets", where **information can be stored, maintained and modified** without too much hassle. Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
+A *variable* is a common concept shared by many programming languages. **Variables are essentially a symbolic/temporary name for, or a reference to, some information**. Variables are analogous to "buckets", where **information can be stored, maintained and modified** without too much hassle. Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it. 
+
+We will go over the basics of bash variables here, but for more extended information refer to our [lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/positional_params.html) on them.
 
 To create a variable in bash, you provide the name of the variable, followed by the equals sign, and finishing with the value we want to assign to the variable. Note that the variable name cannot contain spaces, nor can there be spaces on either side of the equals sign.
 
