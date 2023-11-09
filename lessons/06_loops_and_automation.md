@@ -192,7 +192,7 @@ Now we execute the command required to dump the bad reads to file, but first sta
 ``` 
 
 > #### Why are we using curly brackets with the variable name?
-> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base-badreads.fq`.
+> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
 
   
 We'll also count the number of identified bad reads using the count flag of `grep`, `-c`, which will return the number of matches rather than the actual matching lines. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
