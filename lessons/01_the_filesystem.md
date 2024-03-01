@@ -343,6 +343,13 @@ Can you think of an alternative?
 $ cd ~/unix_lesson
 ```
 
+>**Tip**
+>What if we want to navigate to the previous folder but can't quite remember the full or relative path, or want to get there quickly without typing a lot? In this case, we can use `cd -`. When `-` is used in this context it is referring to a special variable called `$OLDPWD` that is stored without our having to assign it anything. We'll learn more about variables in a future lesson, but for now you can see how this command works. Try typing:
+>```bash
+>cd -
+>```
+> This command will move you to the last folder you were in before your current location, then display where you now are! If you followed the steps up until this point it will have moved you to `~/unix_lesson/raw_fastq`. You can use this command again to get back to where you were before (`~/unix_lesson`) to move on to the Exercises.
+
 ****
 
 **Exercises**
