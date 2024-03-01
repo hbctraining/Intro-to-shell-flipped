@@ -188,11 +188,11 @@ Now we execute the command required to dump the bad reads to file, but first sta
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
+  grep -B1 -A2 NNNNNNNNNN --no-group-separator $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
 ``` 
 
 > #### Why are we using curly brackets with the variable name?
-> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
+> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$samplename` and not to look for a variable called `$samplename_badreads.fq`.
 
   
 We'll also count the number of identified bad reads using the count flag of `grep`, `-c`, which will return the number of matches rather than the actual matching lines. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
@@ -222,7 +222,7 @@ do
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
+  grep -B1 -A2 --no-group-separator NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
 
   # grab the number of bad reads and write it to a summary file
   grep -cH NNNNNNNNNN $filename >> ~/unix_lesson/badreads/badreads.count.summary
