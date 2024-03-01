@@ -101,7 +101,7 @@ II. **Complete the exercises**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:00 | Self-learning lessons review | All |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Nov2023_kmk34_edits_v1.pdf) | Noor |
+| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Feb2024.pdf) | Noor |
 | 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Heather |
 | 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Noor |
 | 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Heather |
