@@ -4,9 +4,9 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Noor |
-| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Heather |
-| 11:40 - 12:00 | Overview of self-learning materials and homework submission | Noor |
+| 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Will |
+| 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Upen |
+| 11:40 - 12:00 | Overview of self-learning materials and homework submission | Will |
 
 ### Before the next class:
 
@@ -57,8 +57,8 @@ II. **Complete the exercises**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 09:30 - 10:10 | Self-learning lessons review | All |
-| 10:10 - 10:55 | [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)| Noor |
-| 10:55 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Heather |
+| 10:10 - 10:55 | [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)| Upen |
+| 10:55 - 12:00 | [Loops and automation](../lessons/06_loops_and_automation.md) | Will |
 
 
 ### Before the next class:
@@ -101,10 +101,10 @@ II. **Complete the exercises**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:00 | Self-learning lessons review | All |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Feb2024.pdf) | Noor |
-| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Heather |
-| 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Noor |
-| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Heather |
+| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Feb2024.pdf) | Will |
+| 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Upen |
+| 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Will |
+| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Will |
 
 ***
 
