@@ -4,7 +4,7 @@
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 9:30 - 10:10 | [Workshop introduction](../lectures/Intro_to_workshop.pdf) | Will |
+| 9:30 - 10:10 | [Workshop introduction](../lectures/workshop_intro_slides.pdf) | Will |
 | 10:10 - 11:40 | [Introduction to Shell](../lessons/01_the_filesystem.md) | Upen |
 | 11:40 - 12:00 | Overview of self-learning materials and homework submission | Will |
 
@@ -104,7 +104,7 @@ II. **Complete the exercises**:
 | 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_Feb2024.pdf) | Will |
 | 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](https://raw.githubusercontent.com/hbctraining/Intro-to-shell-flipped/master/activities/sbatch_exercise_answer.txt))| Upen |
 | 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Will |
-| 11:45 - 12:00 | [Wrap up](../lectures/shell-workshop-wrapup.pdf) | Will |
+| 11:45 - 12:00 | [Wrap up](../lectures/workshop_wrapup_slides.pdf) | Will |
 
 ***
 
