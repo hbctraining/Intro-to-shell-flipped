@@ -109,7 +109,7 @@ II. **Complete the exercises**:
 ***
 
 ## Dataset
-[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
+[Introduction to Shell: Dataset](https://www.dropbox.com/s/2u4lk3d10yuio0r/unix_lesson.zip?dl=1)
 
 ## Answer keys
 * [Day 1 Exercises](../homework/Day1_answer_key.txt)
