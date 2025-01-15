@@ -1,5 +1,5 @@
 ---
-title: "The Shell"
+title: "Introduction to Shell"
 author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "September 28, 2020"
 ---
