@@ -1,16 +1,18 @@
 ---
-title: "The Shell: Searching and Redirection"
+title: "Shell for Bioinformatics"
 author: "Sheldon  McKay, Bob Freeman, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu, Will Gammerdinger"
 date: "October 2021"
 ---
 
-Approximate time: 60 minutes
+# Searching and redirection
 
 ## Learning objectives
 
 - Search for characters or patterns in a text file using the `grep` command
 - Write to and append a file using output redirection
 - Use the pipe (`|`) character to chain together commands
+
+Approximate time: 60 minutes
 
 ## Searching files with `grep` command
 
