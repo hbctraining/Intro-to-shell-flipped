@@ -1,8 +1,10 @@
 ---
-title: "The Shell"
+title: "Shell for Bioinformatics"
 author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "August 7, 2017"
 ---
+
+# Wildcards and Shortcuts in Shell
 
 ## Learning Objectives
   - Implement tab completion when writing paths
