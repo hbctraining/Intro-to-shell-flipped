@@ -1,4 +1,4 @@
-# Introduction to the command line interface (shell/bash/Unix/Linux)
+# Shell for Bioinformatics
 
 | Audience | Computational skills required | Duration |
 :----------|:-------------|:----------|
@@ -6,7 +6,7 @@
 
 ### Description
 
-This repository has teaching materials for a 1-day Introduction to shell workshop. This workshop focuses on teaching basic skills to use the command line interface, specifically `bash`, the lessons include `for` loops, shell scripting, positional parameters. This workshop is a prerequisite to a workshop on [RNA-seq analysis](https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/).
+This repository has teaching materials for a 3-day Shell for Bioinformatics workshop. This workshop focuses on teaching basic skills to use the command-line interface, specifically `bash`, the lessons include `for` loops, shell scripting, positional parameters. This workshop is a prerequisite to a workshop on [RNA-seq analysis](https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/).
 
 **Note for Trainers:** Please note that the schedule linked below assumes that learners will spend between 3-4 hours on reading through, and completing exercises from selected lessons between classes. The online component of the workshop focuses on more exercises and discussion/Q & A.
 
@@ -29,7 +29,7 @@ No installation requirements.
 [GitBash](https://git-scm.com/download/win)  
 
 ### Dataset
-[Introduction to Shell: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
+[Shell for Bioinformatics: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
 
 ---
 
