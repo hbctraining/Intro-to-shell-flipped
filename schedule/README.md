@@ -1,3 +1,9 @@
+---
+title: "Shell for Bioinformatics"
+author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
+date: "September 28, 2020"
+---
+
 # Workshop Schedule
 
 ## Day 1
