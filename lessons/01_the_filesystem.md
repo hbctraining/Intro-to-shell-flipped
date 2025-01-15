@@ -1,8 +1,10 @@
 ---
-title: "Introduction to Shell"
+title: "Shell for Bioinformatics"
 author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Meeta Mistry, Jihe Liu"
 date: "September 28, 2020"
 ---
+
+# Introduction to Shell
 
 ## Learning Objectives
 - Log in to a high-performance computing cluster 
