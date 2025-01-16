@@ -19,7 +19,7 @@ This repository has teaching materials for a 3-day Shell for Bioinformatics work
 3.	Submit jobs to a high-performance computing cluster
 
 ### Lessons
-* [Workshop schedule (trainer-led learning)](schedule/)
+* [Workshop schedule (trainer-led learning)](schedule/README.md)
 * [Self-learning](schedule/links-to-lessons.md)
 
 ### Installation Requirements
