@@ -221,7 +221,7 @@ $ mv bad_reads.txt ../other/
 
 **The redirection command for using the output of a command as input for a different command is `|`.**
 
-**The pipe key** (<kbd>|</kbd>) is very likely not something you use very often (it is on the same key as the back slash (<kbd>\\</kbd>), right above the <button>Enter/Return</button> key). 
+**The pipe key** (<kbd>|</kbd>) is very likely not something you use very often (it is on the same key as the back slash (<kbd>&bsol;</kbd>), right above the <button>Enter/Return</button> key). 
 
 What `|` does is take the output from one command, e.g. the output from `grep` that went whizzing by and runs it through the command specified after it. When it was all whizzing by before, we wished we could just take a look at it! Maybe we could use `less` instead of the rapid scroll. Well, it turns out that we can! We can **pipe the output `grep` command** to `less` to slowly scroll through, or to `head` to just see the first few lines.
 
