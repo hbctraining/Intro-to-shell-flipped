@@ -1,4 +1,4 @@
-# Introduction to Shell and Cluster computing (HMS-RC's O2 cluster)
+# Shell for Bioinformatics
 
 ## Learning Objectives
 
